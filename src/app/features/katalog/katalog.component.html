@@ -1,0 +1,207 @@
+<section class="breadcrumb">
+  <div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><span class="iconify mb-1 fs-5" data-icon="ic:outline-home"></span></a></li>
+        <li class="breadcrumb-item active"><a href="#">KATALOG</a></li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <div class="filer border">
+          <div class="category py-2 px-3">
+            <div class="d-flex justify-content-between align-items-center" (click)="categories.toggle()" [attr.aria-expanded]="!isCollapsed.categories" aria-controls="collapseCategories">
+              <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">CATEGORIES</span>
+              <span class="iconify fs-4" data-icon="mdi-light:plus"></span>
+            </div>
+            <div class="px-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
+              <div class="text-secondary mb-2">Accessories (11)</div>
+              <div class="text-secondary mb-2">Dress (2)</div>
+              <div class="text-secondary mb-2">Electronics (0)</div>
+              <div class="text-secondary mb-2">Fashion (2)</div>
+              <div class="text-secondary mb-2">Music (5)</div>
+            </div>
+          </div>
+          <div class="price py-2 px-3 border-top">
+            <div class="d-flex justify-content-between align-items-center" (click)="prices.toggle()" [attr.aria-expanded]="!isCollapsed.prices" aria-controls="collapsePrices">
+              <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">PRICE</span>
+              <span class="iconify fs-4" data-icon="mdi-light:plus"></span>
+            </div>
+            <div class="px-3 my-2" #prices="ngbCollapse" [(ngbCollapse)]="isCollapsed.prices">
+              <div class="range-price d-flex align-items-center">
+                <input type="text" class="form-control form-control-sm rounded-0 text-end">
+                <span class="mx-2">To</span>
+                <input type="text" class="form-control form-control-sm rounded-0 text-end">
+              </div>
+            </div>
+          </div>
+          <div class="price py-2 px-3 border-top">
+            <div class="d-flex justify-content-between align-items-center" (click)="availability.toggle()" [attr.aria-expanded]="!isCollapsed.availability" aria-controls="collapseavailability">
+              <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">AVAILABILITY</span>
+              <span class="iconify fs-4" data-icon="mdi-light:plus"></span>
+            </div>
+            <div class="px-3 mt-2" #availability="ngbCollapse" [(ngbCollapse)]="isCollapsed.availability">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                <label class="form-check-label text-secondary" for="flexCheckDefault">
+                  In Stock (11)
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label text-secondary" for="flexCheckChecked">
+                  Out Of Stock (2)
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-9">
+        <div class="row">
+          <div class="col-4">
+            <img src="assets/img/speaker.jpg" class="w-100 object-fit-cover" alt="Random second slide" />
+            <div class="detail p-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <img src="assets/img/earphone.webp" class="w-100 object-fit-cover" alt="Random second slide" />
+            <div class="detail p-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <img src="assets/img/jam.webp" class="w-100 object-fit-cover" alt="Random second slide" />
+            <div class="detail p-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <img src="assets/img/speaker.jpg" class="w-100 object-fit-cover" alt="Random second slide" />
+            <div class="detail p-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <img src="assets/img/earphone.webp" class="w-100 object-fit-cover" alt="Random second slide" />
+            <div class="detail p-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <img src="assets/img/jam.webp" class="w-100 object-fit-cover" alt="Random second slide" />
+            <div class="detail p-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <img src="assets/img/speaker.jpg" class="w-100 object-fit-cover" alt="Random second slide" />
+            <div class="detail p-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <img src="assets/img/earphone.webp" class="w-100 object-fit-cover" alt="Random second slide" />
+            <div class="detail p-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <img src="assets/img/jam.webp" class="w-100 object-fit-cover" alt="Random second slide" />
+            <div class="detail p-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

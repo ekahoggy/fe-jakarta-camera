@@ -1,0 +1,17 @@
+.breadcrumb {
+  a {
+    text-decoration: none;
+    color: #777;
+  }
+}
+
+.rekomendasi {
+  ::ng-deep .swiper-button-prev, ::ng-deep  .swiper-button-next {
+    top: 30%;
+  }
+
+  ::ng-deep .swiper-button-prev:after, ::ng-deep .swiper-button-next:after {
+    font-size: 25px;
+    color: black;
+  }
+}

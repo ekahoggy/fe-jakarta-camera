@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+body {
+  margin: 0; /* Menghilangkan margin default pada body */
+  font-size: 13px;
+
+  .container {
+    width: 65%; /* Atur lebar kontainer */
+    margin: 0 auto; /* Atur margin otomatis untuk menengahkan kontainer */
+    box-sizing: border-box; /* Menjamin bahwa padding dan border tidak meningkatkan lebar kontainer */
+  }
+
+  /* Media queries untuk membuat kontainer responsif */
+  @media (max-width: 768px) {
+    .container {
+        width: 90%; /* Mengurangi lebar kontainer pada layar yang lebih kecil */
+    }
+  }
+
+  @media (max-width: 576px) {
+    .container {
+        width: 95%; /* Lebar kontainer lebih kecil untuk layar yang lebih kecil */
+    }
+  }
+}
+
+.breadcrumb {
+  a {
+    text-decoration: none !important;
+    color: #777 !important;
+  }
+}

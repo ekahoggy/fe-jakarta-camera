@@ -1,0 +1,27 @@
+.footer {
+  .input-group {
+    input {
+      background-color: #292c30;
+      color: #777;
+      font-size: 13px;
+      border: 0;
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+      padding: 10px 5px 10px 12px;
+    }
+    span {
+      font-size: 13px;
+      border: 0;
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
+  }
+
+  .input-group ::placeholder {
+    color: #777;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
