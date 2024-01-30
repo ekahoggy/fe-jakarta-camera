@@ -71,7 +71,7 @@
   </div>
 </section>
 
-<section class="header-nav">
+<section class="header-nav bg-white" id="navbar">
   <nav class="navbar navbar-expand-lg py-0">
     <div class="container">
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -79,23 +79,35 @@
           <li class="nav-item mx-4">
             <a class="nav-link py-4 px-0 active" aria-current="page" href="javascript:void(0)" routerLink="/">HOME</a>
           </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">COLLECTIONS</a>
+          <li class="nav-item dropdown mx-4">
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">
+              COLLECTIONS
+              <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
+            </a>
+            <div class="dropdown-content">
+              <a href="#">Collection 1</a>
+              <a href="#">Collection 2</a>
+              <a href="#">Colection 3</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown mx-4">
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">
+              PRODUCTS
+              <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
+            </a>
+            <div class="dropdown-content">
+              <a href="#">Jam Tangan Keren</a>
+              <a href="#">Diskon 100%</a>
+            </div>
           </li>
           <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">PRODUCTS</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-0" href="#">PAGES</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-0" href="#">FEATURES</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-0" href="#">SPECIAL OFFTER!</a>
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">PAGES</a>
           </li>
         </ul>
       </div>
+      <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
+        <span class="iconify fs-4 mx-3" data-icon="uiw:shopping-cart"></span>
+      </a>
     </div>
   </nav>
 </section>
