@@ -1,11 +1,11 @@
 <section class="breadcrumb my-5">
   <div class="container">
     <div class="d-flex justify-content-center align-items-center gap-3">
-      <a href=""><h4 class="fw-bold text-success">Shopping Cart</h4></a>
-      <span class="iconify text-secondary mx-2 mb-1 fs-5" data-icon="ion:chevron-right"></span>
-      <a href=""><h4 class="fw-bold">Procced To Checkout</h4></a>
-      <span class="iconify text-secondary mx-2 mb-1 fs-5" data-icon="ion:chevron-right"></span>
-      <a href=""><h4 class="fw-bold">Order Complete</h4></a>
+      <a href="javascript:void(0)"><span class="fw-bold fs-5 text-success">Shopping Cart</span></a>
+      <span class="iconify text-secondary mx-2 fs-6" data-icon="ion:chevron-right"></span>
+      <a href="javascript:void(0)"><span class="fw-bold fs-5">Procced To Checkout</span></a>
+      <span class="iconify text-secondary mx-2 fs-6" data-icon="ion:chevron-right"></span>
+      <a href="javascript:void(0)"><span class="fw-bold fs-5">Order Complete</span></a>
     </div>
   </div>
 </section>
@@ -14,20 +14,20 @@
   <div class="container">
     <div class="row">
       <div class="col-8">
-        <table class="table">
+        <table class="table mt-2">
           <thead>
             <tr>
               <th></th>
-              <th class="fs-6">PRODUCT</th>
-              <th class="fs-6">PRICE</th>
-              <th class="fs-6">QUANTITY</th>
-              <th class="fs-6 text-end">SUBTOTAL</th>
+              <th>PRODUCT</th>
+              <th>PRICE</th>
+              <th>QUANTITY</th>
+              <th class="text-end">SUBTOTAL</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="text-start align-middle">
-                <div class="product-thumbnail position-relative py-3">
+                <div class="product-thumbnail position-relative px-2 py-3">
                   <img src="assets/img/jam.webp" class="object-fit-cover" width="80" height="80" alt="">
                 </div>
               </td>
@@ -48,10 +48,10 @@
             </tr>
           </tbody>
         </table>
-        <a href="javascript:void(0)" routerLink="/katalog" class="btn btn-sm btn-light fw-bold rounded-0 px-3 py-2 mt-3">CONTINUE SHOPPING</a>
+        <a href="javascript:void(0)" routerLink="/katalog" class="btn btn-sm btn-light fw-bold rounded-0 px-4 py-3 mt-3">CONTINUE SHOPPING</a>
         <div class="form-group mt-4">
           <label for="inputState" class="form-label text-secondary">Special instructions for seller</label>
-          <textarea type="text" class="form-control form-control-sm px-2 py-2" rows="10"></textarea>
+          <textarea type="text" class="form-control px-2 py-2" rows="10"></textarea>
         </div>
       </div>
       <div class="col-4">
@@ -81,10 +81,10 @@
             <div class="d-flex justify-content-between align-items-center">
               <span class="fw-bold fs-6">Total</span> <span class="fw-bold fs-5"> Rp 200.000</span>
             </div>
-            <button class="btn btn-dark w-100 rounded-0 fw-bold py-3 mt-5">
+            <a class="btn btn-dark w-100 rounded-0 fw-bold py-3 mt-5" href="javascript:void(0)" routerLink="/checkout">
               PROCCED TO CHECKOUT
-              <span class="iconify mb-1 fs-5" data-icon="lucide:arrow-right"></span>
-            </button>
+              <span class="iconify ms-1 mb-1 fs-5" data-icon="lucide:arrow-right"></span>
+            </a>
           </div>
         </div>
       </div>

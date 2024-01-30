@@ -10,6 +10,7 @@ import { LayoutsModule } from '../layouts/layouts.module';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { KatalogComponent } from './katalog/katalog.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CartComponent } from './cart/cart.component';
     HomeComponent,
     DetailProductComponent,
     KatalogComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
