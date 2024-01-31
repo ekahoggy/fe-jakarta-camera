@@ -16,7 +16,7 @@
 <section class="our-advantages">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6 col-lg-4">
         <div class="d-flex justify-content-center align-items-center py-5">
           <span class="iconify me-3 fs-1" data-icon="mdi:truck-fast-outline"></span>
           <div class="text">
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6 col-lg-4">
         <div class="d-flex justify-content-center align-items-center py-5">
           <span class="iconify me-3 fs-1" data-icon="f7:money-dollar-circle"></span>
           <div class="text">
@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6 col-lg-4">
         <div class="d-flex justify-content-center align-items-center py-5">
           <span class="iconify me-3 fs-1" data-icon="ri:24-hours-line"></span>
           <div class="text">
@@ -50,7 +50,7 @@
 <section class="product-promo py-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-lg-4">
         <a href="javascript:void(0)" routerLink="/detail">
           <div class="position-relative p-2">
             <img src="assets/img/jam.webp" class="w-100 object-fit-cover" alt="Random second slide" />
@@ -62,7 +62,7 @@
           </div>
         </a>
       </div>
-      <div class="col-md-4">
+      <div class="col-lg-4">
         <a href="javascript:void(0)" routerLink="/detail">
           <div class="position-relative p-2">
             <img src="assets/img/earphone.webp" class="w-100 object-fit-cover" alt="Random second slide" />
@@ -74,7 +74,7 @@
           </div>
         </a>
       </div>
-      <div class="col-md-4">
+      <div class="col-lg-4">
         <a href="javascript:void(0)" routerLink="/detail">
           <div class="position-relative p-2">
             <img src="assets/img/speaker.jpg" class="w-100 object-fit-cover" alt="Random second slide" />
@@ -100,12 +100,12 @@
     </div>
   </div>
   <div class="container mt-4">
-    <swiper [slidesPerView]="4" [spaceBetween]="20" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [navigation]="true" [scrollbar]="{ draggable: true }">
+    <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
       <ng-template swiperSlide>
         <img src="assets/img/speaker.jpg" class="w-100 object-fit-cover" alt="Random second slide" />
         <div class="detail text-center p-3">
           <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-          <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
           <div class="rating">
             <span class="iconify text-warning" data-icon="uis:star"></span>
             <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -113,7 +113,7 @@
             <span class="iconify text-black-50" data-icon="uis:star"></span>
             <span class="iconify text-black-50" data-icon="uis:star"></span>
           </div>
-          <p class="price fs-5 fw-semibold">Rp 55.000</p>
+          <p class="price fs-6 fw-semibold">Rp 55.000</p>
           <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2 px-3" style="font-size: 12px">
             <span class="iconify fs-6 me-1 mb-1" data-icon="uiw:shopping-cart"></span>
             ADD TO CART
@@ -124,7 +124,7 @@
         <img src="assets/img/earphone.webp" class="w-100 object-fit-cover" alt="Random second slide" />
         <div class="detail text-center p-3">
           <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-          <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
           <div class="rating">
             <span class="iconify text-warning" data-icon="uis:star"></span>
             <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -132,7 +132,7 @@
             <span class="iconify text-black-50" data-icon="uis:star"></span>
             <span class="iconify text-black-50" data-icon="uis:star"></span>
           </div>
-          <p class="price fs-5 fw-semibold">Rp 55.000</p>
+          <p class="price fs-6 fw-semibold">Rp 55.000</p>
           <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2 px-3" style="font-size: 12px">
             <span class="iconify fs-6 me-1 mb-1" data-icon="uiw:shopping-cart"></span>
             ADD TO CART
@@ -142,7 +142,7 @@
       <ng-template swiperSlide><img src="assets/img/jam.webp" class="w-100 object-fit-cover" alt="Random second slide" />
         <div class="detail text-center p-3">
           <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-          <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
           <div class="rating">
             <span class="iconify text-warning" data-icon="uis:star"></span>
             <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -150,7 +150,7 @@
             <span class="iconify text-black-50" data-icon="uis:star"></span>
             <span class="iconify text-black-50" data-icon="uis:star"></span>
           </div>
-          <p class="price fs-5 fw-semibold">Rp 55.000</p>
+          <p class="price fs-6 fw-semibold">Rp 55.000</p>
           <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2 px-3" style="font-size: 12px">
             <span class="iconify fs-6 me-1 mb-1" data-icon="uiw:shopping-cart"></span>
             ADD TO CART
@@ -160,7 +160,7 @@
       <ng-template swiperSlide><img src="assets/img/earphone.webp" class="w-100 object-fit-cover" alt="Random second slide" />
         <div class="detail text-center p-3">
           <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-          <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
           <div class="rating">
             <span class="iconify text-warning" data-icon="uis:star"></span>
             <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -168,7 +168,7 @@
             <span class="iconify text-black-50" data-icon="uis:star"></span>
             <span class="iconify text-black-50" data-icon="uis:star"></span>
           </div>
-          <p class="price fs-5 fw-semibold">Rp 55.000</p>
+          <p class="price fs-6 fw-semibold">Rp 55.000</p>
           <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2 px-3" style="font-size: 12px">
             <span class="iconify fs-6 me-1 mb-1" data-icon="uiw:shopping-cart"></span>
             ADD TO CART
@@ -178,7 +178,7 @@
       <ng-template swiperSlide><img src="assets/img/jam.webp" class="w-100 object-fit-cover" alt="Random second slide" />
         <div class="detail text-center p-3">
           <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-          <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
           <div class="rating">
             <span class="iconify text-warning" data-icon="uis:star"></span>
             <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -186,7 +186,7 @@
             <span class="iconify text-black-50" data-icon="uis:star"></span>
             <span class="iconify text-black-50" data-icon="uis:star"></span>
           </div>
-          <p class="price fs-5 fw-semibold">Rp 55.000</p>
+          <p class="price fs-6 fw-semibold">Rp 55.000</p>
           <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2 px-3" style="font-size: 12px">
             <span class="iconify fs-6 me-1 mb-1" data-icon="uiw:shopping-cart"></span>
             ADD TO CART
@@ -196,7 +196,7 @@
       <ng-template swiperSlide><img src="assets/img/speaker.jpg" class="w-100 object-fit-cover" alt="Random second slide" />
         <div class="detail text-center p-3">
           <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-          <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
           <div class="rating">
             <span class="iconify text-warning" data-icon="uis:star"></span>
             <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -204,7 +204,7 @@
             <span class="iconify text-black-50" data-icon="uis:star"></span>
             <span class="iconify text-black-50" data-icon="uis:star"></span>
           </div>
-          <p class="price fs-5 fw-semibold">Rp 55.000</p>
+          <p class="price fs-6 fw-semibold">Rp 55.000</p>
           <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2 px-3" style="font-size: 12px">
             <span class="iconify fs-6 me-1 mb-1" data-icon="uiw:shopping-cart"></span>
             ADD TO CART
@@ -276,7 +276,7 @@
 <section class="brand">
   <div class="container">
     <div class="row border-bottom py-5">
-      <swiper [slidesPerView]="6" [spaceBetween]="20" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [navigation]="true" [scrollbar]="{ draggable: true }">
+      <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configBrand">
         <ng-template swiperSlide>
           <img src="assets/img/brand/david_smith.png" alt="">
         </ng-template>
@@ -303,14 +303,14 @@
 <section class="product-filter py-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-lg-6 col-xl-4 mb-3">
         <h3 class="fw-bold fs-6 mb-4">TOP RATED PRODUCT</h3>
         <div class="row">
           <div class="col-12 mb-3">
             <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/speaker.jpg" class="object-fit-cover" width="175" height="175" alt="Random second slide" />
+              <img src="assets/img/speaker.jpg" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
               <div class="detail p-3">
-                <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
                 <div class="rating">
                   <span class="iconify text-warning" data-icon="uis:star"></span>
                   <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -318,16 +318,16 @@
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                 </div>
-                <span class="price-coret text-secondary fs-6 text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-5 fw-semibold">Rp55.000</span>
+                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
+                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
           </div>
           <div class="col-12 mb-3">
             <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/earphone.webp" class="object-fit-cover" width="175" height="175" alt="Random second slide" />
+              <img src="assets/img/earphone.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
               <div class="detail p-3">
-                <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
                 <div class="rating">
                   <span class="iconify text-warning" data-icon="uis:star"></span>
                   <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -335,16 +335,16 @@
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                 </div>
-                <span class="price-coret text-secondary fs-6 text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-5 fw-semibold">Rp55.000</span>
+                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
+                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
           </div>
           <div class="col-12 mb-3">
             <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/jam.webp" class="object-fit-cover" width="175" height="175" alt="Random second slide" />
+              <img src="assets/img/jam.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
               <div class="detail p-3">
-                <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
                 <div class="rating">
                   <span class="iconify text-warning" data-icon="uis:star"></span>
                   <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -352,21 +352,21 @@
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                 </div>
-                <span class="price-coret text-secondary fs-6 text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-5 fw-semibold">Rp55.000</span>
+                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
+                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-lg-6 col-xl-4 mb-3">
         <h3 class="fw-bold fs-6 mb-4">BEST SELLING PRODUCTS</h3>
         <div class="row">
           <div class="col-12 mb-3">
             <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/speaker.jpg" class="object-fit-cover" width="175" height="175" alt="Random second slide" />
+              <img src="assets/img/speaker.jpg" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
               <div class="detail p-3">
-                <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
                 <div class="rating">
                   <span class="iconify text-warning" data-icon="uis:star"></span>
                   <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -374,16 +374,16 @@
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                 </div>
-                <span class="price-coret text-secondary fs-6 text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-5 fw-semibold">Rp55.000</span>
+                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
+                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
           </div>
           <div class="col-12 mb-3">
             <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/earphone.webp" class="object-fit-cover" width="175" height="175" alt="Random second slide" />
+              <img src="assets/img/earphone.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
               <div class="detail p-3">
-                <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
                 <div class="rating">
                   <span class="iconify text-warning" data-icon="uis:star"></span>
                   <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -391,16 +391,16 @@
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                 </div>
-                <span class="price-coret text-secondary fs-6 text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-5 fw-semibold">Rp55.000</span>
+                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
+                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
           </div>
           <div class="col-12 mb-3">
             <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/jam.webp" class="object-fit-cover" width="175" height="175" alt="Random second slide" />
+              <img src="assets/img/jam.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
               <div class="detail p-3">
-                <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
                 <div class="rating">
                   <span class="iconify text-warning" data-icon="uis:star"></span>
                   <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -408,21 +408,21 @@
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                 </div>
-                <span class="price-coret text-secondary fs-6 text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-5 fw-semibold">Rp55.000</span>
+                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
+                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-lg-6 col-xl-4 mb-3">
         <h3 class="fw-bold fs-6 mb-4">LATEST PRODUCTS</h3>
         <div class="row">
           <div class="col-12 mb-3">
             <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/speaker.jpg" class="object-fit-cover" width="175" height="175" alt="Random second slide" />
+              <img src="assets/img/speaker.jpg" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
               <div class="detail p-3">
-                <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
                 <div class="rating">
                   <span class="iconify text-warning" data-icon="uis:star"></span>
                   <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -430,16 +430,16 @@
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                 </div>
-                <span class="price-coret text-secondary fs-6 text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-5 fw-semibold">Rp55.000</span>
+                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
+                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
           </div>
           <div class="col-12 mb-3">
             <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/earphone.webp" class="object-fit-cover" width="175" height="175" alt="Random second slide" />
+              <img src="assets/img/earphone.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
               <div class="detail p-3">
-                <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
                 <div class="rating">
                   <span class="iconify text-warning" data-icon="uis:star"></span>
                   <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -447,16 +447,16 @@
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                 </div>
-                <span class="price-coret text-secondary fs-6 text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-5 fw-semibold">Rp55.000</span>
+                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
+                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
           </div>
           <div class="col-12 mb-3">
             <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/jam.webp" class="object-fit-cover" width="175" height="175" alt="Random second slide" />
+              <img src="assets/img/jam.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
               <div class="detail p-3">
-                <p class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </p>
+                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
                 <div class="rating">
                   <span class="iconify text-warning" data-icon="uis:star"></span>
                   <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -464,8 +464,8 @@
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                   <span class="iconify text-black-50" data-icon="uis:star"></span>
                 </div>
-                <span class="price-coret text-secondary fs-6 text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-5 fw-semibold">Rp55.000</span>
+                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
+                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
           </div>

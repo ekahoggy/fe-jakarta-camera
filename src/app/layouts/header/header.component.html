@@ -1,6 +1,6 @@
 <section class="header">
   <div class="container fw-semibold">
-    <div class="d-flex align-items-center py-3">
+    <div class="d-flex justify-content-between align-items-center py-3">
       <div class="language">
         <div ngbDropdown placement="bottom-start" class="d-inline-block">
           <button type="button" class="border-0 bg-white" id="dropdownLanguage" ngbDropdownToggle>
@@ -19,19 +19,21 @@
           </div>
         </div>
       </div>
-      <div class="header-text ms-auto pe-5">
-        FREE RETURNS. STANDARD SHIPPING ORDERS $99+
-      </div>
-      <div class="menu d-flex justify-content-between align-items-center">
-        <a class="menu-item px-3"> My Account </a>
-        <a class="menu-item px-3"> Contact Us </a>
-        <a class="menu-item px-3"> Whistlist </a>
-        <a class="menu-item px-3"> Log In </a>
-      </div>
-      <div class="sosmed">
-        <span class="iconify fs-6 mx-2" data-icon="jam:facebook"></span>
-        <span class="iconify fs-6 mx-2" data-icon="jam:twitter"></span>
-        <span class="iconify fs-6 mx-2" data-icon="jam:instagram"></span>
+      <div class="right-header d-flex">
+        <div class="header-text d-none d-xl-block pe-3">
+          FREE RETURNS. STANDARD SHIPPING ORDERS $99+
+        </div>
+        <div class="menu d-flex justify-content-between align-items-center">
+          <a class="menu-item px-2"> My Account </a>
+          <a class="menu-item pe-2"> Contact Us </a>
+          <a class="menu-item pe-2"> Whistlist </a>
+          <a class="menu-item pe-2"> Log In </a>
+        </div>
+        <div class="sosmed">
+          <span class="iconify fs-6 mx-2" data-icon="jam:facebook"></span>
+          <span class="iconify fs-6 mx-2" data-icon="jam:twitter"></span>
+          <span class="iconify fs-6 mx-2" data-icon="jam:instagram"></span>
+        </div>
       </div>
     </div>
   </div>
@@ -40,7 +42,7 @@
 <section class="header-menu">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center py-4">
-      <div class="header-menu-left">
+      <div class="header-menu-left d-none d-xl-block">
         <div class="input-group search-bar">
           <input type="text" class="form-control me-1" placeholder="Search..." aria-label="Pencarian" aria-describedby="search">
           <span class="input-group-text" id="search">
@@ -52,18 +54,19 @@
         <img src="//porto-demo14.myshopify.com/cdn/shop/t/27/assets/logo_black_new.png?v=82644603109002165811640057195" width="101" alt="">
       </div>
       <div class="header-menu-right d-flex align-items-center">
-        <div class="call d-flex align-items-center">
+        <div class="call d-none d-xl-flex align-items-center">
           <span class="iconify fs-2 me-2" data-icon="mynaui:telephone"></span>
           <div>
-            <span class="fw-semibold text-secondary call-text">CALL US NOW</span>
+            <span class="fw-bold text-secondary call-text mb-0">CALL US NOW</span>
             <p class="mb-0 fs-6 fw-bold">+62 5678 89011</p>
           </div>
         </div>
-        <div class="interact ps-4">
+        <div class="interact ps-3">
           <span class="iconify fs-4 mx-3" data-icon="uiw:user"></span>
           <span class="iconify fs-4 mx-3" data-icon="uiw:heart-off"></span>
           <a href="javascript:void(0)" routerLink="/cart" class="text-dark">
-            <span class="iconify fs-4 mx-3" data-icon="uiw:shopping-cart"></span>
+            <span class="iconify fs-4 ms-3" data-icon="uiw:shopping-cart"></span>
+            <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
           </a>
         </div>
       </div>
@@ -71,7 +74,7 @@
   </div>
 </section>
 
-<section class="header-nav bg-white" id="navbar">
+<section class="header-nav bg-white d-none d-xl-block" id="navbar">
   <nav class="navbar navbar-expand-lg py-0">
     <div class="container">
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -106,7 +109,8 @@
         </ul>
       </div>
       <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
-        <span class="iconify fs-4 mx-3" data-icon="uiw:shopping-cart"></span>
+        <span class="iconify fs-4 ms-3" data-icon="uiw:shopping-cart"></span>
+        <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
       </a>
     </div>
   </nav>

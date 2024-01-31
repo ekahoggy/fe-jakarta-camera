@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 @Component({
@@ -11,8 +11,12 @@ export class HomeComponent implements OnInit {
   private navbar: HTMLElement | null = null;
   private sticky: number = 0;
   carousel: HTMLElement | null = null;
+  configFeatured: SwiperOptions = {};
+  configBrand: SwiperOptions = {};
 
   ngOnInit() {
+    this.configFaturedProduct();
+    this.configSwiperBrand();
     this.navbar = document.getElementById("navbar");
     this.carousel = document.getElementById("banner-carousel");
     if (this.navbar) {
@@ -38,5 +42,68 @@ export class HomeComponent implements OnInit {
   }
   onSlideChange() {
     console.log('slide change');
+  }
+
+  configFaturedProduct() {
+    this.configFeatured = {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      navigation: true,
+      pagination: false,
+      scrollbar: { draggable: true },
+      breakpoints: {
+        100: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        480: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1400: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+      },
+    }
+  }
+  configSwiperBrand() {
+    this.configBrand = {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      navigation: false,
+      pagination: false,
+      scrollbar: { draggable: true },
+      breakpoints: {
+        100: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        480: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 5,
+          spaceBetween: 20,
+        },
+        1400: {
+          slidesPerView: 6,
+          spaceBetween: 20,
+        },
+      },
+    }
   }
 }
