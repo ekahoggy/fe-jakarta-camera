@@ -1,63 +1,83 @@
-<section class="breadcrumb my-5">
+<section class="breadcrumb my-3 my-lg-5">
   <div class="container">
-    <div class="d-flex justify-content-center align-items-center gap-3">
-      <a href="javascript:void(0)"><span class="fw-bold fs-5 text-success">Shopping Cart</span></a>
-      <span class="iconify text-secondary mx-2 fs-6" data-icon="ion:chevron-right"></span>
-      <a href="javascript:void(0)"><span class="fw-bold fs-5">Procced To Checkout</span></a>
-      <span class="iconify text-secondary mx-2 fs-6" data-icon="ion:chevron-right"></span>
-      <a href="javascript:void(0)"><span class="fw-bold fs-5">Order Complete</span></a>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-2 text-center mb-1">
+        <a href="javascript:void(0)"><span class="fw-bold fs-6 text-success">Shopping Cart</span></a>
+      </div>
+      <div class="col-1 d-none d-lg-block text-center">
+        <span class="iconify text-secondary fs-6" data-icon="ion:chevron-right"></span>
+      </div>
+      <div class="col-12 col-lg-2 text-center mb-1">
+        <span class="iconify text-secondary me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
+        <a href="javascript:void(0)"><span class="fw-bold fs-6">Procced To Checkout</span></a>
+      </div>
+      <div class="col-1 d-none d-lg-block text-center">
+        <span class="iconify text-secondary fs-6" data-icon="ion:chevron-right"></span>
+      </div>
+      <div class="col-12 col-lg-2 text-center mb-1">
+        <span class="iconify text-secondary me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
+        <a href="javascript:void(0)"><span class="fw-bold fs-6">Order Complete</span></a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="cart mb-5 pb-5">
+<section class="cart mb-5 mb-lg-5 pb-lg-5">
   <div class="container">
     <div class="row">
-      <div class="col-8">
-        <table class="table mt-2">
-          <thead>
-            <tr>
-              <th></th>
-              <th>PRODUCT</th>
-              <th>PRICE</th>
-              <th>QUANTITY</th>
-              <th class="text-end">SUBTOTAL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-start align-middle">
-                <div class="product-thumbnail position-relative px-2 py-3">
-                  <img src="assets/img/jam.webp" class="object-fit-cover" width="80" height="80" alt="">
+      <div class="col-lg-8">
+        <ul class="list-group">
+          <li class="list-group-item py-3">
+            <div class="d-flex justify-content-between">
+              <div class="row">
+                <div class="col-4 pe-0">
+                  <img src="assets/img/jam.webp" class="object-fit-cover img-product" width="80" height="80" alt="gambar product">
                 </div>
-              </td>
-              <td class="align-middle fs-6">25 Acoustic Noise</td>
-              <td class="align-middle fs-6 text-secondary">Rp 2.00.000</td>
-              <td class="align-middle">
+                <div class="col">
+                  <p class="font-p mt-md-4 mb-0" style="font-size: 14px;">Razer Mouse DeathAdder Essential</p>
+                  <span class="font-p fw-semibold d-block d-md-none">Rp 200.000</span>
+                  <div class="d-flex justify-content-between d-md-none">
+                    <span class="iconify me-3 mt-2 text-secondary" data-icon="fa6-regular:trash-can"></span>
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-sm border border-end-0 rounded-0 p-1 align-middle">
+                        <span class="iconify" data-icon="mdi-light:minus"></span>
+                      </button>
+                      <input type="text" class="form-control form-control-sm border rounded-0 p-1 align-middle fw-bold text-center" value="1" style="width: 50px;">
+                      <button class="btn btn-sm border border-start-0 rounded-0 p-1 align-middle">
+                        <span class="iconify" data-icon="mdi-light:plus"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-none d-md-flex flex-column">
+                <p class="font-p fw-bold fs-6 text-end my-3 d-none d-md-block">Rp 200.000</p>
                 <div class="d-flex align-items-center">
-                  <button class="btn border border-end-0 rounded-0 py-2 px-1 align-middle">
-                    <span class="iconify" data-icon="mdi-light:minus"></span>
-                  </button>
-                  <input type="text" class="form-control border rounded-0 py-2 px-1 align-middle fw-bold text-center" value="1" style="width: 50px;">
-                  <button class="btn border border-start-0 rounded-0 py-2 px-1 align-middle">
-                    <span class="iconify" data-icon="mdi-light:plus"></span>
-                  </button>
+                  <span class="iconify fs-5 me-3 text-secondary d-none d-md-block" data-icon="fa6-regular:trash-can"></span>
+                  <div class="d-flex align-items-center">
+                    <button class="btn border border-end-0 rounded-0 p-1 align-middle">
+                      <span class="iconify" data-icon="mdi-light:minus"></span>
+                    </button>
+                    <input type="text" class="form-control border rounded-0 p-1 align-middle fw-bold text-center" value="1" style="width: 50px;">
+                    <button class="btn border border-start-0 rounded-0 p-1 align-middle">
+                      <span class="iconify" data-icon="mdi-light:plus"></span>
+                    </button>
+                  </div>
                 </div>
-              </td>
-              <td class="text-end align-middle fs-6 fw-bold">Rp 2.00.000</td>
-            </tr>
-          </tbody>
-        </table>
-        <a href="javascript:void(0)" routerLink="/katalog" class="btn btn-sm btn-light fw-bold rounded-0 px-4 py-3 mt-3">CONTINUE SHOPPING</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <a href="javascript:void(0)" routerLink="/katalog" class="btn btn-sm btn-light fw-bold rounded-0 px-3 py-2 px-lg-4 py-lg-3 mt-3">CONTINUE SHOPPING</a>
         <div class="form-group mt-4">
           <label for="inputState" class="form-label text-secondary">Special instructions for seller</label>
-          <textarea type="text" class="form-control px-2 py-2" rows="10"></textarea>
+          <textarea type="text" class="form-control px-2 py-2" rows="5"></textarea>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-lg-4 mt-3 mt-lg-0">
         <div class="cart-total border border-2 border-secondary border-opacity-10 py-4">
-          <div class="title fs-6 fw-bold px-4">CART TOTALS</div>
-          <div class="body px-5 mt-4">
+          <div class="title fs-6 fw-bold px-2 px-lg-3">CART TOTALS</div>
+          <div class="body px-3 px-lg-4 mt-4">
             <div class="d-flex justify-content-between align-items-center">
               <span class="fw-bold" style="font-size: 14px;">Subtotal</span> <span> Rp 200.000</span>
             </div>
@@ -79,9 +99,10 @@
             <button class="btn btn-sm btn-light fw-bold rounded-0 px-3 py-2 mb-2">GET A QUOTE</button>
             <hr>
             <div class="d-flex justify-content-between align-items-center">
-              <span class="fw-bold fs-6">Total</span> <span class="fw-bold fs-5"> Rp 200.000</span>
+              <span class="fw-semibold fs-6">Total</span> 
+              <span class="fw-bold fs-6"> Rp 200.000</span>
             </div>
-            <a class="btn btn-dark w-100 rounded-0 fw-bold py-3 mt-5" href="javascript:void(0)" routerLink="/checkout">
+            <a class="btn btn-dark w-100 rounded-0 fw-bold py-2 py-lg-3 mt-4" href="javascript:void(0)" routerLink="/checkout">
               PROCCED TO CHECKOUT
               <span class="iconify ms-1 mb-1 fs-5" data-icon="lucide:arrow-right"></span>
             </a>
