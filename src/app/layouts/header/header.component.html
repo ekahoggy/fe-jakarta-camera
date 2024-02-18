@@ -64,7 +64,10 @@
         </div>
       </div>
       <div class="header-menu-center text-center">
-        <img src="//porto-demo14.myshopify.com/cdn/shop/t/27/assets/logo_black_new.png?v=82644603109002165811640057195" width="101" alt="">
+        <button class="btn px-0 me-2 d-xl-none" (click)="openScroll(sidebar)">
+          <span class="iconify fs-5 mb-2 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
+        </button>
+        <img src="//porto-demo14.myshopify.com/cdn/shop/t/27/assets/logo_black_new.png?v=82644603109002165811640057195" width="80" alt="">
       </div>
       <div class="header-menu-right d-flex align-items-center">
         <div class="call d-none d-xl-flex align-items-center">
@@ -78,7 +81,7 @@
           <span class="iconify fs-4 mx-3" data-icon="uiw:user"></span>
           <span class="iconify fs-4 mx-3" data-icon="uiw:heart-off"></span>
           <a href="javascript:void(0)" routerLink="/cart" class="text-dark">
-            <span class="iconify fs-4 ms-3" data-icon="solar:cart-linear"></span>
+            <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
             <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
           </a>
         </div>
@@ -122,9 +125,54 @@
         </ul>
       </div>
       <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
-        <span class="iconify fs-4 ms-3" data-icon="solar:cart-linear"></span>
+        <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
         <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
       </a>
     </div>
   </nav>
 </section>
+
+<ng-template #sidebar let-offcanvas>
+	<div class="offcanvas-header">
+		<button type="button" class="btn-close ms-auto" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+	</div>
+	<div class="offcanvas-body px-0">
+		<ul class="list-group list-group-flush fw-semibold">
+      <li class="list-group-item">
+        <div class="d-flex align-items-center justify-content-between">
+          <span>HOME</span>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex align-items-center justify-content-between">
+          <span>COLLECTION</span>
+          <button class="btn btn-sm p-0" (click)="collapseCollection = !collapseCollection" [attr.aria-expanded]="!collapseCollection" aria-controls="collapseCollection">
+            <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
+          </button>
+        </div>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="collapseCollection">
+          <ul class="list-group list-group-flush mt-2">
+            <li class="list-group-item">COLLECTION 1</li>
+            <li class="list-group-item">COLLECTION 2</li>
+            <li class="list-group-item">COLLECTION 3</li>
+          </ul>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex align-items-center justify-content-between">
+          <span>PRODUCTS</span>
+          <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct" [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
+            <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
+          </button>
+        </div>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="collapseProduct">
+          <ul class="list-group list-group-flush mt-2">
+            <li class="list-group-item">Jam Tangan Keren</li>
+            <li class="list-group-item">Diskon 100%</li>
+          </ul>
+        </div>
+      </li>
+      <li class="list-group-item">PAGES</li>
+    </ul>
+	</div>
+</ng-template>

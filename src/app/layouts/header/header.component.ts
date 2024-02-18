@@ -1,4 +1,5 @@
-import { Component, HostListener, ElementRef, OnInit } from '@angular/core';
+import { Component, HostListener, ElementRef, OnInit, TemplateRef, inject } from '@angular/core';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,9 @@ export class HeaderComponent implements OnInit {
   private navbarNav: HTMLElement | null = null;
   private headerMenu: HTMLElement | null = null;
   private sticky: number = 0;
+  private offcanvasService = inject(NgbOffcanvas);
+  collapseCollection: boolean = true;
+  collapseProduct: boolean = true;
 
   ngOnInit() {
     this.headerMenu = document.getElementById("header-menu");
@@ -39,4 +43,8 @@ export class HeaderComponent implements OnInit {
       this.cart.classList.remove("d-lg-block");
     }
   }
+
+  openScroll(content: TemplateRef<any>) {
+		this.offcanvasService.open(content, { scroll: true });
+	}
 }
