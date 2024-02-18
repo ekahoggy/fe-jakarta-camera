@@ -23,16 +23,29 @@
         <div class="header-text d-none d-xl-block pe-3">
           FREE RETURNS. STANDARD SHIPPING ORDERS $99+
         </div>
-        <div class="menu d-flex justify-content-between align-items-center">
+        <div class="menu d-none d-lg-flex justify-content-between align-items-center">
           <a class="menu-item px-2"> My Account </a>
           <a class="menu-item pe-2"> Contact Us </a>
           <a class="menu-item pe-2"> Whistlist </a>
           <a class="menu-item pe-2"> Log In </a>
         </div>
+        <div class="menu-sm d-lg-none">
+          <div ngbDropdown class="d-inline-block">
+            <button type="button" class="bg-transparent border-0" id="dropdownLInks" ngbDropdownToggle>
+              Links
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownLInks">
+              <a href="" class="dropdown-links" ngbDropdownItem> My Account </a>
+              <a href="" class="dropdown-links" ngbDropdownItem> Contact Us </a>
+              <a href="" class="dropdown-links" ngbDropdownItem> Whistlist </a>
+              <a href="" class="dropdown-links" ngbDropdownItem> Log In </a>
+            </div>
+          </div>
+        </div>
         <div class="sosmed">
-          <span class="iconify fs-6 mx-2" data-icon="jam:facebook"></span>
-          <span class="iconify fs-6 mx-2" data-icon="jam:twitter"></span>
-          <span class="iconify fs-6 mx-2" data-icon="jam:instagram"></span>
+          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:facebook"></span>
+          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:twitter"></span>
+          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:instagram"></span>
         </div>
       </div>
     </div>

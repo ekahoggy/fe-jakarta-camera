@@ -1,11 +1,23 @@
-<section class="breadcrumb my-5">
+<section class="breadcrumb my-3 my-lg-5">
   <div class="container">
-    <div class="d-flex justify-content-center align-items-center gap-3">
-      <a href="javascript:void(0)"><span class="fw-bold fs-5">Shopping Cart</span></a>
-      <span class="iconify text-secondary mx-2 fs-6" data-icon="ion:chevron-right"></span>
-      <a href="javascript:void(0)"><span class="fw-bold fs-5 text-success">Procced To Checkout</span></a>
-      <span class="iconify text-secondary mx-2 fs-6" data-icon="ion:chevron-right"></span>
-      <a href="javascript:void(0)"><span class="fw-bold fs-5">Order Complete</span></a>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-2 text-center mb-1">
+        <a href="javascript:void(0)"><span class="fw-bold fs-6 text-success">Shopping Cart</span></a>
+      </div>
+      <div class="col-1 d-none d-lg-block text-center">
+        <span class="iconify text-secondary fs-6" data-icon="ion:chevron-right"></span>
+      </div>
+      <div class="col-12 col-lg-2 text-center mb-1">
+        <span class="iconify text-secondary me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
+        <a href="javascript:void(0)"><span class="fw-bold fs-6">Procced To Checkout</span></a>
+      </div>
+      <div class="col-1 d-none d-lg-block text-center">
+        <span class="iconify text-secondary fs-6" data-icon="ion:chevron-right"></span>
+      </div>
+      <div class="col-12 col-lg-2 text-center mb-1">
+        <span class="iconify text-secondary me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
+        <a href="javascript:void(0)"><span class="fw-bold fs-6">Order Complete</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -13,7 +25,7 @@
 <section class="cart mb-5 pb-5">
   <div class="container">
     <div class="row">
-      <div class="col-7">
+      <div class="col-lg-7">
         <form>
           <p class="fs-4">Contact</p>
           <div class="form-group mb-2">
@@ -62,15 +74,17 @@
                 <label for="exampleInputEmail1" class="form-label">Province</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Save this information for next time</label>
-              </div>
             </div>
             <div class="col-6">
               <div class="form-group mb-2">
                 <label for="exampleInputEmail1" class="form-label">Postal Code</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Save this information for next time</label>
               </div>
             </div>
             <div class="col-12">
@@ -80,7 +94,7 @@
         </form>
       </div>
 
-      <div class="col-5">
+      <div class="col-lg-5">
         <div class="cart-total border border-2 border-secondary border-opacity-10 p-4">
           <table class="w-100">
             <tr height="80">

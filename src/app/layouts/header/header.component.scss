@@ -22,6 +22,15 @@
       text-decoration: none;
     }
   }
+
+  .menu-sm {
+    .dropdown-menu {
+      padding: 10px 0px;
+      .dropdown-links {
+        font-size: 12px;
+      }
+    }
+  }
 }
 
 .header-menu {
