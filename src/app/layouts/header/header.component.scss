@@ -34,6 +34,13 @@
 }
 
 .header-menu {
+  @media only screen and (max-width: 1200px) {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
   .header-menu-left {
     .search-bar {
       width: 300px;
@@ -110,7 +117,7 @@
 }
 
 ::ng-deep .offcanvas.offcanvas-start {
-  left: -100px;
-  padding-left: 100px;
+  left: -90px;
+  padding-left: 90px;
 }
 

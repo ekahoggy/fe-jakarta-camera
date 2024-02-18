@@ -44,8 +44,18 @@ a {
     font-size: 25px;
     color: black;
   }
+
+  ::ng-deep .swiper-button-next, .swiper-rtl .swiper-button-prev  {
+    right: 0px;
+  }
+
+  ::ng-deep .swiper-button-prev, .swiper-rtl .swiper-button-next {
+    left: 0px;
+  }
 }
 
 .content-up {
-  margin-top: 30px;
+  @media only screen and (min-width: 1200px) {
+    margin-top: 30px;
+  }
 }
