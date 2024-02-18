@@ -109,3 +109,8 @@
   z-index: 1000;
 }
 
+::ng-deep .offcanvas.offcanvas-start {
+  left: -100px;
+  padding-left: 100px;
+}
+
