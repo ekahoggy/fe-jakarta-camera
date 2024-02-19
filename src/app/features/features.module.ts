@@ -11,6 +11,8 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 import { KatalogComponent } from './katalog/katalog.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     DetailProductComponent,
     KatalogComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
