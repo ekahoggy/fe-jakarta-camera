@@ -26,6 +26,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     // Di sini Anda bisa menambahkan logika untuk memeriksa kredensial pengguna
-    console.log(this.model)
+    this.globalService.DataPost('/')
   }
 }

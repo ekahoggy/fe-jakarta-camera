@@ -1,13 +1,8 @@
 <section id="banner-carousel">
   <ngb-carousel [showNavigationIndicators]="false">
-    <ng-template ngbSlide>
+    <ng-template *ngFor="let item of listSlider" ngbSlide>
       <div class="picsum-img-wrapper">
-        <img src="assets/img/carousel.png" class="w-100 object-fit-cover" height="500" alt="Random first slide" />
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src="assets/img/carousel2.png" class="w-100 object-fit-cover" height="500" alt="Random second slide" />
+        <img [src]="item.picture" class="w-100 object-fit-cover" height="500" alt="Random first slide" />
       </div>
     </ng-template>
   </ngb-carousel>

@@ -5,8 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GlobalService {
-  apiURL: string = '';
-  imageURL: string = '';
+  apiURL: string = 'https://jakartacamera-admin.moodstudio.id/api/v1'
+  originalImageURL: string = 'https://jakartacamera-admin.moodstudio.id/img/media/originals';
+  productImageURL: string = 'https://jakartacamera-admin.moodstudio.id/img/media/product';
   httpOptions: any;
 
   constructor(
@@ -17,11 +18,24 @@ export class GlobalService {
     let ret;
 
     if (image !== '' && image !== null && folder !== '') {
-      ret = this.imageURL + folder + '/' + image;
+      ret = this.originalImageURL + folder + '/' + image;
     } else if (image !== '' && image !== null && folder === '') {
-      ret = this.imageURL + image;
+      ret = this.originalImageURL + image;
     } else {
-      ret = this.imageURL + 'default.png';
+      ret = this.originalImageURL + 'default.png';
+    }
+    return ret;
+  }
+
+  getImageProduct(folder: string, image: string) {
+    let ret;
+
+    if (image !== '' && image !== null && folder !== '') {
+      ret = this.productImageURL + folder + '/' + image;
+    } else if (image !== '' && image !== null && folder === '') {
+      ret = this.productImageURL + image;
+    } else {
+      ret = this.productImageURL + 'default.png';
     }
     return ret;
   }
@@ -29,9 +43,10 @@ export class GlobalService {
   DataGet(path: string, payloads = {}) {
     return this.http.get(this.apiURL + path, {
       params: payloads,
-      withCredentials: true,
+      withCredentials: false,
     });
   }
+
   DataApi(path: string, payloads = {}) {
     return this.http.get(path);
   }

@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
@@ -13,8 +14,14 @@ export class HomeComponent implements OnInit {
   carousel: HTMLElement | null = null;
   configFeatured: SwiperOptions = {};
   configBrand: SwiperOptions = {};
+  listSlider: any = [];
+
+  constructor(
+    private globalService: GlobalService,
+  ) { }
 
   ngOnInit() {
+    this.getSlider();
     this.configFaturedProduct();
     this.configSwiperBrand();
     this.navbar = document.getElementById("navbar");
@@ -105,5 +112,17 @@ export class HomeComponent implements OnInit {
         },
       },
     }
+  }
+
+  getSlider() {
+    this.globalService.DataGet('/public/slider').subscribe((res:any) => {
+      this.listSlider = res.data;
+    })
+  }
+
+  getProduct() {
+    this.globalService.DataGet('/public/slider').subscribe((res:any) => {
+      this.listSlider = res.data;
+    })
   }
 }
