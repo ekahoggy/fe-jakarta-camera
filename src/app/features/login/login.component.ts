@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
-
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,7 +8,7 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class LoginComponent implements OnInit {
   model:any = {};
-
+ 
   constructor(
     private globalService: GlobalService,
   ) { }

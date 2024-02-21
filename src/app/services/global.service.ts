@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
-  apiURL: string = 'https://jakartacamera-admin.moodstudio.id/api/v1'
-  originalImageURL: string = 'https://jakartacamera-admin.moodstudio.id/img/media/originals';
-  productImageURL: string = 'https://jakartacamera-admin.moodstudio.id/img/media/product';
+  apiURL: string = environment.apiURL 
+  originalImageURL: string = environment.originalImageURL
+  productImageURL: string = environment.productImageURL
   httpOptions: any;
 
   constructor(

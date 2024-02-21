@@ -115,8 +115,9 @@
               <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
             </a>
             <div class="dropdown-content">
-              <a href="#">Jam Tangan Keren</a>
-              <a href="#">Diskon 100%</a>
+              <ng-container *ngFor="let item of listCategories">
+                <a href="#">{{ item.kategori }}</a>
+              </ng-container>
             </div>
           </li>
           <li class="nav-item mx-4">
