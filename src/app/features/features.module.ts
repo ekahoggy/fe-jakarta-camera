@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperModule } from 'swiper/angular';
+import { FormsModule } from '@angular/forms';
 
 import { FeaturesRoutingModule } from './features-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -32,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
     NgbModule,
     LayoutsModule,
     SwiperModule,
+    FormsModule
   ],
   exports: []
 })
