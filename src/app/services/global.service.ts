@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class GlobalServiceService {
+export class GlobalService {
   apiURL: string = '';
   imageURL: string = '';
   httpOptions: any;
