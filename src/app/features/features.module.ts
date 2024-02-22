@@ -14,6 +14,8 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AccountComponent } from './account/account.component';
+import { AddressComponent } from './address/address.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { RegisterComponent } from './register/register.component';
     CartComponent,
     CheckoutComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccountComponent,
+    AddressComponent
   ],
   imports: [
     CommonModule,

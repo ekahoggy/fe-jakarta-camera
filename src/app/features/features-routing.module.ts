@@ -7,6 +7,8 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AccountComponent } from './account/account.component';
+import { AddressComponent } from './address/address.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+  },
+  {
+    path: 'address',
+    component: AddressComponent,
   },
 ];
 
