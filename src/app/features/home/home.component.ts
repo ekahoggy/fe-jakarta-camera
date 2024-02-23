@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   configBrand: SwiperOptions = {};
   listSlider: any = [];
   listProduct: any = [];
+  listCategory: any = [];
 
   constructor(
     private globalService: GlobalService,
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getSlider();
+    this.getCategories();
     this.getProduct();
     this.configFaturedProduct();
     this.configSwiperBrand();
@@ -128,6 +130,12 @@ export class HomeComponent implements OnInit {
   getProduct() {
     this.globalService.DataGet('/public/produk').subscribe((res:any) => {
       this.listProduct = res.data;
+    })
+  }
+
+  getCategories() {
+    this.globalService.DataGet('/public/kategori').subscribe((res:any) => {
+      this.listCategory = res.data;
     })
   }
 }
