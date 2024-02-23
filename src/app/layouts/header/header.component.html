@@ -1,4 +1,4 @@
-<section class="header">
+<section class="header d-none">
   <div class="container fw-semibold">
     <div class="d-flex justify-content-between align-items-center py-3">
       <div class="language">
@@ -78,10 +78,12 @@
           </div>
         </div>
         <div class="interact ps-3">
-          <span class="iconify fs-4 mx-3" data-icon="uiw:user"></span>
-          <span class="iconify fs-4 mx-3" data-icon="uiw:heart-off"></span>
-          <a href="javascript:void(0)" routerLink="/cart" class="text-dark">
-            <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
+          <a href="javascript:void(0)" [routerLink]="['/login']" class="d-none d-lg-inline">
+            <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
+          </a>
+          <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span>
+          <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark">
+            <span class="iconify ms-3 fs-2" data-icon="solar:cart-linear"></span>
             <!-- <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span> -->
           </a>
         </div>

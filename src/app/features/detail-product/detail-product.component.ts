@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-detail-product',
@@ -8,8 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class DetailProductComponent implements OnInit {
   desc: string = 'description';
   configRekomendasi:any = {};
+  model: any = {};
+
+  constructor(
+    private route: ActivatedRoute,
+    private globalService: GlobalService,
+  ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      const slug = params['slug'];
+      this.getProduct(slug);
+    });
     this.configRekomendasiProduct();
   }
 
@@ -17,12 +29,8 @@ export class DetailProductComponent implements OnInit {
     this.desc = params;
   }
 
-  onSwiper(swiper:any) {
-    console.log(swiper);
-  }
-  onSlideChange() {
-    console.log('slide change');
-  }
+  onSwiper(swiper:any) {}
+  onSlideChange() {}
 
   configRekomendasiProduct() {
     this.configRekomendasi = {
@@ -54,5 +62,11 @@ export class DetailProductComponent implements OnInit {
         },
       },
     }
+  }
+
+  getProduct(slug:string) {
+    this.globalService.DataGet('/public/getProdukSlug', {slug: slug}).subscribe((res:any) => {
+      this.model = res.data;
+    })
   }
 }

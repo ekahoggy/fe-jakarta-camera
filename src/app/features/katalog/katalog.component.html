@@ -12,25 +12,38 @@
 <section class="content">
   <div class="container">
     <div class="row">
-      <div class="col-3 d-none d-lg-block">
-        <div class="filer border">
-          <div class="category py-2 px-3">
+      <div class="col-3 d-none d-lg-block mb-5">
+        <div class="filer border font-p" style="font-size: 14px;">
+          <div class="category py-2 px-2">
             <div class="d-flex justify-content-between align-items-center" (click)="categories.toggle()" [attr.aria-expanded]="!isCollapsed.categories" aria-controls="collapseCategories">
               <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">CATEGORIES</span>
-              <span class="iconify fs-4" data-icon="mdi-light:plus"></span>
+              <span class="iconify fs-6" data-icon="mdi-light:plus"></span>
             </div>
-            <div class="px-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
-              <div class="text-secondary mb-2">Accessories (11)</div>
-              <div class="text-secondary mb-2">Dress (2)</div>
-              <div class="text-secondary mb-2">Electronics (0)</div>
-              <div class="text-secondary mb-2">Fashion (2)</div>
-              <div class="text-secondary mb-2">Music (5)</div>
+            <div class="ps-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
+              <ng-container *ngFor="let item of listCategory; index as i">
+                <div class="d-flex justify-content-between align-items-center text-secondary mb-2" *ngIf="item.child.length">
+                  {{ item.kategori }}
+                  <button class="btn btn-sm" role="button" (click)="isCollapsedChild[item.slug] = !isCollapsedChild[item.slug]" [attr.aria-expanded]="!isCollapsedChild[item.slug]">
+                    <span class="iconify text-secondary" data-icon="ion:chevron-down"></span>
+                  </button>
+                </div>
+                <div class="text-secondary mb-3" role="button" (click)="getProduct(item.slug)" *ngIf="!item.child.length">
+                  {{ item.kategori }}
+                </div>
+                <div class="ps-3 mt-2" [(ngbCollapse)]="isCollapsedChild[item.slug]" *ngIf="item.child && item.child.length">
+                  <ng-container *ngFor="let child of item.child;">
+                    <div class="text-secondary mb-3" role="button" (click)="getProduct(child.slug)">
+                      {{ child.kategori }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
             </div>
           </div>
           <div class="price py-2 px-3 border-top">
             <div class="d-flex justify-content-between align-items-center" (click)="prices.toggle()" [attr.aria-expanded]="!isCollapsed.prices" aria-controls="collapsePrices">
               <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">PRICE</span>
-              <span class="iconify fs-4" data-icon="mdi-light:plus"></span>
+              <span class="iconify fs-6" data-icon="mdi-light:plus"></span>
             </div>
             <div class="px-3 my-2" #prices="ngbCollapse" [(ngbCollapse)]="isCollapsed.prices">
               <div class="range-price d-flex align-items-center">
@@ -40,10 +53,10 @@
               </div>
             </div>
           </div>
-          <div class="price py-2 px-3 border-top">
+          <div class="price py-2 px-3 border-top d-none">
             <div class="d-flex justify-content-between align-items-center" (click)="availability.toggle()" [attr.aria-expanded]="!isCollapsed.availability" aria-controls="collapseavailability">
               <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">AVAILABILITY</span>
-              <span class="iconify fs-4" data-icon="mdi-light:plus"></span>
+              <span class="iconify fs-6" data-icon="mdi-light:plus"></span>
             </div>
             <div class="px-3 mt-2" #availability="ngbCollapse" [(ngbCollapse)]="isCollapsed.availability">
               <div class="form-check mb-1">
@@ -65,75 +78,26 @@
 
       <div class="col-12 col-lg-9">
         <div class="row">
-          <div class="col-6 col-md-4">
-            <div class="square-image">
-              <img src="assets/img/speaker.jpg" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
+          <div class="col-6 col-md-4 col-xl-3" *ngFor="let item of listProduct; index as i">
+            <a href="javascript:void(0)" routerLink="/detail/{{ item.slug }}">
+              <div class="square-image">
+                <img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
               </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4">
-            <div class="square-image">
-              <img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              <div class="detail p-2 p-lg-3">
+                <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+                <p class="product-name fs-6 mb-0"> {{item.nama}} </p>
+                <div class="rating">
+                  <span class="iconify text-warning" data-icon="uis:star"></span>
+                  <span class="iconify text-warning" data-icon="uis:star"></span>
+                  <span class="iconify text-black-50" data-icon="uis:star"></span>
+                  <span class="iconify text-black-50" data-icon="uis:star"></span>
+                  <span class="iconify text-black-50" data-icon="uis:star"></span>
+                </div>
+                <p class="price fs-6 fw-semibold">Rp {{ item.harga | number }}</p>
               </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
+            </a>
           </div>
-          <div class="col-6 col-md-4">
-            <div class="square-image">
-              <img src="assets/img/jam.webp" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4">
-            <div class="square-image">
-              <img src="assets/img/speaker.jpg" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4">
+          <!-- <div class="col-6 col-md-4 col-xl-3">
             <div class="square-image">
               <img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
             </div>
@@ -150,7 +114,7 @@
               <p class="price fs-6 fw-semibold">Rp 55.000</p>
             </div>
           </div>
-          <div class="col-6 col-md-4">
+          <div class="col-6 col-md-4 col-xl-3">
             <div class="square-image">
               <img src="assets/img/jam.webp" width="280" height="280" alt="Random second slide" />
             </div>
@@ -167,7 +131,7 @@
               <p class="price fs-6 fw-semibold">Rp 55.000</p>
             </div>
           </div>
-          <div class="col-6 col-md-4">
+          <div class="col-6 col-md-4 col-xl-3">
             <div class="square-image">
               <img src="assets/img/speaker.jpg" width="280" height="280" alt="Random second slide" />
             </div>
@@ -184,7 +148,7 @@
               <p class="price fs-6 fw-semibold">Rp 55.000</p>
             </div>
           </div>
-          <div class="col-6 col-md-4">
+          <div class="col-6 col-md-4 col-xl-3">
             <div class="square-image">
               <img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
             </div>
@@ -201,7 +165,7 @@
               <p class="price fs-6 fw-semibold">Rp 55.000</p>
             </div>
           </div>
-          <div class="col-6 col-md-4">
+          <div class="col-6 col-md-4 col-xl-3">
             <div class="square-image">
               <img src="assets/img/jam.webp" width="280" height="280" alt="Random second slide" />
             </div>
@@ -218,8 +182,62 @@
               <p class="price fs-6 fw-semibold">Rp 55.000</p>
             </div>
           </div>
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="square-image">
+              <img src="assets/img/speaker.jpg" width="280" height="280" alt="Random second slide" />
+            </div>
+            <div class="detail p-2 p-lg-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="square-image">
+              <img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
+            </div>
+            <div class="detail p-2 p-lg-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="square-image">
+              <img src="assets/img/jam.webp" width="280" height="280" alt="Random second slide" />
+            </div>
+            <div class="detail p-2 p-lg-3">
+              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
+              <div class="rating">
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-warning" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+                <span class="iconify text-black-50" data-icon="uis:star"></span>
+              </div>
+              <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<app-foot-menu class="d-block d-lg-none"></app-foot-menu>
+<app-footer class="d-none d-lg-block"></app-footer>
