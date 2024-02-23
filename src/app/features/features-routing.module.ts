@@ -16,6 +16,10 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },
@@ -24,7 +28,7 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'detail',
+    path: 'detail/:slug',
     component: DetailProductComponent,
   },
   {

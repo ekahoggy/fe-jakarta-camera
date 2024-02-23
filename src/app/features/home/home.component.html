@@ -2,7 +2,7 @@
   <ngb-carousel [showNavigationIndicators]="false">
     <ng-template *ngFor="let item of listSlider" ngbSlide>
       <div class="picsum-img-wrapper">
-        <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover" height="500" alt="Random first slide" />
+        <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover h-auto" height="500" alt="Random first slide" />
       </div>
     </ng-template>
   </ngb-carousel>
@@ -16,7 +16,7 @@
           <span class="iconify me-3 fs-1" data-icon="mdi:truck-fast-outline"></span>
           <div class="text">
             <h1 class="mb-0 fw-bold" style="font-size: 14px;">FREE SHIPPING & RETURN</h1>
-            <p class="mb-0 text-secondary">Free shipping on all orders over $99</p>
+            <p class="mb-0 text-secondary font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
           <span class="iconify me-3 fs-1" data-icon="f7:money-dollar-circle"></span>
           <div class="text">
             <h1 class="mb-0 fw-bold" style="font-size: 14px;">MONEY BACK GUARANTEE</h1>
-            <p class="mb-0 text-secondary">Free shipping on all orders over $99</p>
+            <p class="mb-0 text-secondary font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
           <span class="iconify me-3 fs-1" data-icon="ri:24-hours-line"></span>
           <div class="text">
             <h1 class="mb-0 fw-bold" style="font-size: 14px;">ONLINE SUPPORT 24/7</h1>
-            <p class="mb-0 text-secondary">Free shipping on all orders over $99</p>
+            <p class="mb-0 text-secondary font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
           </div>
         </div>
       </div>
@@ -44,11 +44,11 @@
 
 <section class="product-promo py-5">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-lg-4">
+    <div class="row justify-content-center">
+      <div class="col-10 col-md-6 col-lg-4">
         <a href="javascript:void(0)" routerLink="/detail">
           <div class="position-relative p-2">
-            <img src="assets/img/jam.webp" class="w-100 object-fit-cover" alt="Random second slide" />
+            <img src="https://source.unsplash.com/random/400x300?camera=1" class="w-100 object-fit-cover" alt="Random second slide" />
             <div class="wrap-text-promo position-relative text-center py-2 mx-2">
               <span class="title font-p fs-6">Save Up To</span>
               <h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
@@ -57,10 +57,10 @@
           </div>
         </a>
       </div>
-      <div class="col-md-6 col-lg-4">
+      <div class="col-10 col-md-6 col-lg-4">
         <a href="javascript:void(0)" routerLink="/detail">
           <div class="position-relative p-2">
-            <img src="assets/img/earphone.webp" class="w-100 object-fit-cover" alt="Random second slide" />
+            <img src="https://source.unsplash.com/random/400x300?camera=2" class="w-100 object-fit-cover" alt="Random second slide" />
             <div class="wrap-text-promo position-relative text-center py-2 mx-2">
               <span class="title font-p fs-6">Save Up To</span>
               <h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
@@ -69,10 +69,10 @@
           </div>
         </a>
       </div>
-      <div class="col-md-6 col-lg-4">
+      <div class="col-10 col-md-6 col-lg-4">
         <a href="javascript:void(0)" routerLink="/detail">
           <div class="position-relative p-2">
-            <img src="assets/img/speaker.jpg" class="w-100 object-fit-cover" alt="Random second slide" />
+            <img src="https://source.unsplash.com/random/400x300?camera=3" class="w-100 object-fit-cover" alt="Random second slide" />
             <div class="wrap-text-promo position-relative text-center py-2 mx-2">
               <span class="title font-p fs-6">Save Up To</span>
               <h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
@@ -96,9 +96,10 @@
   </div>
   <div class="container mt-4">
     <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
-      <ng-container *ngFor="let item of listProduct">
+      <ng-container *ngFor="let item of listProduct; index as i">
         <ng-template swiperSlide>
-          <img [src]="productImageURL + item.foto" class="w-100 object-fit-contain" style="max-height: 248px;" alt="Random second slide" />
+          <!-- [src]="productImageURL + item.foto" -->
+          <img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover" style="max-height: 248px; height: 248px;" alt="Random second slide" />
           <div class="detail text-center p-2 p-lg-3">
             <span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
             <h2 class="product-name mb-0" style="font-size: 16px;">{{ item.nama }} </h2>
@@ -116,7 +117,7 @@
             </a>
           </div>
         </ng-template>
-        <ng-template swiperSlide>
+        <!-- <ng-template swiperSlide>
           <img src="assets/img/earphone.webp" class="w-100 object-fit-contain" alt="Random second slide" />
           <div class="detail text-center p-2 p-lg-3">
             <span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
@@ -134,7 +135,7 @@
               ADD TO CART
             </a>
           </div>
-        </ng-template>
+        </ng-template> -->
       </ng-container>
     </swiper>
   </div>
@@ -234,174 +235,78 @@
       <div class="col-lg-6 col-xl-4 mb-3">
         <h3 class="fw-bold fs-6 mb-4">TOP RATED PRODUCT</h3>
         <div class="row">
-          <div class="col-12 mb-3 px-1 px-lg-3">
-            <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/speaker.jpg" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
-              <div class="detail p-2 p-lg-3">
-                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
+          <ng-container *ngFor="let item of listProduct; index as i">
+            <div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
+              <div class="d-flex align-items-center justify-content-start">
+                <img src="https://source.unsplash.com/random/140x140?camera={{i}}" class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
+                <div class="detail p-2 p-lg-3">
+                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}</h3>
+                  <div class="rating">
+                    <span class="iconify text-warning" data-icon="uis:star"></span>
+                    <span class="iconify text-warning" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                  </div>
+                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2" style="font-size: 14px;">Rp100.000</span>
+                  <span class="price font-p fw-semibold" style="font-size: 14px;">Rp{{ item.harga | number }}</span>
                 </div>
-                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
-          </div>
-          <div class="col-12 mb-3 px-1 px-lg-3">
-            <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/earphone.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
-              <div class="detail p-2 p-lg-3">
-                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                </div>
-                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-6 fw-semibold">Rp55.000</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mb-3 px-1 px-lg-3">
-            <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/jam.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
-              <div class="detail p-2 p-lg-3">
-                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                </div>
-                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-6 fw-semibold">Rp55.000</span>
-              </div>
-            </div>
-          </div>
+          </ng-container>
         </div>
       </div>
       <div class="col-lg-6 col-xl-4 mb-3">
         <h3 class="fw-bold fs-6 mb-4">BEST SELLING PRODUCTS</h3>
         <div class="row">
-          <div class="col-12 mb-3 px-1 px-lg-3">
-            <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/speaker.jpg" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
-              <div class="detail p-2 p-lg-3">
-                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
+          <ng-container *ngFor="let item of listProduct; index as i">
+            <div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
+              <div class="d-flex align-items-center justify-content-start">
+                <img src="https://source.unsplash.com/random/140x140?camera={{i + 10}}" class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
+                <div class="detail p-2 p-lg-3">
+                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}</h3>
+                  <div class="rating">
+                    <span class="iconify text-warning" data-icon="uis:star"></span>
+                    <span class="iconify text-warning" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                  </div>
+                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2" style="font-size: 14px;">Rp100.000</span>
+                  <span class="price font-p fw-semibold" style="font-size: 14px;">Rp{{ item.harga | number }}</span>
                 </div>
-                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
-          </div>
-          <div class="col-12 mb-3 px-1 px-lg-3">
-            <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/earphone.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
-              <div class="detail p-2 p-lg-3">
-                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                </div>
-                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-6 fw-semibold">Rp55.000</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mb-3 px-1 px-lg-3">
-            <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/jam.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
-              <div class="detail p-2 p-lg-3">
-                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                </div>
-                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-6 fw-semibold">Rp55.000</span>
-              </div>
-            </div>
-          </div>
+          </ng-container>
         </div>
       </div>
       <div class="col-lg-6 col-xl-4 mb-3">
         <h3 class="fw-bold fs-6 mb-4">LATEST PRODUCTS</h3>
         <div class="row">
-          <div class="col-12 mb-3 px-1 px-lg-3">
-            <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/speaker.jpg" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
-              <div class="detail p-2 p-lg-3">
-                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
+          <ng-container *ngFor="let item of listProduct; index as i">
+            <div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
+              <div class="d-flex align-items-center justify-content-start">
+                <img src="https://source.unsplash.com/random/140x140?camera={{i + 20}}" class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
+                <div class="detail p-2 p-lg-3">
+                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}</h3>
+                  <div class="rating">
+                    <span class="iconify text-warning" data-icon="uis:star"></span>
+                    <span class="iconify text-warning" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                  </div>
+                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2" style="font-size: 14px;">Rp100.000</span>
+                  <span class="price font-p fw-semibold" style="font-size: 14px;">Rp{{ item.harga | number }}</span>
                 </div>
-                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-6 fw-semibold">Rp55.000</span>
               </div>
             </div>
-          </div>
-          <div class="col-12 mb-3 px-1 px-lg-3">
-            <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/earphone.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
-              <div class="detail p-2 p-lg-3">
-                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                </div>
-                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-6 fw-semibold">Rp55.000</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mb-3 px-1 px-lg-3">
-            <div class="d-flex align-items-center justify-content-start">
-              <img src="assets/img/jam.webp" class="object-fit-cover" width="140" height="140" alt="Random second slide" />
-              <div class="detail p-2 p-lg-3">
-                <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">Porto Evolution Headset </h3>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                </div>
-                <span class="price-coret text-secondary text-decoration-line-through fw-semibold me-2">Rp55.000</span>
-                <span class="price fs-6 fw-semibold">Rp55.000</span>
-              </div>
-            </div>
-          </div>
+          </ng-container>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<app-footer></app-footer>
+<app-foot-menu class="d-block d-lg-none"></app-foot-menu>
+<app-footer class="d-none d-lg-block"></app-footer>
 

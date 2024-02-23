@@ -3,8 +3,9 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#"><span class="iconify mb-1 fs-5" data-icon="ic:outline-home"></span></a></li>
-        <li class="breadcrumb-item fw-bold"><a href="#">PRODUCTS</a></li>
-        <li class="breadcrumb-item active" aria-current="page">NAME PRODUCTS</li>
+        <li class="breadcrumb-item fw-bold"><a href="#">Products</a></li>
+        <li class="breadcrumb-item fw-bold"><a href="#">{{ model.kategori }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ model.nama }}</li>
       </ol>
     </nav>
   </div>
@@ -14,10 +15,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-5">
-        <img src="assets/img/jam.webp" class="object-fit-cover w-100 h-auto" width="478" height="478" alt="">
+        <img src="https://source.unsplash.com/random/200x200?camera=1" class="object-fit-cover w-100 h-auto" width="478" height="478" alt="">
       </div>
       <div class="col-lg-7 mt-4 mt-lg-0">
-        <h1 class="fs-2 fw-bold">Jam Tangan Smartwatch</h1>
+        <h1 class="fs-2 fw-bold">{{ model.nama }}</h1>
         <div class="rating">
           <span class="iconify text-warning" data-icon="uis:star"></span>
           <span class="iconify text-warning" data-icon="uis:star"></span>
@@ -27,8 +28,10 @@
           <span class="ms-2 text-secondary">NO REVIEWS</span>
         </div>
         <div class="border border-bottom border-1 my-4" style="width: 50px"></div>
-        <h2 class="fw-bold fs-3">Rp 200.000</h2>
-        <p class="desc fs-6 text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi...</p>
+        <h2 class="fw-bold fs-3">Rp {{ model.harga | number }}</h2>
+        <p class="desc fs-6 text-secondary" [innerHTML]="model.detail_produk">
+
+        </p>
         <p class="mb-2">AVAILABILITY: <span class="fw-bold">OUT OF STOCK</span></p>
         <p>CATEGORIES: <span class="fw-bold">FEATURED PRODUCTS, HEADPHONE, LATEST PRODUCTS, SHOP</span></p>
         <div class="border border-bottom my-4 opacity-50"></div>
@@ -60,19 +63,12 @@
       <div class="d-flex" style="margin-bottom: -2px">
         <div class="fw-bolder pb-2 me-3 me-lg-5" role="button" [ngClass]="desc == 'description' ? 'border-bottom border-dark border-2' : 'text-secondary'" (click)="switchDesc('description')">DESCRIPTION</div>
         <div class="fw-bolder pb-2 me-3 me-lg-5" role="button" [ngClass]="desc == 'reviews' ? 'border-bottom border-dark border-2' : 'text-secondary'" (click)="switchDesc('reviews')">REVIEWS</div>
-        <div class="fw-bolder pb-2 me-3 me-lg-5" role="button" [ngClass]="desc == 'shipping' ? 'border-bottom border-dark border-2' : 'text-secondary'" (click)="switchDesc('shipping')">SHIPPING & DELIVERY</div>
+        <div class="fw-bolder pb-2 me-3 me-lg-5" role="button" [ngClass]="desc == 'shipping' ? 'border-bottom border-dark border-2' : 'text-secondary'" (click)="switchDesc('shipping')" *ngIf="false">SHIPPING & DELIVERY</div>
       </div>
     </div>
     <div class="content mb-5 mt-4">
       <div *ngIf="desc == 'description'">
-        <p class="text-secondary fs-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.
-          Any Product types that You want - Simple, Configurable
-          Downloadable/Digital Products, Virtual Products
-          Inventory Management with Backordered items
-          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+        <p class="text-secondary fs-6" [innerHTML]="model.deskripsi"></p>
       </div>
       <div class="mt-5" *ngIf="desc == 'reviews'">
         <h1 class="fs-5 fw-bold mb-4">CUSTOMER REVIEWS</h1>

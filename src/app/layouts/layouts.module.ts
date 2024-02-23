@@ -7,13 +7,15 @@ import { LayoutsComponent } from './layouts.component';
 import { BodyComponent } from './body/body.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { FootMenuComponent } from './foot-menu/foot-menu.component';
 
 @NgModule({
   declarations: [
     LayoutsComponent,
     BodyComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FootMenuComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { FooterComponent } from './footer/footer.component';
     NgbModule
   ],
   exports: [
-    FooterComponent
+    FooterComponent,
+    FootMenuComponent,
   ]
 })
 export class LayoutsModule { }

@@ -1,0 +1,26 @@
+<div class="footbar-menu bg-white text-center py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <a href="javascript:void(0)" class="text-secondary" [routerLink]="['/home']" routerLinkActive="active">
+                    <span class="iconify fs-1" data-icon="tabler:home"></span>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="javascript:void(0)" class="text-secondary" [routerLink]="['/katalog']" routerLinkActive="active">
+                    <span class="iconify fs-1" data-icon="solar:camera-broken"></span>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="javascript:void(0)" class="text-secondary" [routerLink]="['/wishlist']" routerLinkActive="active">
+                    <span class="iconify fs-2" data-icon="uiw:heart-off"></span>
+                </a>
+            </div>
+            <div class="col-3">
+                <a [routerLink]="['/account']" class="text-secondary" routerLinkActive="active">
+                    <span class="iconify fs-2" data-icon="uiw:user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
