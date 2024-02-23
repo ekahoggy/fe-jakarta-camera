@@ -16,24 +16,24 @@
         <div class="filer border font-p" style="font-size: 14px;">
           <div class="category py-2 px-2">
             <div class="d-flex justify-content-between align-items-center" (click)="categories.toggle()" [attr.aria-expanded]="!isCollapsed.categories" aria-controls="collapseCategories">
-              <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">CATEGORIES</span>
+              <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">KATEGORI</span>
               <span class="iconify fs-6" data-icon="mdi-light:plus"></span>
             </div>
             <div class="ps-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
               <ng-container *ngFor="let item of listCategory; index as i">
                 <div class="d-flex justify-content-between align-items-center text-secondary mb-2" *ngIf="item.child.length">
-                  {{ item.kategori }}
+                  <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
                   <button class="btn btn-sm" role="button" (click)="isCollapsedChild[item.slug] = !isCollapsedChild[item.slug]" [attr.aria-expanded]="!isCollapsedChild[item.slug]">
                     <span class="iconify text-secondary" data-icon="ion:chevron-down"></span>
                   </button>
                 </div>
                 <div class="text-secondary mb-3" role="button" (click)="getProduct(item.slug)" *ngIf="!item.child.length">
-                  {{ item.kategori }}
+                  <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
                 </div>
                 <div class="ps-3 mt-2" [(ngbCollapse)]="isCollapsedChild[item.slug]" *ngIf="item.child && item.child.length">
                   <ng-container *ngFor="let child of item.child;">
-                    <div class="text-secondary mb-3" role="button" (click)="getProduct(child.slug)">
-                      {{ child.kategori }}
+                    <div class="text-secondary mb-3" role="button">
+                      <a href="javascript:void(0)" routerLink="/katalog/{{child.slug}}">{{ child.kategori }}</a>
                     </div>
                   </ng-container>
                 </div>

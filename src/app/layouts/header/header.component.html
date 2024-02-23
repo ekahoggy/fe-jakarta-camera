@@ -67,7 +67,7 @@
         <button class="btn px-0 me-2 d-xl-none" (click)="openScroll(sidebar)">
           <span class="iconify fs-5 mb-2 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
         </button>
-        <img src="//porto-demo14.myshopify.com/cdn/shop/t/27/assets/logo_black_new.png?v=82644603109002165811640057195" width="80" alt="">
+        <img src="https://jakartacamera-admin.moodstudio.id/img/logo.png" alt="">
       </div>
       <div class="header-menu-right d-flex align-items-center">
         <div class="call d-none d-xl-flex align-items-center">
@@ -100,16 +100,8 @@
           <li class="nav-item mx-4">
             <a class="nav-link py-4 px-0 active" aria-current="page" href="javascript:void(0)" routerLink="/">HOME</a>
           </li>
-          <li class="nav-item dropdown mx-4">
-            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">
-              COLLECTIONS
-              <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
-            </a>
-            <div class="dropdown-content">
-              <a href="#">Collection 1</a>
-              <a href="#">Collection 2</a>
-              <a href="#">Colection 3</a>
-            </div>
+          <li class="nav-item mx-4">
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">PROMO</a>
           </li>
           <li class="nav-item dropdown mx-4">
             <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">
@@ -118,12 +110,23 @@
             </a>
             <div class="dropdown-content">
               <ng-container *ngFor="let item of listCategories">
-                <a href="#">{{ item.kategori }}</a>
+                <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
               </ng-container>
             </div>
           </li>
+          <li class="nav-item dropdown mx-4">
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">
+              SERVICE
+              <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
+            </a>
+            <div class="dropdown-content">
+              <a href="#">Service Kamera</a>
+              <a href="#">Jasa Foto dan Cetak</a>
+              <a href="#">Jasa Pasang CCTV</a>
+            </div>
+          </li>
           <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">PAGES</a>
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">NEWS</a>
           </li>
         </ul>
       </div>

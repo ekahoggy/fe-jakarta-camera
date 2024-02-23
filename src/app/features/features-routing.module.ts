@@ -32,6 +32,10 @@ const routes: Routes = [
     component: DetailProductComponent,
   },
   {
+    path: 'katalog/:slug',
+    component: KatalogComponent,
+  },
+  {
     path: 'katalog',
     component: KatalogComponent,
   },
