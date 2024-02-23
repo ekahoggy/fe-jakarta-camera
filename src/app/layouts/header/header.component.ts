@@ -17,12 +17,14 @@ export class HeaderComponent implements OnInit {
   collapseCollection: boolean = true;
   collapseProduct: boolean = true;
   listCategories: any;
+  auth: any;
 
   constructor(
     private globalService: GlobalService,
   ) { }
 
   ngOnInit() {
+    this.auth = this.globalService.getAuth();
     this.headerMenu = document.getElementById("header-menu");
     this.navbar = document.getElementById("navbar");
     this.cart = document.getElementById("cart-bottom");

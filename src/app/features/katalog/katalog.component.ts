@@ -29,7 +29,6 @@ export class KatalogComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(params);
       const slug = params['slug'];
       this.getProduct(slug);
     });
@@ -49,7 +48,7 @@ export class KatalogComponent {
       this.listCategory = res.data;
 
       this.listCategory.forEach((val:any) => {
-        this.isCollapsedChild[val.kategori] = true;
+        this.isCollapsedChild[val.slug] = true;
       })
     })
   }
