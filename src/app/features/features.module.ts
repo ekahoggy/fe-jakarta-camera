@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperModule } from 'swiper/angular';
+import { FormsModule } from '@angular/forms';
 
 import { FeaturesRoutingModule } from './features-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +14,8 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AccountComponent } from './account/account.component';
+import { AddressComponent } from './address/address.component';
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import { RegisterComponent } from './register/register.component';
     CartComponent,
     CheckoutComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccountComponent,
+    AddressComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +37,7 @@ import { RegisterComponent } from './register/register.component';
     NgbModule,
     LayoutsModule,
     SwiperModule,
+    FormsModule
   ],
   exports: []
 })

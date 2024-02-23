@@ -1,5 +1,6 @@
 import { Component, HostListener, ElementRef, OnInit, TemplateRef, inject } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,11 @@ export class HeaderComponent implements OnInit {
   private offcanvasService = inject(NgbOffcanvas);
   collapseCollection: boolean = true;
   collapseProduct: boolean = true;
+  listCategories: any;
+
+  constructor(
+    private globalService: GlobalService,
+  ) { }
 
   ngOnInit() {
     this.headerMenu = document.getElementById("header-menu");
@@ -25,6 +31,8 @@ export class HeaderComponent implements OnInit {
     if (this.navbar) {
       this.sticky = this.navbar.offsetTop - 20;
     }
+
+    this.getCategories();
   }
 
   @HostListener('window:scroll', [])
@@ -47,4 +55,10 @@ export class HeaderComponent implements OnInit {
   openScroll(content: TemplateRef<any>) {
 		this.offcanvasService.open(content, { scroll: true });
 	}
+
+  getCategories() {
+    this.globalService.DataGet('/public/kategori', {}).subscribe((res:any) => {
+      this.listCategories = res.data;
+    })
+  }
 }

@@ -1,4 +1,6 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
+import { environment } from 'src/environments/environment.development';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
@@ -8,13 +10,23 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  productImageURL: string = environment.productImageURL;
+  originalImageUrl: string = environment.originalImageURL;
   private navbar: HTMLElement | null = null;
   private sticky: number = 0;
   carousel: HTMLElement | null = null;
   configFeatured: SwiperOptions = {};
   configBrand: SwiperOptions = {};
+  listSlider: any = [];
+  listProduct: any = [];
+
+  constructor(
+    private globalService: GlobalService,
+  ) { }
 
   ngOnInit() {
+    this.getSlider();
+    this.getProduct();
     this.configFaturedProduct();
     this.configSwiperBrand();
     this.navbar = document.getElementById("navbar");
@@ -105,5 +117,17 @@ export class HomeComponent implements OnInit {
         },
       },
     }
+  }
+
+  getSlider() {
+    this.globalService.DataGet('/public/slider').subscribe((res:any) => {
+      this.listSlider = res.data;
+    })
+  }
+
+  getProduct() {
+    this.globalService.DataGet('/public/produk').subscribe((res:any) => {
+      this.listProduct = res.data;
+    })
   }
 }

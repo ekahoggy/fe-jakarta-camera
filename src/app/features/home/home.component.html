@@ -1,13 +1,8 @@
 <section id="banner-carousel">
   <ngb-carousel [showNavigationIndicators]="false">
-    <ng-template ngbSlide>
+    <ng-template *ngFor="let item of listSlider" ngbSlide>
       <div class="picsum-img-wrapper">
-        <img src="assets/img/carousel.png" class="w-100 object-fit-cover" height="500" alt="Random first slide" />
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src="assets/img/carousel2.png" class="w-100 object-fit-cover" height="500" alt="Random second slide" />
+        <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover" height="500" alt="Random first slide" />
       </div>
     </ng-template>
   </ngb-carousel>
@@ -101,116 +96,46 @@
   </div>
   <div class="container mt-4">
     <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
-      <ng-template swiperSlide>
-        <img src="assets/img/speaker.jpg" class="w-100 object-fit-cover" alt="Random second slide" />
-        <div class="detail text-center p-2 p-lg-3">
-          <span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
-          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
-          <div class="rating">
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
+      <ng-container *ngFor="let item of listProduct">
+        <ng-template swiperSlide>
+          <img [src]="productImageURL + item.foto" class="w-100 object-fit-contain" style="max-height: 248px;" alt="Random second slide" />
+          <div class="detail text-center p-2 p-lg-3">
+            <span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
+            <h2 class="product-name mb-0" style="font-size: 16px;">{{ item.nama }} </h2>
+            <div class="rating">
+              <span class="iconify text-warning" data-icon="uis:star"></span>
+              <span class="iconify text-warning" data-icon="uis:star"></span>
+              <span class="iconify text-black-50" data-icon="uis:star"></span>
+              <span class="iconify text-black-50" data-icon="uis:star"></span>
+              <span class="iconify text-black-50" data-icon="uis:star"></span>
+            </div>
+            <p class="price fs-6 fw-semibold">Rp {{ item.harga | number }}</p>
+            <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
+              <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
+              ADD TO CART
+            </a>
           </div>
-          <p class="price fs-6 fw-semibold">Rp 55.000</p>
-          <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
-            <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-            ADD TO CART
-          </a>
-        </div>
-      </ng-template>
-      <ng-template swiperSlide>
-        <img src="assets/img/earphone.webp" class="w-100 object-fit-cover" alt="Random second slide" />
-        <div class="detail text-center p-2 p-lg-3">
-          <span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
-          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
-          <div class="rating">
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
+        </ng-template>
+        <ng-template swiperSlide>
+          <img src="assets/img/earphone.webp" class="w-100 object-fit-contain" alt="Random second slide" />
+          <div class="detail text-center p-2 p-lg-3">
+            <span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
+            <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
+            <div class="rating">
+              <span class="iconify text-warning" data-icon="uis:star"></span>
+              <span class="iconify text-warning" data-icon="uis:star"></span>
+              <span class="iconify text-black-50" data-icon="uis:star"></span>
+              <span class="iconify text-black-50" data-icon="uis:star"></span>
+              <span class="iconify text-black-50" data-icon="uis:star"></span>
+            </div>
+            <p class="price fs-6 fw-semibold">Rp 55.000</p>
+            <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
+              <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
+              ADD TO CART
+            </a>
           </div>
-          <p class="price fs-6 fw-semibold">Rp 55.000</p>
-          <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
-            <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-            ADD TO CART
-          </a>
-        </div>
-      </ng-template>
-      <ng-template swiperSlide><img src="assets/img/jam.webp" class="w-100 object-fit-cover" alt="Random second slide" />
-        <div class="detail text-center p-2 p-lg-3">
-          <span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
-          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
-          <div class="rating">
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-          </div>
-          <p class="price fs-6 fw-semibold">Rp 55.000</p>
-          <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
-            <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-            ADD TO CART
-          </a>
-        </div>
-      </ng-template>
-      <ng-template swiperSlide><img src="assets/img/earphone.webp" class="w-100 object-fit-cover" alt="Random second slide" />
-        <div class="detail text-center p-2 p-lg-3">
-          <span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
-          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
-          <div class="rating">
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-          </div>
-          <p class="price fs-6 fw-semibold">Rp 55.000</p>
-          <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
-            <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-            ADD TO CART
-          </a>
-        </div>
-      </ng-template>
-      <ng-template swiperSlide><img src="assets/img/jam.webp" class="w-100 object-fit-cover" alt="Random second slide" />
-        <div class="detail text-center p-2 p-lg-3">
-          <span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
-          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
-          <div class="rating">
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-          </div>
-          <p class="price fs-6 fw-semibold">Rp 55.000</p>
-          <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
-            <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-            ADD TO CART
-          </a>
-        </div>
-      </ng-template>
-      <ng-template swiperSlide><img src="assets/img/speaker.jpg" class="w-100 object-fit-cover" alt="Random second slide" />
-        <div class="detail text-center p-2 p-lg-3">
-          <span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
-          <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
-          <div class="rating">
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-warning" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-            <span class="iconify text-black-50" data-icon="uis:star"></span>
-          </div>
-          <p class="price fs-6 fw-semibold">Rp 55.000</p>
-          <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
-            <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-            ADD TO CART
-          </a>
-        </div>
-      </ng-template>
+        </ng-template>
+      </ng-container>
     </swiper>
   </div>
 </section>
