@@ -78,147 +78,29 @@
 
       <div class="col-12 col-lg-9">
         <div class="row">
-          <div class="col-6 col-md-4 col-xl-3" *ngFor="let item of listProduct; index as i">
-            <a href="javascript:void(0)" routerLink="/detail/{{ item.slug }}">
-              <div class="square-image">
-                <img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
-              </div>
-              <div class="detail p-2 p-lg-3">
-                <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-                <p class="product-name fs-6 mb-0"> {{item.nama}} </p>
-                <div class="rating">
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-warning" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  <span class="iconify text-black-50" data-icon="uis:star"></span>
+          <ng-container *ngIf="listProduct.length > 0">
+            <div class="col-6 col-md-4 col-xl-3" *ngFor="let item of listProduct; index as i" >
+              <a href="javascript:void(0)" routerLink="/detail/{{ item.slug }}">
+                <div class="square-image">
+                  <img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
                 </div>
-                <p class="price fs-6 fw-semibold">Rp {{ item.harga | number }}</p>
-              </div>
-            </a>
-          </div>
-          <!-- <div class="col-6 col-md-4 col-xl-3">
+                <div class="detail p-2 p-lg-3">
+                  <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+                  <p class="product-name fs-6 mb-0"> {{item.nama}} </p>
+                  <div class="rating">
+                    <span class="iconify text-warning" data-icon="uis:star"></span>
+                    <span class="iconify text-warning" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                    <span class="iconify text-black-50" data-icon="uis:star"></span>
+                  </div>
+                  <p class="price fs-6 fw-semibold">Rp {{ item.harga | number }}</p>
+                </div>
+              </a>
+            </div>
+             <!-- <div class="col-6 col-md-4 col-xl-3">
             <div class="square-image">
               <img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-xl-3">
-            <div class="square-image">
-              <img src="assets/img/jam.webp" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-xl-3">
-            <div class="square-image">
-              <img src="assets/img/speaker.jpg" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-xl-3">
-            <div class="square-image">
-              <img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-xl-3">
-            <div class="square-image">
-              <img src="assets/img/jam.webp" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-xl-3">
-            <div class="square-image">
-              <img src="assets/img/speaker.jpg" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-xl-3">
-            <div class="square-image">
-              <img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-xl-3">
-            <div class="square-image">
-              <img src="assets/img/jam.webp" width="280" height="280" alt="Random second slide" />
             </div>
             <div class="detail p-2 p-lg-3">
               <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
@@ -233,6 +115,14 @@
               <p class="price fs-6 fw-semibold">Rp 55.000</p>
             </div>
           </div> -->
+          </ng-container>
+          <ng-container *ngIf="listProduct.length == 0">
+            <div class="col text-center">
+              <img src="assets/img/undraw/empty.png" style="width: 400px;" width="200" height="200" alt="empty">
+              <p class="fs-3 fw-bold">Not Found</p>
+            </div>
+          </ng-container>
+
         </div>
       </div>
     </div>

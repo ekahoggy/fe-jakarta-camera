@@ -15,7 +15,7 @@
         <div class="d-flex justify-content-center align-items-center py-4 py-lg-5">
           <span class="iconify me-3 fs-1" data-icon="mdi:truck-fast-outline"></span>
           <div class="text">
-            <h1 class="mb-0 fw-bold" style="font-size: 14px;">FREE SHIPPING & RETURN</h1>
+            <h1 class="mb-0 fw-bold fs-14">FREE SHIPPING & RETURN</h1>
             <p class="mb-0 text-secondary font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
           </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="d-flex justify-content-center align-items-center py-4 py-lg-5">
           <span class="iconify me-3 fs-1" data-icon="f7:money-dollar-circle"></span>
           <div class="text">
-            <h1 class="mb-0 fw-bold" style="font-size: 14px;">MONEY BACK GUARANTEE</h1>
+            <h1 class="mb-0 fw-bold fs-14">MONEY BACK GUARANTEE</h1>
             <p class="mb-0 text-secondary font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
           </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="d-flex justify-content-center align-items-center py-4 py-lg-5">
           <span class="iconify me-3 fs-1" data-icon="ri:24-hours-line"></span>
           <div class="text">
-            <h1 class="mb-0 fw-bold" style="font-size: 14px;">ONLINE SUPPORT 24/7</h1>
+            <h1 class="mb-0 fw-bold fs-14">ONLINE SUPPORT 24/7</h1>
             <p class="mb-0 text-secondary font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
           </div>
         </div>
@@ -47,7 +47,7 @@
     <div class="row">
       <ng-container *ngFor="let item of listCategory">
         <div class="col-4 col-md-3 col-lg-2 mb-3">
-          <a href="javascript:void(0)" [routerLink]="['/katalog']" >
+          <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}" >
             <div class="p-2 p-sm-4 mx-auto text-center rounded-4 wrap-category">
               <img src="{{ originalImageUrl }}{{ item.icon }}" class="object-fit-cover" width="50" height="50" alt="">
               <p class="font-p mb-0 mt-2" style="font-size: 12px;"> {{ item.kategori }} </p>
@@ -265,8 +265,8 @@
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                   </div>
-                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2" style="font-size: 14px;">Rp100.000</span>
-                  <span class="price font-p fw-semibold" style="font-size: 14px;">Rp{{ item.harga | number }}</span>
+                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
+                  <span class="price font-p fw-semibold fs-14">Rp{{ item.harga | number }}</span>
                 </div>
               </div>
             </div>
@@ -289,8 +289,8 @@
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                   </div>
-                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2" style="font-size: 14px;">Rp100.000</span>
-                  <span class="price font-p fw-semibold" style="font-size: 14px;">Rp{{ item.harga | number }}</span>
+                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
+                  <span class="price font-p fw-semibold fs-14">Rp{{ item.harga | number }}</span>
                 </div>
               </div>
             </div>
@@ -313,8 +313,8 @@
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                   </div>
-                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2" style="font-size: 14px;">Rp100.000</span>
-                  <span class="price font-p fw-semibold" style="font-size: 14px;">Rp{{ item.harga | number }}</span>
+                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
+                  <span class="price font-p fw-semibold fs-14">Rp{{ item.harga | number }}</span>
                 </div>
               </div>
             </div>

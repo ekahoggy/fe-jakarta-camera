@@ -68,4 +68,13 @@ export class GlobalService {
       return this.http.post(this.apiURL + path, payloads, reqHeader);
     }
   }
+
+  getAuth() {
+    let encoded = localStorage.getItem('session');
+    if (encoded) {
+      return JSON.parse(atob(encoded));
+    }
+
+    return null;
+  }
 }
