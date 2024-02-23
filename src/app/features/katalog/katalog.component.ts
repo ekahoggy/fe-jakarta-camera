@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
 interface CollapseStatus {
@@ -22,11 +23,18 @@ export class KatalogComponent {
   listCategory: any;
 
   constructor(
+    private route: ActivatedRoute,
     private globalService: GlobalService,
   ) { }
 
   ngOnInit() {
-    this.getProduct();
+    this.route.params.subscribe(params => {
+      console.log(params);
+      const slug = params['slug'];
+      this.getProduct(slug);
+    });
+
+
     this.getCategories();
   }
 
