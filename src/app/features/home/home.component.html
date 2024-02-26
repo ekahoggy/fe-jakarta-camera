@@ -48,7 +48,7 @@
       <ng-container *ngFor="let item of listCategory">
         <div class="col-4 col-md-3 col-lg-2 mb-3">
           <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}" >
-            <div class="p-2 p-sm-4 mx-auto text-center rounded-4 wrap-category">
+            <div class="p-2 p-sm-4 mx-auto text-center rounded-2 wrap-category">
               <img src="{{ originalImageUrl }}{{ item.icon }}" class="object-fit-cover" width="50" height="50" alt="">
               <p class="font-p mb-0 mt-2" style="font-size: 12px;"> {{ item.kategori }} </p>
             </div>
@@ -128,7 +128,7 @@
               <span class="iconify text-black-50" data-icon="uis:star"></span>
             </div>
             <p class="price fs-6 fw-semibold">Rp {{ item.harga | number }}</p>
-            <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
+            <a href="javascript:void(0)" routerLink="/detail/{{item.slug}}" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
               <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
               ADD TO CART
             </a>
