@@ -16,7 +16,7 @@
           <span class="iconify me-3 fs-1" data-icon="mdi:truck-fast-outline"></span>
           <div class="text">
             <h1 class="mb-0 fw-bold fs-14">FREE SHIPPING & RETURN</h1>
-            <p class="mb-0 text-secondary font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
+            <p class="mb-0 text-grey font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
           <span class="iconify me-3 fs-1" data-icon="f7:money-dollar-circle"></span>
           <div class="text">
             <h1 class="mb-0 fw-bold fs-14">MONEY BACK GUARANTEE</h1>
-            <p class="mb-0 text-secondary font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
+            <p class="mb-0 text-grey font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
           <span class="iconify me-3 fs-1" data-icon="ri:24-hours-line"></span>
           <div class="text">
             <h1 class="mb-0 fw-bold fs-14">ONLINE SUPPORT 24/7</h1>
-            <p class="mb-0 text-secondary font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
+            <p class="mb-0 text-grey font-p" style="font-size: 12px;">Free shipping on all orders over $99</p>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
           <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}" >
             <div class="p-2 p-sm-4 mx-auto text-center rounded-2 wrap-category">
               <img src="{{ originalImageUrl }}{{ item.icon }}" class="object-fit-cover" width="50" height="50" alt="">
-              <p class="font-p mb-0 mt-2" style="font-size: 12px;"> {{ item.kategori }} </p>
+              <p class="font-p mb-0 mt-3 text-uppercase"> {{ item.kategori }} </p>
             </div>
           </a>
         </div>
@@ -66,8 +66,8 @@
         <a href="javascript:void(0)" routerLink="/detail">
           <div class="position-relative p-2">
             <img src="https://source.unsplash.com/random/400x300?camera=1" class="w-100 object-fit-cover" alt="Random second slide" />
-            <div class="wrap-text-promo position-relative text-center py-2 mx-2">
-              <span class="title font-p fs-6">Save Up To</span>
+            <div class="wrap-text-promo bg-info position-relative text-center py-2 mx-2">
+              <span class="text-light font-p fs-6">Save Up To</span>
               <h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
               <p class="desc font-p fs-6 text-light mb-0">on Porto Watch Series 5</p>
             </div>
@@ -78,8 +78,8 @@
         <a href="javascript:void(0)" routerLink="/detail">
           <div class="position-relative p-2">
             <img src="https://source.unsplash.com/random/400x300?camera=2" class="w-100 object-fit-cover" alt="Random second slide" />
-            <div class="wrap-text-promo position-relative text-center py-2 mx-2">
-              <span class="title font-p fs-6">Save Up To</span>
+            <div class="wrap-text-promo bg-info position-relative text-center py-2 mx-2">
+              <span class="text-light font-p fs-6">Save Up To</span>
               <h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
               <p class="desc font-p fs-6 text-light mb-0">on Porto Watch Series 5</p>
             </div>
@@ -90,8 +90,8 @@
         <a href="javascript:void(0)" routerLink="/detail">
           <div class="position-relative p-2">
             <img src="https://source.unsplash.com/random/400x300?camera=3" class="w-100 object-fit-cover" alt="Random second slide" />
-            <div class="wrap-text-promo position-relative text-center py-2 mx-2">
-              <span class="title font-p fs-6">Save Up To</span>
+            <div class="wrap-text-promo bg-info position-relative text-center py-2 mx-2">
+              <span class="text-light font-p fs-6">Save Up To</span>
               <h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
               <p class="desc font-p fs-6 text-light mb-0">on Porto Watch Series 5</p>
             </div>
@@ -106,7 +106,7 @@
   <div class="filter-bar border-bottom">
     <div class="container">
       <div class="d-flex">
-        <div class="fw-bolder text-success border-bottom border-success border-2 pb-2 me-4" style="font-size: 13px;">FEATURED PRODUCTS</div>
+        <div class="fw-bolder text-primary border-bottom border-primary border-2 pb-2 me-4" style="font-size: 13px;">FEATURED PRODUCTS</div>
         <div class="fw-bolder border-bottom border-dark border-2 pb-2 me-4" style="font-size: 13px;">LATEST PRODUCTS</div>
       </div>
     </div>
@@ -116,7 +116,10 @@
       <ng-container *ngFor="let item of listProduct; index as i">
         <ng-template swiperSlide>
           <!-- [src]="productImageURL + item.foto" -->
-          <img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover" style="max-height: 248px; height: 248px;" alt="Random second slide" />
+          <div class="position-relative wrap-image">
+            <img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover" alt="Random second slide" />
+            <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button>
+          </div>
           <div class="detail text-center p-2 p-lg-3">
             <span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
             <h2 class="product-name mb-0" style="font-size: 16px;">{{ item.nama }} </h2>
@@ -165,7 +168,7 @@
         <div class="benefit-content p-3 text-center">
           <div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
             <div>
-              <span class="iconify text-success fs-1" data-icon="simple-line-icons:earphones-alt"></span>
+              <span class="iconify text-primary fs-1" data-icon="simple-line-icons:earphones-alt"></span>
             </div>
           </div>
           <h2 class="fs-6 fw-bold mt-3 mb-0">CUSTOMER SUPPORT</h2>
@@ -177,7 +180,7 @@
         <div class="benefit-content p-3 text-center">
           <div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
             <div>
-              <span class="iconify text-success fs-1" data-icon="ph:credit-card"></span>
+              <span class="iconify text-primary fs-1" data-icon="ph:credit-card"></span>
             </div>
           </div>
           <h2 class="fs-6 fw-bold mt-3 mb-0">SECURED PAYMENT</h2>
@@ -189,7 +192,7 @@
         <div class="benefit-content p-3 text-center">
           <div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
             <div>
-              <span class="iconify text-success fs-1" data-icon="streamline:return-2"></span>
+              <span class="iconify text-primary fs-1" data-icon="streamline:return-2"></span>
             </div>
           </div>
           <h2 class="fs-6 fw-bold mt-3 mb-0">RETURNS</h2>
@@ -208,7 +211,7 @@
         <h2 class="fw-bold">TOP ELECTRONIC <br> DEALS</h2>
       </div>
       <div class="col-12 col-lg-4 text-lg-center">
-        <div class="btn btn-success rounded-0 fw-bold px-5 py-3 mt-3">
+        <div class="btn btn-primary rounded-0 fw-bold px-5 py-3 mt-3">
           VIEW SALE
         </div>
       </div>
@@ -265,7 +268,7 @@
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                   </div>
-                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
+                  <span class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
                   <span class="price font-p fw-semibold fs-14">Rp{{ item.harga | number }}</span>
                 </div>
               </div>
@@ -289,7 +292,7 @@
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                   </div>
-                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
+                  <span class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
                   <span class="price font-p fw-semibold fs-14">Rp{{ item.harga | number }}</span>
                 </div>
               </div>
@@ -313,7 +316,7 @@
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                     <span class="iconify text-black-50" data-icon="uis:star"></span>
                   </div>
-                  <span class="price-coret text-secondary font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
+                  <span class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
                   <span class="price font-p fw-semibold fs-14">Rp{{ item.harga | number }}</span>
                 </div>
               </div>

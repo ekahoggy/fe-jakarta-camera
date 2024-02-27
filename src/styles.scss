@@ -8,6 +8,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+.text-grey {
+  color: #929292;
+}
+
 body {
   margin: 0; /* Menghilangkan margin default pada body */
   font-size: 13px;
@@ -56,6 +60,15 @@ body {
     }
   }
 }
+
+.btn-light:hover {
+  background-color: #005691 !important;
+  color: #FAFAFA !important;
+}
+// .btn-primary:hover {
+//   background-color: #FAFAFA !important;
+//   color: #005691 !important;
+// }
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
