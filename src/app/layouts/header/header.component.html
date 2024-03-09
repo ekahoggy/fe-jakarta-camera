@@ -78,7 +78,7 @@
           </div>
         </div>
         <div class="interact ps-3">
-          <a href="javascript:void(0)" [routerLink]="['/login']" class="d-none d-lg-inline">
+          <a href="javascript:void(0)" (click)="redirectProfile()" [routerLink]="['/login']" class="d-none d-lg-inline">
             <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
           </a>
           <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span>
