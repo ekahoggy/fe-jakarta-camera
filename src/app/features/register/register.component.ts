@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
     this.globalService.DataPost('/public/register', param).subscribe((res:any) => {
       if (res.status_code == 200) {
         this.is.success = true;
+        this.empty();
       }
     })
   }

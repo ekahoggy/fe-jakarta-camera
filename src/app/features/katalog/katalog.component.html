@@ -1,4 +1,4 @@
-<section class="breadcrumb">
+<section class="breadcrumb mt-5">
   <div class="container">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -21,18 +21,18 @@
             </div>
             <div class="ps-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
               <ng-container *ngFor="let item of listCategory; index as i">
-                <div class="d-flex justify-content-between align-items-center text-secondary mb-2" *ngIf="item.child.length">
+                <div class="d-flex justify-content-between align-items-center text-grey mb-2" *ngIf="item.child.length">
                   <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
                   <button class="btn btn-sm" role="button" (click)="isCollapsedChild[item.slug] = !isCollapsedChild[item.slug]" [attr.aria-expanded]="!isCollapsedChild[item.slug]">
-                    <span class="iconify text-secondary" data-icon="ion:chevron-down"></span>
+                    <span class="iconify text-grey" data-icon="ion:chevron-down"></span>
                   </button>
                 </div>
-                <div class="text-secondary mb-3" role="button" (click)="getProduct(item.slug)" *ngIf="!item.child.length">
+                <div class="text-grey mb-3" role="button" (click)="getProduct(item.slug)" *ngIf="!item.child.length">
                   <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
                 </div>
                 <div class="ps-3 mt-2" [(ngbCollapse)]="isCollapsedChild[item.slug]" *ngIf="item.child && item.child.length">
                   <ng-container *ngFor="let child of item.child;">
-                    <div class="text-secondary mb-3" role="button">
+                    <div class="text-grey mb-3" role="button">
                       <a href="javascript:void(0)" routerLink="/katalog/{{child.slug}}">{{ child.kategori }}</a>
                     </div>
                   </ng-container>
@@ -61,13 +61,13 @@
             <div class="px-3 mt-2" #availability="ngbCollapse" [(ngbCollapse)]="isCollapsed.availability">
               <div class="form-check mb-1">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                <label class="form-check-label text-secondary" for="flexCheckDefault">
+                <label class="form-check-label text-grey" for="flexCheckDefault">
                   In Stock (11)
                 </label>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label text-secondary" for="flexCheckChecked">
+                <label class="form-check-label text-grey" for="flexCheckChecked">
                   Out Of Stock (2)
                 </label>
               </div>
@@ -79,10 +79,11 @@
       <div class="col-12 col-lg-9">
         <div class="row">
           <ng-container *ngIf="listProduct.length > 0">
-            <div class="col-6 col-md-4 col-xl-3" *ngFor="let item of listProduct; index as i" >
+            <div class="col-6 col-md-4 col-xl-4" *ngFor="let item of listProduct; index as i" >
               <a href="javascript:void(0)" routerLink="/detail/{{ item.slug }}">
-                <div class="square-image">
+                <div class="square-image wrap-image">
                   <img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
+                  <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button>
                 </div>
                 <div class="detail p-2 p-lg-3">
                   <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>

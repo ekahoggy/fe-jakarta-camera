@@ -1,7 +1,9 @@
-<section class="header bg-secondary bg-opacity-10 py-3">
+<section class="header bg-info py-3">
     <div class="container text-center py-5" style="font-size: 12px;">
-        <a [routerLink]="['/']" routerLinkActive="router-link-active"  class="text-success" href="javascript:void(0)">HOME</a> <span class="iconify text-secondary ms-2 me-1" data-icon="ion:chevron-right"></span> SIGN UP
-        <h1 class="fw-bold fs-2 font-p mt-2">Sign Up</h1>
+        <a [routerLink]="['/']" routerLinkActive="router-link-active" class="text-light" href="javascript:void(0)">HOME</a> 
+        <span class="iconify text-light ms-2 me-1" data-icon="ion:chevron-right"></span> 
+        <span class="text-light">SIGN UP</span>
+        <h1 class="text-light fw-bold fs-2 font-p mt-2">Sign Up</h1>
     </div>
 </section>
 
@@ -12,11 +14,17 @@
                 <h2 class="font-p fw-bold fs-4 mb-3">Login</h2>
                 <form (ngSubmit)="login()">
                     <div class="mb-3">
-                        <label for="email" class="text-secondary mb-2 fs-14">Email address <span class="text-danger">*</span></label>
+                        <div class="alert alert-danger alert-dismissible fade show" *ngIf="isError">
+                            <strong> {{ isPesan }} </strong>
+                            <button type="button" class="btn-close" (click)="isError = false"></button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="text-grey mb-2 fs-14">Email address <span class="text-danger">*</span></label>
                         <input type="email" class="form-control rounded-0 py-2" [(ngModel)]="model.email" name="email" id="email" aria-describedby="email">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="text-secondary mb-2 fs-14">Password <span class="text-danger">*</span></label>
+                        <label for="password" class="text-grey mb-2 fs-14">Password <span class="text-danger">*</span></label>
                         <input type="password" class="form-control rounded-0 py-2" [(ngModel)]="model.password" name="password" id="password" aria-describedby="password">
                     </div>
                     <a href=""> <span class="text-dark fw-semibold fs-14">Forgot your password?</span> </a>

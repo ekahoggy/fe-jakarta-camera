@@ -1,4 +1,5 @@
 import { Component, HostListener, ElementRef, OnInit, TemplateRef, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
 
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private globalService: GlobalService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -62,5 +64,13 @@ export class HeaderComponent implements OnInit {
     this.globalService.DataGet('/public/kategori', {}).subscribe((res:any) => {
       this.listCategories = res.data;
     })
+  }
+
+  redirectProfile() {
+    if (this.auth) {
+      this.router.navigate(['account']);
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 }

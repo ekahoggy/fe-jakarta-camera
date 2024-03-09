@@ -52,7 +52,7 @@
   </div>
 </section>
 
-<section class="header-menu bg-white">
+<section class="header-menu bg-light">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center py-3">
       <div class="header-menu-left d-none d-xl-block">
@@ -73,17 +73,18 @@
         <div class="call d-none d-xl-flex align-items-center">
           <span class="iconify fs-2 me-2" data-icon="mynaui:telephone"></span>
           <div>
-            <span class="fw-bold text-secondary call-text mb-0">CALL US NOW</span>
+            <span class="fw-bold text-grey call-text mb-0">CALL US NOW</span>
             <p class="mb-0 fs-6 fw-bold">+62 5678 89011</p>
           </div>
         </div>
         <div class="interact ps-3">
-          <a href="javascript:void(0)" [routerLink]="['/login']" class="d-none d-lg-inline">
+          <a href="javascript:void(0)" (click)="redirectProfile()" [routerLink]="['/login']" class="d-none d-lg-inline">
             <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
           </a>
           <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span>
           <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark">
-            <span class="iconify ms-3 fs-2" data-icon="solar:cart-linear"></span>
+            <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
+            <!-- <i class="fi fi-rs-basket-shopping-simple ms-3 fs-4 pt-3"></i> -->
             <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
           </a>
         </div>
@@ -92,19 +93,19 @@
   </div>
 </section>
 
-<section class="header-nav bg-white d-none d-xl-block" id="navbar">
+<section class="header-nav bg-light d-none d-xl-block" id="navbar">
   <nav class="navbar navbar-expand-lg py-0">
     <div class="container">
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav fw-bold">
           <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-0 active" aria-current="page" href="javascript:void(0)" routerLink="/">HOME</a>
+            <a class="nav-link py-4 px-0 active"  aria-current="page" href="javascript:void(0)" [routerLink]="['/home']" routerLinkActive="active">HOME</a>
           </li>
           <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">PROMO</a>
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" [routerLink]="['/promo']" routerLinkActive="active">PROMO</a>
           </li>
           <li class="nav-item dropdown mx-4">
-            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" [routerLink]="['/katalog']" routerLinkActive="active">
               PRODUCTS
               <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
             </a>
@@ -115,7 +116,7 @@
             </div>
           </li>
           <li class="nav-item dropdown mx-4">
-            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" [routerLink]="['/service']" routerLinkActive="active">
               SERVICE
               <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
             </a>
@@ -126,7 +127,7 @@
             </div>
           </li>
           <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-0" href="javascript:void(0)" routerLink="/katalog">NEWS</a>
+            <a class="nav-link py-4 px-0" href="javascript:void(0)" [routerLink]="['/news']" routerLinkActive="active">NEWS</a>
           </li>
         </ul>
       </div>
