@@ -71,6 +71,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json",
+            "allowedHosts": ["api.localhost"]
+          },
           "configurations": {
             "production": {
               "browserTarget": "fe-jakarta-kamera:build:production"

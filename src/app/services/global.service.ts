@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
+import { HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -45,9 +46,10 @@ export class GlobalService {
   DataGet(path: string, payloads = {}) {
     return this.http.get(this.apiURL + path, {
       params: payloads,
-      withCredentials: false,
+      withCredentials: true
     });
   }
+
 
   DataApi(path: string, payloads = {}) {
     return this.http.get(path);
