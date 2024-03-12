@@ -3,3 +3,7 @@
     max-width: 100px;
     min-height: 100px;
 }
+
+.breadcrumb {
+    font-size: clamp(21px, 1.2vw, 80px);
+}

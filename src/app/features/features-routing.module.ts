@@ -9,11 +9,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { AddressComponent } from './address/address.component';
+import { AuthGuard } from '../services/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
+    path: '', 
+    redirectTo: 'home', 
+    pathMatch: 'full'
   },
   {
     path: 'home',
@@ -22,10 +24,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'detail/:slug',

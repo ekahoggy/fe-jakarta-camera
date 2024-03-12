@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class DetailProductComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private globalService: GlobalService,
   ) { }
 
@@ -67,6 +68,38 @@ export class DetailProductComponent implements OnInit {
   getProduct(slug:string) {
     this.globalService.DataGet('/public/getProdukSlug', {slug: slug}).subscribe((res:any) => {
       this.model = res.data;
+      this.model.quantity = 1;
     })
+  }
+
+  reduceTotal() {
+    if (this.model.quantity > 1) {
+      this.model.quantity--
+    }
+  }
+
+  addTotal() {
+    this.model.quantity++
+  }
+
+  changeQuantity() {
+    if (this.model.quantity === '0') {
+      this.model.quantity = 1;
+    }
+  }
+
+  addCart() {
+    if (this.globalService.getAuth() === null) {
+      this.router.navigate(['/login']);
+    } else {
+      let params = {
+        user_id: this.globalService.getAuth()['id'],
+        product_id: this.model.id,
+        quantity: this.model.quantity
+      }
+      this.globalService.DataPost('/cart/add', params).subscribe((res:any) => {
+        this.globalService.alertSuccess('Success', res.message);
+      })
+    }
   }
 }

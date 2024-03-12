@@ -71,7 +71,9 @@
 }
 
 .header-nav {
-  border-top: 2px solid #e7e7e7;
+  border-top: 1px solid #e7e7e7;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 4px;
+
   @media only screen and (min-width: 1200px) {
     position: -webkit-sticky;
     position: sticky;
@@ -84,10 +86,12 @@
 
     .nav-link {
       color: black;
+      border-top: 2px solid transparent;
     }
 
     .nav-link.active, .nav-link.show {
       color: #005691;
+      border-top: 2px solid #007dd3;
     }
 
     .nav-link:hover, .nav-link:focus {

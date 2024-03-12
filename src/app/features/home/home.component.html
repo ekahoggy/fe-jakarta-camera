@@ -1,8 +1,9 @@
 <section id="banner-carousel">
   <ngb-carousel [showNavigationIndicators]="false">
-    <ng-template *ngFor="let item of listSlider" ngbSlide>
+    <ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
       <div class="picsum-img-wrapper">
-        <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover h-auto" height="500" alt="Random first slide" />
+        <img src="https://source.unsplash.com/random/1200x500?camera={{i}}" class="w-100 object-fit-cover h-auto" height="500" alt="Random first slide" />
+        <!-- <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover h-auto" height="500" alt="Random first slide" /> -->
       </div>
     </ng-template>
   </ngb-carousel>
@@ -118,7 +119,7 @@
           <!-- [src]="productImageURL + item.foto" -->
           <div class="position-relative wrap-image">
             <img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover" alt="Random second slide" />
-            <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button>
+            <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3" routerLink="/detail/{{item.slug}}">QUICK VIEW</button>
           </div>
           <div class="detail text-center p-2 p-lg-3">
             <span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>

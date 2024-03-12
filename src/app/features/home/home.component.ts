@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
     if (this.navbar) {
       this.sticky = this.navbar.offsetTop - 20;
     }
+    console.log(window.location.hostname == 'localhost')
   }
 
   @HostListener('window:scroll', [])
@@ -52,7 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSwiper(swiper:any) {
-    console.log(swiper);
+    // console.log(swiper);
   }
   onSlideChange() {
     console.log('slide change');
