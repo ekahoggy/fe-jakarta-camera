@@ -124,7 +124,6 @@ export class HomeComponent implements OnInit {
 
   getSlider() {
     this.globalService.DataGet('/public/slider').subscribe((res:any) => {
-      console.log(res)
       this.listSlider = res.data;
     })
   }

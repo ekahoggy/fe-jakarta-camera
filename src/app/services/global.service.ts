@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { HttpHeaders } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -76,7 +77,18 @@ export class GlobalService {
     if (encoded) {
       return JSON.parse(atob(encoded));
     }
-
     return null;
+  }
+
+  alertSuccess(title:string, text:string, timer:number = 1500) {
+    Swal.fire({ icon: "success", title: title, text: text, timer: timer });
+  }
+
+  alertError(title:string, text:string, timer:number = 1500) {
+    Swal.fire({ icon: "error", title: title, text: text, timer: timer });
+  }
+
+  alertQuestion(title:string, text:string, timer:number = 1500) {
+    Swal.fire({ icon: "question", title: title, text: text, timer: timer });
   }
 }

@@ -1,5 +1,5 @@
 <section class="breadcrumb">
-  <div class="container">
+  <div class="container pt-4">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#"><span class="iconify mb-1 fs-5" data-icon="ic:outline-home"></span></a></li>
@@ -37,14 +37,21 @@
         <div class="border border-bottom my-4 opacity-50"></div>
 
         <div class="d-flex align-items-center">
-          <button class="btn btn-sm border border-end-0 rounded-0 py-2 px-2 align-middle">
+          <button class="btn btn-sm border border-end-0 rounded-0 py-2 px-2 align-middle" (click)="reduceTotal()">
             <span class="iconify" data-icon="mdi-light:minus"></span>
           </button>
-          <input type="text" class="form-control form-control-sm border rounded-0 py-2 px-2 align-middle fw-bold text-center" value="1" style="width: 50px;">
-          <button class="btn btn-sm border border-start-0 rounded-0 py-2 px-2 align-middle">
+          <input type="text" 
+            class="form-control form-control-sm border rounded-0 py-2 px-2 align-middle fw-bold text-center" 
+            [(ngModel)]="model.quantity" 
+            name="quantity" 
+            oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+            (change)="changeQuantity()" 
+            style="width: 50px;"
+          >
+          <button class="btn btn-sm border border-start-0 rounded-0 py-2 px-2 align-middle" (click)="addTotal()">
             <span class="iconify" data-icon="mdi-light:plus"></span>
           </button>
-          <button class="btn btn-sm border border-end-0 rounded-0 align-middle bg-dark fw-bold text-white py-2 px-3 ms-2 me-2">
+          <button class="btn btn-sm border border-end-0 rounded-0 align-middle bg-dark fw-bold text-white py-2 px-3 ms-2 me-2" (click)="addCart()">
             <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
             ADD TO CART
           </button>
