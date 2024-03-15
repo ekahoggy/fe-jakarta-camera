@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -16,6 +17,7 @@ export class GlobalService {
 
   constructor(
     private http: HttpClient,
+    private router: Router
   ) { }
 
   getImage(folder: string, image: string) {
@@ -78,6 +80,11 @@ export class GlobalService {
       return JSON.parse(atob(encoded));
     }
     return null;
+  }
+
+  destroyAuth() {
+    localStorage.removeItem('session');
+    return this.router.navigate(['login']);
   }
 
   alertSuccess(title:string, text:string, timer:number = 1500) {

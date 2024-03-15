@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { AddressComponent } from './address/address.component';
 import { AuthGuard } from '../services/guards/auth.guard';
+import { GuestGuard } from '../services/guards/guest.guard';
 
 const routes: Routes = [
   {
@@ -46,18 +47,22 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+    canActivate: [GuestGuard]
   },
   {
     path: 'checkout',
     component: CheckoutComponent,
+    canActivate: [GuestGuard]
   },
   {
     path: 'account',
     component: AccountComponent,
+    canActivate: [GuestGuard]
   },
   {
     path: 'address',
     component: AddressComponent,
+    canActivate: [GuestGuard]
   },
 ];
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -6,8 +6,9 @@ import { GlobalService } from 'src/app/services/global.service';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss']
 })
-export class AccountComponent {
+export class AccountComponent implements OnInit {
   model:any = {};
+  adress: any = {};
  
   constructor(
     private globalService: GlobalService,
@@ -15,6 +16,7 @@ export class AccountComponent {
 
   ngOnInit(): void {
     this.empty();
+    this.model.name = this.globalService.getAuth()['name'];
   }
 
   empty() {
@@ -24,8 +26,13 @@ export class AccountComponent {
     }
   }
 
-  login() {
-    // Di sini Anda bisa menambahkan logika untuk memeriksa kredensial pengguna
-    this.globalService.DataPost('/')
+  logout() {
+    this.globalService.destroyAuth();
+  }
+
+  getAddress() {
+    this.globalService.DataGet('/account/active-address', {}).subscribe((res:any) => {
+      this.adress = res.data;
+    })
   }
 }
