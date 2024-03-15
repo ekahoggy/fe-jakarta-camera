@@ -1,34 +1,44 @@
 <section class="header bg-secondary py-3">
     <div class="container text-center py-5" style="font-size: 12px;">
-        <a [routerLink]="['/']" routerLinkActive="router-link-active"  class="text-primary" href="javascript:void(0)">HOME</a> <span class="iconify text-grey ms-2 me-1" data-icon="ion:chevron-right"></span> MY ADDRESS
-        <h1 class="fw-bold fs-2 font-p mt-2">My Address</h1>
+        <a [routerLink]="['/']" routerLinkActive="router-link-active"  class="text-primary" href="javascript:void(0)">HOME</a> 
+        <span class="iconify text-grey ms-2 me-1" data-icon="ion:chevron-right"></span> 
+        <a [routerLink]="['/account']" routerLinkActive="router-link-active"  class="text-primary" href="javascript:void(0)">ACCOUNT</a> 
+        <span class="iconify text-grey ms-2 me-1" data-icon="ion:chevron-right"></span> 
+        MY ADDRESS
+        <h1 class="fw-bold fs-2 font-p mt-2">{{ pageTitle }}</h1>
     </div>
 </section>
 
-<section class="content-login py-5">
+<section class="content-login py-5" *ngIf="!isForm">
     <div class="container py-3">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="d-flex justify-content-end border-bottom pb-3 mb-5">
-                    <button class="btn btn-sm btn-dark rounded-0 px-3 py-2">ADD NEW ADDRESS</button>
+                    <button class="btn btn-sm btn-dark rounded-0 px-3 py-2" (click)="create()">ADD NEW ADDRESS</button>
                 </div>
-                <div class="card rounded-0 border-bottom-0">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="mb-0 text-uppercase fw-bold" style="font-size: 15px;">GALIH SATRIO WIBISONO</div>
-                        <div>
-                            <button class="btn btn-sm btn-primary rounded-0 font-p me-1">Edit</button>
-                            <button class="btn btn-sm btn-danger rounded-0 font-p">Delete</button>
+                <ng-container *ngFor="let item of listData; index as i">
+                    <div class="card rounded-0" [ngClass]="{'border-bottom-0': (i + 1) != listData.length}">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div>
+                                <span class=" text-uppercase fw-bold me-2" style="font-size: 15px;">{{ item.recipient }}</span>
+                                <span style="font-size: 15px;"> ({{item.phone_code}}) {{ item.phone_number }}</span>
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-primary rounded-0 font-p me-1" (click)="edit(item)">Edit</button>
+                                <button class="btn btn-sm btn-danger rounded-0 font-p">Delete</button>
+                            </div>
+                        </div>
+                        <div class="card-body pb-4" style="font-size: 14px;">
+                          <div>{{ item.address }}</div>
+                          <div>{{ item.village_name }}</div>
+                          <div>{{ item.subdistrict_name }}</div>
+                          <div>{{ item.city_name }}</div>
+                          <div>{{ item.postal_code }}</div>
+                          <div>{{ item.province_name }}</div>
                         </div>
                     </div>
-                    <div class="card-body" style="font-size: 14px;">
-                      <div>Jl Puter Tengah no.1, Rt 02 Rw 12, Kelurahan Tanjungrejo, Kecamatan Sukun</div>
-                      <div>Malang</div>
-                      <div>65147</div>
-                      <div>Jawa Timur</div>
-                      <div class="mb-3">Indonesia</div>
-                    </div>
-                </div>
-                <div class="card rounded-0">
+                </ng-container>
+                <!-- <div class="card rounded-0">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div class="mb-0 text-uppercase fw-bold" style="font-size: 15px;">Anggita shefiana</div>
                         <div>
@@ -43,9 +53,96 @@
                       <div>Jawa Timur</div>
                       <div class="mb-3">Indonesia</div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
+    </div>
+</section>
+<section class="content-login py-5" *ngIf="isForm">
+    <div class="container py-3">
+        <form>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="recipient" class="form-label">Recipient</label>
+                        <input type="text" class="form-control" name="recipient" [(ngModel)]="model.recipient" id="recipient" aria-describedby="recipientHelp">
+                        <div id="recipientHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone_number" name="phone_number" [(ngModel)]="model.phone_number" aria-describedby="phoneHelp">
+                        <div id="phoneHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="province" class="form-label">Province</label>
+                        <select class="form-select" name="province" [(ngModel)]="model.province_id" id="province"  aria-describedby="provinceHelp" (change)="getCity(model.province_id); resetProvince();">
+                            <option selected hidden>Please Select Your Province</option>
+                            <option *ngFor="let item of listProvince" [value]="item.id"> {{ item.provinsi }} </option>
+                        </select>
+                        <div id="provinceHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <select class="form-select" name="city" [(ngModel)]="model.city_id" id="city"  aria-describedby="cityHelp" [disabled]="!model.province" (change)="getSubdistrict(model.city_id); resetCity();">
+                            <option selected hidden>Please Select Your City</option>
+                            <option *ngFor="let item of listCity" [value]="item.id"> {{ item.kota }} </option>
+                        </select>
+                        <div id="cityHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="subdistrict" class="form-label">Subdistrict</label>
+                        <select class="form-select" name="subdistrict" [(ngModel)]="model.subdistrict_id" id="subdistrict"  aria-describedby="subdistrictHelp" [disabled]="!model.city" (change)="getVillage(model.subdistrict_id); resetSubdistrict();">
+                            <option selected hidden>Please Select Your Subdistrict</option>
+                            <option *ngFor="let item of listSubdistrict" [value]="item.id"> {{ item.kecamatan }} </option>
+                        </select>
+                        <div id="subdistrictHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="village" class="form-label">Village</label>
+                        <select class="form-select" name="village" [(ngModel)]="model.village_id" id="village"  aria-describedby="villageHelp" [disabled]="!model.subdistrict">
+                            <option selected hidden>Please Select Your Village</option>
+                            <option *ngFor="let item of listVillage" [value]="item.id"> {{ item.desa }} </option>
+                        </select>
+                        <div id="villageHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="postal_code" class="form-label">Postal Code</label>
+                        <input type="text" class="form-control" name="postal_code" [(ngModel)]="model.postal_code" id="postal_code" aria-describedby="postal_codeHelp">
+                        <div id="postal_codeHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <textarea type="text" class="form-control" name="address" [(ngModel)]="model.address" id="address" aria-describedby="addressHelp"></textarea>
+                        <div id="addressHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col py-3 text-end">
+                    <button class="btn btn-secondary rounded-1 me-2" (click)="index()">
+                        Back
+                    </button>
+                    <button class="btn btn-primary rounded-1" (click)="save()">
+                        Save
+                    </button>
+                </div>
+            </div>
+          
+        </form>
     </div>
 </section>
 

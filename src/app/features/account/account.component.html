@@ -11,8 +11,8 @@
             <div class="col-md-12">
                 <div class="card rounded-0 mb-5">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="mb-0 text-uppercase fw-bold" style="font-size: 15px;">GALIH SATRIO WIBISONO</div>
-                        <button class="btn btn-sm btn-dark font-p">LOGOUT</button>
+                        <div class="mb-0 text-uppercase fw-bold" style="font-size: 15px;">{{ model.name }}</div>
+                        <button class="btn btn-sm btn-dark font-p" (click)="logout()">LOGOUT</button>
                     </div>
                     <div class="card-body" style="font-size: 14px;">
                       <div>Jl Puter Tengah no.1, Rt 02 Rw 12, Kelurahan Tanjungrejo, Kecamatan Sukun</div>
@@ -20,7 +20,9 @@
                       <div>65147</div>
                       <div>Jawa Timur</div>
                       <div class="mb-3">Indonesia</div>
-                      <button class="btn btn-sm btn-dark font-p">View Address (2)</button>
+                      <a href="javascript:void(0)" class="btn btn-sm btn-dark font-p" [routerLink]="['/address']">
+                        View Address (2)
+                      </a>
                     </div>
                 </div>
 
