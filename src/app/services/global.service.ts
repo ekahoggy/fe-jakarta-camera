@@ -91,11 +91,27 @@ export class GlobalService {
     Swal.fire({ icon: "success", title: title, text: text, timer: timer });
   }
 
-  alertError(title:string, text:string, timer:number = 1500) {
-    Swal.fire({ icon: "error", title: title, text: text, timer: timer });
+  alertError(title:string, text:any, timer:number = 1500) {
+    let message:any = [];
+
+    if (this.isObject(text)) {
+      for (let key in text) {
+        if (text.hasOwnProperty(key)) {
+          message.push(text[key] + '<br>');
+        }
+      }
+      let html = message.join('');
+      Swal.fire({ icon: "error", title: title, html: html, timer: 2000 });
+    } else {
+      Swal.fire({ icon: "error", title: title, text: text, timer: timer });
+    }
   }
 
   alertQuestion(title:string, text:string, timer:number = 1500) {
     Swal.fire({ icon: "question", title: title, text: text, timer: timer });
   }
+
+  isObject(variable:any) {
+    return typeof variable === 'object' && variable !== null;
+}
 }

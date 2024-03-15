@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-address',
@@ -16,22 +17,23 @@ export class AddressComponent {
   listSubdistrict: any = [];
   listCity: any = [];
   listProvince: any = [];
+  auth: any;
  
   constructor(
     private globalService: GlobalService,
   ) { }
 
   ngOnInit(): void {
+    this.auth = this.globalService.getAuth();
     this.empty();
     this.getData();
     this.getProvince();
   }
 
-  empty() {
-  }
+  empty() {}
 
   getData() {
-    this.globalService.DataGet('/address/get', {}).subscribe((res:any) => {
+    this.globalService.DataGet('/address/get', {user_id: this.auth['id']}).subscribe((res:any) => {
       this.listData = res.data;
     });
   }
@@ -40,6 +42,7 @@ export class AddressComponent {
     this.pageTitle = 'My Address';
     this.isForm = false;
     this.isEdit = false;
+    this.getData();
   }
 
   create() {
@@ -48,17 +51,24 @@ export class AddressComponent {
     this.isEdit = false;
     this.model = {};
     this.model.phone_code =  '+62';
+    this.model.user_id = this.auth['id'];
   }
 
-  edit(val:any) {
+  edit(id:any) {
     this.pageTitle = 'Edit Address';
     this.isForm = true;
     this.isEdit = true;
-    this.model = val;
-    this.getProvince();
-    this.getCity(val.province_id);
-    this.getSubdistrict(val.city_id);
-    this.getVillage(val.subdistrict_id);
+    this.getById(id);
+  }
+
+  getById(id:any) {
+    this.globalService.DataGet('/address/edit', {id:id}).subscribe((res:any) => {
+      this.model = res.data;
+      this.getProvince();
+      this.getCity(this.model.province_id);
+      this.getSubdistrict(this.model.city_id);
+      this.getVillage(this.model.subdistrict_id);
+    });
   }
 
   save() {
@@ -67,7 +77,25 @@ export class AddressComponent {
       this.listVillage = res.data;
       this.globalService.alertSuccess('Success', res.message)
       this.index();
-    })
+    }, (error:any) => {
+      this.globalService.alertError('Sorry', error.error.message);
+    });
+  }
+
+  delete(id:any) {
+    Swal.fire({
+      title: "Are you sure you want to delete this address?",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete",
+      confirmButtonColor: "#dc3545",
+      icon: "question"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.globalService.DataPost('/address/delete', {id:id}).subscribe((res:any ) => {
+          this.getData();
+        });
+      } 
+    });
   }
 
   getProvince() {
@@ -95,17 +123,35 @@ export class AddressComponent {
   }
 
   resetProvince() {
-    this.model.city = null;
-    this.model.subdistrict = null;
-    this.model.village = null;
+    this.model.city_id = null;
+    this.model.subdistrict_id = null;
+    this.model.village_id = null;
   }
 
   resetCity() {
-    this.model.subdistrict = null;
-    this.model.village = null;
+    this.model.subdistrict_id = null;
+    this.model.village_id = null;
   }
 
   resetSubdistrict() {
-    this.model.village = null;
+    this.model.village_id = null;
+  }
+
+  changeActive(id:any) {
+    Swal.fire({
+      title: "Are you sure you want to activated this address?",
+      showCancelButton: true,
+      confirmButtonText: "Yes, activated",
+      confirmButtonColor: "#33b035",
+      icon: "question"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.globalService.DataPost('/address/update', { id: id }).subscribe((res:any) => {
+          this.globalService.alertSuccess('Success', 'Successfuly to change active address');
+          this.getData();
+        })
+      } 
+    });
+   
   }
 }

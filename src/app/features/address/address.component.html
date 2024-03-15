@@ -24,8 +24,13 @@
                                 <span style="font-size: 15px;"> ({{item.phone_code}}) {{ item.phone_number }}</span>
                             </div>
                             <div>
-                                <button class="btn btn-sm btn-primary rounded-0 font-p me-1" (click)="edit(item)">Edit</button>
-                                <button class="btn btn-sm btn-danger rounded-0 font-p">Delete</button>
+                                <button class="btn btn-sm btn-success rounded-0 font-p me-1" *ngIf="item.active == 1">
+                                    <span class="iconify mb-1" data-icon="tabler:home-check"></span> 
+                                    Active
+                                </button>
+                                <button class="btn btn-sm btn-outline-success rounded-0 font-p me-1" *ngIf="item.active == 0" (click)="changeActive(item.id)">Activate</button>
+                                <button class="btn btn-sm btn-primary rounded-0 font-p me-1" (click)="edit(item.id)">Edit</button>
+                                <button class="btn btn-sm btn-danger rounded-0 font-p" (click)="delete(item.id)">Delete</button>
                             </div>
                         </div>
                         <div class="card-body pb-4" style="font-size: 14px;">
@@ -72,46 +77,53 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="phone_number" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone_number" name="phone_number" [(ngModel)]="model.phone_number" aria-describedby="phoneHelp">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"> +62 </span>
+                            <input type="tel" class="form-control" id="phone_number" name="phone_number" [(ngModel)]="model.phone_number" aria-describedby="phoneHelp">
+                        </div>
                         <div id="phoneHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="province" class="form-label">Province</label>
-                        <select class="form-select" name="province" [(ngModel)]="model.province_id" id="province"  aria-describedby="provinceHelp" (change)="getCity(model.province_id); resetProvince();">
-                            <option selected hidden>Please Select Your Province</option>
-                            <option *ngFor="let item of listProvince" [value]="item.id"> {{ item.provinsi }} </option>
+                        <label for="province_id" class="form-label">Province</label>
+                        <select class="form-select" name="province_id" [(ngModel)]="model.province_id" id="province_id"  aria-describedby="provinceHelp" (change)="getCity(model.province_id); resetProvince();">
+                            <ng-container *ngFor="let item of listProvince">
+                                <option [value]="item.id"> {{ item.provinsi }} </option>
+                            </ng-container>
                         </select>
                         <div id="provinceHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="city" class="form-label">City</label>
-                        <select class="form-select" name="city" [(ngModel)]="model.city_id" id="city"  aria-describedby="cityHelp" [disabled]="!model.province" (change)="getSubdistrict(model.city_id); resetCity();">
-                            <option selected hidden>Please Select Your City</option>
-                            <option *ngFor="let item of listCity" [value]="item.id"> {{ item.kota }} </option>
+                        <label for="city_id" class="form-label">City</label>
+                        <select class="form-select" name="city_id" [(ngModel)]="model.city_id" id="city_id"  aria-describedby="cityHelp" [disabled]="!model.province_id" (change)="getSubdistrict(model.city_id); resetCity();">
+                            <ng-container *ngFor="let item of listCity">
+                                <option [value]="item.id"> {{ item.kota }} </option>
+                            </ng-container>
                         </select>
                         <div id="cityHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="subdistrict" class="form-label">Subdistrict</label>
-                        <select class="form-select" name="subdistrict" [(ngModel)]="model.subdistrict_id" id="subdistrict"  aria-describedby="subdistrictHelp" [disabled]="!model.city" (change)="getVillage(model.subdistrict_id); resetSubdistrict();">
-                            <option selected hidden>Please Select Your Subdistrict</option>
-                            <option *ngFor="let item of listSubdistrict" [value]="item.id"> {{ item.kecamatan }} </option>
+                        <label for="subdistrict_id" class="form-label">Subdistrict</label>
+                        <select class="form-select" name="subdistrict_id" [(ngModel)]="model.subdistrict_id" id="subdistrict_id"  aria-describedby="subdistrictHelp" [disabled]="!model.city_id" (change)="getVillage(model.subdistrict_id); resetSubdistrict();">
+                            <ng-container *ngFor="let item of listSubdistrict">
+                                <option [value]="item.id"> {{ item.kecamatan }} </option>
+                            </ng-container>
                         </select>
                         <div id="subdistrictHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="village" class="form-label">Village</label>
-                        <select class="form-select" name="village" [(ngModel)]="model.village_id" id="village"  aria-describedby="villageHelp" [disabled]="!model.subdistrict">
-                            <option selected hidden>Please Select Your Village</option>
-                            <option *ngFor="let item of listVillage" [value]="item.id"> {{ item.desa }} </option>
+                        <label for="village_id" class="form-label">Village</label>
+                        <select class="form-select" name="village_id" [(ngModel)]="model.village_id" id="village_id"  aria-describedby="villageHelp" [disabled]="!model.subdistrict_id">
+                            <ng-container *ngFor="let item of listVillage">
+                                <option [value]="item.id"> {{ item.desa }} </option>
+                            </ng-container>
                         </select>
                         <div id="villageHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
