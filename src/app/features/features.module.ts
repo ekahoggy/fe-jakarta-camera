@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { AddressComponent } from './address/address.component';
+import { NewsComponent } from './news/news.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AddressComponent } from './address/address.component';
     LoginComponent,
     RegisterComponent,
     AccountComponent,
-    AddressComponent
+    AddressComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,

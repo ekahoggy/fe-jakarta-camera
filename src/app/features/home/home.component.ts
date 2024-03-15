@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   listSlider: any = [];
   listProduct: any = [];
   listCategory: any = [];
+  statusPopup: boolean = true;
 
   constructor(
     private globalService: GlobalService,
@@ -138,5 +139,9 @@ export class HomeComponent implements OnInit {
     this.globalService.DataGet('/public/kategori').subscribe((res:any) => {
       this.listCategory = res.data;
     })
+  }
+
+  closePopup(){
+    this.statusPopup = false;
   }
 }

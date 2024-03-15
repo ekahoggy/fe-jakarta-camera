@@ -3,7 +3,8 @@ a {
   color: #777;
 }
 
-::ng-deep .carousel-control-prev, ::ng-deep .carousel-control-next {
+::ng-deep .carousel-control-prev,
+::ng-deep .carousel-control-next {
   width: 5% !important;
 }
 
@@ -17,14 +18,14 @@ a {
 
 .category {
   .wrap-category {
-    background-color: #FAFAFA; 
-    width: 100%; 
+    background-color: #FAFAFA;
+    width: 100%;
     max-width: 150px;
     font-size: 12px;
     color: black;
     font-weight: bold;
   }
-  
+
   .wrap-category:hover {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     background-color: #E8F1F5;
@@ -49,28 +50,35 @@ a {
 }
 
 .products {
-  ::ng-deep .swiper-button-prev, ::ng-deep  .swiper-button-next {
+
+  ::ng-deep .swiper-button-prev,
+  ::ng-deep .swiper-button-next {
     top: 30%;
   }
 
-  ::ng-deep .swiper-button-prev:after, ::ng-deep .swiper-button-next:after {
+  ::ng-deep .swiper-button-prev:after,
+  ::ng-deep .swiper-button-next:after {
     font-size: 25px;
     color: black;
   }
 
-  ::ng-deep .swiper-button-next, .swiper-rtl .swiper-button-prev  {
+  ::ng-deep .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
     right: 0px;
   }
 
-  ::ng-deep .swiper-button-prev, .swiper-rtl .swiper-button-next {
+  ::ng-deep .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
     left: 0px;
   }
 
   .wrap-image {
-    max-height: 280px; height: 280px;
+    max-height: 280px;
+    height: 280px;
 
     img {
-      max-height: 280px; height: 280px;
+      max-height: 280px;
+      height: 280px;
     }
 
     .btn {
@@ -83,6 +91,7 @@ a {
 
   .wrap-image:hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
     .btn {
       display: inline;
     }
@@ -93,4 +102,61 @@ a {
   @media only screen and (min-width: 1200px) {
     margin-top: 30px;
   }
+}
+
+.popup {
+  display: block;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background-color: #212121;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 200px;
+  z-index: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14),
+    0 1px 18px 0 rgba(0, 0, 0, 0.12);
+
+  p {
+    font-size: 14px;
+    padding-top: 10px;
+  }
+}
+
+.popup-close {
+  display: none !important;
+}
+
+.popup-content {
+  text-align: center;
+
+  img {
+    border-radius: 10px;
+    border: 5px solid white;
+  }
+}
+
+.close {
+  color: white;
+  float: right;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  border: 1px solid #212121;
+  background: #212121;
+  border-radius: 50px;
+  width: 25px;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+.close:hover,
+.close:focus {
+  color: #aaaa;
+  text-decoration: none;
+  cursor: pointer;
 }

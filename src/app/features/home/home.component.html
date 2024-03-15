@@ -328,6 +328,15 @@
     </div>
   </div>
 </section>
+
+<div id="popup" [ngClass]="statusPopup ? 'popup' : 'popup popup-close'">
+  <div class="popup-content">
+      <span class="close" id="closePopup" (click)="closePopup()">&times;</span>
+      <img src="https://source.unsplash.com/random/140x140?camera=1" class="object-fit-cover" width="140" height="140" />
+      <p>Dapatkan Promo Menarik untuk pelanggan baru Jakarta Camera</p>
+  </div>
+</div>
+
 <app-foot-menu class="d-block d-lg-none"></app-foot-menu>
 <app-footer class="d-none d-lg-block"></app-footer>
 

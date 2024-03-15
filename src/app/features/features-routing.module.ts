@@ -11,11 +11,12 @@ import { AccountComponent } from './account/account.component';
 import { AddressComponent } from './address/address.component';
 import { AuthGuard } from '../services/guards/auth.guard';
 import { GuestGuard } from '../services/guards/guest.guard';
+import { NewsComponent } from './news/news.component';
 
 const routes: Routes = [
   {
-    path: '', 
-    redirectTo: 'home', 
+    path: '',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
     path: 'address',
     component: AddressComponent,
     canActivate: [GuestGuard]
+  },
+  {
+    path: 'news',
+    component: NewsComponent
   },
 ];
 
