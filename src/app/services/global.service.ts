@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
