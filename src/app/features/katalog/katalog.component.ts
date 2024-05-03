@@ -39,7 +39,7 @@ export class KatalogComponent {
 
   getProduct(event:string = '') {
     this.globalService.DataGet('/public/katalog', { kategori: event ? event : '' }).subscribe((res:any) => {
-      this.listProduct = res.data;
+      this.listProduct = res.data.list;
     })
   }
 

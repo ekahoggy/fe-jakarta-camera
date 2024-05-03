@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
 
   getData() {
     let params = {
-      'user_id': this.globalService.getAuth()['id']
+      'user_id': this.globalService.getAuth()['user']['id']
     }
     this.globalService.DataGet('/cart/get', params).subscribe((res:any ) => {
       this.listData = res.data;

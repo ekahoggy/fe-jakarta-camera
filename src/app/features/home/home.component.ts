@@ -131,7 +131,7 @@ export class HomeComponent implements OnInit {
 
   getProduct() {
     this.globalService.DataGet('/public/produk').subscribe((res:any) => {
-      this.listProduct = res.data;
+      this.listProduct = res.data.list;
     })
   }
 

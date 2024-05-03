@@ -2,21 +2,21 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-lg-2 text-center mb-1">
-        <a href="javascript:void(0)"><span class="fw-bold fs-6 text-primary">Shopping Cart</span></a>
+        <a href="javascript:void(0)"><span class="fw-bold text-primary">Shopping Cart</span></a>
       </div>
       <div class="col-1 d-none d-lg-block text-center">
-        <span class="iconify text-grey fs-6" data-icon="ion:chevron-right"></span>
+        <span class="iconify text-grey" data-icon="ion:chevron-right"></span>
+      </div>
+      <div class="col-12 col-lg-3 text-center mb-1">
+        <span class="iconify text-grey me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
+        <a href="javascript:void(0)"><span class="fw-bold text-primary">Procced To Checkout</span></a>
+      </div>
+      <div class="col-1 d-none d-lg-block text-center">
+        <span class="iconify text-grey" data-icon="ion:chevron-right"></span>
       </div>
       <div class="col-12 col-lg-2 text-center mb-1">
         <span class="iconify text-grey me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
-        <a href="javascript:void(0)"><span class="fw-bold fs-6">Procced To Checkout</span></a>
-      </div>
-      <div class="col-1 d-none d-lg-block text-center">
-        <span class="iconify text-grey fs-6" data-icon="ion:chevron-right"></span>
-      </div>
-      <div class="col-12 col-lg-2 text-center mb-1">
-        <span class="iconify text-grey me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
-        <a href="javascript:void(0)"><span class="fw-bold fs-6">Order Complete</span></a>
+        <a href="javascript:void(0)"><span class="fw-bold">Order Complete</span></a>
       </div>
     </div>
   </div>
@@ -97,44 +97,33 @@
       <div class="col-lg-6 col-xl-5">
         <div class="cart-total border border-2 border-secondary border-opacity-10 p-4">
           <table class="w-100">
-            <tr height="100">
+            <tr height="110" *ngFor="let item of listCart; index as i">
               <td width="30%">
                 <div class="image-thumbnail" style="width: 100%; max-width: 100px;">
-                  <img src="assets/img/jam.webp" class="object-fit-cover w-100 h-auto" width="64" height="64" alt="">
+                  <img src="https://source.unsplash.com/random/100x100?camera={{i}}" class="object-fit-cover w-100 h-auto rounded-1" width="64" height="64" alt="">
                 </div>
               </td>
               <td>
-                <p class="mb-0"> Porto Evolution Headset </p>
-                <small>Small / Black</small>
+                <p class="mb-0"> {{ item.nama }} </p>
+                <small>Small / Black</small> <br>
+                <small>{{item.quantity}} x {{item.harga}} </small>
               </td>
-              <td class="text-end">
-                $59.00
-              </td>
-            </tr>
-            <tr height="100">
-              <td width="30%">
-                <div class="image-thumbnail" style="width: 100%; max-width: 100px;">
-                  <img src="assets/img/jam.webp" class="object-fit-cover w-100 h-auto" width="64" height="64" alt="">
-                </div>
-              </td>
-              <td>
-                <p class="mb-0"> Porto Evolution Headset </p>
-                <small>Small / Black</small>
-              </td>
-              <td class="text-end">
-                $59.00
+              <td class="text-end align-bottom">
+                <div class="mb-4">Rp {{ item.harga * item.quantity | number }}</div>
               </td>
             </tr>
           </table>
           <table class="w-100 mt-3">
-            <tr class="mt-3">
-              <td>Subtotal</td><td class="text-end">$59.00</td>
+            <tr height="30" class="mt-3">
+              <td>Subtotal</td>
+              <td class="text-end">Rp {{ subtotal | number }}</td>
             </tr>
-            <tr>
+            <!-- <tr height="30">
               <td>Shipping</td><td class="text-end">$20.00</td>
-            </tr>
-            <tr>
-              <td class="fs-6">Total</td><td class="text-end fs-6">$79.00</td>
+            </tr> -->
+            <tr height="60">
+              <td class="fs-6 fw-semibold">Total</td>
+              <td class="text-end fw-semibold fs-6">Rp {{ total | number }}</td>
             </tr>
           </table>
         </div>
