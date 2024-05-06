@@ -29,32 +29,35 @@
         <form>
           <p class="fs-4">Contact</p>
           <div class="form-group mb-2">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="email" [(ngModel)]="model.email" name="email">
           </div>
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Email me with news and offers</label>
+            <input type="checkbox" class="form-check-input" id="subsribe">
+            <label class="form-check-label" for="subsribe">Email me with news and offers</label>
           </div>
 
           <p class="fs-4">Delivery</p>
           <div class="row">
-            <div class="col-12">
+            <!-- <div class="col-12">
               <div class="form-group mb-2">
                 <label for="exampleInputEmail1" class="form-label">Country/Region</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               </div>
-            </div>
+            </div> -->
             <div class="col-6">
               <div class="form-group mb-2">
-                <label for="exampleInputEmail1" class="form-label">First Name (optional)</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="name" class="form-label">Full Name (optional)</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" [(ngModel)]="model.name" name="name">
               </div>
             </div>
             <div class="col-6">
               <div class="form-group mb-2">
-                <label for="exampleInputEmail1" class="form-label">Last Name</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="phone_number" class="form-label">Phone Number</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="phone_number"> {{ model.phone_code }} </span>
+                  <input type="email" class="form-control" id="phone_number" aria-describedby="phone_number" [(ngModel)]="model.phone_number" name="phone_number">
+                </div>
               </div>
             </div>
             <div class="col-12">

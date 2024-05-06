@@ -11,20 +11,21 @@ export class CheckoutComponent implements OnInit {
   loading: boolean = false;
   subtotal: number = 0;
   total: number = 0;
+  model: any = {};
+  userId: string = "";
 
   constructor(
     private globalService: GlobalService,
   ) { }
 
   ngOnInit() {
+    this.userId = this.globalService.getAuth()['user']['id'];
     this.getData();
+    this.getUserDetail();
   }
 
   getData() {
-    let params = {
-      'user_id': this.globalService.getAuth()['user']['id']
-    }
-    this.globalService.DataGet('/cart/get', params).subscribe((res:any ) => {
+    this.globalService.DataGet('/cart/get', { user_id: this.userId}).subscribe((res:any ) => {
       this.listCart = res.data;
 
       this.subtotal = 0;
@@ -33,6 +34,17 @@ export class CheckoutComponent implements OnInit {
         this.subtotal += (val.harga * val.quantity)
         this.total = this.subtotal;
       })
+    });
+  }
+
+  getUserDetail() {
+    let params = {
+      user_id: this.userId,
+      active: 1
+    }
+    this.globalService.DataGet('/address/main', params).subscribe((res:any ) => {
+      this.model.email = this.globalService.getAuth()['user']['email']; 
+
     });
   }
 }
