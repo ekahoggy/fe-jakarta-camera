@@ -38,60 +38,76 @@
           </div>
 
           <p class="fs-4">Delivery</p>
-          <div class="row">
-            <!-- <div class="col-12">
-              <div class="form-group mb-2">
-                <label for="exampleInputEmail1" class="form-label">Country/Region</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <fieldset disabled="true">
+            <div class="row">
+              <!-- <div class="col-12">
+                <div class="form-group mb-2">
+                  <label for="exampleInputEmail1" class="form-label">Country/Region</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+              </div> -->
+              <div class="col-6">
+                <div class="form-group mb-2">
+                  <label for="recipient" class="form-label">Recipient</label>
+                  <input type="text" class="form-control" id="recipient" [(ngModel)]="model.recipient" name="recipient">
+                </div>
               </div>
-            </div> -->
-            <div class="col-6">
-              <div class="form-group mb-2">
-                <label for="name" class="form-label">Full Name (optional)</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" [(ngModel)]="model.name" name="name">
+              <div class="col-6">
+                <div class="form-group mb-2">
+                  <label for="phone_number" class="form-label">Phone Number</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="phone_number"> {{ model.phone_code }} </span>
+                    <input type="text" class="form-control" id="phone_number" [(ngModel)]="model.phone_number" name="phone_number">
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group mb-2">
-                <label for="phone_number" class="form-label">Phone Number</label>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="phone_number"> {{ model.phone_code }} </span>
-                  <input type="email" class="form-control" id="phone_number" aria-describedby="phone_number" [(ngModel)]="model.phone_number" name="phone_number">
+              <div class="col-12">
+                <div class="form-group mb-2">
+                  <label for="address" class="form-label">Address</label>
+                  <textarea type="text" class="form-control" id="address" [(ngModel)]="model.address" name="address" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group mb-2">
+                  <label for="province_name" class="form-label">Province</label>
+                  <input type="text" class="form-control" id="province_name" [(ngModel)]="model.province_name" name="province_name">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group mb-2">
+                  <label for="city_name" class="form-label">City</label>
+                  <input type="text" class="form-control" id="city_name" [(ngModel)]="model.city_name" name="city_name">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group mb-2">
+                  <label for="subdistrict_name" class="form-label">Subdistrict</label>
+                  <input type="text" class="form-control" id="subdistrict_name" [(ngModel)]="model.subdistrict_name" name="subdistrict_name">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group mb-2">
+                  <label for="village_name" class="form-label">Village</label>
+                  <input type="text" class="form-control" id="village_name" [(ngModel)]="model.village_name" name="village_name">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group mb-2">
+                  <label for="postal_code" class="form-label">Postal Code</label>
+                  <input type="text" class="form-control" id="postal_code" [(ngModel)]="model.postal_code" name="postal_code">
                 </div>
               </div>
             </div>
+          </fieldset>
+          <div class="row">
             <div class="col-12">
-              <div class="form-group mb-2">
-                <label for="exampleInputEmail1" class="form-label">Address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="form-group mb-2">
-                <label for="exampleInputEmail1" class="form-label">City</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group mb-2">
-                <label for="exampleInputEmail1" class="form-label">Province</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group mb-2">
-                <label for="exampleInputEmail1" class="form-label">Postal Code</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="mb-3 form-check">
+              <!-- <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Save this information for next time</label>
-              </div>
+              </div> -->
             </div>
-            <div class="col-12">
-              <button class="btn btn-dark w-100 rounded-0 py-3 fw-bold">Complete Order</button>
+            <div class="col-12 mt-3">
+              <button class="btn btn-dark w-100 rounded-0 py-3 fw-bold" (click)="checkout()">Complete Order</button>
             </div>
           </div>
         </form>
@@ -109,10 +125,10 @@
               <td>
                 <p class="mb-0"> {{ item.nama }} </p>
                 <small>Small / Black</small> <br>
-                <small>{{item.quantity}} x {{item.harga}} </small>
+                <small>{{item.quantity}} x {{item.harga | number}} </small>
               </td>
               <td class="text-end align-bottom">
-                <div class="mb-4">Rp {{ item.harga * item.quantity | number }}</div>
+                <div class="mb-4">Rp {{ item.subtotal_price | number }}</div>
               </td>
             </tr>
           </table>

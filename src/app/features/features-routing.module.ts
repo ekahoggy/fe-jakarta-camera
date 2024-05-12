@@ -12,6 +12,7 @@ import { AddressComponent } from './address/address.component';
 import { AuthGuard } from '../services/guards/auth.guard';
 import { GuestGuard } from '../services/guards/guest.guard';
 import { NewsComponent } from './news/news.component';
+import { CompleteOrderComponent } from './complete-order/complete-order.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+    canActivate: [GuestGuard]
+  },
+  {
+    path: 'complete-order',
+    component: CompleteOrderComponent,
     canActivate: [GuestGuard]
   },
   {

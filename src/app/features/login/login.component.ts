@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
     login() {
         let param = Object.assign(this.model);
-        this.globalService.DataPost('/public/login', param).subscribe((res:any) => {
+        this.globalService.DataPost('/auth/login', param).subscribe((res:any) => {
         if (res.status_code == 200) {
             const userData = btoa(JSON.stringify(res.data))
             localStorage.setItem('session', userData)
