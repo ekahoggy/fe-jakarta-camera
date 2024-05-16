@@ -18,6 +18,7 @@ import { AccountComponent } from './account/account.component';
 import { AddressComponent } from './address/address.component';
 import { NewsComponent } from './news/news.component';
 import { CompleteOrderComponent } from './complete-order/complete-order.component';
+import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CompleteOrderComponent } from './complete-order/complete-order.componen
     AccountComponent,
     AddressComponent,
     NewsComponent,
-    CompleteOrderComponent
+    CompleteOrderComponent,
+    FlashSaleComponent
   ],
   imports: [
     CommonModule,

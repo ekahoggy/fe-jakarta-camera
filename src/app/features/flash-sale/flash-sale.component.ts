@@ -6,11 +6,11 @@ interface CollapseStatus {
 }
 
 @Component({
-	selector: 'app-katalog',
-	templateUrl: './katalog.component.html',
-	styleUrls: ['./katalog.component.scss']
+	selector: 'app-flash-sale',
+	templateUrl: './flash-sale.component.html',
+	styleUrls: ['./flash-sale.component.scss']
 })
-export class KatalogComponent {
+export class FlashSaleComponent {
 	isCollapsedChild: CollapseStatus = {};
 	isCollapsed = {
 		categories: false,
