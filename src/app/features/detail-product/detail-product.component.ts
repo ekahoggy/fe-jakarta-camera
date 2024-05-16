@@ -93,7 +93,7 @@ export class DetailProductComponent implements OnInit {
       this.router.navigate(['/login']);
     } else {
       let params = {
-        user_id: this.globalService.getAuth()['id'],
+        user_id: this.globalService.getAuth()['user']['id'],
         product_id: this.model.id,
         quantity: this.model.quantity
       }

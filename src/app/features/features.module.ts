@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { AddressComponent } from './address/address.component';
 import { NewsComponent } from './news/news.component';
+import { CompleteOrderComponent } from './complete-order/complete-order.component';
+import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { NewsComponent } from './news/news.component';
     RegisterComponent,
     AccountComponent,
     AddressComponent,
-    NewsComponent
+    NewsComponent,
+    CompleteOrderComponent,
+    FlashSaleComponent
   ],
   imports: [
     CommonModule,

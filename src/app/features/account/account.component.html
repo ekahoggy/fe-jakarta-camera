@@ -15,11 +15,11 @@
                         <button class="btn btn-sm btn-dark font-p" (click)="logout()">LOGOUT</button>
                     </div>
                     <div class="card-body" style="font-size: 14px;">
-                      <div>Jl Puter Tengah no.1, Rt 02 Rw 12, Kelurahan Tanjungrejo, Kecamatan Sukun</div>
-                      <div>Malang</div>
-                      <div>65147</div>
-                      <div>Jawa Timur</div>
-                      <div class="mb-3">Indonesia</div>
+                      <div class="text-uppercase">{{ address.address }}, {{ address.village_name }}, {{ address.subdistrict_name }}</div>
+                      <div>{{ address.city }}</div>
+                      <div>{{ address.postal_code }}</div>
+                      <div class="mb-3">{{ address.province_name }}</div>
+                      <!-- <div class="mb-3">Indonesia</div> -->
                       <a href="javascript:void(0)" class="btn btn-sm btn-dark font-p" [routerLink]="['/address']">
                         View Address (2)
                       </a>

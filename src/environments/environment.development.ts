@@ -1,6 +1,6 @@
-let apiURL = 'https://jakartacamera-admin.moodstudio.id/api/v1';
-let originalImageURL = 'https://jakartacamera-admin.moodstudio.id/img/media/originals/';
-let productImageURL = 'https://jakartacamera-admin.moodstudio.id/img/media/product/';
+let apiURL = 'https://apijakartacamera.moodstudio.id/api/v1';
+let originalImageURL = 'https://apijakartacamera.moodstudio.id/img/media/originals/';
+let productImageURL = 'https://apijakartacamera.moodstudio.id/img/media/product/';
 
 if (window.location.hostname == 'localhost') {
   apiURL = 'http://localhost:8000/api/v1';

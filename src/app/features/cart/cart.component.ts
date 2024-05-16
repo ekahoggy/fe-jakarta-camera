@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 export class CartComponent implements OnInit {
   listData: any;
   loading: boolean = false;
+  subTotal: number = 0;
+  grandTotal: number = 0;
 
   constructor(
     private globalService: GlobalService,
@@ -21,10 +23,11 @@ export class CartComponent implements OnInit {
 
   getData() {
     let params = {
-      'user_id': this.globalService.getAuth()['id']
+      'user_id': this.globalService.getAuth()['user']['id']
     }
     this.globalService.DataGet('/cart/get', params).subscribe((res:any ) => {
       this.listData = res.data;
+      this.kalkulasi();
     });
   }
 
@@ -51,7 +54,8 @@ export class CartComponent implements OnInit {
     this.loading = true;
     let data = Object.assign(model);
     this.globalService.DataPost('/cart/update', data).subscribe((res:any ) => {
-      this.getData();
+      // this.getData();
+      this.kalkulasi();
       this.loading = false;
     });
   }
@@ -70,5 +74,16 @@ export class CartComponent implements OnInit {
         });
       } 
     });
+  }
+
+  kalkulasi() {
+    this.subTotal = 0;
+    this.grandTotal = 0;
+    if (this.listData.length > 0) {
+      this.listData.forEach((val:any) => {
+        this.subTotal += (val.harga * val.quantity)
+        this.grandTotal += (val.harga * val.quantity)
+      })
+    }
   }
 }

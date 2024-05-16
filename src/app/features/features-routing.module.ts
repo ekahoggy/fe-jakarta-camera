@@ -12,6 +12,8 @@ import { AddressComponent } from './address/address.component';
 import { AuthGuard } from '../services/guards/auth.guard';
 import { GuestGuard } from '../services/guards/guest.guard';
 import { NewsComponent } from './news/news.component';
+import { CompleteOrderComponent } from './complete-order/complete-order.component';
+import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 
 const routes: Routes = [
   {
@@ -56,6 +58,11 @@ const routes: Routes = [
     canActivate: [GuestGuard]
   },
   {
+    path: 'complete-order',
+    component: CompleteOrderComponent,
+    canActivate: [GuestGuard]
+  },
+  {
     path: 'account',
     component: AccountComponent,
     canActivate: [GuestGuard]
@@ -68,6 +75,10 @@ const routes: Routes = [
   {
     path: 'news',
     component: NewsComponent
+  },
+  {
+    path: 'flash-sale',
+    component: FlashSaleComponent
   },
 ];
 

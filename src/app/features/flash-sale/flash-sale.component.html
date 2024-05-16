@@ -1,0 +1,70 @@
+<section class="breadcrumb mt-lg-5">
+    <div class="container">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">
+                        <span class="iconify mb-1 fs-5" data-icon="ic:outline-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active"><a href="#">FLASH SALE</a></li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section class="content pb-3 pb-lg-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control rounded-0 font-p" id="search" placeholder="Search the product flash sale" aria-describedby="search-flash">
+                    <button class="btn btn-outline-secondary rounded-0 text-dark" type="button" id="search-flash">         
+                        <i class='bx bx-search-alt fs-4'></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <ng-container *ngIf="listProduct.length > 0">
+                        <div class="col-6 col-md-4 col-xl-3 " *ngFor="let item of listProduct; index as i">
+                            <a href="javascript:void(0)" routerLink="/detail/{{ item.slug }}">
+                                <div class="square-image wrap-image">
+                                    <img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover w-100" width="280" height="280" alt="Random second slide" />
+                                    <button class="btn btn-info rounded-0 font-p position-relative w-100 py-md-3">QUICK VIEW</button>
+                                </div>
+                                <div class="detail p-2 p-lg-3">
+                                    <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+                                    <p class="product-name mb-0 font-p"> {{item.nama}} </p>
+                                    <!-- <div class="rating">
+                                        <span class="iconify text-warning" data-icon="uis:star"></span>
+                                        <span class="iconify text-warning" data-icon="uis:star"></span>
+                                        <span class="iconify text-black-50" data-icon="uis:star"></span>
+                                        <span class="iconify text-black-50" data-icon="uis:star"></span>
+                                        <span class="iconify text-black-50" data-icon="uis:star"></span>
+                                    </div> -->
+                                    <span class="text-decoration-line-through" style="color: rgb(175, 175, 175); font-size: 14px;">Rp 50,000</span>
+                                    <span>
+                                        <i class='bx bxs-bolt'></i>-12%
+                                    </span>
+                                    <p class="price text-primary">Rp {{ item.harga | number }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="listProduct.length == 0">
+                        <div class="col text-center">
+                            <img src="assets/img/undraw/empty.png" style="width: 400px;" width="200" height="200" alt="empty">
+                            <p class="fs-3 fw-bold">Not Found</p>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-foot-menu class="d-block d-lg-none"></app-foot-menu>
+<app-footer class="d-none d-lg-block"></app-footer>
