@@ -4,6 +4,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperModule } from 'swiper/angular';
 import { FormsModule } from '@angular/forms';
+import { CountdownModule } from 'ngx-countdown';
 
 import { FeaturesRoutingModule } from './features-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +20,8 @@ import { AddressComponent } from './address/address.component';
 import { NewsComponent } from './news/news.component';
 import { CompleteOrderComponent } from './complete-order/complete-order.component';
 import { FlashSaleComponent } from './flash-sale/flash-sale.component';
+import { ServisKameraComponent } from './servis-kamera/servis-kamera.component';
+import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
 
 
 @NgModule({
@@ -34,7 +37,9 @@ import { FlashSaleComponent } from './flash-sale/flash-sale.component';
     AddressComponent,
     NewsComponent,
     CompleteOrderComponent,
-    FlashSaleComponent
+    FlashSaleComponent,
+    ServisKameraComponent,
+    PasangCctvComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +48,8 @@ import { FlashSaleComponent } from './flash-sale/flash-sale.component';
     NgbModule,
     LayoutsModule,
     SwiperModule,
-    FormsModule
+    FormsModule,
+    CountdownModule
   ],
   exports: []
 })

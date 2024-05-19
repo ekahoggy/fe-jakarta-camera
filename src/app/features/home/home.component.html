@@ -116,6 +116,9 @@
 				<div class="fw-bolder text-primary border-primary border-2 me-4" style="font-size: 15px;">
 					FLASH SALE
 					<i class='bx bxs-bolt'></i>
+					<span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
+						<countdown [config]="{leftTime: 4000}"></countdown>
+					</span>
 				</div>
 				<a href="javascript:void(0)" [routerLink]="['/flash-sale']">
 					See All 
@@ -164,10 +167,8 @@
 	<div class="filter-bar border-bottom">
 		<div class="container">
 			<div class="d-flex">
-				<div class="fw-bolder text-primary border-bottom border-primary border-2 pb-2 me-4"
-					style="font-size: 13px;">FEATURED PRODUCTS</div>
-				<div class="fw-bolder border-bottom border-dark border-2 pb-2 me-4" style="font-size: 13px;">LATEST
-					PRODUCTS</div>
+				<div class="fw-bolder text-primary border-bottom border-primary border-2 pb-2 me-4" style="font-size: 13px;">FEATURED PRODUCTS</div>
+				<div class="fw-bolder border-bottom border-dark border-2 pb-2 me-4" style="font-size: 13px;">LATEST PRODUCTS</div>
 			</div>
 		</div>
 	</div>

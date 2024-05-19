@@ -14,6 +14,8 @@ import { GuestGuard } from '../services/guards/guest.guard';
 import { NewsComponent } from './news/news.component';
 import { CompleteOrderComponent } from './complete-order/complete-order.component';
 import { FlashSaleComponent } from './flash-sale/flash-sale.component';
+import { ServisKameraComponent } from './servis-kamera/servis-kamera.component';
+import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
 
 const routes: Routes = [
   {
@@ -79,6 +81,14 @@ const routes: Routes = [
   {
     path: 'flash-sale',
     component: FlashSaleComponent
+  },
+  {
+    path: 'service/camera',
+    component: ServisKameraComponent
+  },
+  {
+    path: 'service/pasang-cctv',
+    component: PasangCctvComponent
   },
 ];
 

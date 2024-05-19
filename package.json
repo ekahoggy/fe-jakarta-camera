@@ -22,6 +22,7 @@
     "@popperjs/core": "^2.11.6",
     "@sweetalert2/ngx-sweetalert2": "^12.3.0",
     "bootstrap": "^5.3.2",
+    "ngx-countdown": "^16.0.0",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.10.6",
     "swiper": "^8.4.6",
