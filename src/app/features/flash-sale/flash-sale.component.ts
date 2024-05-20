@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
+import { CountdownComponent } from 'ngx-countdown';
+
 interface CollapseStatus {
 	[key: string]: boolean;
 }
@@ -17,13 +19,12 @@ export class FlashSaleComponent {
 		prices: false,
 		availability: false,
 	}
-
 	listProduct: any = [];
 	listCategory: any;
 
 	constructor(
 		private route: ActivatedRoute,
-		private globalService: GlobalService,
+		private globalService: GlobalService
 	) { }
 
 	ngOnInit() {
@@ -31,8 +32,6 @@ export class FlashSaleComponent {
 			const slug = params['slug'];
 			this.getProduct(slug);
 		});
-
-
 		this.getCategories();
 	}
 

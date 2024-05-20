@@ -7,6 +7,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
 import { AuthGuard } from './services/guards/auth.guard';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthGuard } from './services/guards/auth.guard';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    CountdownModule,
     SweetAlert2Module.forRoot()
   ],
   providers: [AuthGuard],
