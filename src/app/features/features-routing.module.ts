@@ -16,6 +16,7 @@ import { CompleteOrderComponent } from './complete-order/complete-order.componen
 import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 import { ServisKameraComponent } from './servis-kamera/servis-kamera.component';
 import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
+import { EducationModule } from './education/education.module';
 
 const routes: Routes = [
   {
@@ -90,6 +91,10 @@ const routes: Routes = [
     path: 'service/pasang-cctv',
     component: PasangCctvComponent
   },
+  {
+    path: 'education',
+    loadChildren: () => import('./education/education.module').then((m) => m.EducationModule),
+  }
 ];
 
 @NgModule({
