@@ -2,8 +2,8 @@
     <div class="container text-center py-5" style="font-size: 12px;">
         <a [routerLink]="['/']" routerLinkActive="router-link-active" class="text-light" href="javascript:void(0)">HOME</a> 
         <span class="iconify text-light ms-2 me-1" data-icon="ion:chevron-right"></span> 
-        <span class="text-light">SIGN UP</span>
-        <h1 class="text-light fw-bold fs-2 font-p mt-2">Sign Up</h1>
+        <span class="text-light">SIGN IN</span>
+        <h1 class="text-light fw-bold fs-2 font-p mt-2">Sign In</h1>
     </div>
 </section>
 
@@ -14,9 +14,9 @@
                 <h2 class="font-p fw-bold fs-4 mb-3">Login</h2>
                 <form (ngSubmit)="login()">
                     <div class="mb-3">
-                        <div class="alert alert-danger alert-dismissible fade show" *ngIf="isError">
-                            <strong> {{ isPesan }} </strong>
-                            <button type="button" class="btn-close" (click)="isError = false"></button>
+                        <div class="text-danger fade show font-p" *ngIf="isError">
+                            {{ isPesan }}
+                            <!-- <button type="button" class="btn-close btn-sm" (click)="isError = false"></button> -->
                         </div>
                     </div>
                     <div class="mb-3">

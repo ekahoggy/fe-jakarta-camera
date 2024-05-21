@@ -25,22 +25,22 @@ export class LoginComponent implements OnInit {
 
     empty() {
         this.model = {
-        email: '',
-        password: ''
+            email: '',
+            password: ''
         }
     }
 
     login() {
         let param = Object.assign(this.model);
         this.globalService.DataPost('/auth/login', param).subscribe((res:any) => {
-        if (res.status_code == 200) {
-            const userData = btoa(JSON.stringify(res.data))
-            localStorage.setItem('session', userData)
-            this.router.navigate(['home']);
-        } 
+            if (res.status_code == 200) {
+                const userData = btoa(JSON.stringify(res.data))
+                localStorage.setItem('session', userData)
+                this.router.navigate(['home']);
+            }
         }, (error:any) => {
             this.isError = true;
-            this.isPesan = 'Email atau password salah!';
+            this.isPesan = 'Email or password is wrong!';
         });
     }
 }

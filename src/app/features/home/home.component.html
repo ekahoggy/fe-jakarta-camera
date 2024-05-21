@@ -46,7 +46,7 @@
 	</div>
 </section>
 
-<section class="category pt-5">
+<section class="category py-5">
 	<div class="container">
 		<div class="row">
 			<ng-container *ngFor="let item of listCategory">
@@ -63,7 +63,7 @@
 	</div>
 </section>
 
-<section class="product-promo py-5">
+<!-- <section class="product-promo py-5">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-10 col-md-6 col-lg-4">
@@ -107,7 +107,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <section class="flash-sale mb-5">
 	<div class="filter-bar">
@@ -296,22 +296,25 @@
 		<div class="row border-bottom py-5">
 			<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configBrand">
 				<ng-template swiperSlide>
-					<img src="assets/img/brand/david_smith.png" alt="">
+					<img src="../../../assets/img/brand/sekonic-light-meter-logo-1.webp" width="150" alt="">
 				</ng-template>
 				<ng-template swiperSlide>
-					<img src="assets/img/brand/rj.png" alt="">
+					<img src="../../../assets/img/brand/tamron-lens-logo-1.webp" width="150" alt="">
 				</ng-template>
 				<ng-template swiperSlide>
-					<img src="assets/img/brand/golder grid.png" alt="">
+					<img src="../../../assets/img/brand/vanguard-camera-logo-1.webp" width="150" alt="">
 				</ng-template>
 				<ng-template swiperSlide>
-					<img src="assets/img/brand/climb the mountain.png" alt="">
+					<img src="../../../assets/img/brand/laowa-lens-logo-1.webp" width="150" alt="">
 				</ng-template>
 				<ng-template swiperSlide>
-					<img src="assets/img/brand/golden.png" alt="">
+					<img src="../../../assets/img/brand/bushnell-logo-1.webp" width="150" alt="">
 				</ng-template>
 				<ng-template swiperSlide>
-					<img src="assets/img/brand/avant garde.png" alt="">
+					<img src="../../../assets/img/brand/e-image-tripod-logo-1.webp" width="150" alt="">
+				</ng-template>
+				<ng-template swiperSlide>
+					<img src="../../../assets/img/brand/samllrig-logo-1.webp" width="150" alt="">
 				</ng-template>
 			</swiper>
 		</div>
@@ -319,6 +322,115 @@
 </section>
 
 <section class="product-filter py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 mb-4">
+				<div class="d-flex justify-content-between align-items-center">
+					<h3 class="fw-bold fs-5">NEWS</h3>
+					<a href="javascript:void(0)" class="text-grey" [routerLink]="['/news']"> 
+						View more 
+						<i class="bx bx-chevron-right"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-6 col-xl-4 mb-3">
+				<div class="row">
+					<div class="col-12 mb-3 px-1 px-lg-3">
+						<div class="d-flex align-items-center justify-content-start">
+							<img src="https://source.unsplash.com/random/140x140?camera={{6}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+							<div class="detail p-2 p-lg-3">
+								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+								<small class="text-grey">December 06, 2016</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 mb-3 px-1 px-lg-3">
+						<div class="d-flex align-items-center justify-content-start">
+							<img src="https://source.unsplash.com/random/140x140?camera={{5}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+							<div class="detail p-2 p-lg-3">
+								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+								<small class="text-grey">December 06, 2016</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 mb-3 px-1 px-lg-3">
+						<div class="d-flex align-items-center justify-content-start">
+							<img src="https://source.unsplash.com/random/140x140?camera={{8}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+							<div class="detail p-2 p-lg-3">
+								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+								<small class="text-grey">December 06, 2016</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-xl-4 mb-3">
+				<div class="row">
+					<div class="col-12 mb-3 px-1 px-lg-3">
+						<div class="d-flex align-items-center justify-content-start">
+							<img src="https://source.unsplash.com/random/140x140?camera={{12}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+							<div class="detail p-2 p-lg-3">
+								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+								<small class="text-grey">December 06, 2016</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 mb-3 px-1 px-lg-3">
+						<div class="d-flex align-items-center justify-content-start">
+							<img src="https://source.unsplash.com/random/140x140?camera={{10}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+							<div class="detail p-2 p-lg-3">
+								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+								<small class="text-grey">December 06, 2016</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 mb-3 px-1 px-lg-3">
+						<div class="d-flex align-items-center justify-content-start">
+							<img src="https://source.unsplash.com/random/140x140?camera={{32}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+							<div class="detail p-2 p-lg-3">
+								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+								<small class="text-grey">December 06, 2016</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-xl-4 mb-3">
+				<div class="row">
+					<div class="col-12 mb-3 px-1 px-lg-3">
+						<div class="d-flex align-items-center justify-content-start">
+							<img src="https://source.unsplash.com/random/140x140?camera={{1}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+							<div class="detail p-2 p-lg-3">
+								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+								<small class="text-grey">December 06, 2016</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 mb-3 px-1 px-lg-3">
+						<div class="d-flex align-items-center justify-content-start">
+							<img src="https://source.unsplash.com/random/140x140?camera={{2}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+							<div class="detail p-2 p-lg-3">
+								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+								<small class="text-grey">December 06, 2016</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 mb-3 px-1 px-lg-3">
+						<div class="d-flex align-items-center justify-content-start">
+							<img src="https://source.unsplash.com/random/140x140?camera={{3}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+							<div class="detail p-2 p-lg-3">
+								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+								<small class="text-grey">December 06, 2016</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- <section class="product-filter py-5">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-xl-4 mb-3">
@@ -404,7 +516,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <div id="popup" [ngClass]="statusPopup ? 'popup' : 'popup popup-close'">
 	<div class="popup-content">

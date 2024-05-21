@@ -43,22 +43,12 @@
                         </div>
                     </div>
                 </ng-container>
-                <!-- <div class="card rounded-0">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="mb-0 text-uppercase fw-bold" style="font-size: 15px;">Anggita shefiana</div>
-                        <div>
-                            <button class="btn btn-sm btn-primary rounded-0 font-p me-1">Edit</button>
-                            <button class="btn btn-sm btn-danger rounded-0 font-p">Delete</button>
-                        </div>
+                <ng-container *ngIf="listData == 0">
+                    <div class="text-center font-p">
+                        <img src="../../../assets/img/undraw/empty.png" alt="empty-address" width="300">
+                        <p>You don't have shipping address, please add your main address</p>
                     </div>
-                    <div class="card-body" style="font-size: 14px;">
-                      <div>Jl Bunga Mawar no.1, Desa Gandu, Kecamatan Bagor</div>
-                      <div>Nganjuk</div>
-                      <div>65147</div>
-                      <div>Jawa Timur</div>
-                      <div class="mb-3">Indonesia</div>
-                    </div>
-                </div> -->
+                </ng-container>
             </div>
         </div>
     </div>
@@ -146,9 +136,11 @@
             <div class="row">
                 <div class="col py-3 text-end">
                     <button class="btn btn-secondary rounded-1 me-2" (click)="index()">
+                        <i class="bx bx-chevron-left me-1"></i>
                         Back
                     </button>
                     <button class="btn btn-primary rounded-1" (click)="save()">
+                        <i class="bx bx-save me-1"></i>
                         Save
                     </button>
                 </div>
