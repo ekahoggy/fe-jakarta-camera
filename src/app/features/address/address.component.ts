@@ -24,7 +24,7 @@ export class AddressComponent {
   ) { }
 
   ngOnInit(): void {
-    this.auth = this.globalService.getAuth();
+    this.auth = this.globalService.getAuth()["user"];
     this.empty();
     this.getData();
     this.getProvince();
@@ -92,6 +92,7 @@ export class AddressComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.globalService.DataPost('/address/delete', {id:id}).subscribe((res:any ) => {
+          this.globalService.alertSuccess('Success', 'your address has been deleted')
           this.getData();
         });
       } 
