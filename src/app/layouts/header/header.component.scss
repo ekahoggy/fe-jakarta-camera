@@ -41,24 +41,24 @@
     z-index: 2;
   }
 
-  .header-menu-left {
+  .header-menu-center {
     .search-bar {
-      width: 300px;
+      width: 550px;
 
       input {
         font-size: 13px;
         border: 0;
         background: #eeeeee;
-        border-top-left-radius: 15px;
-        border-bottom-left-radius: 15px;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
         padding: 10px 5px 10px 12px;
       }
       span {
         font-size: 13px;
         border: 0;
         background: #eeeeee;
-        border-top-right-radius: 15px;
-        border-bottom-right-radius: 15px;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
       }
     }
   }

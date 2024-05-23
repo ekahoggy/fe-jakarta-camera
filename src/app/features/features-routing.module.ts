@@ -19,13 +19,13 @@ import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
 import { EducationModule } from './education/education.module';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full'
-  // },
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
     component: HomeComponent,
   },
   {

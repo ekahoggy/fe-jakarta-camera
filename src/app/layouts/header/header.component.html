@@ -1,7 +1,20 @@
-<section class="header d-none">
+<section class="header">
   <div class="container fw-semibold">
-    <div class="d-flex justify-content-between align-items-center py-3">
-      <div class="language">
+    <div class="row py-3">
+      <div class="col-12 d-flex">
+        <marquee style="width:92%">
+          <span>We’re open: Monday to Saturday from 09.00 to 18.00 (Closed on weekends and public holidays)</span>
+        </marquee>
+        <div class="sosmed d-flex justify-content-end" style="width: 8%;">
+          <div class="border-1 border-start ps-3">
+            <i class='bx bxl-instagram-alt fs-6 mx-1'></i>
+            <i class='bx bxl-tiktok fs-6 mx-1'></i>
+            <i class='bx bxl-youtube fs-6 mx-1'></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="language">
         <div ngbDropdown placement="bottom-start" class="d-inline-block">
           <button type="button" class="border-0 bg-white" id="dropdownLanguage" ngbDropdownToggle>
             <span class="iconify fs-6 me-1" data-icon="openmoji:flag-united-states"></span>
@@ -18,8 +31,8 @@
             </button>
           </div>
         </div>
-      </div>
-      <div class="right-header d-flex">
+      </div> -->
+      <!-- <div class="col-2 d-flex justify-content-end">
         <div class="header-text d-none d-xl-block pe-3">
           FREE RETURNS. STANDARD SHIPPING ORDERS $99+
         </div>
@@ -42,12 +55,12 @@
             </div>
           </div>
         </div>
-        <div class="sosmed">
-          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:facebook"></span>
-          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:twitter"></span>
+        <div class="sosmed border-1 border-start px-1">
           <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:instagram"></span>
+          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:tiktok"></span>
+          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:youtube"></span>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -56,37 +69,41 @@
   <div class="container">
     <div class="d-flex justify-content-between align-items-center py-3">
       <div class="header-menu-left d-none d-xl-block">
-        <div class="input-group search-bar">
-          <input type="text" class="form-control me-1" placeholder="Search..." aria-label="Pencarian" aria-describedby="search">
-          <span class="input-group-text" id="search">
-            <span class="iconify fs-6" data-icon="uiw:search"></span>
-          </span>
-        </div>
+        <img src="https://jakartacamera-admin.moodstudio.id/assets/img/logo.png" width="200" alt="">
       </div>
       <div class="header-menu-center text-center">
         <button class="btn px-0 me-2 d-xl-none" (click)="openScroll(sidebar)">
           <span class="iconify fs-5 mb-2 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
         </button>
-        <img src="https://jakartacamera-admin.moodstudio.id/img/logo.png" width="200" alt="">
+        <div class="input-group search-bar">
+          <input type="text" class="form-control me-1" placeholder="Search product..." aria-label="Pencarian" aria-describedby="search">
+          <span class="input-group-text" id="search">
+            <span class="iconify fs-6" data-icon="uiw:search"></span>
+          </span>
+        </div>
       </div>
       <div class="header-menu-right d-flex align-items-center">
-        <div class="call d-none d-xl-flex align-items-center">
+        <div class="call d-none d-xl-flex align-items-center pe-3">
           <span class="iconify fs-2 me-2" data-icon="mynaui:telephone"></span>
           <div>
             <span class="fw-bold text-grey call-text mb-0">CALL US NOW</span>
-            <p class="mb-0 fs-6 fw-bold">+62 5678 89011</p>
+            <a  href="https://api.whatsapp.com/send?phone=+6281298767036&text=Halo+Jakarta+Camera" target="_blank">
+              <p class="mb-0 fs-6 fw-bold">+62 812 98767036</p>
+            </a>
           </div>
         </div>
         <div class="interact ps-3">
-          <a href="javascript:void(0)" [routerLink]="['/account']" class="d-none d-lg-inline">
+          <a href="javascript:void(0)" [routerLink]="['/account']" class="d-none d-lg-inline" *ngIf="auth">
             <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
           </a>
-          <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span>
-          <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark">
-            <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
-            <!-- <i class="fi fi-rs-basket-shopping-simple ms-3 fs-4 pt-3"></i> -->
-            <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
+          <a href="javascript:void(0)" [routerLink]="['/login']"  class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;">
+            Login &nbsp;| &nbsp;Register
           </a>
+          <!-- <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span> -->
+          <!-- <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark">
+            <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
+            <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
+          </a> -->
         </div>
       </div>
     </div>
@@ -96,9 +113,9 @@
 <section class="header-nav bg-white d-none d-xl-block" id="navbar">
   <nav class="navbar navbar-expand-lg py-0">
     <div class="container">
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav fw-bold">
-          <li class="nav-item mx-4">
+          <li class="nav-item me-4">
             <a class="nav-link py-4 px-1 px-0"  aria-current="page" href="javascript:void(0)" [routerLink]="['/home']" routerLinkActive="active">HOME</a>
           </li>
           <li class="nav-item mx-4">
@@ -134,10 +151,14 @@
           </li>
         </ul>
       </div>
-      <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
-        <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
-        <!-- <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span> -->
+      <a href="javascript:void(0)" routerLink="/wishlist" class="text-dark fw-bold" style="font-size: 12px;">
+        <i class='bx bxs-cart-alt fs-6 ms-3'></i>
+        WISHLIST
       </a>
+      <!-- <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
+        <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
+        <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
+      </a> -->
     </div>
   </nav>
 </section>

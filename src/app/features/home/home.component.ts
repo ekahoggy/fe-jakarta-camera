@@ -1,3 +1,4 @@
+import * as AOS from 'aos';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 import { environment } from 'src/environments/environment.development';
@@ -9,12 +10,14 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.scss'],
 })
+
 export class HomeComponent implements OnInit {
 	productImageURL: string = environment.productImageURL;
 	originalImageUrl: string = environment.originalImageURL;
 	private navbar: HTMLElement | null = null;
 	private sticky: number = 0;
 	carousel: HTMLElement | null = null;
+	configSliders: SwiperOptions = {};
 	configFeatured: SwiperOptions = {};
 	configBrand: SwiperOptions = {};
 	configFlash: SwiperOptions = {};
@@ -22,15 +25,23 @@ export class HomeComponent implements OnInit {
 	listProduct: any = [];
 	listCategory: any = [];
 	statusPopup: boolean = true;
+	loading = {
+		slider: false,
+		product: false,
+		category: false,
+	};
 
 	constructor(
 		private globalService: GlobalService,
 	) { }
 
 	ngOnInit() {
+		this.init();
+		AOS.init();
 		this.getSlider();
 		this.getCategories();
 		this.getProduct();
+		this.configSlider();
 		this.configFaturedProduct();
 		this.configSwiperBrand();
 		this.configSwiperFlash();
@@ -39,12 +50,19 @@ export class HomeComponent implements OnInit {
 		if (this.navbar) {
 			this.sticky = this.navbar.offsetTop - 20;
 		}
-		console.log(window.location.hostname == 'localhost')
 	}
 
 	@HostListener('window:scroll', [])
 	onScroll() {
 		this.myFunction();
+	}
+
+	init() {
+		this.loading = {
+			slider: false,
+			product: false,
+			category: false,
+		};
 	}
 
 	private myFunction() {
@@ -58,8 +76,15 @@ export class HomeComponent implements OnInit {
 	onSwiper(swiper: any) {
 		// console.log(swiper);
 	}
+
 	onSlideChange() {
 		console.log('slide change');
+	}
+
+	configSlider() {
+		this.configSliders = {
+			navigation: true,
+		}
 	}
 
 	configSwiperFlash() {
@@ -87,7 +112,7 @@ export class HomeComponent implements OnInit {
 					spaceBetween: 20,
 				},
 				1400: {
-					slidesPerView: 5,
+					slidesPerView: 4,
 					spaceBetween: 20,
 				},
 			},
@@ -159,20 +184,26 @@ export class HomeComponent implements OnInit {
 	}
 
 	getSlider() {
+		this.loading.slider = true;
 		this.globalService.DataGet('/public/slider').subscribe((res: any) => {
 			this.listSlider = res.data;
+			this.loading.slider = false;
 		})
 	}
 
 	getProduct() {
+		this.loading.product = true;
 		this.globalService.DataGet('/public/produk').subscribe((res: any) => {
 			this.listProduct = res.data.list;
+			this.loading.product = false;
 		})
 	}
 
 	getCategories() {
+		this.loading.category = true;
 		this.globalService.DataGet('/public/kategori').subscribe((res: any) => {
 			this.listCategory = res.data;
+			this.loading.category = false;
 		})
 	}
 

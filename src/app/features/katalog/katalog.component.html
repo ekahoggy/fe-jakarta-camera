@@ -1,133 +1,138 @@
 <section class="breadcrumb mt-lg-5">
-  <div class="container">
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#"><span class="iconify mb-1 fs-5" data-icon="ic:outline-home"></span></a></li>
-        <li class="breadcrumb-item active"><a href="#">KATALOG</a></li>
-      </ol>
-    </nav>
-  </div>
+	<div class="container">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#"><i class="bx bx-home"></i></a></li>
+				<li class="breadcrumb-item active" style="font-size: 13px;"><a href="#">KATALOG</a></li>
+			</ol>
+		</nav>
+	</div>
 </section>
 
 <section class="content pb-3 pb-lg-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-3 d-none d-lg-block mb-5">
-        <div class="filer border font-p" style="font-size: 14px;">
-          <div class="category py-2 px-2">
-            <div class="d-flex justify-content-between align-items-center" (click)="categories.toggle()" [attr.aria-expanded]="!isCollapsed.categories" aria-controls="collapseCategories">
-              <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">KATEGORI</span>
-              <span class="iconify fs-6" data-icon="mdi-light:plus"></span>
-            </div>
-            <div class="ps-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
-              <ng-container *ngFor="let item of listCategory; index as i">
-                <div class="d-flex justify-content-between align-items-center text-grey mb-2" *ngIf="item.child.length">
-                  <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
-                  <button class="btn btn-sm" role="button" (click)="isCollapsedChild[item.slug] = !isCollapsedChild[item.slug]" [attr.aria-expanded]="!isCollapsedChild[item.slug]">
-                    <span class="iconify text-grey" data-icon="ion:chevron-down"></span>
-                  </button>
-                </div>
-                <div class="text-grey mb-3" role="button" (click)="getProduct(item.slug)" *ngIf="!item.child.length">
-                  <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
-                </div>
-                <div class="ps-3 mt-2" [(ngbCollapse)]="isCollapsedChild[item.slug]" *ngIf="item.child && item.child.length">
-                  <ng-container *ngFor="let child of item.child;">
-                    <div class="text-grey mb-3" role="button">
-                      <a href="javascript:void(0)" routerLink="/katalog/{{child.slug}}">{{ child.kategori }}</a>
-                    </div>
-                  </ng-container>
-                </div>
-              </ng-container>
-            </div>
-          </div>
-          <div class="price py-2 px-3 border-top">
-            <div class="d-flex justify-content-between align-items-center" (click)="prices.toggle()" [attr.aria-expanded]="!isCollapsed.prices" aria-controls="collapsePrices">
-              <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">PRICE</span>
-              <span class="iconify fs-6" data-icon="mdi-light:plus"></span>
-            </div>
-            <div class="px-3 my-2" #prices="ngbCollapse" [(ngbCollapse)]="isCollapsed.prices">
-              <div class="range-price d-flex align-items-center">
-                <input type="text" class="form-control form-control-sm rounded-0 text-end">
-                <span class="mx-2">To</span>
-                <input type="text" class="form-control form-control-sm rounded-0 text-end">
-              </div>
-            </div>
-          </div>
-          <div class="price py-2 px-3 border-top d-none">
-            <div class="d-flex justify-content-between align-items-center" (click)="availability.toggle()" [attr.aria-expanded]="!isCollapsed.availability" aria-controls="collapseavailability">
-              <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">AVAILABILITY</span>
-              <span class="iconify fs-6" data-icon="mdi-light:plus"></span>
-            </div>
-            <div class="px-3 mt-2" #availability="ngbCollapse" [(ngbCollapse)]="isCollapsed.availability">
-              <div class="form-check mb-1">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                <label class="form-check-label text-grey" for="flexCheckDefault">
-                  In Stock (11)
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label text-grey" for="flexCheckChecked">
-                  Out Of Stock (2)
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-3 d-none d-lg-block mb-5">
+				<div class="filer border font-p" style="font-size: 14px;">
+					<div class="category py-2 px-2">
+						<div class="d-flex justify-content-between align-items-center" (click)="categories.toggle()" [attr.aria-expanded]="!isCollapsed.categories" aria-controls="collapseCategories">
+							<span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">KATEGORI</span>
+							<i class="bx fw-bold" [ngClass]="isCollapsed.categories ? 'bx-minus': 'bx-plus'"></i>
+						</div>
+						<div class="ps-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
+							<ng-container *ngFor="let item of listCategory; index as i">
+								<div class="d-flex justify-content-between align-items-center text-grey mb-2" *ngIf="item.child.length">
+									<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
+									<button class="btn btn-sm" role="button" (click)="isCollapsedChild[item.slug] = !isCollapsedChild[item.slug]" [attr.aria-expanded]="!isCollapsedChild[item.slug]">
+										<span class="iconify text-grey" data-icon="ion:chevron-down"></span>
+									</button>
+								</div>
+								<div class="text-grey mb-3" role="button" (click)="getProduct(item.slug)" *ngIf="!item.child.length">
+									<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
+								</div>
+								<div class="ps-3 mt-2" [(ngbCollapse)]="isCollapsedChild[item.slug]" *ngIf="item.child && item.child.length">
+									<ng-container *ngFor="let child of item.child;">
+										<div class="text-grey mb-3" role="button">
+											<a href="javascript:void(0)" routerLink="/katalog/{{child.slug}}">{{ child.kategori }}</a>
+										</div>
+									</ng-container>
+								</div>
+							</ng-container>
+						</div>
+					</div>
+					<div class="price py-2 px-3 border-top">
+						<div class="d-flex justify-content-between align-items-center" (click)="prices.toggle()" [attr.aria-expanded]="!isCollapsed.prices" aria-controls="collapsePrices">
+							<span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">PRICE</span>
+							<span class="iconify fs-6" data-icon="mdi-light:plus"></span>
+						</div>
+						<div class="px-3 my-2" #prices="ngbCollapse" [(ngbCollapse)]="isCollapsed.prices">
+							<div class="range-price d-flex align-items-center">
+								<input type="text" class="form-control form-control-sm rounded-0 text-end">
+								<span class="mx-2">To</span>
+								<input type="text" class="form-control form-control-sm rounded-0 text-end">
+							</div>
+						</div>
+					</div>
+					<div class="price py-2 px-3 border-top d-none">
+						<div class="d-flex justify-content-between align-items-center" (click)="availability.toggle()" [attr.aria-expanded]="!isCollapsed.availability" aria-controls="collapseavailability">
+							<span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between">AVAILABILITY</span>
+							<span class="iconify fs-6" data-icon="mdi-light:plus"></span>
+						</div>
+						<div class="px-3 mt-2" #availability="ngbCollapse" [(ngbCollapse)]="isCollapsed.availability">
+							<div class="form-check mb-1">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+								<label class="form-check-label text-grey" for="flexCheckDefault">
+									In Stock (11)
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+								<label class="form-check-label text-grey" for="flexCheckChecked">
+									Out Of Stock (2)
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <div class="col-12 col-lg-9">
-        <div class="row">
-          <ng-container *ngIf="listProduct.length > 0">
-            <div class="col-6 col-md-4 col-xl-4" *ngFor="let item of listProduct; index as i" >
-              <a href="javascript:void(0)" routerLink="/detail/{{ item.slug }}">
-                <div class="square-image wrap-image">
-                  <img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
-                  <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button>
-                </div>
-                <div class="detail p-2 p-lg-3">
-                  <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-                  <p class="product-name fs-6 mb-0"> {{item.nama}} </p>
-                  <div class="rating">
-                    <span class="iconify text-warning" data-icon="uis:star"></span>
-                    <span class="iconify text-warning" data-icon="uis:star"></span>
-                    <span class="iconify text-black-50" data-icon="uis:star"></span>
-                    <span class="iconify text-black-50" data-icon="uis:star"></span>
-                    <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  </div>
-                  <p class="price fs-6 fw-semibold">Rp {{ item.harga | number }}</p>
-                </div>
-              </a>
-            </div>
-             <!-- <div class="col-6 col-md-4 col-xl-3">
-            <div class="square-image">
-              <img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
-            </div>
-            <div class="detail p-2 p-lg-3">
-              <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-              <p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-              <div class="rating">
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-warning" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-                <span class="iconify text-black-50" data-icon="uis:star"></span>
-              </div>
-              <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            </div>
-          </div> -->
-          </ng-container>
-          <ng-container *ngIf="listProduct.length == 0">
-            <div class="col text-center">
-              <img src="assets/img/undraw/empty.png" style="width: 400px;" width="200" height="200" alt="empty">
-              <p class="fs-3 fw-bold">Not Found</p>
-            </div>
-          </ng-container>
+			<div class="col-12 col-lg-9">
+				<div class="row">
+					<ng-container *ngIf="listProduct.length > 0">
+						<div class="col-6 col-md-4 col-xl-4 mb-3" *ngFor="let item of listProduct; index as i">
+							<a href="javascript:void(0)" routerLink="/detail/{{ item.slug }}">
+								<div class="square-image wrap-image">
+									<img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
+									<button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button>
+								</div>
+								<div class="detail p-2 p-lg-3 text-center">
+									<span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+									<p class="product-name fs-6 mb-0 font-p"> {{item.nama}} </p>
+									<!-- <div class="rating">
+										<span class="iconify text-warning" data-icon="uis:star"></span>
+										<span class="iconify text-warning" data-icon="uis:star"></span>
+										<span class="iconify text-black-50" data-icon="uis:star"></span>
+										<span class="iconify text-black-50" data-icon="uis:star"></span>
+										<span class="iconify text-black-50" data-icon="uis:star"></span>
+									</div> -->
+									<p class="price fs-6 fw-semibold">Rp {{ item.harga | number }}</p>
+									<button class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p" style="font-size: 12px;">
+										<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
+										ADD TO CART
+									</button>
+								</div>
+							</a>
+						</div>
+						<!-- <div class="col-6 col-md-4 col-xl-3">
+							<div class="square-image">
+							<img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
+							</div>
+							<div class="detail p-2 p-lg-3">
+							<span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+							<p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
+							<div class="rating">
+								<span class="iconify text-warning" data-icon="uis:star"></span>
+								<span class="iconify text-warning" data-icon="uis:star"></span>
+								<span class="iconify text-black-50" data-icon="uis:star"></span>
+								<span class="iconify text-black-50" data-icon="uis:star"></span>
+								<span class="iconify text-black-50" data-icon="uis:star"></span>
+							</div>
+							<p class="price fs-6 fw-semibold">Rp 55.000</p>
+							</div>
+						</div> -->
+					</ng-container>
+					<ng-container *ngIf="listProduct.length == 0">
+						<div class="col text-center">
+							<img src="assets/img/undraw/empty.png" style="width: 400px;" width="200" height="200"
+								alt="empty">
+							<p class="fs-3 fw-bold">Not Found</p>
+						</div>
+					</ng-container>
 
-        </div>
-      </div>
-    </div>
-  </div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <app-foot-menu class="d-block d-lg-none"></app-foot-menu>

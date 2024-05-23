@@ -48,9 +48,9 @@ export class HeaderComponent implements OnInit {
     if (this.cart && this.navbar && this.navbarNav && window.scrollY >= this.sticky) {
       this.navbar.classList.add("sticky");
       this.cart.classList.add("d-lg-block");
-      this.navbarNav.classList.remove("justify-content-center");
+      // this.navbarNav.classList.remove("justify-content-center");
     } else if (this.cart && this.navbar && this.navbarNav) {
-      this.navbarNav.classList.add("justify-content-center");
+      // this.navbarNav.classList.add("justify-content-center");
       this.navbar.classList.remove("sticky");
       this.cart.classList.remove("d-lg-block");
     }
@@ -67,10 +67,6 @@ export class HeaderComponent implements OnInit {
   }
 
   redirectProfile() {
-    if (this.auth) {
-      this.router.navigate(['account']);
-    } else {
-      this.router.navigate(['login']);
-    }
+    this.router.navigate(['account']);
   }
 }

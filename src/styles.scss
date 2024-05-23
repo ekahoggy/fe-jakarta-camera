@@ -26,6 +26,9 @@ body {
     color: black;
   }
 
+  a:hover {
+    color: #005691;
+  }
   h3 {
     font-family: 'Poppins', sans-serif;
   }
@@ -42,7 +45,7 @@ body {
   }
 
   .container {
-    width: 80%; /* Atur lebar kontainer */
+    width: 65%; /* Atur lebar kontainer */
     margin: 0 auto; /* Atur margin otomatis untuk menengahkan kontainer */
     box-sizing: border-box; /* Menjamin bahwa padding dan border tidak meningkatkan lebar kontainer */
   }
@@ -50,13 +53,13 @@ body {
   /* Media queries untuk membuat kontainer responsif */
   @media (max-width: 768px) {
     .container {
-        width: 90%; /* Mengurangi lebar kontainer pada layar yang lebih kecil */
+      width: 80%;
     }
   }
 
   @media (max-width: 576px) {
     .container {
-        width: 95%; /* Lebar kontainer lebih kecil untuk layar yang lebih kecil */
+      width: 95%;
     }
   }
 }

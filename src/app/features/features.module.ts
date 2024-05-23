@@ -22,6 +22,7 @@ import { CompleteOrderComponent } from './complete-order/complete-order.componen
 import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 import { ServisKameraComponent } from './servis-kamera/servis-kamera.component';
 import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
     LayoutsModule,
     SwiperModule,
     FormsModule,
-    CountdownModule
+    CountdownModule,
+    CoreModule
   ],
   exports: []
 })
