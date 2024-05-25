@@ -1,15 +1,8 @@
-img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 5/4;
-}
-
-
 .wrap-image {
-  max-height: 280px; height: 280px;
-
   img {
-    max-height: 280px; height: 280px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5/5;
   }
 
   .btn {
@@ -17,6 +10,7 @@ img {
     font-weight: bold;
     display: none;
     margin-top: -80px;
+    font-size: clamp(21px, 1.2vw, 80px);
   }
 }
 
@@ -24,5 +18,11 @@ img {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   .btn {
     display: inline;
+  }
+}
+
+.detail {
+  .product-name {
+    font-size: clamp(21px, 1.2vw, 80px);
   }
 }

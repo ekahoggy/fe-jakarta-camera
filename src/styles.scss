@@ -12,6 +12,10 @@
   color: #929292;
 }
 
+.bg-grey {
+  background: #ececec;
+}
+
 body {
   margin: 0; /* Menghilangkan margin default pada body */
   font-size: 13px;
@@ -33,6 +37,10 @@ body {
     font-family: 'Poppins', sans-serif;
   }
 
+  .fs-12 {
+    font-size: 12px;
+  }
+
   .fs-14 {
     font-size: 14px;
   }
@@ -45,15 +53,22 @@ body {
   }
 
   .container {
-    width: 65%; /* Atur lebar kontainer */
+    width: 63%; /* Atur lebar kontainer */
     margin: 0 auto; /* Atur margin otomatis untuk menengahkan kontainer */
     box-sizing: border-box; /* Menjamin bahwa padding dan border tidak meningkatkan lebar kontainer */
   }
 
   /* Media queries untuk membuat kontainer responsif */
-  @media (max-width: 768px) {
+  @media (max-width: 1489px) {
     .container {
       width: 80%;
+    }
+  }
+
+  /* Media queries untuk membuat kontainer responsif */
+  @media (max-width: 768px) {
+    .container {
+      width: 90%;
     }
   }
 

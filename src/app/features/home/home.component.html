@@ -4,56 +4,38 @@
 
 <ng-container *ngIf="!loading.slider && !loading.product && !loading.category">
 	<section class="loading-slider" *ngIf="loading.slider">
-		<div class="bg-grey" style="height: 634px;"></div>
+		<div class="bg-grey" style="height: 480px;"></div>
 	</section>
 	<section id="banner-carousel" *ngIf="!loading.slider">
 		<ngb-carousel [showNavigationIndicators]="false">
 			<ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
-				<div class="picsum-img-wrapper" style="height: 634px;">
-					<img src="https://source.unsplash.com/random/1200x634?camera={{i}}" class="w-100 object-fit-cover h-auto" height="634" alt="Random first slide" />
-					<!-- <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover h-auto" height="500" alt="Random first slide" /> -->
+				<div class="picsum-img-wrapper">
+					<img [src]="item.image" class="w-100 object-fit-cover" height="480" alt="Random first slide" />
+					<!-- <img src="https://source.unsplash.com/random/1200x634?camera={{i}}" class="w-100 object-fit-cover h-auto" height="634" alt="Random first slide" /> -->
+					<!-- <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover h-auto" height="50	0" alt="Random first slide" /> -->
 				</div>
 			</ng-template>
 		</ngb-carousel>
 	</section>
-	
-	<section class="our-advantages">
+
+	<section class="category py-5">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-4">
-					<div class="d-flex justify-content-center align-items-center py-4 py-lg-5">
-						<span class="iconify me-3 fs-1" data-icon="mdi:truck-fast-outline"></span>
-						<div class="text">
-							<h1 class="mb-0 fw-bold fs-14">FREE SHIPPING & RETURN</h1>
-							<p class="mb-0 text-grey font-p" style="font-size: 12px;">Free shipping on all orders over $99
-							</p>
-						</div>
+				<ng-container *ngFor="let item of listCategory">
+					<div class="col-4 col-lg-2 p-3 mb-3">
+						<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">
+							<div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100">
+								<img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
+								<p class="font-p mb-0 mt-3 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </p>
+							</div>
+						</a>
 					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="d-flex justify-content-center align-items-center py-4 py-lg-5">
-						<span class="iconify me-3 fs-1" data-icon="f7:money-dollar-circle"></span>
-						<div class="text">
-							<h1 class="mb-0 fw-bold fs-14">MONEY BACK GUARANTEE</h1>
-							<p class="mb-0 text-grey font-p" style="font-size: 12px;">Free shipping on all orders over $99 </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="d-flex justify-content-center align-items-center py-4 py-lg-5">
-						<span class="iconify me-3 fs-1" data-icon="ri:24-hours-line"></span>
-						<div class="text">
-							<h1 class="mb-0 fw-bold fs-14">ONLINE SUPPORT 24/7</h1>
-							<p class="mb-0 text-grey font-p" style="font-size: 12px;">Free shipping on all orders over $99
-							</p>
-						</div>
-					</div>
-				</div>
+				</ng-container>
 			</div>
 		</div>
 	</section>
-	
-	<section class="category py-5">
+
+	<!-- <section class="category py-5">
 		<div class="container">
 			<div class="row">
 				<ng-container *ngFor="let item of listCategory">
@@ -68,55 +50,45 @@
 				</ng-container>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	
-	<!-- <section class="product-promo py-5">
+	<section class="our-advantages">
 		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-10 col-md-6 col-lg-4">
-					<a href="javascript:void(0)" routerLink="/detail">
-						<div class="position-relative p-2">
-							<img src="https://source.unsplash.com/random/400x300?camera=1" class="w-100 object-fit-cover"
-								alt="Random second slide" />
-							<div class="wrap-text-promo bg-info position-relative text-center py-2 mx-2">
-								<span class="text-light font-p fs-6">Save Up To</span>
-								<h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
-								<p class="desc font-p fs-6 text-light mb-0">on Porto Watch Series 5</p>
-							</div>
+			<div class="row justify-content-center py-3">
+				<div class="col-md-6 col-lg-4 border-end">
+					<div class="d-flex justify-content-center align-items-center py-3">
+						<span class="iconify me-3 fs-4" data-icon="mdi:run-fast"></span>
+						<div class="text">
+							<h1 class="mb-0 fw-bold fs-14">QUICK & EASY</h1>
+							<p class="mb-0 text-grey font-p" style="font-size: 12px;">
+								The ordering process is just a few clicks!
+							</p>
 						</div>
-					</a>
+					</div>
 				</div>
-				<div class="col-10 col-md-6 col-lg-4">
-					<a href="javascript:void(0)" routerLink="/detail">
-						<div class="position-relative p-2">
-							<img src="https://source.unsplash.com/random/400x300?camera=2" class="w-100 object-fit-cover"
-								alt="Random second slide" />
-							<div class="wrap-text-promo bg-info position-relative text-center py-2 mx-2">
-								<span class="text-light font-p fs-6">Save Up To</span>
-								<h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
-								<p class="desc font-p fs-6 text-light mb-0">on Porto Watch Series 5</p>
-							</div>
+				<div class="col-md-6 col-lg-4 border-end">
+					<div class="d-flex justify-content-center align-items-center py-3">
+						<span class="iconify me-3 fs-4" data-icon="mdi:truck-fast"></span>
+						<div class="text">
+							<h1 class="mb-0 fw-bold fs-14">DELIVERY</h1>
+							<p class="mb-0 text-grey font-p" style="font-size: 12px;">Delivery available throughout Indonesia</p>
 						</div>
-					</a>
+					</div>
 				</div>
-				<div class="col-10 col-md-6 col-lg-4">
-					<a href="javascript:void(0)" routerLink="/detail">
-						<div class="position-relative p-2">
-							<img src="https://source.unsplash.com/random/400x300?camera=3" class="w-100 object-fit-cover"
-								alt="Random second slide" />
-							<div class="wrap-text-promo bg-info position-relative text-center py-2 mx-2">
-								<span class="text-light font-p fs-6">Save Up To</span>
-								<h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
-								<p class="desc font-p fs-6 text-light mb-0">on Porto Watch Series 5</p>
-							</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="d-flex justify-content-center align-items-center py-3">
+						<span class="iconify me-3 fs-4" data-icon="ph:seal-check-bold"></span>
+						<div class="text">
+							<h1 class="mb-0 fw-bold fs-14">WARRANTY</h1>
+							<p class="mb-0 text-grey font-p" style="font-size: 12px;">Provides a trouble-free guarantee </p>
 						</div>
-					</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</section> -->
-	
-	<section class="flash-sale mb-5">
+	</section>
+
+	<section class="flash-sale my-5">
 		<div class="filter-bar">
 			<div class="container">
 				<div class="d-flex justify-content-between align-items-center">
@@ -140,26 +112,20 @@
 					<ng-template swiperSlide>
 						<div data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
 							<!-- [src]="productImageURL + item.foto" -->
-							<div class="position-relative wrap-image">
-								<img src="https://source.unsplash.com/random/250x250?camera={{i}}" class="w-100 object-fit-cover" alt="Random second slide" />
-								<button class="btn btn-info rounded-0 font-p position-relative w-100 py-3" routerLink="/detail/{{item.slug}}">QUICK VIEW</button>
-							</div>
-							<div class="detail text-center p-2 p-lg-3">
+							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+								<div class="position-relative wrap-image rounded-4">
+									<img src="https://source.unsplash.com/random/250x250?camera={{i}}" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+								</div>
+							</a>
+							<div class="detail p-2 p-lg-3">
 								<span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
 								<h2 class="product-name mb-0 font-p fs-6">{{ item.nama }} </h2>
-								<!-- <div class="rating">
-									<span class="iconify text-warning" data-icon="uis:star"></span>
-									<span class="iconify text-warning" data-icon="uis:star"></span>
-									<span class="iconify text-black-50" data-icon="uis:star"></span>
-									<span class="iconify text-black-50" data-icon="uis:star"></span>
-									<span class="iconify text-black-50" data-icon="uis:star"></span>
-								</div> -->
 								<span class="text-decoration-line-through" style="color: rgb(175, 175, 175); font-size: 14px;">Rp 50,000</span>
 								<span>
 									<i class='bx bxs-bolt'></i>-12%
 								</span>
 								<p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-								<a href="javascript:void(0)" routerLink="/detail/{{item.slug}}" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p" style="font-size: 12px">
+								<a href="javascript:void(0)" routerLink="/katalog/detail/{{item.slug}}" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px">
 									<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
 									ADD TO CART
 								</a>
@@ -170,13 +136,58 @@
 			</swiper>
 		</div>
 	</section>
+
+	<section class="benefit border-top">
+		<div class="container py-3 py-lg-5">
+			<div class="row py-lg-3">
+				<div class="col-lg-4">
+					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
+						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
+							<div>
+								<span class="iconify text-primary fs-1" data-icon="clarity:camera-line"></span>
+							</div>
+						</div>
+						<h2 class="fs-6 fw-bold mt-3 mb-0">CAMERA SERVICES</h2>
+						<em style="color:#555;font-weight: 600;font-size:0.875rem;">Need Trust?</em>
+						<p class="mt-3 text-subtle" style="font-size: 14px;">
+							Receive Service / Cleaning for all damage to Digital, Analog, DSLR, Pocket, Prosummer, Mirrorless, Polaroid, Video Cameras etc.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
+						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
+							<div>
+								<span class="iconify text-primary fs-1" data-icon="material-symbols-light:print-outline"></span>
+							</div>
+						</div>
+						<h2 class="fs-6 fw-bold mt-3 mb-0">PHOTO AND PRINTING SERVICES</h2>
+						<em style="color:#555;font-weight: 600;font-size:0.875rem;">Safe & Fast</em>
+						<p class="mt-3 text-subtle" style="font-size: 14px;">Print photos in size 3R 4R 6R 10R or Pas Photos, you can print Visa Photos or you can wait for Photos and Prints directly here.</p>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
+						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
+							<div>
+								<span class="iconify text-primary fs-1" data-icon="hugeicons:cctv-camera"></span>
+							</div>
+						</div>
+						<h2 class="fs-6 fw-bold mt-3 mb-0">CCTV INSTALL SERVICES</h2>
+						<em style="color:#555;font-weight: 600;font-size:0.875rem;">Good & Reliable</em>
+						<p class="mt-3 text-subtle" style="font-size: 14px;">Serving CCTV installation/installation problems for homes, shophouses, buildings, warehouses or whatever your needs are.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	
 	<section class="products mb-5">
 		<div class="filter-bar border-bottom">
 			<div class="container">
 				<div class="d-flex">
-					<div class="fw-bolder text-primary border-bottom border-primary border-2 pb-2 me-4" style="font-size: 13px;">FEATURED PRODUCTS</div>
-					<div class="fw-bolder border-bottom border-dark border-2 pb-2 me-4" style="font-size: 13px;">LATEST PRODUCTS</div>
+					<div class="fw-bolder pb-3 me-4" [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'featured', 'text-primary': filterProduct == 'featured'}" style="font-size: 13px;" (click)="changeTipeProduct('featured')" role="button">FEATURED PRODUCTS</div>
+					<div class="fw-bolder pb-3 me-4" [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'monthly', 'text-primary': filterProduct == 'monthly'}" style="font-size: 13px;" (click)="changeTipeProduct('monthly')" role="button">MONTHLY PROMO</div>
 				</div>
 			</div>
 		</div>
@@ -186,11 +197,12 @@
 					<ng-template swiperSlide>
 						<div data-aos="fade-left" data-aos-offset="300" data-aos-duration="1500">
 							<!-- [src]="productImageURL + item.foto" -->
-							<div class="position-relative wrap-image">
-								<img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover" alt="Random second slide" />
-								<button class="btn btn-info rounded-0 font-p position-relative w-100 py-3" routerLink="/detail/{{item.slug}}">QUICK VIEW</button>
-							</div>
-							<div class="detail text-center p-2 p-lg-3">
+							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+								<div class="position-relative wrap-image rounded-4">
+									<img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+								</div>
+							</a>
+							<div class="detail p-2 p-lg-3">
 								<span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
 								<h2 class="product-name mb-0" style="font-size: 16px;">{{ item.nama }} </h2>
 								<div class="rating">
@@ -201,77 +213,15 @@
 									<span class="iconify text-black-50" data-icon="uis:star"></span>
 								</div>
 								<p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-								<a href="javascript:void(0)" routerLink="/detail/{{item.slug}}" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p" style="font-size: 12px">
+								<a href="javascript:void(0)" routerLink="/katalog/detail/{{item.slug}}" class="btn btn-primary btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p w-100 rounded-4 text-light" style="font-size: 12px">
 									<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
 									ADD TO CART
 								</a>
 							</div>
 						</div>
 					</ng-template>
-					<!-- <ng-template swiperSlide>
-						<img src="assets/img/earphone.webp" class="w-100 object-fit-contain" alt="Random second slide" />
-						<div class="detail text-center p-2 p-lg-3">
-							<span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
-								<h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
-							<div class="rating">
-								<span class="iconify text-warning" data-icon="uis:star"></span>
-								<span class="iconify text-warning" data-icon="uis:star"></span>
-								<span class="iconify text-black-50" data-icon="uis:star"></span>
-								<span class="iconify text-black-50" data-icon="uis:star"></span>
-								<span class="iconify text-black-50" data-icon="uis:star"></span>
-								</div>
-							<p class="price fs-6 fw-semibold">Rp 55.000</p>
-							<a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
-								<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-								ADD TO CART
-							</a>
-						</div>
-					</ng-template> -->
 				</ng-container>
 			</swiper>
-		</div>
-	</section>
-	
-	<section class="benefit border-top">
-		<div class="container py-3 py-lg-5">
-			<div class="row py-lg-3">
-				<div class="col-lg-4">
-					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
-						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
-							<div>
-								<span class="iconify text-primary fs-1" data-icon="simple-line-icons:earphones-alt"></span>
-							</div>
-						</div>
-						<h2 class="fs-6 fw-bold mt-3 mb-0">CUSTOMER SUPPORT</h2>
-						<em style="color:#555;font-weight: 600;font-size:0.875rem;">Need Assistence?</em>
-						<p class="mt-3 text-subtle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
-						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
-							<div>
-								<span class="iconify text-primary fs-1" data-icon="ph:credit-card"></span>
-							</div>
-						</div>
-						<h2 class="fs-6 fw-bold mt-3 mb-0">SECURED PAYMENT</h2>
-						<em style="color:#555;font-weight: 600;font-size:0.875rem;">Safe & Fast</em>
-						<p class="mt-3 text-subtle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
-						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
-							<div>
-								<span class="iconify text-primary fs-1" data-icon="streamline:return-2"></span>
-							</div>
-						</div>
-						<h2 class="fs-6 fw-bold mt-3 mb-0">RETURNS</h2>
-						<em style="color:#555;font-weight: 600;font-size:0.875rem;">Easy & Free</em>
-						<p class="mt-3 text-subtle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
-					</div>
-				</div>
-			</div>
 		</div>
 	</section>
 	

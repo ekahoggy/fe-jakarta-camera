@@ -5,6 +5,18 @@
   }
 }
 
+.img-preview {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5/4;
+}
+
+.img-list {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5/5;
+}
+
 .rekomendasi {
   ::ng-deep .swiper-button-prev, ::ng-deep  .swiper-button-next {
     top: 30%;
@@ -13,5 +25,12 @@
   ::ng-deep .swiper-button-prev:after, ::ng-deep .swiper-button-next:after {
     font-size: 25px;
     color: black;
+  }
+}
+
+.wrap-image:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  .btn {
+    display: inline;
   }
 }

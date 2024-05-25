@@ -11,6 +11,7 @@ export class DetailProductComponent implements OnInit {
   desc: string = 'description';
   configRekomendasi:any = {};
   model: any = {};
+  listProduct: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +23,7 @@ export class DetailProductComponent implements OnInit {
     this.route.params.subscribe(params => {
       const slug = params['slug'];
       this.getProduct(slug);
+      this.getFlashSale();
     });
     this.configRekomendasiProduct();
   }
@@ -102,4 +104,10 @@ export class DetailProductComponent implements OnInit {
       })
     }
   }
+
+  getFlashSale() {
+		this.globalService.DataGet('/public/produk').subscribe((res: any) => {
+			this.listProduct = res.data.list;
+		})
+	}
 }

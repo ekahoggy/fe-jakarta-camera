@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
 		product: false,
 		category: false,
 	};
+	filterProduct: string = 'featured';
 
 	constructor(
 		private globalService: GlobalService,
@@ -184,11 +185,22 @@ export class HomeComponent implements OnInit {
 	}
 
 	getSlider() {
-		this.loading.slider = true;
-		this.globalService.DataGet('/public/slider').subscribe((res: any) => {
-			this.listSlider = res.data;
-			this.loading.slider = false;
-		})
+		// this.loading.slider = true;
+		// this.globalService.DataGet('/public/slider').subscribe((res: any) => {
+		// 	this.listSlider = res.data;
+		// 	this.loading.slider = false;
+		// })
+		this.listSlider = [
+			{image: "../../../assets/img/slider/1-min.webp"},
+			{image: "../../../assets/img/slider/2-min.webp"},
+			{image: "../../../assets/img/slider/3-min.webp"},
+			{image: "../../../assets/img/slider/4-min.webp"},
+			{image: "../../../assets/img/slider/5-min.webp"},
+		]
+	}
+
+	changeTipeProduct(tipe:string) {
+		this.filterProduct = tipe; 
 	}
 
 	getProduct() {

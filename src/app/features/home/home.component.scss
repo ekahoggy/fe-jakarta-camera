@@ -35,8 +35,9 @@ a {
 }
 
 .our-advantages {
-  background-color: #F4F4F4;
+  // background-color: #F4F4F4;
   border-top: solid 1px #e7e7e7;
+  border-bottom: solid 1px #e7e7e7;
 }
 
 .product-promo {
@@ -72,12 +73,18 @@ a {
   }
 
   .wrap-image {
-    max-height: 280px;
-    height: 280px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5/4;
+    // max-height: 280px;
+    // height: 280px;
 
     img {
-      max-height: 280px;
-      height: 280px;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 5/4;
+      // max-height: 280px;
+      // height: 280px;
     }
 
     .btn {
@@ -120,12 +127,18 @@ a {
   }
 
   .wrap-image {
-    max-height: 280px;
-    height: 280px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5/4;
+    // max-height: 280px;
+    // height: 280px;
 
     img {
-      max-height: 280px;
-      height: 280px;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 5/4;
+      // max-height: 280px;
+      // height: 280px;
     }
 
     .btn {

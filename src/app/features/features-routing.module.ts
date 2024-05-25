@@ -39,16 +39,16 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'detail/:slug',
-    component: DetailProductComponent,
-  },
-  {
     path: 'katalog/:slug',
     component: KatalogComponent,
   },
   {
     path: 'katalog',
     component: KatalogComponent,
+  },
+  {
+    path: 'katalog/detail/:slug',
+    component: DetailProductComponent,
   },
   {
     path: 'cart',

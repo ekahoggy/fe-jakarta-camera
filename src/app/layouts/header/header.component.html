@@ -1,16 +1,14 @@
 <section class="header">
   <div class="container fw-semibold">
-    <div class="row py-3">
-      <div class="col-12 d-flex">
-        <marquee style="width:92%">
-          <span>We’re open: Monday to Saturday from 09.00 to 18.00 (Closed on weekends and public holidays)</span>
-        </marquee>
-        <div class="sosmed d-flex justify-content-end" style="width: 8%;">
-          <div class="border-1 border-start ps-3">
-            <i class='bx bxl-instagram-alt fs-6 mx-1'></i>
-            <i class='bx bxl-tiktok fs-6 mx-1'></i>
-            <i class='bx bxl-youtube fs-6 mx-1'></i>
-          </div>
+    <div class="d-flex align-items-center py-2">
+      <marquee class="w-100">
+        <span>We’re open: Monday to Saturday from 09.00 to 18.00 (Closed on weekends and public holidays)</span>
+      </marquee>
+      <div class="sosmed flex-shrink-1">
+        <div class="border-1 border-start ps-3 w-100 d-flex">
+          <a href="https://www.instagram.com/jakarta_camera/" class="fs-6 mx-1" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+          <a href="https://www.tiktok.com/@jakarta_camera" class="fs-6 mx-1" target="_blank"><i class='bx bxl-tiktok'></i></a>
+          <a href="https://www.youtube.com/channel/UCRUiZWQhTxkDKEibX83gm2g" class="fs-6 mx-1" target="_blank"><i class='bx bxl-youtube'></i></a>
         </div>
       </div>
 
@@ -71,11 +69,11 @@
       <div class="header-menu-left d-none d-xl-block">
         <img src="https://jakartacamera-admin.moodstudio.id/assets/img/logo.png" width="200" alt="">
       </div>
-      <div class="header-menu-center text-center">
-        <button class="btn px-0 me-2 d-xl-none" (click)="openScroll(sidebar)">
-          <span class="iconify fs-5 mb-2 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
+      <div class="header-menu-center flex-grow-1 px-lg-3">
+        <button class="btn px-0 me-2 d-lg-none" (click)="openScroll(sidebar)">
+          <span class="iconify fs-5 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
         </button>
-        <div class="input-group search-bar">
+        <div class="input-group search-bar d-none d-lg-flex">
           <input type="text" class="form-control me-1" placeholder="Search product..." aria-label="Pencarian" aria-describedby="search">
           <span class="input-group-text" id="search">
             <span class="iconify fs-6" data-icon="uiw:search"></span>
@@ -151,9 +149,13 @@
           </li>
         </ul>
       </div>
-      <a href="javascript:void(0)" routerLink="/wishlist" class="text-dark fw-bold" style="font-size: 12px;">
-        <i class='bx bxs-cart-alt fs-6 ms-3'></i>
-        WISHLIST
+      <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center">
+        <i class='bx bx-heart fs-6 me-1'></i>
+        <span class="fw-bold" style="font-size: 12px;">WISHLIST</span>
+      </a>
+      <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center">
+        <i class='bx bxs-cart-alt fs-6 ms-3 ms-2 me-1'></i>
+        <span class="fw-bold" style="font-size: 12px;">CART</span>
       </a>
       <!-- <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
         <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
