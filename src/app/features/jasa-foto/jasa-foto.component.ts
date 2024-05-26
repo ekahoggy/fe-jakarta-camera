@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
-  selector: 'app-pasang-cctv',
-  templateUrl: './pasang-cctv.component.html',
-  styleUrls: ['./pasang-cctv.component.scss']
+  selector: 'app-jasa-foto',
+  templateUrl: './jasa-foto.component.html',
+  styleUrls: ['./jasa-foto.component.scss']
 })
-export class PasangCctvComponent {
-  	model: any = {};
+export class JasaFotoComponent implements OnInit {
+  model: any = {};
 	is: any = {};
 	base64Image: string | null = null;
 

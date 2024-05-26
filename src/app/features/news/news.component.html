@@ -1,27 +1,15 @@
-<!-- <section class="news py-5">
-  <div class="container">
-    <div class="card">
-      <div class="row">
-        <div class="col-4" *ngFor="let item of listNews; index as i">
-          <div class="list-article">
-            <div class="list-article-gambar">
-              <a class="list-article-label" href="#"><h4>{{item.category}}</h4></a>
-              <img src="https://source.unsplash.com/random/140x140?camera={{i}}" alt="{{ item.title }}" />
-              {{item.title}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-<section class="breadcrumb">
-	<div class="container pt-4">
+<section class="breadcrumb mt-lg-5">
+	<div class="container">
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#"><span class="iconify mb-1 fs-5" data-icon="ic:outline-home"></span></a></li>
-				<li class="breadcrumb-item"><a href="#">NEWS</a></li>
+			<ol class="breadcrumb fs-14">
+				<li class="breadcrumb-item">
+					<a href="/home">
+						<i class="bx bx-home me-1"></i> Homepage
+					</a>
+				</li>
+				<li class="breadcrumb-item active">
+					<a href="/news">News</a>
+				</li>
 			</ol>
 		</nav>
 	</div>

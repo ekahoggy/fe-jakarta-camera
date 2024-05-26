@@ -17,6 +17,8 @@ import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 import { ServisKameraComponent } from './servis-kamera/servis-kamera.component';
 import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
 import { EducationModule } from './education/education.module';
+import { PromoComponent } from './promo/promo.component';
+import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
 
 const routes: Routes = [
   {
@@ -76,6 +78,10 @@ const routes: Routes = [
     canActivate: [GuestGuard]
   },
   {
+    path: 'promo',
+    component: PromoComponent
+  },
+  {
     path: 'news',
     component: NewsComponent
   },
@@ -84,8 +90,12 @@ const routes: Routes = [
     component: FlashSaleComponent
   },
   {
-    path: 'service/camera',
+    path: 'service',
     component: ServisKameraComponent
+  },
+  {
+    path: 'service/jasa-foto',
+    component: JasaFotoComponent
   },
   {
     path: 'service/pasang-cctv',

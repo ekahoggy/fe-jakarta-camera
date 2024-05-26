@@ -1,16 +1,18 @@
 <section class="breadcrumb mt-lg-5">
-    <div class="container">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="#">
-                        <span class="iconify mb-1 fs-5" data-icon="ic:outline-home"></span>
-                    </a>
-                </li>
-                <li class="breadcrumb-item active"><a href="#">FLASH SALE</a></li>
-            </ol>
-        </nav>
-    </div>
+	<div class="container">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+			<ol class="breadcrumb fs-14">
+				<li class="breadcrumb-item">
+					<a href="/home">
+						<i class="bx bx-home me-1"></i> Homepage
+					</a>
+				</li>
+				<li class="breadcrumb-item active">
+					<a href="/flash-sale">Flash Sale</a>
+				</li>
+			</ol>
+		</nav>
+	</div>
 </section>
 
 <section class="content pb-3 pb-lg-5">
@@ -36,41 +38,56 @@
 				</div>
             </div>
             <div class="col-12">
-                <div class="row">
-                    <ng-container *ngIf="listProduct.length > 0">
-                        <div class="col-6 col-md-4 col-xl-3 " *ngFor="let item of listProduct; index as i">
-                            <a href="javascript:void(0)" routerLink="/detail/{{ item.slug }}">
-                                <div class="square-image wrap-image">
-                                    <img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover w-100" width="280" height="280" alt="Random second slide" />
-                                    <button class="btn btn-info rounded-0 font-p position-relative w-100 py-md-3">QUICK VIEW</button>
-                                </div>
-                                <div class="detail p-2 p-lg-3">
-                                    <span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-                                    <p class="product-name mb-0 font-p"> {{item.nama}} </p>
-                                    <!-- <div class="rating">
-                                        <span class="iconify text-warning" data-icon="uis:star"></span>
-                                        <span class="iconify text-warning" data-icon="uis:star"></span>
-                                        <span class="iconify text-black-50" data-icon="uis:star"></span>
-                                        <span class="iconify text-black-50" data-icon="uis:star"></span>
-                                        <span class="iconify text-black-50" data-icon="uis:star"></span>
-                                    </div> -->
-                                    <span class="text-decoration-line-through" style="color: rgb(175, 175, 175); font-size: 14px;">Rp 50,000</span>
-                                    <span>
-                                        <i class='bx bxs-bolt'></i>-12%
-                                    </span>
-                                    <p class="price text-primary">Rp {{ item.harga | number }}</p>
-                                </div>
-                            </a>
-                        </div>
-                    </ng-container>
-                    <ng-container *ngIf="listProduct.length == 0">
-                        <div class="col text-center">
-                            <img src="assets/img/undraw/empty.png" style="width: 400px;" width="200" height="200" alt="empty">
-                            <p class="fs-3 fw-bold">Not Found</p>
-                        </div>
-                    </ng-container>
-                </div>
-            </div>
+				<div class="row">
+					<ng-container *ngIf="listProduct.length > 0">
+						<div class="col-6 col-lg-4 col-xl-3 mb-3" *ngFor="let item of listProduct; index as i">
+							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+								<div class="square-image wrap-image rounded-4">
+									<img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover rounded-4" width="280" height="280" alt="Random second slide" />
+									<!-- <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button> -->
+								</div>
+							</a>
+							<div class="detail p-2 p-lg-3">
+								<span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
+								<h2 class="product-name mb-0 font-p fs-6">{{ item.nama }} </h2>
+								<span class="text-decoration-line-through" style="color: rgb(175, 175, 175); font-size: 14px;">Rp 50,000</span>
+								<span>
+									<i class='bx bxs-bolt'></i>-12%
+								</span>
+								<p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
+								<a href="javascript:void(0)" routerLink="/katalog/detail/{{item.slug}}" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px">
+									<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
+									ADD TO CART
+								</a>
+							</div>
+						</div>
+						<!-- <div class="col-6 col-md-4 col-xl-3">
+							<div class="square-image">
+							<img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
+							</div>
+							<div class="detail p-2 p-lg-3">
+							<span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+							<p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
+							<div class="rating">
+								<span class="iconify text-warning" data-icon="uis:star"></span>
+								<span class="iconify text-warning" data-icon="uis:star"></span>
+								<span class="iconify text-black-50" data-icon="uis:star"></span>
+								<span class="iconify text-black-50" data-icon="uis:star"></span>
+								<span class="iconify text-black-50" data-icon="uis:star"></span>
+							</div>
+							<p class="price fs-6 fw-semibold">Rp 55.000</p>
+							</div>
+						</div> -->
+					</ng-container>
+					<ng-container *ngIf="listProduct.length == 0">
+						<div class="col text-center">
+							<img src="assets/img/undraw/empty.png" style="width: 400px;" class="object-fit-cover" width="400" alt="empty">
+							<p class="fs-3 fw-bold">Not Found</p>
+						</div>
+					</ng-container>
+
+				</div>
+			</div>
         </div>
     </div>
 </section>

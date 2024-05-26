@@ -23,6 +23,8 @@ import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 import { ServisKameraComponent } from './servis-kamera/servis-kamera.component';
 import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
 import { CoreModule } from '../core/core.module';
+import { PromoComponent } from './promo/promo.component';
+import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { CoreModule } from '../core/core.module';
     CompleteOrderComponent,
     FlashSaleComponent,
     ServisKameraComponent,
-    PasangCctvComponent
+    PasangCctvComponent,
+    PromoComponent,
+    JasaFotoComponent
   ],
   imports: [
     CommonModule,

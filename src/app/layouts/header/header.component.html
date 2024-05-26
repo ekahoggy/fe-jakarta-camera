@@ -94,7 +94,7 @@
           <a href="javascript:void(0)" [routerLink]="['/account']" class="d-none d-lg-inline" *ngIf="auth">
             <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
           </a>
-          <a href="javascript:void(0)" [routerLink]="['/login']"  class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;">
+          <a href="javascript:void(0)" [routerLink]="['/login']"  class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;" *ngIf="!auth">
             Login &nbsp;| &nbsp;Register
           </a>
           <!-- <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span> -->
@@ -136,8 +136,8 @@
               <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
             </a>
             <div class="dropdown-content">
-              <a href="javascript:void(0)" [routerLink]="['/service/camera']">Service Kamera</a>
-              <a href="javascript:void(0)" [routerLink]="['/service']">Jasa Foto dan Cetak</a>
+              <a href="javascript:void(0)" [routerLink]="['/service']">Service Kamera</a>
+              <a href="javascript:void(0)" [routerLink]="['/service/jasa-foto']">Jasa Foto dan Cetak</a>
               <a href="javascript:void(0)" [routerLink]="['/service/pasang-cctv']">Jasa Pasang CCTV</a>
             </div>
           </li>
@@ -149,11 +149,11 @@
           </li>
         </ul>
       </div>
-      <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center">
+      <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center" *ngIf="auth">
         <i class='bx bx-heart fs-6 me-1'></i>
         <span class="fw-bold" style="font-size: 12px;">WISHLIST</span>
       </a>
-      <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center">
+      <a href="javascript:void(0)" routerLink="/cart" class="d-flex align-items-center" *ngIf="auth">
         <i class='bx bxs-cart-alt fs-6 ms-3 ms-2 me-1'></i>
         <span class="fw-bold" style="font-size: 12px;">CART</span>
       </a>
