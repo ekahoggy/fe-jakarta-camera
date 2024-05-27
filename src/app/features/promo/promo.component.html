@@ -87,7 +87,7 @@
 						</div>
 						<div class="ps-3 mt-2" #brand="ngbCollapse" [(ngbCollapse)]="isCollapsed.brand">
 							<ng-container *ngFor="let item of listBrand; index as i">
-								<div class="text-grey mb-3" role="button" (click)="getProduct(item.slug)">
+								<div class="text-grey mb-3" role="button" (click)="getProductByBrand(item.slug)">
 									<i class='bx bx-chevron-right me-1'></i>
 									<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.brand }}</a>
 								</div>

@@ -44,6 +44,12 @@ export class PromoComponent implements OnInit {
 		})
 	}
 
+	getProductByBrand(event: string = '') {
+		this.globalService.DataGet('/public/katalog', { brand: event ? event : ''}).subscribe((res: any) => {
+			this.listProduct = res.data.list;
+		})
+	}
+
 	getCategories() {
 		this.globalService.DataGet('/public/kategori').subscribe((res: any) => {
 			this.listCategory = res.data;
