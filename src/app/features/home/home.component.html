@@ -10,7 +10,7 @@
 		<ngb-carousel [showNavigationIndicators]="false">
 			<ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
 				<div class="picsum-img-wrapper">
-					<img [src]="item.image" class="w-100 object-fit-cover" height="480" alt="Random first slide" />
+					<img [src]="item.picture" class="w-100 object-fit-cover" height="480" alt="Random first slide" />
 					<!-- <img src="https://source.unsplash.com/random/1200x634?camera={{i}}" class="w-100 object-fit-cover h-auto" height="634" alt="Random first slide" /> -->
 					<!-- <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover h-auto" height="50	0" alt="Random first slide" /> -->
 				</div>
@@ -114,7 +114,8 @@
 							<!-- [src]="productImageURL + item.foto" -->
 							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
 								<div class="position-relative wrap-image rounded-4">
-									<img src="https://source.unsplash.com/random/250x250?camera={{i}}" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+									<img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+									<!-- <img src="https://source.unsplash.com/random/250x250?camera={{i}}" class="w-100 object-fit-cover rounded-4" alt="Random second slide" /> -->
 								</div>
 							</a>
 							<div class="detail p-2 p-lg-3">
@@ -125,7 +126,7 @@
 									<i class='bx bxs-bolt'></i>-12%
 								</span>
 								<p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-								<a href="javascript:void(0)" routerLink="/katalog/detail/{{item.slug}}" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px">
+								<a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px" (click)="addCart(item.id)">
 									<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
 									ADD TO CART
 								</a>
@@ -196,10 +197,10 @@
 				<ng-container *ngFor="let item of listProduct; index as i">
 					<ng-template swiperSlide>
 						<div data-aos="fade-left" data-aos-offset="300" data-aos-duration="1500">
-							<!-- [src]="productImageURL + item.foto" -->
 							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
 								<div class="position-relative wrap-image rounded-4">
-									<img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+									<!-- <img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover rounded-4" alt="Random second slide" /> -->
+									<img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
 								</div>
 							</a>
 							<div class="detail p-2 p-lg-3">
@@ -213,7 +214,7 @@
 									<span class="iconify text-black-50" data-icon="uis:star"></span>
 								</div>
 								<p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-								<a href="javascript:void(0)" routerLink="/katalog/detail/{{item.slug}}" class="btn btn-primary btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p w-100 rounded-4 text-light" style="font-size: 12px">
+								<a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p w-100 rounded-4 text-light" style="font-size: 12px" (click)="addCart(item.id)">
 									<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
 									ADD TO CART
 								</a>
@@ -286,7 +287,7 @@
 					<div class="row">
 						<div class="col-12 mb-3 px-1 px-lg-3">
 							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{6}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<img src="https://source.unsplash.com/random/140x140?camera=6" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
 								<div class="detail p-2 p-lg-3">
 									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
 									<small class="text-grey">December 06, 2016</small>
@@ -295,7 +296,7 @@
 						</div>
 						<div class="col-12 mb-3 px-1 px-lg-3">
 							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{5}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<img src="https://source.unsplash.com/random/140x140?camera=5" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
 								<div class="detail p-2 p-lg-3">
 									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
 									<small class="text-grey">December 06, 2016</small>
@@ -304,38 +305,7 @@
 						</div>
 						<div class="col-12 mb-3 px-1 px-lg-3">
 							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{8}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-								<div class="detail p-2 p-lg-3">
-									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-									<small class="text-grey">December 06, 2016</small>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-xl-4 mb-3">
-					<div class="row">
-						<div class="col-12 mb-3 px-1 px-lg-3">
-							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{12}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-								<div class="detail p-2 p-lg-3">
-									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-									<small class="text-grey">December 06, 2016</small>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 mb-3 px-1 px-lg-3">
-							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{10}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-								<div class="detail p-2 p-lg-3">
-									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-									<small class="text-grey">December 06, 2016</small>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 mb-3 px-1 px-lg-3">
-							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{32}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<img src="https://source.unsplash.com/random/140x140?camera=8" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
 								<div class="detail p-2 p-lg-3">
 									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
 									<small class="text-grey">December 06, 2016</small>
@@ -348,7 +318,7 @@
 					<div class="row">
 						<div class="col-12 mb-3 px-1 px-lg-3">
 							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{1}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<img src="https://source.unsplash.com/random/140x140?camera=12" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
 								<div class="detail p-2 p-lg-3">
 									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
 									<small class="text-grey">December 06, 2016</small>
@@ -357,7 +327,7 @@
 						</div>
 						<div class="col-12 mb-3 px-1 px-lg-3">
 							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{2}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<img src="https://source.unsplash.com/random/140x140?camera=10" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
 								<div class="detail p-2 p-lg-3">
 									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
 									<small class="text-grey">December 06, 2016</small>
@@ -366,7 +336,38 @@
 						</div>
 						<div class="col-12 mb-3 px-1 px-lg-3">
 							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{3}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<img src="https://source.unsplash.com/random/140x140?camera=32" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+									<small class="text-grey">December 06, 2016</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-xl-4 mb-3">
+					<div class="row">
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://source.unsplash.com/random/140x140?camera=1" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+									<small class="text-grey">December 06, 2016</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://source.unsplash.com/random/140x140?camera=2" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
+									<small class="text-grey">December 06, 2016</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://source.unsplash.com/random/140x140?camera=3" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
 								<div class="detail p-2 p-lg-3">
 									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
 									<small class="text-grey">December 06, 2016</small>

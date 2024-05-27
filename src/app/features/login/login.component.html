@@ -1,37 +1,44 @@
-<section class="header bg-info py-3">
-    <div class="container text-center py-5" style="font-size: 12px;">
-        <a [routerLink]="['/']" routerLinkActive="router-link-active" class="text-light" href="javascript:void(0)">HOME</a> 
-        <span class="iconify text-light ms-2 me-1" data-icon="ion:chevron-right"></span> 
-        <span class="text-light">SIGN IN</span>
-        <h1 class="text-light fw-bold fs-2 font-p mt-2">Sign In</h1>
-    </div>
-</section>
-
-<section class="content-login py-5">
-    <div class="container py-3">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 class="font-p fw-bold fs-4 mb-3">Login</h2>
+<section style="background-color: #FBFBFB;">
+    <div class="d-flex justify-content-end">
+        <div class="w-50 row align-items-end justify-content-center">
+            <div class="col-8" style="padding-left: 200px;">
+                <h2 class="font-p fw-bold fs-2 mb-5 font-p text-center">Login</h2>
                 <form (ngSubmit)="login()">
                     <div class="mb-3">
                         <div class="text-danger fade show font-p" *ngIf="isError">
                             {{ isPesan }}
-                            <!-- <button type="button" class="btn-close btn-sm" (click)="isError = false"></button> -->
                         </div>
+                    </div>  
+                    <div class="mb-3">
+                        <label for="email" class="mb-2 font-p fs-14">Email</label>
+                        <input type="email" class="form-control font-p fs-14 py-2" [(ngModel)]="model.email" name="email" id="email" aria-describedby="email">
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="text-grey mb-2 fs-14">Email address <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control rounded-0 py-2" [(ngModel)]="model.email" name="email" id="email" aria-describedby="email">
+                        <label for="password" class="mb-2 font-p fs-14">Password</label>
+                        <input type="password" class="form-control font-p fs-14 py-2" [(ngModel)]="model.password" name="password" id="password" aria-describedby="password">
                     </div>
-                    <div class="mb-3">
-                        <label for="password" class="text-grey mb-2 fs-14">Password <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control rounded-0 py-2" [(ngModel)]="model.password" name="password" id="password" aria-describedby="password">
-                    </div>
-                    <a href=""> <span class="text-dark fw-semibold fs-14">Forgot your password?</span> </a>
     
-                    <button class="btn btn-dark rounded-0 font-p fw-bold py-3 w-100 my-3" (click)="login()">LOGIN</button>
+                    <button class="btn btn-primary font-p fs-14 w-100 py-3 mt-3" (click)="login()">Sign In</button>
                 </form>
-                <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="btn btn-dark rounded-0 font-p fw-bold py-3 w-100">CREATE AN ACCOUNT</a>
+
+                <div class="row justify-content-end mt-3">
+                    <div class="col-6 text-end">
+                        <a href="javacript:void()" class="fs-14 fw-semibold font-p text-primary">Forgot Password ?</a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center font-p fs-14 fw-semibold mb-5 ps-5">
+                <span>Don't have an account yet? </span> 
+                <a href="/register" class="text-primary">Join here</a>
+            </p>
+        </div>
+        <div class="background w-50 d-flex align-items-center">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <!-- <img src="../../../assets/img/undraw/login.svg" alt="login" width="600"> -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>

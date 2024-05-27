@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
 	collapseProduct: boolean = true;
 	listCategories: any;
 	auth: any;
+	countCart: any;
 
 	constructor(
 		private globalService: GlobalService,
@@ -26,7 +27,7 @@ export class HeaderComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.auth = this.globalService.getAuth();
+		this.auth = this.globalService.getAuth()['user'];
 		this.headerMenu = document.getElementById("header-menu");
 		this.navbar = document.getElementById("navbar");
 		this.cart = document.getElementById("cart-bottom");
@@ -37,6 +38,7 @@ export class HeaderComponent implements OnInit {
 		}
 
 		this.getCategories();
+		this.totalCart();
 	}
 
 	@HostListener('window:scroll', [])
@@ -68,5 +70,14 @@ export class HeaderComponent implements OnInit {
 
 	redirectProfile() {
 		this.router.navigate(['account']);
+	}
+
+	totalCart() {
+		let params = {
+			'user_id': this.auth.id
+		}
+		this.globalService.DataGet('/cart/get', params).subscribe((res: any) => {
+			this.countCart = res.data.length;
+		});
 	}
 }

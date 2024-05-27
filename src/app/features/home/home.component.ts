@@ -3,6 +3,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 import { environment } from 'src/environments/environment.development';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
+import { Router } from '@angular/router';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 @Component({
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit {
 
 	constructor(
 		private globalService: GlobalService,
+		private router: Router,
 	) { }
 
 	ngOnInit() {
@@ -185,18 +187,11 @@ export class HomeComponent implements OnInit {
 	}
 
 	getSlider() {
-		// this.loading.slider = true;
-		// this.globalService.DataGet('/public/slider').subscribe((res: any) => {
-		// 	this.listSlider = res.data;
-		// 	this.loading.slider = false;
-		// })
-		this.listSlider = [
-			{image: "../../../assets/img/slider/1-min.webp"},
-			{image: "../../../assets/img/slider/2-min.webp"},
-			{image: "../../../assets/img/slider/3-min.webp"},
-			{image: "../../../assets/img/slider/4-min.webp"},
-			{image: "../../../assets/img/slider/5-min.webp"},
-		]
+		this.loading.slider = true;
+		this.globalService.DataGet('/public/slider').subscribe((res: any) => {
+			this.listSlider = res.data.list;
+			this.loading.slider = false;
+		})
 	}
 
 	changeTipeProduct(tipe:string) {
@@ -221,5 +216,20 @@ export class HomeComponent implements OnInit {
 
 	closePopup() {
 		this.statusPopup = false;
+	}
+
+	addCart(productId:string) {
+		if (this.globalService.getAuth() === null) {
+		  this.router.navigate(['/login']);
+		} else {
+		  let params = {
+			user_id: this.globalService.getAuth()['user']['id'],
+			product_id: productId,
+			quantity: 1
+		  }
+		  this.globalService.DataPost('/cart/add', params).subscribe((res:any) => {
+			this.globalService.alertSuccess('Success', res.message);
+		  })
+		}
 	}
 }

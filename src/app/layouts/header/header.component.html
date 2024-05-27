@@ -156,6 +156,7 @@
       <a href="javascript:void(0)" routerLink="/cart" class="d-flex align-items-center" *ngIf="auth">
         <i class='bx bxs-cart-alt fs-6 ms-3 ms-2 me-1'></i>
         <span class="fw-bold" style="font-size: 12px;">CART</span>
+        <span class="badge rounded-pill text-bg-danger fs-12 ms-1 p-1 px-2">{{ countCart }}</span>
       </a>
       <!-- <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
         <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
