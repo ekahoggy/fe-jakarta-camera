@@ -57,7 +57,7 @@
 
                 <form (ngSubmit)="register()">
                     <div class="mb-3">
-                        <label for="name" class="text-grey mb-2 fs-14">Name <span class="text-danger">*</span></label>
+                        <label for="name" class="text-grey mb-2 fs-14">Nama <span class="text-danger">*</span></label>
                         <input type="text" class="form-control py-2" id="name" [(ngModel)]="model.name" name="name" aria-describedby="name" required>
                     </div>
                     <div class="mb-3">
@@ -65,14 +65,14 @@
                         <input type="email" class="form-control py-2" id="email" [(ngModel)]="model.email" name="email" aria-describedby="email" required>
                     </div>
                     <div class="mb-3">
-                        <label for="phone_number" class="text-grey mb-2 fs-14">Phone Number <span class="text-danger">*</span></label>
+                        <label for="phone_number" class="text-grey mb-2 fs-14">Nomor Telepon <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"> +62 </span>
                             <input type="tel" class="form-control py-2" id="phone_number" [(ngModel)]="model.phone_number" name="p\hone_number" aria-describedby="last_name" required>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="text-grey mb-2 fs-14">Explain what is broken <span class="text-danger">*</span></label>
+                        <label for="description" class="text-grey mb-2 fs-14">Jelaskan apa yang rusak <span class="text-danger">*</span></label>
                         <textarea type="description" class="form-control py-2" id="description" [(ngModel)]="model.description" name="description" aria-describedby="description" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
@@ -97,7 +97,7 @@
                           </div>
                     </div> -->
 
-                    <button class="btn btn-info rounded-5 font-p py-2 w-100 mt-3">Submit Now</button>
+                    <button class="btn btn-info rounded-5 font-p py-2 w-100 mt-3">Kirim Sekarang</button>
                 </form>
             </div>
             <div class="col-md-5 d-flex align-items-center ps-5">

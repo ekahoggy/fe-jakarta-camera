@@ -100,11 +100,11 @@
 						</button> -->
 						<button class="btn btn-sm btn-info rounded-5 fs-6 font-p px-5 py-2 fw-semibold ms-2 mb-3" (click)="addCart()">
 							<i class='bx bxs-cart-alt' ></i>
-							Add To Cart
+							Tambah ke Keranjang
 						</button>
 						<!-- <button class="btn btn-sm border border-end-0 rounded-0 align-middle bg-dark fw-bold text-white py-2 px-3 ms-2 me-2" (click)="addCart()">
 							<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-							ADD TO CART
+							TAMBAH KE KERANJANG
 						</button> -->
 						<!-- <button class="btn btn-sm border rounded-0 py-2 px-2 align-middle">
 							<span class="iconify fs-5" data-icon="solar:heart-angle-linear"></span>
@@ -291,7 +291,7 @@
 						</span>
 					</div>
 					<a href="javascript:void(0)" [routerLink]="['/flash-sale']">
-						See All 
+						Lihat Semua
 						<i class="bx bx-chevron-right"></i>
 					</a>
 				</div>
@@ -308,7 +308,7 @@
 									<!-- <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button> -->
 								</div>
 								<div class="detail p-2 p-lg-3 h-100">
-									<span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
+									<span class="category text-black-50" style="font-size: 11px;">PRODUK PILIHAN</span>
 									<p class="product-name fs-6 mb-0 font-p"> {{item.nama}} </p>
 									<div class="rating">
 										<i class='bx bxs-star text-warning'></i>
@@ -320,7 +320,7 @@
 									<p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
 									<a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px" (click)="addCartFlashSale(item.id)">
 										<span class="iconify me-1 mb-1" data-icon="solar:cart-linear"></span>
-										ADD TO CART
+										TAMBAH KE KERANJANG
 									</a>
 								</div>
 							</a>
