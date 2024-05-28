@@ -17,15 +17,17 @@ import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 import { ServisKameraComponent } from './servis-kamera/servis-kamera.component';
 import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
 import { EducationModule } from './education/education.module';
+import { PromoComponent } from './promo/promo.component';
+import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full'
-  // },
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
     component: HomeComponent,
   },
   {
@@ -39,16 +41,16 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'detail/:slug',
-    component: DetailProductComponent,
-  },
-  {
     path: 'katalog/:slug',
     component: KatalogComponent,
   },
   {
     path: 'katalog',
     component: KatalogComponent,
+  },
+  {
+    path: 'katalog/detail/:slug',
+    component: DetailProductComponent,
   },
   {
     path: 'cart',
@@ -76,6 +78,10 @@ const routes: Routes = [
     canActivate: [GuestGuard]
   },
   {
+    path: 'promo',
+    component: PromoComponent
+  },
+  {
     path: 'news',
     component: NewsComponent
   },
@@ -84,8 +90,12 @@ const routes: Routes = [
     component: FlashSaleComponent
   },
   {
-    path: 'service/camera',
+    path: 'service',
     component: ServisKameraComponent
+  },
+  {
+    path: 'service/jasa-foto',
+    component: JasaFotoComponent
   },
   {
     path: 'service/pasang-cctv',

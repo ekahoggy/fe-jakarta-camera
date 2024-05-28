@@ -1,7 +1,18 @@
-<section class="header d-none">
+<section class="header">
   <div class="container fw-semibold">
-    <div class="d-flex justify-content-between align-items-center py-3">
-      <div class="language">
+    <div class="d-flex align-items-center py-2">
+      <marquee class="w-100">
+        <span>Kami buka: Senin hingga Sabtu pukul 09.00 hingga 18.00 (Tutup pada akhir pekan dan hari libur nasional)</span>
+      </marquee>
+      <div class="sosmed flex-shrink-1">
+        <div class="border-1 border-start ps-3 w-100 d-flex">
+          <a href="https://www.instagram.com/jakarta_camera/" class="fs-6 mx-1" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+          <a href="https://www.tiktok.com/@jakarta_camera" class="fs-6 mx-1" target="_blank"><i class='bx bxl-tiktok'></i></a>
+          <a href="https://www.youtube.com/channel/UCRUiZWQhTxkDKEibX83gm2g" class="fs-6 mx-1" target="_blank"><i class='bx bxl-youtube'></i></a>
+        </div>
+      </div>
+
+      <!-- <div class="language">
         <div ngbDropdown placement="bottom-start" class="d-inline-block">
           <button type="button" class="border-0 bg-white" id="dropdownLanguage" ngbDropdownToggle>
             <span class="iconify fs-6 me-1" data-icon="openmoji:flag-united-states"></span>
@@ -18,8 +29,8 @@
             </button>
           </div>
         </div>
-      </div>
-      <div class="right-header d-flex">
+      </div> -->
+      <!-- <div class="col-2 d-flex justify-content-end">
         <div class="header-text d-none d-xl-block pe-3">
           FREE RETURNS. STANDARD SHIPPING ORDERS $99+
         </div>
@@ -42,12 +53,12 @@
             </div>
           </div>
         </div>
-        <div class="sosmed">
-          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:facebook"></span>
-          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:twitter"></span>
+        <div class="sosmed border-1 border-start px-1">
           <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:instagram"></span>
+          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:tiktok"></span>
+          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:youtube"></span>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -56,37 +67,41 @@
   <div class="container">
     <div class="d-flex justify-content-between align-items-center py-3">
       <div class="header-menu-left d-none d-xl-block">
-        <div class="input-group search-bar">
-          <input type="text" class="form-control me-1" placeholder="Search..." aria-label="Pencarian" aria-describedby="search">
+        <img src="https://jakartacamera-admin.moodstudio.id/assets/img/logo.png" width="200" alt="">
+      </div>
+      <div class="header-menu-center flex-grow-1 px-lg-3">
+        <button class="btn px-0 me-2 d-lg-none" (click)="openScroll(sidebar)">
+          <span class="iconify fs-5 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
+        </button>
+        <div class="input-group search-bar d-none d-lg-flex">
+          <input type="text" class="form-control me-1" placeholder="Cari produk..." aria-label="Pencarian" aria-describedby="search">
           <span class="input-group-text" id="search">
             <span class="iconify fs-6" data-icon="uiw:search"></span>
           </span>
         </div>
       </div>
-      <div class="header-menu-center text-center">
-        <button class="btn px-0 me-2 d-xl-none" (click)="openScroll(sidebar)">
-          <span class="iconify fs-5 mb-2 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
-        </button>
-        <img src="https://jakartacamera-admin.moodstudio.id/img/logo.png" width="200" alt="">
-      </div>
       <div class="header-menu-right d-flex align-items-center">
-        <div class="call d-none d-xl-flex align-items-center">
+        <div class="call d-none d-xl-flex align-items-center pe-3">
           <span class="iconify fs-2 me-2" data-icon="mynaui:telephone"></span>
           <div>
-            <span class="fw-bold text-grey call-text mb-0">CALL US NOW</span>
-            <p class="mb-0 fs-6 fw-bold">+62 5678 89011</p>
+            <span class="fw-bold text-grey call-text mb-0">HUBUNGI SEKARANG</span>
+            <a  href="https://api.whatsapp.com/send?phone=+6281298767036&text=Halo+Jakarta+Camera" target="_blank">
+              <p class="mb-0 fs-6 fw-bold">+62 812 98767036</p>
+            </a>
           </div>
         </div>
         <div class="interact ps-3">
-          <a href="javascript:void(0)" [routerLink]="['/account']" class="d-none d-lg-inline">
+          <a href="javascript:void(0)" [routerLink]="['/account']" class="d-none d-lg-inline" *ngIf="auth">
             <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
           </a>
-          <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span>
-          <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark">
-            <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
-            <!-- <i class="fi fi-rs-basket-shopping-simple ms-3 fs-4 pt-3"></i> -->
-            <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
+          <a href="javascript:void(0)" [routerLink]="['/login']"  class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;" *ngIf="!auth">
+            Masuk &nbsp;| &nbsp;Daftar
           </a>
+          <!-- <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span> -->
+          <!-- <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark">
+            <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
+            <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
+          </a> -->
         </div>
       </div>
     </div>
@@ -96,17 +111,17 @@
 <section class="header-nav bg-white d-none d-xl-block" id="navbar">
   <nav class="navbar navbar-expand-lg py-0">
     <div class="container">
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav fw-bold">
-          <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-1 px-0"  aria-current="page" href="javascript:void(0)" [routerLink]="['/home']" routerLinkActive="active">HOME</a>
+          <li class="nav-item me-4">
+            <a class="nav-link py-4 px-1 px-0"  aria-current="page" href="javascript:void(0)" [routerLink]="['/home']" routerLinkActive="active">BERANDA</a>
           </li>
           <li class="nav-item mx-4">
             <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/promo']" routerLinkActive="active">PROMO</a>
           </li>
           <li class="nav-item dropdown mx-4">
             <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/katalog']" routerLinkActive="active">
-              PRODUCTS
+              PRODUK
               <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
             </a>
             <div class="dropdown-content">
@@ -117,27 +132,36 @@
           </li>
           <li class="nav-item dropdown mx-4">
             <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/service']" routerLinkActive="active">
-              SERVICE
+              LAYANAN
               <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
             </a>
             <div class="dropdown-content">
-              <a href="javascript:void(0)" [routerLink]="['/service/camera']">Service Kamera</a>
-              <a href="javascript:void(0)" [routerLink]="['/service']">Jasa Foto dan Cetak</a>
+              <a href="javascript:void(0)" [routerLink]="['/service']">Servis Kamera</a>
+              <a href="javascript:void(0)" [routerLink]="['/service/jasa-foto']">Jasa Foto dan Cetak</a>
               <a href="javascript:void(0)" [routerLink]="['/service/pasang-cctv']">Jasa Pasang CCTV</a>
             </div>
           </li>
           <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/news']" routerLinkActive="active">NEWS</a>
+            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/news']" routerLinkActive="active">BERITA</a>
           </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/education']" routerLinkActive="active">EDUCATION</a>
-          </li>
+          <!-- <li class="nav-item mx-4">
+            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/education']" routerLinkActive="active">EDUKASI</a>
+          </li> -->
         </ul>
       </div>
-      <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
-        <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
-        <!-- <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span> -->
+      <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center" *ngIf="auth">
+        <i class='bx bx-heart fs-6 me-1'></i>
+        <span class="fw-bold" style="font-size: 12px;">WISHLIST</span>
       </a>
+      <a href="javascript:void(0)" routerLink="/cart" class="d-flex align-items-center" *ngIf="auth">
+        <i class='bx bxs-cart-alt fs-6 ms-3 ms-2 me-1'></i>
+        <span class="fw-bold" style="font-size: 12px;">KERANJANG</span>
+        <span class="badge rounded-pill text-bg-danger fs-12 ms-1 p-1 px-2">{{ countCart }}</span>
+      </a>
+      <!-- <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
+        <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
+        <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
+      </a> -->
     </div>
   </nav>
 </section>
@@ -150,7 +174,7 @@
 		<ul class="list-group list-group-flush fw-semibold">
       <li class="list-group-item">
         <div class="d-flex align-items-center justify-content-between">
-          <span>HOME</span>
+          <span>BERANDA</span>
         </div>
       </li>
       <li class="list-group-item">
@@ -170,7 +194,7 @@
       </li>
       <li class="list-group-item">
         <div class="d-flex align-items-center justify-content-between">
-          <span>PRODUCTS</span>
+          <span>PRODUK</span>
           <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct" [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
             <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
           </button>

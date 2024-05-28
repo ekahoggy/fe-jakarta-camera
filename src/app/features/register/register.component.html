@@ -1,52 +1,51 @@
-<section class="header bg-secondary py-3">
-    <div class="container text-center py-5" style="font-size: 12px;">
-        <a class="text-primary" [routerLink]="['/']" routerLinkActive="router-link-active"  href="javascript:void(0)">HOME</a> <span class="iconify text-grey ms-2 me-1" data-icon="ion:chevron-right"></span> CREATE ACCOUNT
-        <h1 class="fw-bold fs-2 font-p mt-2">Sign Up</h1>
-    </div>
-</section>
-
-<section class="content-login py-5">
-    <div class="container py-3">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
+<section style="background-color: #FBFBFB;">
+    <div class="d-flex justify-content-end">
+        <div class="w-50 row align-items-center justify-content-end">
+            <div class="col-10 mt-5" style="padding-left: 200px;">
                 <form (ngSubmit)="register()">
-                    <h2 class="font-p fw-bold fs-4 mb-3">Sign Up</h2>
+                    <h2 class="font-p fw-bold fs-2 mt-4 mb-5 font-p text-center">Sign Up</h2>
                     <div class="text-success font-p mb-3 fw-semibold" *ngIf="is.success" role="alert">
                         Congratulation, registration successfully! <a href="javascript:void(0)" [routerLink]="['/login']" class="text-primary">click here</a> to login
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="text-grey mb-2 fs-14">Full Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control rounded-0 py-2" id="name" [(ngModel)]="model.name" name="name" required>
-                        <small class="text-danger font-p" style="font-size: 12px" *ngIf="error.name">{{ error.name }}</small>
+                        <label for="name" class="mb-2 font-p fs-14">Full Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control font-p fs-14 py-2" id="name" [(ngModel)]="model.name" name="name" required>
+                        <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.name }}</small>
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="text-grey mb-2 fs-14">Username <span class="text-danger">*</span></label>
-                        <input type="username" class="form-control rounded-0 py-2" id="username" [(ngModel)]="model.username" name="username" required>
+                        <label for="username" class="mb-2 font-p fs-14">Username <span class="text-danger">*</span></label>
+                        <input type="username" class="form-control font-p fs-14 py-2" id="username" [(ngModel)]="model.username" name="username" required>
                     </div>
                     <div class="mb-3">
-                        <label for="phone_number" class="text-grey mb-2 fs-14">Phone Number <span class="text-danger">*</span></label>
+                        <label for="email" class="mb-2 font-p fs-14">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control font-p fs-14 py-2" id="email" [(ngModel)]="model.email" name="email" required>
+                        <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.email }}</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone_number" class="mb-2 font-p fs-14">Phone Number <span class="text-danger">*</span></label>
                         <div class="input-group">
-                            <span class="input-group-text rounded-0" id="basic-addon1"> +62 </span>
-                            <input type="tel" class="form-control rounded-0 py-2" id="phone_number" [(ngModel)]="model.phone_number" name="phone_number" required>
+                            <span class="input-group-text font-p fs-14" id="phone_number"> +62 </span>
+                            <input type="tel" class="form-control font-p fs-14 py-2" id="phone_number" [(ngModel)]="model.phone_number" name="phone_number" required>
                         </div>
-                        <small class="text-danger font-p" style="font-size: 12px" *ngIf="error.name">{{ error.phone_number }}</small>
+                        <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.phone_number }}</small>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="text-grey mb-2 fs-14">Email address <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control rounded-0 py-2" id="email" [(ngModel)]="model.email" name="email" required>
-                        <small class="text-danger font-p" style="font-size: 12px" *ngIf="error.name">{{ error.email }}</small>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="text-grey mb-2 fs-14">Password <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control rounded-0 py-2" id="password" [(ngModel)]="model.password" name="password" required>
+                        <label for="password" class="mb-2 font-p fs-14">Password <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control font-p fs-14 py-2" id="password" [(ngModel)]="model.password" name="password" required>
                     </div>
 
-                    <button class="btn btn-dark rounded-0 font-p fw-bold py-3 w-100 my-3">SUBMIT</button>
+                    <button class="btn btn-primary font-p fs-14 fw-semibold w-100 py-3 mt-3 mb-5">Submit</button>
                 </form>
+
             </div>
+        </div>
+        <div class="background w-50">
+
         </div>
     </div>
 </section>
+
+  
 
 <app-footer></app-footer>
 

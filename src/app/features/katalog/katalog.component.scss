@@ -1,15 +1,8 @@
-img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 5/4;
-}
-
-
 .wrap-image {
-  max-height: 280px; height: 280px;
-
   img {
-    max-height: 280px; height: 280px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5/5;
   }
 
   .btn {
@@ -17,6 +10,7 @@ img {
     font-weight: bold;
     display: none;
     margin-top: -80px;
+    font-size: clamp(21px, 1.2vw, 80px);
   }
 }
 
@@ -25,4 +19,18 @@ img {
   .btn {
     display: inline;
   }
+}
+
+.detail {
+  .product-name {
+    font-size: clamp(21px, 1.2vw, 80px);
+    white-space: nowrap; 
+    width: 100%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
+}
+
+.view-sale {
+  background: url('../../../assets/img/background/banner-huge-sale.webp') center center no-repeat;
 }

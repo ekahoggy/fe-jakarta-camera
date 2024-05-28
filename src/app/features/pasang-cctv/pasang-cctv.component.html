@@ -1,4 +1,4 @@
-<section class="view-sale bg-body-tertiary py-lg-4">
+<!-- <section class="view-sale bg-body-tertiary py-lg-4">
 	<div class="container py-5">
 		<div class="row justify-content-center">
 			<div class="col-12 col-lg-4 text-center">
@@ -6,49 +6,86 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
-<section class="content-login pt-4 pb-5">
+<div class="banner py-lg-4">
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <div class="container position-relative">
+                    <div class="circle">
+                        <img src="../../../assets/img/background/cctv.png" alt="Cctv">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 font-m px-5">
+                <h1 class="fw-bolder text-white" style="font-size: 58px; margin-top: 200px;">Pantau Setiap Sudut, <br> Tenang Setiap Saat</h1>
+                <p class="fw-bolder text-white mt-3 fs-4">*Jasa Pasang CCTV</p>
+                <p class="text-white mt-3 fs-5 pe-5">
+                    Dengan layanan kami, Anda tidak perlu khawatir akan  <br>
+                    keamanan properti Anda. Kami menyediakan solusi CCTV <br>
+                    lengkap, mulai dari konsultasi, pemasangan, hingga perawatan <br>
+                    rutin. Sistem kami memungkinkan Anda untuk memantau setiap <br>
+                    sudut properti dengan mudah dan memberikan perlindungan <br>
+                    yang Anda butuhkan untuk menjalani hari tanpa cemas.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content-login py-5">
     <div class="container py-3">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-7">
+                <h1 class="fs-4 fw-semibold font-p text-grey">Kamera anda bermasalah ?</h1>
+                <h2 class="fs-3 fw-bold font-p">Perbaikan Kamera, Sempurnakan <br> Kenangan</h2>
+                <p class="text-grey font-p">Informasikan Kendala Anda dan Dapatkan Diskon Sebesar Rp 50.000 Untuk Biaya Servis Kamera*Dengan cara submit form dibawah ini :</p>
+
                 <form (ngSubmit)="register()">
                     <div class="mb-3">
-                        <label for="name" class="text-grey mb-2 fs-14">Full Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control rounded-0 py-2" id="name" [(ngModel)]="model.name" name="name" aria-describedby="name" required>
+                        <label for="name" class="text-grey mb-2 fs-14">Nama <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control py-2" id="name" [(ngModel)]="model.name" name="name" aria-describedby="name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="phone_number" class="text-grey mb-2 fs-14">Phone Number <span class="text-danger">*</span></label>
+                        <label for="email" class="text-grey mb-2 fs-14">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control py-2" id="email" [(ngModel)]="model.email" name="email" aria-describedby="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone_number" class="text-grey mb-2 fs-14">Nomor Telepon <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text rounded-0" id="basic-addon1"> +62 </span>
-                            <input type="tel" class="form-control rounded-0 py-2" id="phone_number" [(ngModel)]="model.phone_number" name="p\hone_number" aria-describedby="last_name" required>
+                            <input type="tel" class="form-control py-2" id="phone_number" [(ngModel)]="model.phone_number" name="p\hone_number" aria-describedby="last_name" required>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="text-grey mb-2 fs-14">Email address <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control rounded-0 py-2" id="email" [(ngModel)]="model.email" name="email" aria-describedby="email" required>
+                        <label for="message" class="text-grey mb-2 fs-14">Pesan <span class="text-danger">*</span></label>
+                        <textarea type="message" class="form-control py-2" id="message" [(ngModel)]="model.message" name="message" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="message" class="text-grey mb-2 fs-14">Message <span class="text-danger">*</span></label>
-                        <textarea type="message" class="form-control rounded-0 py-2" id="message" [(ngModel)]="model.message" name="message" rows="3" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="text-grey mb-2 fs-14">Address <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control rounded-0 py-2" id="address" [(ngModel)]="model.address" name="address" aria-describedby="address" required>
+                        <label for="address" class="text-grey mb-2 fs-14">Alamat <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control py-2" id="address" [(ngModel)]="model.address" name="address" aria-describedby="address" required>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-6">
-                            <label for="city" class="text-grey mb-2 fs-14">City <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded-0 py-2" id="city" [(ngModel)]="model.city" name="city" aria-describedby="city" required>
+                        <div class="col-4">
+                            <label for="province" class="text-grey mb-2 fs-14">Provinsi <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control py-2" id="province" [(ngModel)]="model.province" name="province" aria-describedby="province" required>
                         </div>
-                        <div class="col-6">
-                            <label for="province" class="text-grey mb-2 fs-14">State / Province / Region <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded-0 py-2" id="province" [(ngModel)]="model.province" name="province" aria-describedby="province" required>
+                        <div class="col-4">
+                            <label for="city" class="text-grey mb-2 fs-14">Kota / Kabupaten <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control py-2" id="city" [(ngModel)]="model.city" name="city" aria-describedby="city" required>
+                        </div>
+                        <div class="col-4">
+                            <label for="postal_code" class="text-grey mb-2 fs-14">Kode POS <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control py-2" id="postal_code" [(ngModel)]="model.postal_code" name="postal_code" aria-describedby="postal_code" required>
                         </div>
                     </div>
                     
-                    <button class="btn btn-dark rounded-0 font-p fw-bold py-3 w-100 my-3">SUBMIT</button>
+                    <button class="btn btn-info rounded-5 font-p py-2 w-100 mt-3">Kirim Sekarang</button>
                 </form>
+            </div>
+            <div class="col-md-5 d-flex align-items-center ps-5">
+                <img src="assets/img/undraw/service-camera.png" style="width: 400px;" class="object-fit-cover" width="400" alt="empty">
             </div>
         </div>
     </div>

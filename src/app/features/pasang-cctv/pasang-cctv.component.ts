@@ -7,7 +7,7 @@ import { GlobalService } from 'src/app/services/global.service';
   styleUrls: ['./pasang-cctv.component.scss']
 })
 export class PasangCctvComponent {
-  model: any = {};
+  	model: any = {};
 	is: any = {};
 	base64Image: string | null = null;
 

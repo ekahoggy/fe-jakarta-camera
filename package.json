@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "build-galih": "ng build",
     "build": "ng build --aot --vendor-chunk --common-chunk --delete-output-path --build-optimizer",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -21,6 +22,7 @@
     "@ng-bootstrap/ng-bootstrap": "^15.1.2",
     "@popperjs/core": "^2.11.6",
     "@sweetalert2/ngx-sweetalert2": "^12.3.0",
+    "aos": "^2.3.4",
     "bootstrap": "^5.3.2",
     "ngx-countdown": "^16.0.0",
     "rxjs": "~7.5.0",
@@ -34,6 +36,7 @@
     "@angular/cli": "~16.2.12",
     "@angular/compiler-cli": "^16.2.12",
     "@angular/localize": "^16.2.12",
+    "@types/aos": "^3.0.7",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",

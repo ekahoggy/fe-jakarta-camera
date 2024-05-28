@@ -1,531 +1,502 @@
-<section id="banner-carousel">
-	<ngb-carousel [showNavigationIndicators]="false">
-		<ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
-			<div class="picsum-img-wrapper">
-				<img src="https://source.unsplash.com/random/1200x500?camera={{i}}"
-					class="w-100 object-fit-cover h-auto" height="500" alt="Random first slide" />
-				<!-- <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover h-auto" height="500" alt="Random first slide" /> -->
-			</div>
-		</ng-template>
-	</ngb-carousel>
-</section>
+<ng-container *ngIf="loading.slider && loading.product && loading.category">
+	<app-spinner></app-spinner>
+</ng-container>
 
-<section class="our-advantages">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-6 col-lg-4">
-				<div class="d-flex justify-content-center align-items-center py-4 py-lg-5">
-					<span class="iconify me-3 fs-1" data-icon="mdi:truck-fast-outline"></span>
-					<div class="text">
-						<h1 class="mb-0 fw-bold fs-14">FREE SHIPPING & RETURN</h1>
-						<p class="mb-0 text-grey font-p" style="font-size: 12px;">Free shipping on all orders over $99
-						</p>
-					</div>
+<ng-container *ngIf="!loading.slider && !loading.product && !loading.category">
+	<section class="loading-slider" *ngIf="loading.slider">
+		<div class="bg-grey" style="height: 480px;"></div>
+	</section>
+	<section id="banner-carousel" *ngIf="!loading.slider">
+		<ngb-carousel [showNavigationIndicators]="false">
+			<ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
+				<div class="picsum-img-wrapper">
+					<img [src]="item.picture" class="w-100 object-fit-cover" height="480" alt="Random first slide" />
+					<!-- <img src="https://source.unsplash.com/random/1200x634?camera={{i}}" class="w-100 object-fit-cover h-auto" height="634" alt="Random first slide" /> -->
+					<!-- <img [src]="originalImageUrl + item.picture" class="w-100 object-fit-cover h-auto" height="50	0" alt="Random first slide" /> -->
 				</div>
-			</div>
-			<div class="col-md-6 col-lg-4">
-				<div class="d-flex justify-content-center align-items-center py-4 py-lg-5">
-					<span class="iconify me-3 fs-1" data-icon="f7:money-dollar-circle"></span>
-					<div class="text">
-						<h1 class="mb-0 fw-bold fs-14">MONEY BACK GUARANTEE</h1>
-						<p class="mb-0 text-grey font-p" style="font-size: 12px;">Free shipping on all orders over $99 </p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-4">
-				<div class="d-flex justify-content-center align-items-center py-4 py-lg-5">
-					<span class="iconify me-3 fs-1" data-icon="ri:24-hours-line"></span>
-					<div class="text">
-						<h1 class="mb-0 fw-bold fs-14">ONLINE SUPPORT 24/7</h1>
-						<p class="mb-0 text-grey font-p" style="font-size: 12px;">Free shipping on all orders over $99
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+			</ng-template>
+		</ngb-carousel>
+	</section>
 
-<section class="category py-5">
-	<div class="container">
-		<div class="row">
-			<ng-container *ngFor="let item of listCategory">
-				<div class="col-4 col-md-3 col-lg-2 mb-3">
-					<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">
-						<div class="p-2 p-sm-4 mx-auto text-center rounded-2 wrap-category">
-							<img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
-							<p class="font-p mb-0 mt-3 text-uppercase"> {{ item.kategori }} </p>
-						</div>
-					</a>
-				</div>
-			</ng-container>
-		</div>
-	</div>
-</section>
-
-<!-- <section class="product-promo py-5">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-10 col-md-6 col-lg-4">
-				<a href="javascript:void(0)" routerLink="/detail">
-					<div class="position-relative p-2">
-						<img src="https://source.unsplash.com/random/400x300?camera=1" class="w-100 object-fit-cover"
-							alt="Random second slide" />
-						<div class="wrap-text-promo bg-info position-relative text-center py-2 mx-2">
-							<span class="text-light font-p fs-6">Save Up To</span>
-							<h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
-							<p class="desc font-p fs-6 text-light mb-0">on Porto Watch Series 5</p>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-10 col-md-6 col-lg-4">
-				<a href="javascript:void(0)" routerLink="/detail">
-					<div class="position-relative p-2">
-						<img src="https://source.unsplash.com/random/400x300?camera=2" class="w-100 object-fit-cover"
-							alt="Random second slide" />
-						<div class="wrap-text-promo bg-info position-relative text-center py-2 mx-2">
-							<span class="text-light font-p fs-6">Save Up To</span>
-							<h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
-							<p class="desc font-p fs-6 text-light mb-0">on Porto Watch Series 5</p>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-10 col-md-6 col-lg-4">
-				<a href="javascript:void(0)" routerLink="/detail">
-					<div class="position-relative p-2">
-						<img src="https://source.unsplash.com/random/400x300?camera=3" class="w-100 object-fit-cover"
-							alt="Random second slide" />
-						<div class="wrap-text-promo bg-info position-relative text-center py-2 mx-2">
-							<span class="text-light font-p fs-6">Save Up To</span>
-							<h1 class="total-promo fs-1 text-light fw-bold mb-0">70%</h1>
-							<p class="desc font-p fs-6 text-light mb-0">on Porto Watch Series 5</p>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div>
-	</div>
-</section> -->
-
-<section class="flash-sale mb-5">
-	<div class="filter-bar">
+	<section class="category py-5">
 		<div class="container">
-			<div class="d-flex justify-content-between align-items-center">
-				<div class="fw-bolder text-primary border-primary border-2 me-4" style="font-size: 15px;">
-					FLASH SALE
-					<i class='bx bxs-bolt'></i>
-					<span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
-						<countdown [config]="{leftTime: 4000}"></countdown>
-					</span>
-				</div>
-				<a href="javascript:void(0)" [routerLink]="['/flash-sale']">
-					See All 
-					<i class="bx bx-chevron-right"></i>
-				</a>
-			</div>
-			<hr>
-		</div>
-	</div>
-	<div class="container mt-4">
-		<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFlash">
-			<ng-container *ngFor="let item of listProduct; index as i">
-				<ng-template swiperSlide>
-					<!-- [src]="productImageURL + item.foto" -->
-					<div class="position-relative wrap-image">
-						<img src="https://source.unsplash.com/random/250x250?camera={{i}}" class="w-100 object-fit-cover" alt="Random second slide" />
-						<button class="btn btn-info rounded-0 font-p position-relative w-100 py-3" routerLink="/detail/{{item.slug}}">QUICK VIEW</button>
-					</div>
-					<div class="detail text-center p-2 p-lg-3">
-						<span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
-						<h2 class="product-name mb-0 font-p fs-6">{{ item.nama }} </h2>
-						<!-- <div class="rating">
-							<span class="iconify text-warning" data-icon="uis:star"></span>
-							<span class="iconify text-warning" data-icon="uis:star"></span>
-							<span class="iconify text-black-50" data-icon="uis:star"></span>
-							<span class="iconify text-black-50" data-icon="uis:star"></span>
-							<span class="iconify text-black-50" data-icon="uis:star"></span>
-						</div> -->
-						<span class="text-decoration-line-through" style="color: rgb(175, 175, 175); font-size: 14px;">Rp 50,000</span>
-						<span>
-							<i class='bx bxs-bolt'></i>-12%
-						</span>
-						<p class="price fs-6 text-primary">Rp {{ item.harga | number }}</p>
-						<a href="javascript:void(0)" routerLink="/detail/{{item.slug}}" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
-							<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-							ADD TO CART
+			<div class="row justify-content-center">
+				<ng-container *ngFor="let item of listCategory">
+					<div class="col-4 col-lg-2 p-3 mb-3">
+						<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">
+							<div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100">
+								<img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
+								<p class="font-p mb-0 mt-3 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </p>
+							</div>
 						</a>
 					</div>
-				</ng-template>
-			</ng-container>
-		</swiper>
-	</div>
-</section>
-
-<section class="products mb-5">
-	<div class="filter-bar border-bottom">
-		<div class="container">
-			<div class="d-flex">
-				<div class="fw-bolder text-primary border-bottom border-primary border-2 pb-2 me-4" style="font-size: 13px;">FEATURED PRODUCTS</div>
-				<div class="fw-bolder border-bottom border-dark border-2 pb-2 me-4" style="font-size: 13px;">LATEST PRODUCTS</div>
+				</ng-container>
 			</div>
 		</div>
-	</div>
-	<div class="container mt-4">
-		<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
-			<ng-container *ngFor="let item of listProduct; index as i">
-				<ng-template swiperSlide>
-					<!-- [src]="productImageURL + item.foto" -->
-					<div class="position-relative wrap-image">
-						<img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover" alt="Random second slide" />
-						<button class="btn btn-info rounded-0 font-p position-relative w-100 py-3" routerLink="/detail/{{item.slug}}">QUICK VIEW</button>
-					</div>
-					<div class="detail text-center p-2 p-lg-3">
-						<span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
-						<h2 class="product-name mb-0" style="font-size: 16px;">{{ item.nama }} </h2>
-						<div class="rating">
-							<span class="iconify text-warning" data-icon="uis:star"></span>
-							<span class="iconify text-warning" data-icon="uis:star"></span>
-							<span class="iconify text-black-50" data-icon="uis:star"></span>
-							<span class="iconify text-black-50" data-icon="uis:star"></span>
-							<span class="iconify text-black-50" data-icon="uis:star"></span>
-						</div>
-						<p class="price fs-6 fw-semibold">Rp {{ item.harga | number }}</p>
-						<a href="javascript:void(0)" routerLink="/detail/{{item.slug}}"
-							class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2"
-							style="font-size: 12px">
-							<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-							ADD TO CART
+	</section>
+
+	<!-- <section class="category py-5">
+		<div class="container">
+			<div class="row">
+				<ng-container *ngFor="let item of listCategory">
+					<div class="col-4 col-md-3 col-lg-2 mb-3">
+						<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">
+							<div class="p-2 p-sm-4 mx-auto text-center rounded-2 wrap-category">
+								<img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
+								<p class="font-p mb-0 mt-3 text-uppercase"> {{ item.kategori }} </p>
+							</div>
 						</a>
 					</div>
-				</ng-template>
-				<!-- <ng-template swiperSlide>
-          <img src="assets/img/earphone.webp" class="w-100 object-fit-contain" alt="Random second slide" />
-          <div class="detail text-center p-2 p-lg-3">
-            <span class="category text-black-50" style="font-size: 12px;">FEATURED PRODUCTS</span>
-            <h2 class="product-name mb-0" style="font-size: 16px;">Porto Evolution Headset </h2>
-            <div class="rating">
-              <span class="iconify text-warning" data-icon="uis:star"></span>
-              <span class="iconify text-warning" data-icon="uis:star"></span>
-              <span class="iconify text-black-50" data-icon="uis:star"></span>
-              <span class="iconify text-black-50" data-icon="uis:star"></span>
-              <span class="iconify text-black-50" data-icon="uis:star"></span>
-            </div>
-            <p class="price fs-6 fw-semibold">Rp 55.000</p>
-            <a href="javascript:void(0)" routerLink="/detail" class="btn btn-light btn-sm border border-light-subtle rounded-0 fw-semibold py-2" style="font-size: 12px">
-              <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-              ADD TO CART
-            </a>
-          </div>
-        </ng-template> -->
-			</ng-container>
-		</swiper>
-	</div>
-</section>
-
-<section class="benefit border-top">
-	<div class="container py-3 py-lg-5">
-		<div class="row">
-			<div class="col-lg-4">
-				<div class="benefit-content p-3 text-center">
-					<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto"
-						style="width: 70px; height: 70px;">
-						<div>
-							<span class="iconify text-primary fs-1" data-icon="simple-line-icons:earphones-alt"></span>
-						</div>
-					</div>
-					<h2 class="fs-6 fw-bold mt-3 mb-0">CUSTOMER SUPPORT</h2>
-					<em style="color:#555;font-weight: 600;font-size:0.875rem;">Need Assistence?</em>
-					<p class="mt-3 text-subtle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec
-						vestibulum magna, et dapib.</p>
-				</div>
+				</ng-container>
 			</div>
-			<div class="col-lg-4">
-				<div class="benefit-content p-3 text-center">
-					<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto"
-						style="width: 70px; height: 70px;">
-						<div>
-							<span class="iconify text-primary fs-1" data-icon="ph:credit-card"></span>
+		</div>
+	</section> -->
+	
+	<section class="our-advantages">
+		<div class="container">
+			<div class="row justify-content-center py-3">
+				<div class="col-md-6 col-lg-4 border-end">
+					<div class="d-flex justify-content-start align-items-center py-3">
+						<span class="iconify me-3 fs-4" data-icon="mdi:run-fast"></span>
+						<div class="text">
+							<h1 class="mb-0 fw-bold fs-14">CEPAT & MUDAH</h1>
+							<p class="mb-0 text-grey font-p" style="font-size: 12px;">
+								Proses pemesanan hanya dengan beberapa klik!
+							</p>
 						</div>
 					</div>
-					<h2 class="fs-6 fw-bold mt-3 mb-0">SECURED PAYMENT</h2>
-					<em style="color:#555;font-weight: 600;font-size:0.875rem;">Safe & Fast</em>
-					<p class="mt-3 text-subtle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec
-						vestibulum magna, et dapib.</p>
 				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="benefit-content p-3 text-center">
-					<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto"
-						style="width: 70px; height: 70px;">
-						<div>
-							<span class="iconify text-primary fs-1" data-icon="streamline:return-2"></span>
+				<div class="col-md-6 col-lg-4 border-end">
+					<div class="d-flex justify-content-start align-items-center py-3">
+						<span class="iconify me-3 fs-4" data-icon="mdi:truck-fast"></span>
+						<div class="text">
+							<h1 class="mb-0 fw-bold fs-14">PENGIRIMAN</h1>
+							<p class="mb-0 text-grey font-p" style="font-size: 12px;">Pengiriman tersedia ke seluruh Indonesia</p>
 						</div>
 					</div>
-					<h2 class="fs-6 fw-bold mt-3 mb-0">RETURNS</h2>
-					<em style="color:#555;font-weight: 600;font-size:0.875rem;">Easy & Free</em>
-					<p class="mt-3 text-subtle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec
-						vestibulum magna, et dapib.</p>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="d-flex justify-content-start align-items-center py-3">
+						<span class="iconify me-3 fs-4" data-icon="ph:seal-check-bold"></span>
+						<div class="text">
+							<h1 class="mb-0 fw-bold fs-14">GARANSI</h1>
+							<p class="mb-0 text-grey font-p" style="font-size: 12px;">Memberikan jaminan bebas masalah </p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<section class="view-sale bg-body-tertiary py-lg-5">
-	<div class="container py-5">
-		<div class="row">
-			<div class="col-12 col-lg-4 text-lg-end">
-				<h2 class="fw-bold">TOP ELECTRONIC <br> DEALS</h2>
-			</div>
-			<div class="col-12 col-lg-4 text-lg-center">
-				<div class="btn btn-primary rounded-0 fw-bold px-5 py-3 mt-3">
-					VIEW SALE
-				</div>
-			</div>
-			<div class="col-12 col-lg-4">
-
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="brand">
-	<div class="container">
-		<div class="row border-bottom py-5">
-			<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configBrand">
-				<ng-template swiperSlide>
-					<img src="../../../assets/img/brand/sekonic-light-meter-logo-1.webp" width="150" alt="">
-				</ng-template>
-				<ng-template swiperSlide>
-					<img src="../../../assets/img/brand/tamron-lens-logo-1.webp" width="150" alt="">
-				</ng-template>
-				<ng-template swiperSlide>
-					<img src="../../../assets/img/brand/vanguard-camera-logo-1.webp" width="150" alt="">
-				</ng-template>
-				<ng-template swiperSlide>
-					<img src="../../../assets/img/brand/laowa-lens-logo-1.webp" width="150" alt="">
-				</ng-template>
-				<ng-template swiperSlide>
-					<img src="../../../assets/img/brand/bushnell-logo-1.webp" width="150" alt="">
-				</ng-template>
-				<ng-template swiperSlide>
-					<img src="../../../assets/img/brand/e-image-tripod-logo-1.webp" width="150" alt="">
-				</ng-template>
-				<ng-template swiperSlide>
-					<img src="../../../assets/img/brand/samllrig-logo-1.webp" width="150" alt="">
-				</ng-template>
-			</swiper>
-		</div>
-	</div>
-</section>
-
-<section class="product-filter py-5">
-	<div class="container">
-		<div class="row">
-			<div class="col-12 mb-4">
+	<section class="flash-sale my-5">
+		<div class="filter-bar">
+			<div class="container">
 				<div class="d-flex justify-content-between align-items-center">
-					<h3 class="fw-bold fs-5">NEWS</h3>
-					<a href="javascript:void(0)" class="text-grey" [routerLink]="['/news']"> 
-						View more 
+					<div class="fw-bolder text-primary border-primary me-4" style="font-size: 15px;">
+						FLASH SALE
+						<i class='bx bxs-bolt'></i>
+						<span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
+							<countdown [config]="{leftTime: 4000}"></countdown>
+						</span>
+					</div>
+					<a href="javascript:void(0)" [routerLink]="['/flash-sale']">
+						Lihat Semua
 						<i class="bx bx-chevron-right"></i>
 					</a>
 				</div>
 			</div>
-			<div class="col-lg-6 col-xl-4 mb-3">
-				<div class="row">
-					<div class="col-12 mb-3 px-1 px-lg-3">
-						<div class="d-flex align-items-center justify-content-start">
-							<img src="https://source.unsplash.com/random/140x140?camera={{6}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+		</div>
+		<div class="container mt-4">
+			<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFlash">
+				<ng-container *ngFor="let item of listProduct; index as i">
+					<ng-template swiperSlide>
+						<div data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+							<!-- [src]="productImageURL + item.foto" -->
+							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+								<div class="position-relative wrap-image rounded-4">
+									<img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+									<!-- <img src="https://source.unsplash.com/random/250x250?camera={{i}}" class="w-100 object-fit-cover rounded-4" alt="Random second slide" /> -->
+								</div>
+							</a>
 							<div class="detail p-2 p-lg-3">
-								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-								<small class="text-grey">December 06, 2016</small>
+								<span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
+								<h2 class="product-name mb-0 font-p fs-6">{{ item.nama }} </h2>
+								<span class="text-decoration-line-through" style="color: rgb(175, 175, 175); font-size: 14px;">Rp 50,000</span>
+								<span>
+									<i class='bx bxs-bolt'></i>-12%
+								</span>
+								<p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
+								<a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px" (click)="addCart(item.id)">
+									<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
+									TAMBAH KE KERANJANG
+								</a>
 							</div>
 						</div>
-					</div>
-					<div class="col-12 mb-3 px-1 px-lg-3">
-						<div class="d-flex align-items-center justify-content-start">
-							<img src="https://source.unsplash.com/random/140x140?camera={{5}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-							<div class="detail p-2 p-lg-3">
-								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-								<small class="text-grey">December 06, 2016</small>
+					</ng-template>
+				</ng-container>
+			</swiper>
+		</div>
+	</section>
+
+	<section class="benefit border-top">
+		<div class="container py-3 py-lg-5">
+			<div class="row py-lg-3">
+				<div class="col-lg-4">
+					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
+						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
+							<div>
+								<span class="iconify text-primary fs-1" data-icon="clarity:camera-line"></span>
 							</div>
 						</div>
+						<h2 class="fs-6 fw-bold mt-3 mb-0">SERVIS KAMERA</h2>
+						<em style="color:#555;font-weight: 600;font-size:0.875rem;">Butuh Kepercayaan?</em>
+						<p class="mt-3 text-subtle" style="font-size: 14px;">
+							Menerima Service / Cleaning segala kerusakan Kamera Digital, Analog, DSLR, Pocket, Prosummer, Mirrorless, Polaroid, Video Camera dll.
+						</p>
 					</div>
-					<div class="col-12 mb-3 px-1 px-lg-3">
-						<div class="d-flex align-items-center justify-content-start">
-							<img src="https://source.unsplash.com/random/140x140?camera={{8}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+				</div>
+				<div class="col-lg-4">
+					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
+						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
+							<div>
+								<span class="iconify text-primary fs-1" data-icon="material-symbols-light:print-outline"></span>
+							</div>
+						</div>
+						<h2 class="fs-6 fw-bold mt-3 mb-0">JASA FOTO DAN CETAK</h2>
+						<em style="color:#555;font-weight: 600;font-size:0.875rem;">Aman & Cepat</em>
+						<p class="mt-3 text-subtle" style="font-size: 14px;">Cetak Foto ukuran 3R 4R 6R 10R atau Pas Foto bisa cetak Foto Visa atau bisa tunggu Foto dan Cetakannya langsung disini.</p>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
+						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
+							<div>
+								<span class="iconify text-primary fs-1" data-icon="hugeicons:cctv-camera"></span>
+							</div>
+						</div>
+						<h2 class="fs-6 fw-bold mt-3 mb-0">JASA PASANG CCTV</h2>
+						<em style="color:#555;font-weight: 600;font-size:0.875rem;">Bagus & Dapat Diandalkan</em>
+						<p class="mt-3 text-subtle" style="font-size: 14px;">Melayani masalah pemasangan/pemasangan CCTV untuk rumah, ruko, gedung, gudang atau apapun kebutuhan anda.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="products mb-5">
+		<div class="filter-bar border-bottom">
+			<div class="container">
+				<div class="d-flex">
+					<div class="fw-bolder pb-3 me-4" [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'featured', 'text-primary': filterProduct == 'featured'}" style="font-size: 13px;" (click)="changeTipeProduct('featured')" role="button">PRODUK PILIHAN</div>
+					<div class="fw-bolder pb-3 me-4" [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'monthly', 'text-primary': filterProduct == 'monthly'}" style="font-size: 13px;" (click)="changeTipeProduct('monthly')" role="button">PROMO BULANAN</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-4">
+			<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
+				<ng-container *ngFor="let item of listProduct; index as i">
+					<ng-template swiperSlide>
+						<div data-aos="fade-left" data-aos-offset="300" data-aos-duration="1500">
+							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+								<div class="position-relative wrap-image rounded-4">
+									<!-- <img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover rounded-4" alt="Random second slide" /> -->
+									<img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+								</div>
+							</a>
 							<div class="detail p-2 p-lg-3">
-								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-								<small class="text-grey">December 06, 2016</small>
+								<span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </span>
+								<h2 class="product-name mb-0" style="font-size: 16px;">{{ item.nama }} </h2>
+								<div class="rating">
+									<span class="iconify text-warning" data-icon="uis:star"></span>
+									<span class="iconify text-warning" data-icon="uis:star"></span>
+									<span class="iconify text-black-50" data-icon="uis:star"></span>
+									<span class="iconify text-black-50" data-icon="uis:star"></span>
+									<span class="iconify text-black-50" data-icon="uis:star"></span>
+								</div>
+								<p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
+								<a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p w-100 rounded-4 text-light" style="font-size: 12px" (click)="addCart(item.id)">
+									<span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
+									TAMBAH KE KERANJANG
+								</a>
+							</div>
+						</div>
+					</ng-template>
+				</ng-container>
+			</swiper>
+		</div>
+	</section>
+	
+	<section class="view-sale bg-body-tertiary py-lg-5">
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-12 col-lg-4 text-lg-end">
+					<h2 class="fw-bold">PENAWARAN PRODUK <br> TERBAIK</h2>
+				</div>
+				<div class="col-12 col-lg-4 text-lg-center">
+					<div class="btn btn-primary rounded-5 fw-bold px-5 py-3 mt-3">
+						LIHAT SEKARANG
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="brand">
+		<div class="container border-bottom">
+			<div class="row py-5">
+				<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configBrand">
+					<ng-template swiperSlide>
+						<img src="../../../assets/img/brand/sekonic-light-meter-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+					</ng-template>
+					<ng-template swiperSlide>
+						<img src="../../../assets/img/brand/tamron-lens-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+					</ng-template>
+					<ng-template swiperSlide>
+						<img src="../../../assets/img/brand/vanguard-camera-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+					</ng-template>
+					<ng-template swiperSlide>
+						<img src="../../../assets/img/brand/laowa-lens-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+					</ng-template>
+					<ng-template swiperSlide>
+						<img src="../../../assets/img/brand/bushnell-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+					</ng-template>
+					<ng-template swiperSlide>
+						<img src="../../../assets/img/brand/e-image-tripod-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+					</ng-template>
+					<ng-template swiperSlide>
+						<img src="../../../assets/img/brand/samllrig-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+					</ng-template>
+				</swiper>
+			</div>
+		</div>
+	</section>
+	
+	<section class="product-filter py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 mb-4">
+					<div class="d-flex justify-content-between align-items-center">
+						<h3 class="fw-bold fs-5">BERITA</h3>
+						<a href="javascript:void(0)" class="text-grey" [routerLink]="['/news']"> 
+							Lihat Selengkapnya 
+							<i class="bx bx-chevron-right"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-xl-4 mb-3">
+					<div class="row">
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog populer yang perlu kalian coba </h3>
+									<small class="text-grey">December 06, 2016</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto Digital dan Pas Foto Jakarta Barat </h3>
+									<small class="text-grey">December 06, 2016</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic Mini, Drone Terkecil dan Teringan Dari DJI </h3>
+									<small class="text-grey">December 11, 2019</small>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-6 col-xl-4 mb-3">
-				<div class="row">
-					<div class="col-12 mb-3 px-1 px-lg-3">
-						<div class="d-flex align-items-center justify-content-start">
-							<img src="https://source.unsplash.com/random/140x140?camera={{12}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-							<div class="detail p-2 p-lg-3">
-								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-								<small class="text-grey">December 06, 2016</small>
+				<div class="col-lg-6 col-xl-4 mb-3">
+					<div class="row">
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog populer yang perlu kalian coba </h3>
+									<small class="text-grey">December 06, 2016</small>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-12 mb-3 px-1 px-lg-3">
-						<div class="d-flex align-items-center justify-content-start">
-							<img src="https://source.unsplash.com/random/140x140?camera={{10}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-							<div class="detail p-2 p-lg-3">
-								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-								<small class="text-grey">December 06, 2016</small>
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto Digital dan Pas Foto Jakarta Barat </h3>
+									<small class="text-grey">December 06, 2016</small>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-12 mb-3 px-1 px-lg-3">
-						<div class="d-flex align-items-center justify-content-start">
-							<img src="https://source.unsplash.com/random/140x140?camera={{32}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-							<div class="detail p-2 p-lg-3">
-								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-								<small class="text-grey">December 06, 2016</small>
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic Mini, Drone Terkecil dan Teringan Dari DJI </h3>
+									<small class="text-grey">December 11, 2019</small>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-6 col-xl-4 mb-3">
-				<div class="row">
-					<div class="col-12 mb-3 px-1 px-lg-3">
-						<div class="d-flex align-items-center justify-content-start">
-							<img src="https://source.unsplash.com/random/140x140?camera={{1}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-							<div class="detail p-2 p-lg-3">
-								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-								<small class="text-grey">December 06, 2016</small>
+				<div class="col-lg-6 col-xl-4 mb-3">
+					<div class="row">
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog populer yang perlu kalian coba </h3>
+									<small class="text-grey">Februari 08, 2021</small>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-12 mb-3 px-1 px-lg-3">
-						<div class="d-flex align-items-center justify-content-start">
-							<img src="https://source.unsplash.com/random/140x140?camera={{2}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-							<div class="detail p-2 p-lg-3">
-								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-								<small class="text-grey">December 06, 2016</small>
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto Digital dan Pas Foto Jakarta Barat </h3>
+									<small class="text-grey">Februari 10, 2020</small>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-12 mb-3 px-1 px-lg-3">
-						<div class="d-flex align-items-center justify-content-start">
-							<img src="https://source.unsplash.com/random/140x140?camera={{3}}" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-							<div class="detail p-2 p-lg-3">
-								<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Post Format - Photo </h3>
-								<small class="text-grey">December 06, 2016</small>
+						<div class="col-12 mb-3 px-1 px-lg-3">
+							<div class="d-flex align-items-center justify-content-start">
+								<img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+								<div class="detail p-2 p-lg-3">
+									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic Mini, Drone Terkecil dan Teringan Dari DJI </h3>
+									<small class="text-grey">November 12, 2019</small>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-
-<!-- <section class="product-filter py-5">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-xl-4 mb-3">
-				<h3 class="fw-bold fs-6 mb-4">TOP RATED PRODUCT</h3>
-				<div class="row">
-					<ng-container *ngFor="let item of listProduct; index as i">
-						<div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
-							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{i}}"
-									class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
-								<div class="detail p-2 p-lg-3">
-									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}
-									</h3>
-									<div class="rating">
-										<span class="iconify text-warning" data-icon="uis:star"></span>
-										<span class="iconify text-warning" data-icon="uis:star"></span>
-										<span class="iconify text-black-50" data-icon="uis:star"></span>
-										<span class="iconify text-black-50" data-icon="uis:star"></span>
-										<span class="iconify text-black-50" data-icon="uis:star"></span>
+	</section>
+	
+	<!-- <section class="product-filter py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-xl-4 mb-3">
+					<h3 class="fw-bold fs-6 mb-4">TOP RATED PRODUCT</h3>
+					<div class="row">
+						<ng-container *ngFor="let item of listProduct; index as i">
+							<div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
+								<div class="d-flex align-items-center justify-content-start">
+									<img src="https://source.unsplash.com/random/140x140?camera={{i}}"
+										class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
+									<div class="detail p-2 p-lg-3">
+										<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}
+										</h3>
+										<div class="rating">
+											<span class="iconify text-warning" data-icon="uis:star"></span>
+											<span class="iconify text-warning" data-icon="uis:star"></span>
+											<span class="iconify text-black-50" data-icon="uis:star"></span>
+											<span class="iconify text-black-50" data-icon="uis:star"></span>
+											<span class="iconify text-black-50" data-icon="uis:star"></span>
+										</div>
+										<span
+											class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
+										<span class="price font-p fw-semibold fs-14">Rp{{ item.harga | numberFormat }}</span>
 									</div>
-									<span
-										class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
-									<span class="price font-p fw-semibold fs-14">Rp{{ item.harga | number }}</span>
 								</div>
 							</div>
-						</div>
-					</ng-container>
+						</ng-container>
+					</div>
+				</div>
+				<div class="col-lg-6 col-xl-4 mb-3">
+					<h3 class="fw-bold fs-6 mb-4">BEST SELLING PRODUCTS</h3>
+					<div class="row">
+						<ng-container *ngFor="let item of listProduct; index as i">
+							<div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
+								<div class="d-flex align-items-center justify-content-start">
+									<img src="https://source.unsplash.com/random/140x140?camera={{i + 10}}"
+										class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
+									<div class="detail p-2 p-lg-3">
+										<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}
+										</h3>
+										<div class="rating">
+											<span class="iconify text-warning" data-icon="uis:star"></span>
+											<span class="iconify text-warning" data-icon="uis:star"></span>
+											<span class="iconify text-black-50" data-icon="uis:star"></span>
+											<span class="iconify text-black-50" data-icon="uis:star"></span>
+											<span class="iconify text-black-50" data-icon="uis:star"></span>
+										</div>
+										<span
+											class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
+										<span class="price font-p fw-semibold fs-14">Rp{{ item.harga | numberFormat }}</span>
+									</div>
+								</div>
+							</div>
+						</ng-container>
+					</div>
+				</div>
+				<div class="col-lg-6 col-xl-4 mb-3">
+					<h3 class="fw-bold fs-6 mb-4">LATEST PRODUCTS</h3>
+					<div class="row">
+						<ng-container *ngFor="let item of listProduct; index as i">
+							<div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
+								<div class="d-flex align-items-center justify-content-start">
+									<img src="https://source.unsplash.com/random/140x140?camera={{i + 20}}"
+										class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
+									<div class="detail p-2 p-lg-3">
+										<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}
+										</h3>
+										<div class="rating">
+											<span class="iconify text-warning" data-icon="uis:star"></span>
+											<span class="iconify text-warning" data-icon="uis:star"></span>
+											<span class="iconify text-black-50" data-icon="uis:star"></span>
+											<span class="iconify text-black-50" data-icon="uis:star"></span>
+											<span class="iconify text-black-50" data-icon="uis:star"></span>
+										</div>
+										<span
+											class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
+										<span class="price font-p fw-semibold fs-14">Rp{{ item.harga | numberFormat }}</span>
+									</div>
+								</div>
+							</div>
+						</ng-container>
+					</div>
 				</div>
 			</div>
-			<div class="col-lg-6 col-xl-4 mb-3">
-				<h3 class="fw-bold fs-6 mb-4">BEST SELLING PRODUCTS</h3>
-				<div class="row">
-					<ng-container *ngFor="let item of listProduct; index as i">
-						<div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
-							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{i + 10}}"
-									class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
-								<div class="detail p-2 p-lg-3">
-									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}
-									</h3>
-									<div class="rating">
-										<span class="iconify text-warning" data-icon="uis:star"></span>
-										<span class="iconify text-warning" data-icon="uis:star"></span>
-										<span class="iconify text-black-50" data-icon="uis:star"></span>
-										<span class="iconify text-black-50" data-icon="uis:star"></span>
-										<span class="iconify text-black-50" data-icon="uis:star"></span>
-									</div>
-									<span
-										class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
-									<span class="price font-p fw-semibold fs-14">Rp{{ item.harga | number }}</span>
-								</div>
-							</div>
-						</div>
-					</ng-container>
+		</div>
+	</section> -->
+	
+	<div id="popup" [ngClass]="statusPopup ? 'popup' : 'popup popup-close'">
+		<div class="popup-content">
+			<span class="close text-center" id="closePopup" (click)="closePopup()">
+				<i class="bx bx-x"></i>
+			</span>
+			<div class="row">
+				<div class="col-md-6 d-none d-md-block">
+					<img src="https://jakartacamera.com/wp-content/uploads/2022/09/subscribe-jakarta-camera.webp" class="w-100" alt="promo-subscriber">
 				</div>
-			</div>
-			<div class="col-lg-6 col-xl-4 mb-3">
-				<h3 class="fw-bold fs-6 mb-4">LATEST PRODUCTS</h3>
-				<div class="row">
-					<ng-container *ngFor="let item of listProduct; index as i">
-						<div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
-							<div class="d-flex align-items-center justify-content-start">
-								<img src="https://source.unsplash.com/random/140x140?camera={{i + 20}}"
-									class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
-								<div class="detail p-2 p-lg-3">
-									<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}
-									</h3>
-									<div class="rating">
-										<span class="iconify text-warning" data-icon="uis:star"></span>
-										<span class="iconify text-warning" data-icon="uis:star"></span>
-										<span class="iconify text-black-50" data-icon="uis:star"></span>
-										<span class="iconify text-black-50" data-icon="uis:star"></span>
-										<span class="iconify text-black-50" data-icon="uis:star"></span>
-									</div>
-									<span
-										class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
-									<span class="price font-p fw-semibold fs-14">Rp{{ item.harga | number }}</span>
-								</div>
-							</div>
-						</div>
-					</ng-container>
+				<div class="col-md-6 ">
+					<div class="text-center">
+						<h1 class="font-p fs-4 fw-bold">Get Discount</h1>
+						<h2 class="font-p fs-1 fs-bold fst-italic">3-5%</h2>
+						<p class="font-p fw-semibold mb-1">DAPATKAN DISKON VOUCHER & INFO PRODUK TERBARU</p>
+						<p>
+							Masukan email Kamu dan cek email dibagian Promosi kemudian konfirmasi.  
+							Tunggu beberapa menit Kode Voucher akan dikirim ke alamat email kamu dibagian Promosi
+						</p>
+					</div>
+					<label for="email" class="fs-14">Email</label>
+					<input type="text" class="form-control form-control-sm font-p bg-dark text-secondary fs-12 py-2" id="email" placeholder="Email">
+					<button class="btn btn-primary btn-sm fs-14 py-2 w-100 fw-semibold font-p mt-2 mb-5 mb-md-0">
+						Subscribe
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-</section> -->
 
-<div id="popup" [ngClass]="statusPopup ? 'popup' : 'popup popup-close'">
-	<div class="popup-content">
-		<span class="close" id="closePopup" (click)="closePopup()">&times;</span>
-		<img src="https://source.unsplash.com/random/140x140?camera=1" class="object-fit-cover" width="140"
-			height="140" />
-		<p>Dapatkan Promo Menarik untuk pelanggan baru Jakarta Camera</p>
-	</div>
-</div>
-
-<app-foot-menu class="d-block d-lg-none"></app-foot-menu>
-<app-footer class="d-none d-lg-block"></app-footer>
+	<app-foot-menu class="d-block d-lg-none"></app-foot-menu>
+	<app-footer class="d-none d-lg-block"></app-footer>
+</ng-container>
