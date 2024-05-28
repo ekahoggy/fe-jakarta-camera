@@ -107,7 +107,7 @@
               </div> -->
             </div>
             <div class="col-12 mt-3">
-              <button class="btn btn-dark w-100 rounded-0 py-3 fw-bold" (click)="checkout()">Complete Order</button>
+              <button class="btn btn-dark w-100 rounded-0 py-3 fw-bold" (click)="checkout()" [disabled]="loading">Complete Order</button>
             </div>
           </div>
         </form>

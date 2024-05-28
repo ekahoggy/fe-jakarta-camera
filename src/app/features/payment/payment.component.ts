@@ -26,7 +26,7 @@ export class PaymentComponent implements OnInit {
   }
 
   onSuccess() {
-			this.router.navigate(['/complete-order']);
+		this.router.navigate(['/complete-order']);
   }
 
 }
