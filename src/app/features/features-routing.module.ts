@@ -19,6 +19,7 @@ import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
 import { EducationModule } from './education/education.module';
 import { PromoComponent } from './promo/promo.component';
 import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
@@ -75,6 +76,11 @@ const routes: Routes = [
   {
     path: 'address',
     component: AddressComponent,
+    canActivate: [GuestGuard]
+  },
+  {
+    path: 'payment',
+    component: PaymentComponent,
     canActivate: [GuestGuard]
   },
   {
