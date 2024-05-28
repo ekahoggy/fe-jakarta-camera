@@ -68,7 +68,7 @@ export class HeaderComponent implements OnInit {
 		})
 	}
 
-	redirectProfile() {
+	redirectCart() {
 		this.router.navigate(['account']);
 	}
 

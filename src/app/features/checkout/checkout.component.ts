@@ -74,7 +74,15 @@ export class CheckoutComponent implements OnInit {
 		this.globalService.DataPost('/order/pay', params).subscribe((res:any) => {
 			this.loading = false;
 			this.globalService.alertSuccess("Success", "Success create order")
-			this.router.navigate(['/complete-order']);
+			this.navigatePembayaran(res.link)
 		})
 	}
+
+	navigatePembayaran(url:string) {
+		const param = {
+		  'url': url,
+		};
+		const data = btoa(JSON.stringify(param));
+		this.router.navigate(['/payment'], { queryParams: { 'data': data } });
+	  }
 }

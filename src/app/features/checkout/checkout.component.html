@@ -119,7 +119,8 @@
             <tr height="110" *ngFor="let item of listCart; index as i">
               <td width="30%">
                 <div class="image-thumbnail" style="width: 100%; max-width: 100px;">
-                  <img src="https://source.unsplash.com/random/100x100?camera={{i}}" class="object-fit-cover w-100 h-auto rounded-1" width="64" height="64" alt="">
+                  <img [src]="item.foto" class="object-fit-cover w-100 h-auto rounded-1" width="64" height="64" alt="">
+                  <!-- <img src="https://source.unsplash.com/random/100x100?camera={{i}}" class="object-fit-cover w-100 h-auto rounded-1" width="64" height="64" alt=""> -->
                 </div>
               </td>
               <td>
