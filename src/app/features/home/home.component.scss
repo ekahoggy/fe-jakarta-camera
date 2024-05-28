@@ -102,6 +102,14 @@ a {
       display: inline;
     }
   }
+
+  .product-name {
+    font-size: clamp(21px, 1.2vw, 80px);
+    white-space: nowrap; 
+    width: 100%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
 }
 
 .products {
@@ -155,6 +163,14 @@ a {
     .btn {
       display: inline;
     }
+  }
+
+  .product-name {
+    font-size: clamp(21px, 1.2vw, 80px);
+    white-space: nowrap; 
+    width: 100%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
   }
 }
 

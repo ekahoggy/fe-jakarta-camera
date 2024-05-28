@@ -59,12 +59,15 @@
 						<div class="ps-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
 							<ng-container *ngFor="let item of listCategory; index as i">
 								<div class="d-flex justify-content-between align-items-center text-grey mb-2" *ngIf="item.child.length">
-									<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
+									<span>
+										<i class='bx bx-chevron-right me-1'></i>
+										<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
+									</span>
 									<button class="btn btn-sm" role="button" (click)="isCollapsedChild[item.slug] = !isCollapsedChild[item.slug]" [attr.aria-expanded]="!isCollapsedChild[item.slug]">
 										<span class="iconify text-grey" data-icon="ion:chevron-down"></span>
 									</button>
 								</div>
-								<div class="text-grey mb-3" role="button" (click)="getProduct(item.slug)" *ngIf="!item.child.length">
+								<div class="text-grey mb-2" role="button" (click)="getProduct(item.slug)" *ngIf="!item.child.length">
 									<i class='bx bx-chevron-right me-1'></i>
 									<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
 								</div>
@@ -109,7 +112,7 @@
 									<!-- <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button> -->
 								</div>
 							</a>
-							<div class="detail p-2 p-lg-3 h-100">
+							<div class="detail p-2 p-lg-3">
 								<span class="category text-black-50" style="font-size: 11px;">{{ item.kategori }}</span>
 								<p class="product-name fs-6 mb-0 font-p"> {{item.nama}} </p>
 								<div class="rating">
