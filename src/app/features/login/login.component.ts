@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
             if (res.status_code == 200) {
                 const userData = btoa(JSON.stringify(res.data))
                 localStorage.setItem('session', userData)
-                this.router.navigate(['home']);
+                window.location.href = '/home';
             }
         }, (error:any) => {
             this.isError = true;
