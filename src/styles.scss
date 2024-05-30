@@ -9,87 +9,96 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .text-grey {
-  color: #929292;
+    color: #929292;
 }
 
 .bg-grey {
-  background: #ececec;
+    background: #ececec;
 }
 
 body {
-  margin: 0; /* Menghilangkan margin default pada body */
-  font-size: 13px;
-  font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    /* Menghilangkan margin default pada body */
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
 
-  .font-p {
-    font-family: 'Poppins', sans-serif;
-  }
+    .font-p {
+        font-family: 'Poppins', sans-serif;
+    }
 
-  .font-m {
-    font-family: 'Mulish', sans-serif;
-  }
+    .font-m {
+        font-family: 'Mulish', sans-serif;
+    }
 
-  a {
-    text-decoration: none;
-    color: black;
-  }
-
-  a:hover {
-    color: #005691;
-  }
-  h3 {
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .fs-12 {
-    font-size: 12px;
-  }
-
-  .fs-14 {
-    font-size: 14px;
-  }
-
-  .breadcrumb {
     a {
-      text-decoration: none !important;
-      color: #777 !important;
+        text-decoration: none;
+        color: black;
     }
-  }
 
-  .container {
-    width: 63%; /* Atur lebar kontainer */
-    margin: 0 auto; /* Atur margin otomatis untuk menengahkan kontainer */
-    box-sizing: border-box; /* Menjamin bahwa padding dan border tidak meningkatkan lebar kontainer */
-  }
+    a:hover {
+        color: #005691;
+    }
 
-  /* Media queries untuk membuat kontainer responsif */
-  @media (max-width: 1489px) {
+    h3 {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .fs-12 {
+        font-size: 12px;
+    }
+
+    .fs-14 {
+        font-size: 14px;
+    }
+
+    .fs-16 {
+        font-size: 16px;
+    }
+
+    .breadcrumb {
+        a {
+            text-decoration: none !important;
+            color: #777 !important;
+        }
+    }
+
     .container {
-      width: 80%;
+        width: 63%;
+        /* Atur lebar kontainer */
+        margin: 0 auto;
+        /* Atur margin otomatis untuk menengahkan kontainer */
+        box-sizing: border-box;
+        /* Menjamin bahwa padding dan border tidak meningkatkan lebar kontainer */
     }
-  }
 
-  /* Media queries untuk membuat kontainer responsif */
-  @media (max-width: 768px) {
-    .container {
-      width: 90%;
+    /* Media queries untuk membuat kontainer responsif */
+    @media (max-width: 1489px) {
+        .container {
+            width: 80%;
+        }
     }
-  }
 
-  @media (max-width: 576px) {
-    .container {
-      width: 95%;
+    /* Media queries untuk membuat kontainer responsif */
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+        }
     }
-  }
+
+    @media (max-width: 576px) {
+        .container {
+            width: 95%;
+        }
+    }
 }
 
 .btn-light:hover {
-  background-color: #005691 !important;
-  color: #FAFAFA !important;
+    background-color: #005691 !important;
+    color: #FAFAFA !important;
 }
 
 .btn-primary:hover {
-  background-color: #005791e0 !important;
+    background-color: #005791e0 !important;
 }
 
 .form-control:focus {
