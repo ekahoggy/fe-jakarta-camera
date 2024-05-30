@@ -15,13 +15,26 @@
                         <button class="btn btn-sm btn-dark font-p" (click)="logout()">LOGOUT</button>
                     </div>
                     <div class="card-body" style="font-size: 14px;">
-                      <div class="text-uppercase">{{ address.address }}, {{ address.village_name }}, {{ address.subdistrict_name }}</div>
-                      <div>{{ address.city }}</div>
-                      <div>{{ address.postal_code }}</div>
-                      <div class="mb-3">{{ address.province_name }}</div>
-                      <!-- <div class="mb-3">Indonesia</div> -->
+                        <div class="detail-address" *ngIf="address">
+                            <div class="text-uppercase">{{ address.address }}, {{ address.village_name }}, {{ address.subdistrict_name }}</div>
+                            <div>{{ address.city }}</div>
+                            <div>{{ address.postal_code }}</div>
+                            <div class="mb-3">{{ address.province_name }}</div>
+                            <!-- <div class="mb-3">Indonesia</div> -->
+                        </div>
+                        <div class="text-center" *ngIf="!address">
+                            <img src="../../../assets/img/undraw/empty.png" alt="empty-address" width="300">
+                            <p>You don't have shipping address</p>
+                        </div>
                       <a href="javascript:void(0)" class="btn btn-sm btn-dark font-p" [routerLink]="['/address']">
-                        View Address (2)
+                        <span *ngIf="totalAddress > 0">
+                            <i class='bx bx-map-pin me-1'></i>
+                            View Shipping Address ({{totalAddress}})
+                        </span>
+                        <span *ngIf="totalAddress == 0">
+                            <i class="bx bx-plus me-1"></i>
+                            Add Shipping Address
+                        </span>
                       </a>
                     </div>
                 </div>

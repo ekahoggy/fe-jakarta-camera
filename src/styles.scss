@@ -87,10 +87,19 @@ body {
   background-color: #005691 !important;
   color: #FAFAFA !important;
 }
-// .btn-primary:hover {
-//   background-color: #FAFAFA !important;
-//   color: #005691 !important;
-// }
+
+.btn-primary:hover {
+  background-color: #005791e0 !important;
+}
+
+.form-control:focus {
+    border: 1px solid #005691;
+    outline: none;
+    border-color: transparent;
+    box-shadow: none !important;
+}
+
+
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';

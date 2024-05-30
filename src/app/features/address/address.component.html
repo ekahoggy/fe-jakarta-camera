@@ -14,23 +14,25 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="d-flex justify-content-end border-bottom pb-3 mb-5">
-                    <button class="btn btn-sm btn-dark rounded-0 px-3 py-2" (click)="create()">ADD NEW ADDRESS</button>
+                    <button class="btn btn-sm btn-dark font-p px-3 py-2" (click)="create()"> 
+                        <i class="bx bx-plus me-1"></i> Add new address
+                    </button>
                 </div>
                 <ng-container *ngFor="let item of listData; index as i">
-                    <div class="card rounded-0" [ngClass]="{'border-bottom-0': (i + 1) != listData.length}">
+                    <div class="card" [ngClass]="{'border-bottom-0': (i + 1) != listData.length}">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <div>
                                 <span class=" text-uppercase fw-bold me-2" style="font-size: 15px;">{{ item.recipient }}</span>
                                 <span style="font-size: 15px;"> ({{item.phone_code}}) {{ item.phone_number }}</span>
                             </div>
                             <div>
-                                <button class="btn btn-sm btn-success rounded-0 font-p me-1" *ngIf="item.active == 1">
+                                <button class="btn btn-sm btn-success font-p me-1" *ngIf="item.active == 1">
                                     <span class="iconify mb-1" data-icon="tabler:home-check"></span> 
                                     Active
                                 </button>
-                                <button class="btn btn-sm btn-outline-success rounded-0 font-p me-1" *ngIf="item.active == 0" (click)="changeActive(item.id)">Activate</button>
-                                <button class="btn btn-sm btn-primary rounded-0 font-p me-1" (click)="edit(item.id)">Edit</button>
-                                <button class="btn btn-sm btn-danger rounded-0 font-p" (click)="delete(item.id)">Delete</button>
+                                <button class="btn btn-sm btn-outline-success font-p me-1" *ngIf="item.active == 0" (click)="changeActive(item.id)">Activate</button>
+                                <button class="btn btn-sm btn-primary font-p me-1" (click)="edit(item.id)">Edit</button>
+                                <button class="btn btn-sm btn-danger font-p" (click)="delete(item.id)">Delete</button>
                             </div>
                         </div>
                         <div class="card-body pb-4" style="font-size: 14px;">
@@ -59,89 +61,89 @@
             <div class="row">
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="recipient" class="form-label">Recipient</label>
-                        <input type="text" class="form-control" name="recipient" [(ngModel)]="model.recipient" id="recipient" aria-describedby="recipientHelp">
-                        <div id="recipientHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <label for="recipient" class="form-label font-p fs-14">Recipient</label>
+                        <input type="text" class="form-control fs-14" name="recipient" [(ngModel)]="model.recipient" id="recipient" aria-describedby="recipientHelp">
+                        <div id="recipientHelp" class="form-text">Isi nama penerima, bisa diisi dengan salah satu nama anggota keluarga anda.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="phone_number" class="form-label">Phone Number</label>
+                        <label for="phone_number" class="form-label font-p fs-14">Phone Number</label>
                         <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1"> +62 </span>
-                            <input type="tel" class="form-control" id="phone_number" name="phone_number" [(ngModel)]="model.phone_number" aria-describedby="phoneHelp">
+                            <span class="input-group-text font-p fs-14" id="phone_number"> +62 </span>
+                            <input type="tel" class="form-control fs-14" id="phone_number" name="phone_number" [(ngModel)]="model.phone_number" aria-describedby="phoneHelp">
                         </div>
-                        <div id="phoneHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div id="phoneHelp" class="form-text">Isi dengan nomor telepon yang bisa dihubungi</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="province_id" class="form-label">Province</label>
+                        <label for="province_id" class="form-label font-p fs-14">Province</label>
                         <select class="form-select" name="province_id" [(ngModel)]="model.province_id" id="province_id"  aria-describedby="provinceHelp" (change)="getCity(model.province_id); resetProvince();">
                             <ng-container *ngFor="let item of listProvince">
                                 <option [value]="item.id"> {{ item.provinsi }} </option>
                             </ng-container>
                         </select>
-                        <div id="provinceHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div id="provinceHelp" class="form-text">Isi dengan nama provinsi tempat tinggal anda.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="city_id" class="form-label">City</label>
+                        <label for="city_id" class="form-label font-p fs-14">City</label>
                         <select class="form-select" name="city_id" [(ngModel)]="model.city_id" id="city_id"  aria-describedby="cityHelp" [disabled]="!model.province_id" (change)="getSubdistrict(model.city_id); resetCity();">
                             <ng-container *ngFor="let item of listCity">
                                 <option [value]="item.id"> {{ item.kota }} </option>
                             </ng-container>
                         </select>
-                        <div id="cityHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div id="cityHelp" class="form-text">Isi dengan nama kota tempat tinggal anda.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="subdistrict_id" class="form-label">Subdistrict</label>
+                        <label for="subdistrict_id" class="form-label font-p fs-14">Subdistrict</label>
                         <select class="form-select" name="subdistrict_id" [(ngModel)]="model.subdistrict_id" id="subdistrict_id"  aria-describedby="subdistrictHelp" [disabled]="!model.city_id" (change)="getVillage(model.subdistrict_id); resetSubdistrict();">
                             <ng-container *ngFor="let item of listSubdistrict">
                                 <option [value]="item.id"> {{ item.kecamatan }} </option>
                             </ng-container>
                         </select>
-                        <div id="subdistrictHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div id="subdistrictHelp" class="form-text">Isi dengan nama kecamatan tempat tinggal anda.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="village_id" class="form-label">Village</label>
+                        <label for="village_id" class="form-label font-p fs-14">Village</label>
                         <select class="form-select" name="village_id" [(ngModel)]="model.village_id" id="village_id"  aria-describedby="villageHelp" [disabled]="!model.subdistrict_id">
                             <ng-container *ngFor="let item of listVillage">
                                 <option [value]="item.id"> {{ item.desa }} </option>
                             </ng-container>
                         </select>
-                        <div id="villageHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div id="villageHelp" class="form-text">Isi dengan nama desa tempat tinggal anda.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="postal_code" class="form-label">Postal Code</label>
-                        <input type="text" class="form-control" name="postal_code" [(ngModel)]="model.postal_code" id="postal_code" aria-describedby="postal_codeHelp">
-                        <div id="postal_codeHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <label for="postal_code" class="form-label font-p fs-14">Postal Code</label>
+                        <input type="text" class="form-control fs-14" name="postal_code" [(ngModel)]="model.postal_code" id="postal_code" aria-describedby="postal_codeHelp">
+                        <div id="postal_codeHelp" class="form-text">Isi dengan kode pos tempat tinggal anda.</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="address" class="form-label">Address</label>
-                        <textarea type="text" class="form-control" name="address" [(ngModel)]="model.address" id="address" aria-describedby="addressHelp"></textarea>
-                        <div id="addressHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <label for="address" class="form-label font-p fs-14">Address</label>
+                        <textarea type="text" class="form-control fs-14" name="address" [(ngModel)]="model.address" id="address" aria-describedby="addressHelp"></textarea>
+                        <div id="addressHelp" class="form-text">Isi dengan alamat lengkap anda (lebih bagus jika menambahkan ciri-ciri rumah anda).</div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col py-3 text-end">
-                    <button class="btn btn-secondary rounded-1 me-2" (click)="index()">
+                    <button class="btn btn-secondary font-p fs-14 me-2" (click)="index()">
                         <i class="bx bx-chevron-left me-1"></i>
-                        Back
+                        Kembali
                     </button>
-                    <button class="btn btn-primary rounded-1" (click)="save()">
+                    <button class="btn btn-primary font-p fs-14" (click)="save()">
                         <i class="bx bx-save me-1"></i>
-                        Save
+                        Simpan
                     </button>
                 </div>
             </div>

@@ -23,6 +23,7 @@ export class CheckoutComponent implements OnInit {
 
 	ngOnInit() {
 		this.session = this.globalService.getAuth()['user'];
+        this.model.email = this.session.email; 
 		this.userId = this.session.id
 		this.getData();
 		this.getUserDetail();
@@ -41,10 +42,14 @@ export class CheckoutComponent implements OnInit {
 			active: 1
 		}
 		this.globalService.DataGet('/address/main', params).subscribe((res:any ) => {
-			let address = res.data[0];
-			this.model = address;
-			this.model.email = this.session.email; 
-		});
+            if (res.data.length > 0) {
+                let address = res.data[0];
+                this.model = address;
+                this.model.email = this.session.email; 
+            }
+		}, (error:any) => {
+            this.model.email = this.session.email; 
+        });
 	}
 
 	kalkulasi() {

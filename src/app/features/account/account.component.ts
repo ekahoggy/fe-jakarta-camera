@@ -10,6 +10,7 @@ export class AccountComponent implements OnInit {
 	model:any = {};
 	address: any = {};
 	session: any = [];
+    totalAddress: number = 0;
 	
 	constructor(
 		private globalService: GlobalService,
@@ -33,6 +34,7 @@ export class AccountComponent implements OnInit {
 		this.globalService.DataGet('/address/main', params).subscribe((res:any) => {
 			let address = res.data[0];
 			this.address = address;
+            this.totalAddress = res.data.length
 		})
 	}
 }

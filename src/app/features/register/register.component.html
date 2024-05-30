@@ -4,7 +4,7 @@
             <div class="col-10 mt-5" style="padding-left: 200px;">
                 <form (ngSubmit)="register()">
                     <h2 class="font-p fw-bold fs-2 mt-4 mb-5 font-p text-center">Sign Up</h2>
-                    <div class="text-success font-p mb-3 fw-semibold" *ngIf="is.success" role="alert">
+                    <div class="text-success font-p mb-3" *ngIf="is.success" role="alert">
                         Congratulation, registration successfully! <a href="javascript:void(0)" [routerLink]="['/login']" class="text-primary">click here</a> to login
                     </div>
                     <div class="mb-3">

@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 		this.navbar = document.getElementById("navbar");
 		this.cart = document.getElementById("cart-bottom");
 		this.navbarNav = document.getElementById("navbarNav");
-        console.log (this.auth)
 		if (this.navbar) {
 			this.sticky = this.navbar.offsetTop - 20;
 		}
