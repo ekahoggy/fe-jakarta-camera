@@ -1,43 +1,92 @@
-<section class="header bg-secondary py-3">
+<!-- <section class="header bg-secondary py-3">
     <div class="container text-center py-5" style="font-size: 12px;">
         <a [routerLink]="['/']" routerLinkActive="router-link-active"  class="text-primary" href="javascript:void(0)">BERANDA</a> <span class="iconify text-grey ms-2 me-1" data-icon="ion:chevron-right"></span> MY ACCOUNT
         <h1 class="fw-bold fs-2 font-p mt-2">My Account</h1>
     </div>
-</section>
+</section> -->
 
 <section class="content-login py-5">
     <div class="container py-3">
         <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card rounded-0 mb-5">
+            <div class="col-md-3">
+                <div class="navigation border rounded-4 pb-5">
+                    <div class="row justify-content-center">
+                        <div class="col-9 text-center border-bottom pt-3 pb-4 mb-3">
+                            <div class="mx-auto mb-3" style="width: 200px;">
+                                <img src="https://cdn1-production-images-kly.akamaized.net/SyRFEsgZ-JJ1P2VoWven4KIp9H8=/1200x900/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/3220607/original/002220400_1598510794-9b3ee95069a9d94d80dfcdba43.jpg" class="img-thumbnail rounded-circle object-fit-cover" style="width: 150px; height: 150px;" alt="">
+                            </div>
+                            <h1 class="font-p fs-4 mb-1">Galih Satrio</h1>
+                            <p class="font-p text-grey fs-12 mb-0">(galiihsatrio)</p>
+                            <p class="font-p text-grey fs-12 mb-0">galihsatrio@gmail.com</p>
+                        </div>
+                        <div class="col-10 pb-3">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item border-bottom-0">
+                                    <a [routerLink]="['/account/profile']" routerLinkActive="active"  class="mb-3">
+                                        <i class='bx bx-user me-3'></i>
+                                        <span class="font-p fs-14">Profile</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-bottom-0">
+                                    <a [routerLink]="['/account/address']" routerLinkActive="active"  class="mb-3">
+                                        <i class='bx bx-map-pin me-3' ></i>
+                                        <span class="font-p fs-14">Shipping Address</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-bottom-0">
+                                    <a [routerLink]="['/account/orders']" routerLinkActive="active"  class="mb-3">
+                                        <i class='bx bx-shopping-bag me-3' ></i>
+                                        <span class="font-p fs-14">Orders History</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-bottom-0">
+                                    <a [routerLink]="['/routePath']" routerLinkActive="active"  class="mb-3">
+                                        <i class='bx bx-log-out me-3 text-danger'></i>
+                                        <span class="font-p fs-14 text-danger">Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <router-outlet></router-outlet>
+                <!-- <h1 class="fs-2 font-p">My Address</h1>
+                <div class="card rounded-0 mt-3 mb-5">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div class="mb-0 text-uppercase fw-bold" style="font-size: 15px;">{{ model.name }}</div>
                         <button class="btn btn-sm btn-dark font-p" (click)="logout()">LOGOUT</button>
                     </div>
                     <div class="card-body" style="font-size: 14px;">
-                      <div class="text-uppercase">{{ address.address }}, {{ address.village_name }}, {{ address.subdistrict_name }}</div>
-                      <div>{{ address.city }}</div>
-                      <div>{{ address.postal_code }}</div>
-                      <div class="mb-3">{{ address.province_name }}</div>
-                      <!-- <div class="mb-3">Indonesia</div> -->
-                      <a href="javascript:void(0)" class="btn btn-sm btn-dark font-p" [routerLink]="['/address']">
-                        View Address (2)
+                        <div class="detail-address" *ngIf="address">
+                            <div class="text-uppercase">{{ address.address }}, {{ address.village_name }}, {{ address.subdistrict_name }}</div>
+                            <div>{{ address.city }}</div>
+                            <div>{{ address.postal_code }}</div>
+                            <div class="mb-3">{{ address.province_name }}</div>
+                        </div>
+                        <div class="text-center" *ngIf="!address">
+                            <img src="../../../assets/img/undraw/empty.png" alt="empty-address" width="300">
+                            <p>You don't have shipping address</p>
+                        </div>
+                      <a href="javascript:void(0)" class="btn btn-sm btn-dark font-p" [routerLink]="['/account/address']">
+                        <span *ngIf="totalAddress > 0">
+                            <i class='bx bx-map-pin me-1'></i>
+                            View Shipping Address ({{totalAddress}})
+                        </span>
+                        <span *ngIf="totalAddress == 0">
+                            <i class="bx bx-plus me-1"></i>
+                            Add Shipping Address
+                        </span>
                       </a>
                     </div>
-                </div>
-
-                <div class="card rounded-0">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="mb-0 text-uppercase fw-bold" style="font-size: 15px;">ORDER HISTORY</div>
-                    </div>
-                    <div class="card-body" style="font-size: 14px;">
-                        <div>You haven't placed any orders yet.</div>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </section>
+
 <app-foot-menu class="d-block d-lg-none"></app-foot-menu>
 <app-footer class="d-none d-lg-block"></app-footer>
 

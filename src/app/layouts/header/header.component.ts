@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, OnInit, TemplateRef, inject } from '@angular/core';
+import { Component, HostListener, ElementRef, OnInit, TemplateRef, inject, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
@@ -8,7 +8,7 @@ import { GlobalService } from 'src/app/services/global.service';
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 	private navbar: HTMLElement | null = null;
 	private cart: HTMLElement | null = null;
 	private navbarNav: HTMLElement | null = null;
@@ -26,13 +26,12 @@ export class HeaderComponent implements OnInit {
 		private router: Router
 	) { }
 
-	ngOnInit() {
+	ngOnInit() : void {
 		this.auth = this.globalService.getAuth()['user'];
 		this.headerMenu = document.getElementById("header-menu");
 		this.navbar = document.getElementById("navbar");
 		this.cart = document.getElementById("cart-bottom");
 		this.navbarNav = document.getElementById("navbarNav");
-
 		if (this.navbar) {
 			this.sticky = this.navbar.offsetTop - 20;
 		}
@@ -40,6 +39,10 @@ export class HeaderComponent implements OnInit {
 		this.getCategories();
 		this.totalCart();
 	}
+
+    ngAfterViewInit(): void {
+        
+    }
 
 	@HostListener('window:scroll', [])
 	onScroll() {

@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
-  styleUrls: ['./address.component.scss']
+  styleUrls: ['./address.component.scss'],
 })
 export class AddressComponent {
   model:any = {};

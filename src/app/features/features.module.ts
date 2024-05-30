@@ -16,7 +16,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
-import { AddressComponent } from './address/address.component';
 import { NewsComponent } from './news/news.component';
 import { CompleteOrderComponent } from './complete-order/complete-order.component';
 import { FlashSaleComponent } from './flash-sale/flash-sale.component';
@@ -38,7 +37,6 @@ import { PaymentComponent } from './payment/payment.component';
     LoginComponent,
     RegisterComponent,
     AccountComponent,
-    AddressComponent,
     NewsComponent,
     CompleteOrderComponent,
     FlashSaleComponent,

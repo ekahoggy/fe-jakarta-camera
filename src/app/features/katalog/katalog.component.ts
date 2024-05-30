@@ -70,16 +70,19 @@ export class KatalogComponent {
 
 	addCart(productId:string) {
 		if (this.globalService.getAuth() === null) {
-		  this.router.navigate(['/login']);
+		    this.router.navigate(['/login']);
 		} else {
-		  let params = {
-			user_id: this.globalService.getAuth()['user']['id'],
-			product_id: productId,
-			quantity: 1
-		  }
-		  this.globalService.DataPost('/cart/add', params).subscribe((res:any) => {
-			this.globalService.alertSuccess('Success', res.message);
-		  })
+            let params = {
+                user_id: this.globalService.getAuth()['user']['id'],
+                product_id: productId,
+                quantity: 1
+            }
+            this.globalService.DataPost('/cart/add', params).subscribe((res:any) => {
+                this.globalService.alertSuccess('Success', res.message);
+                this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+                    this.router.navigate([this.router.url]);
+                });
+            })
 		}
 	}
 }

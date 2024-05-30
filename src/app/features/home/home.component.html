@@ -110,7 +110,7 @@
 			<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFlash">
 				<ng-container *ngFor="let item of listProduct; index as i">
 					<ng-template swiperSlide>
-						<div data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+						<div data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
 							<!-- [src]="productImageURL + item.foto" -->
 							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
 								<div class="position-relative wrap-image rounded-4">
@@ -142,7 +142,7 @@
 		<div class="container py-3 py-lg-5">
 			<div class="row py-lg-3">
 				<div class="col-lg-4">
-					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
+					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000">
 						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
 							<div>
 								<span class="iconify text-primary fs-1" data-icon="clarity:camera-line"></span>
@@ -156,7 +156,7 @@
 					</div>
 				</div>
 				<div class="col-lg-4">
-					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
+					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000">
 						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
 							<div>
 								<span class="iconify text-primary fs-1" data-icon="material-symbols-light:print-outline"></span>
@@ -168,7 +168,7 @@
 					</div>
 				</div>
 				<div class="col-lg-4">
-					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1500">
+					<div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000">
 						<div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto" style="width: 70px; height: 70px;">
 							<div>
 								<span class="iconify text-primary fs-1" data-icon="hugeicons:cctv-camera"></span>
@@ -196,10 +196,9 @@
 			<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
 				<ng-container *ngFor="let item of listProduct; index as i">
 					<ng-template swiperSlide>
-						<div data-aos="fade-left" data-aos-offset="300" data-aos-duration="1500">
+						<div data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
 							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
 								<div class="position-relative wrap-image rounded-4">
-									<!-- <img src="https://source.unsplash.com/random/300x250?camera={{i}}" class="w-100 object-fit-cover rounded-4" alt="Random second slide" /> -->
 									<img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
 								</div>
 							</a>
@@ -246,25 +245,25 @@
 			<div class="row py-5">
 				<swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configBrand">
 					<ng-template swiperSlide>
-						<img src="../../../assets/img/brand/sekonic-light-meter-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+						<img src="../../../assets/img/brand/sekonic-light-meter-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
 					</ng-template>
 					<ng-template swiperSlide>
-						<img src="../../../assets/img/brand/tamron-lens-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+						<img src="../../../assets/img/brand/tamron-lens-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
 					</ng-template>
 					<ng-template swiperSlide>
-						<img src="../../../assets/img/brand/vanguard-camera-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+						<img src="../../../assets/img/brand/vanguard-camera-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
 					</ng-template>
 					<ng-template swiperSlide>
-						<img src="../../../assets/img/brand/laowa-lens-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+						<img src="../../../assets/img/brand/laowa-lens-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
 					</ng-template>
 					<ng-template swiperSlide>
-						<img src="../../../assets/img/brand/bushnell-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+						<img src="../../../assets/img/brand/bushnell-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
 					</ng-template>
 					<ng-template swiperSlide>
-						<img src="../../../assets/img/brand/e-image-tripod-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+						<img src="../../../assets/img/brand/e-image-tripod-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
 					</ng-template>
 					<ng-template swiperSlide>
-						<img src="../../../assets/img/brand/samllrig-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1500">
+						<img src="../../../assets/img/brand/samllrig-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
 					</ng-template>
 				</swiper>
 			</div>
