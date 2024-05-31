@@ -9,7 +9,7 @@
     <div class="container py-3">
         <div class="row justify-content-center">
             <div class="col-md-3">
-                <div class="navigation border rounded-4 pb-5">
+                <div class="navigation border rounded-4 pb-5 sticky-top" style="z-index: 1; top: 100px;">
                     <div class="row justify-content-center">
                         <div class="col-9 text-center border-bottom pt-3 pb-4 mb-3">
                             <div class="mx-auto mb-3" style="width: 200px;">
@@ -40,7 +40,13 @@
                                     </a>
                                 </li>
                                 <li class="list-group-item border-bottom-0">
-                                    <a [routerLink]="['/routePath']" routerLinkActive="active"  class="mb-3">
+                                    <a [routerLink]="['/account/wishlist']" routerLinkActive="active"  class="mb-3">
+                                        <i class='bx bx-heart me-3' ></i>
+                                        <span class="font-p fs-14">Wishlist</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-bottom-0">
+                                    <a href="javascript:void(0);" (click)="logout()"  class="mb-3">
                                         <i class='bx bx-log-out me-3 text-danger'></i>
                                         <span class="font-p fs-14 text-danger">Logout</span>
                                     </a>
@@ -53,35 +59,6 @@
 
             <div class="col-md-9">
                 <router-outlet></router-outlet>
-                <!-- <h1 class="fs-2 font-p">My Address</h1>
-                <div class="card rounded-0 mt-3 mb-5">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="mb-0 text-uppercase fw-bold" style="font-size: 15px;">{{ model.name }}</div>
-                        <button class="btn btn-sm btn-dark font-p" (click)="logout()">LOGOUT</button>
-                    </div>
-                    <div class="card-body" style="font-size: 14px;">
-                        <div class="detail-address" *ngIf="address">
-                            <div class="text-uppercase">{{ address.address }}, {{ address.village_name }}, {{ address.subdistrict_name }}</div>
-                            <div>{{ address.city }}</div>
-                            <div>{{ address.postal_code }}</div>
-                            <div class="mb-3">{{ address.province_name }}</div>
-                        </div>
-                        <div class="text-center" *ngIf="!address">
-                            <img src="../../../assets/img/undraw/empty.png" alt="empty-address" width="300">
-                            <p>You don't have shipping address</p>
-                        </div>
-                      <a href="javascript:void(0)" class="btn btn-sm btn-dark font-p" [routerLink]="['/account/address']">
-                        <span *ngIf="totalAddress > 0">
-                            <i class='bx bx-map-pin me-1'></i>
-                            View Shipping Address ({{totalAddress}})
-                        </span>
-                        <span *ngIf="totalAddress == 0">
-                            <i class="bx bx-plus me-1"></i>
-                            Add Shipping Address
-                        </span>
-                      </a>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
