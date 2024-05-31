@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CoreModule } from 'src/app/core/core.module';
+import { NgbDatepickerModule, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AccountRoutingModule } from './account-routing.module';
-import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutsModule } from 'src/app/layouts/layouts.module';
-import { FormsModule } from '@angular/forms';
 import { CountdownModule } from 'ngx-countdown';
-import { CoreModule } from 'src/app/core/core.module';
 import { ProfileComponent } from './profile/profile.component';
 import { AddressComponent } from './address/address.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -26,7 +26,8 @@ import { OrdersComponent } from './orders/orders.component';
     LayoutsModule,
     FormsModule,
     CountdownModule,
-    CoreModule
+    CoreModule,
+    NgbDatepickerModule
   ]
 })
 export class AccountModule { }

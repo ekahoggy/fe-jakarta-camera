@@ -38,7 +38,7 @@
                     </div>
 
                     <p class="fs-4">Delivery</p>
-                    <fieldset disabled="true" *ngIf="model.recipient">
+                    <fieldset [disabled]="true" *ngIf="model.recipient">
                         <div class="row">
                             <!-- <div class="col-12">
                                 <div class="form-group mb-2">
@@ -54,10 +54,10 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-2">
-                                    <label for="phone_numberFormat" class="form-label font-p fs-14">Phone numberFormat</label>
+                                    <label for="phone_number" class="form-label font-p fs-14">Phone Number</label>
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text" id="phone_numberFormat"> {{ model.phone_code }} </span>
-                                        <input type="text" class="form-control font-p fs-14" id="phone_numberFormat" [(ngModel)]="model.phone_numberFormat" name="phone_numberFormat">
+                                        <span class="input-group-text" id="phone_number"> {{ model.phone_code }} </span>
+                                        <input type="text" class="form-control font-p fs-14" id="phone_number" [(ngModel)]="model.phone_number" name="phone_number">
                                     </div>
                                 </div>
                             </div>
@@ -97,11 +97,13 @@
                                     <input type="text" class="form-control font-p fs-14" id="postal_code" [(ngModel)]="model.postal_code" name="postal_code">
                                 </div>
                             </div>
-                            <div class="col-12 mt-3">
-                                <button class="btn btn-dark w-100 rounded-0 py-3 fw-bold" (click)="checkout()" [disabled]="loading">Complete Order</button>
-                            </div>
                         </div>
                     </fieldset>
+                    <div class="row" *ngIf="model.recipient">
+                        <div class="col-12 mt-3">
+                            <button class="btn btn-primary w-100 fs-6 py-2 font-p" (click)="checkout()" [disabled]="loading">Complete Order</button>
+                        </div>
+                    </div>
                     <div class="row justify-content-center" *ngIf="!model.recipient">
                         <div class="col-8 text-center">
                             <img src="../../../assets/img/undraw/empty.png" class="w-100" alt="empty-address" width="300">
