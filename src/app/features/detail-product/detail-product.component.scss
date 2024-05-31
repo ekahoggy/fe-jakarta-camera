@@ -18,11 +18,14 @@
 }
 
 .rekomendasi {
-  ::ng-deep .swiper-button-prev, ::ng-deep  .swiper-button-next {
+
+  ::ng-deep .swiper-button-prev,
+  ::ng-deep .swiper-button-next {
     top: 30%;
   }
 
-  ::ng-deep .swiper-button-prev:after, ::ng-deep .swiper-button-next:after {
+  ::ng-deep .swiper-button-prev:after,
+  ::ng-deep .swiper-button-next:after {
     font-size: 25px;
     color: black;
   }
@@ -30,6 +33,7 @@
 
 .wrap-image:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
   .btn {
     display: inline;
   }
@@ -37,8 +41,22 @@
 
 .product-name {
   font-size: clamp(21px, 1.2vw, 80px);
-  white-space: nowrap; 
-  width: 100%; 
+  white-space: nowrap;
+  width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
+}
+
+.variant {
+  p {
+    text-transform: capitalize;
+  }
+}
+
+.stok-sisa{
+  color: var(--YN600, #F36819);
+}
+
+.stok-tidak-ada {
+  color: var(--RN500, #F94D63);
 }
