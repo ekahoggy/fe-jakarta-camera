@@ -5,8 +5,9 @@
 @import 'swiper/scss';
 @import 'swiper/scss/navigation';
 @import 'swiper/scss/pagination';
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 .text-grey {
     color: #929292;
@@ -18,16 +19,15 @@
 
 body {
     margin: 0;
-    /* Menghilangkan margin default pada body */
     font-size: 13px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Lato';
 
     .font-p {
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Poppins';
     }
 
     .font-m {
-        font-family: 'Mulish', sans-serif;
+        font-family: 'Mulish';
     }
 
     a {
@@ -40,7 +40,7 @@ body {
     }
 
     h3 {
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Poppins';
     }
 
     .fs-12 {
@@ -64,11 +64,8 @@ body {
 
     .container {
         width: 63%;
-        /* Atur lebar kontainer */
         margin: 0 auto;
-        /* Atur margin otomatis untuk menengahkan kontainer */
         box-sizing: border-box;
-        /* Menjamin bahwa padding dan border tidak meningkatkan lebar kontainer */
     }
 
     /* Media queries untuk membuat kontainer responsif */
