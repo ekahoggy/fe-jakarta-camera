@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
-import { NgbDate, NgbCalendar, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-orders',
@@ -8,57 +7,37 @@ import { NgbDate, NgbCalendar, NgbDatepickerModule } from '@ng-bootstrap/ng-boot
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
+    session: any = {};
     filter: any = {};
-    hoveredDate: NgbDate | null = null;
-	fromDate: NgbDate;
-	toDate: NgbDate | null = null;
+    listOrder: any = [];
 
 	constructor(
-        private calendar: NgbCalendar,
 		private globalService: GlobalService,
-	) {
-        this.fromDate = calendar.getToday();
-		this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
-    }
+	) {}
     
     ngOnInit(): void {
+        this.session = this.globalService.getAuth()['user']; 
         this.empty();
+        this.getOrder();
     }
 
     empty() {
         this.filter = {
-            status: 'All',
+            user_id: this.session.id,
+            status: '',
             nama: ''
         }
     }
 
-    onDateSelection(date: NgbDate) {
-		if (!this.fromDate && !this.toDate) {
-			this.fromDate = date;
-		} else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
-			this.toDate = date;
-		} else {
-			this.toDate = null;
-			this.fromDate = date;
-		}
-	}
+    filterStatus(status:string) {
+        this.filter.status = status;
+        this.getOrder();
+    }
 
-	isHovered(date: NgbDate) {
-		return (
-			this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate)
-		);
-	}
-
-	isInside(date: NgbDate) {
-		return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
-	}
-
-	isRange(date: NgbDate) {
-		return (
-			date.equals(this.fromDate) ||
-			(this.toDate && date.equals(this.toDate)) ||
-			this.isInside(date) ||
-			this.isHovered(date)
-		);
-	}
+    getOrder() {
+        let filter = this.filter
+        this.globalService.DataGet(`/public/orders`, filter).subscribe((res:any) => {
+            this.listOrder = res.data.list;
+        })
+    }
 }

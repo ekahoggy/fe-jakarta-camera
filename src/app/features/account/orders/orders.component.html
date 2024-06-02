@@ -1,232 +1,107 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
-        <h1 class="fs-3 font-p mb-0">My Orders</h1>
+        <h1 class="fs-3  mb-0">My Orders</h1>
     </div>
     <div class="row">
         <div class="col-12">
             <div class="row">
                 <div class="col-6">
-                    <div class="input-group font-p">
-                        <span class="input-group-text" id="search-product">
+                    <div class="input-group ">
+                        <input type="text" class="form-control fs-14" [(ngModel)]="filter.nama" name="filter_nama" placeholder="Cari produk yang kamu beli" aria-label="name" aria-describedby="search-product">
+                        <span class="input-group-text" role="button" (click)="getOrder()" id="search-product">
                             <i class="bx bx-search"></i>
                         </span>
-                        <input type="text" class="form-control fs-14" [(ngModel)]="filter.nama" name="filter_nama" placeholder="Cari produk yang kamu beli" aria-label="name" aria-describedby="search-product">
                     </div>
                 </div>
                 <div class="col-4">
-                    <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden" />
-                    <ng-template #t let-date let-focused="focused">
-                        <span
-                            class="custom-day"
-                            [class.focused]="focused"
-                            [class.range]="isRange(date)"
-                            [class.faded]="isHovered(date) || isInside(date)"
-                            (mouseenter)="hoveredDate = date"
-                            (mouseleave)="hoveredDate = null"
-                        >
-                            {{ date.day }}
-                        </span>
-                    </ng-template>
                 </div>
             </div>
         </div>
         <div class="col-12 p-3">
-            <!-- <span class="fw-semibold font-p me-2">Status : </span> -->
-            <button class="btn btn-sm font-p me-1" [ngClass]="filter.status == 'All' ? 'btn-primary' : 'btn-outline-primary'" (click)="filter.status = 'All'"> 
-                <i class="bx bx-check me-1" *ngIf="filter.status == 'All'"></i> 
-                <span class="fs-14">Semua</span>
+            <!-- <span class="fw-semibold  me-2">Status : </span> -->
+            <button class="btn btn-sm font-p me-2" [ngClass]="filter.status == '' ? 'btn-primary' : 'btn-outline-primary'" (click)="filterStatus('')"> 
+                <i class="bx bx-check me-1" *ngIf="filter.status == ''"></i> 
+                <span class="fs-12">Semua</span>
             </button>
-            <button class="btn btn-sm font-p me-1" [ngClass]="filter.status == 'ordered' ? 'btn-primary' : 'btn-outline-primary'" (click)="filter.status = 'ordered'"> 
+            <button class="btn btn-sm font-p me-2" [ngClass]="filter.status == 'ordered' ? 'btn-primary' : 'btn-outline-primary'" (click)="filterStatus('ordered')"> 
                 <i class="bx bx-check me-1" *ngIf="filter.status == 'ordered'"></i> 
-                <span class="fs-14">Pemesanan</span> 
+                <span class="fs-12">Pemesanan</span> 
             </button>
-            <button class="btn btn-sm font-p me-1" [ngClass]="filter.status == 'processed' ? 'btn-primary' : 'btn-outline-primary'" (click)="filter.status = 'processed'"> 
+            <button class="btn btn-sm font-p me-2" [ngClass]="filter.status == 'processed' ? 'btn-primary' : 'btn-outline-primary'" (click)="filterStatus('processed')"> 
                 <i class="bx bx-check me-1" *ngIf="filter.status == 'processed'"></i> 
-                <span class="fs-14">Diproses</span> 
+                <span class="fs-12">Dalam Proses</span> 
             </button>
-            <button class="btn btn-sm font-p me-1" [ngClass]="filter.status == 'sent' ? 'btn-primary' : 'btn-outline-primary'" (click)="filter.status = 'sent'"> 
+            <button class="btn btn-sm font-p me-2" [ngClass]="filter.status == 'sent' ? 'btn-primary' : 'btn-outline-primary'" (click)="filterStatus('sent')"> 
                 <i class="bx bx-check me-1" *ngIf="filter.status == 'sent'"></i> 
-                <span class="fs-14">Dikirim</span> 
+                <span class="fs-12">Pengiriman</span> 
             </button>
-            <button class="btn btn-sm font-p me-1" [ngClass]="filter.status == 'received' ? 'btn-primary' : 'btn-outline-primary'" (click)="filter.status = 'received'"> 
+            <button class="btn btn-sm font-p me-2" [ngClass]="filter.status == 'received' ? 'btn-primary' : 'btn-outline-primary'" (click)="filterStatus('received')"> 
                 <i class="bx bx-check me-1" *ngIf="filter.status == 'received'"></i> 
-                <span class="fs-14">Diterima</span> 
+                <span class="fs-12">Diterima</span> 
             </button>
-            <button class="btn btn-sm font-p me-1" [ngClass]="filter.status == 'canceled' ? 'btn-primary' : 'btn-outline-primary'" (click)="filter.status = 'canceled'"> 
+            <button class="btn btn-sm font-p me-2" [ngClass]="filter.status == 'canceled' ? 'btn-primary' : 'btn-outline-primary'" (click)="filterStatus('canceled')"> 
                 <i class="bx bx-check me-1" *ngIf="filter.status == 'canceled'"></i> 
-                <span class="fs-14">Dibatalkan</span> 
+                <span class="fs-12">Dibatalkan</span> 
             </button>
         </div>
-        <div class="col-12 mb-3">
-            <div class="order-item border rounded-3 px-2">
-                <div class="p-2 font-p fs-14 border-bottom">
-                    <span class="me-3">15 Nov 2023</span> <span class="badge bg-success me-3 mb-0">Selesai</span> <span class="text-grey">INV/20231225/MPL/3644556734</span>
-                </div>
-                <div class="row py-3">
-                    <div class="col-9">
-                        <div class="d-flex align-items-center">
-                            <div class="me-3">
-                                <img src="https://www.niaga.asia/wp-content/uploads/2022/06/pexels-arunava-3335016-scaled.jpg" class="rounded-2" width="80" height="80" alt="">
+        <ng-container *ngIf="listOrder.length > 0">
+            <div class="col-12 mb-3" *ngFor="let item of listOrder">
+                <div class="order-item border rounded-3 px-2">
+                    <div class="p-2 fs-14 border-bottom">
+                        <span class="me-3">{{item.date}}</span> 
+                        <span 
+                            class="badge me-3 mb-0" 
+                            [ngClass]="{
+                                'bg-primary': item.status_order == 'ordered', 
+                                'bg-warning': item.status_order == 'processed', 
+                                'bg-info': item.status_order == 'sent', 
+                                'bg-success': item.status_order == 'received',
+                                'bg-danger': item.status_order == 'canceled'
+                            }"
+                        >{{ 
+                            item.status_order == 'ordered' ? 'Pemesanan' :
+                            item.status_order == 'processed' ? 'Dalam Proses' : 
+                            item.status_order == 'received' ? 'Diterima' : 
+                            item.status_order == 'sent' ? 'Pengiriman' : 'Canceled'
+                        }}</span> 
+                        <span class="text-grey">{{item.invoice_number}}</span>
+                    </div>
+                    <div class="row py-3">
+                        <div class="col-9">
+                            <div class="item d-flex align-items-center mb-3" *ngFor="let detail of item.detail">
+                                <div class="p-2 me-2">
+                                    <img [src]="detail.photo" class="rounded-2 object-fit-cover" width="90" height="90" alt="">
+                                </div>
+                                <div>
+                                    <h1 class="fs-14 font-p mb-0">{{ detail.nama }}</h1>
+                                    <span class="text-grey fs-12 font-p ">{{ detail.qty }} pcs x Rp. {{ detail.price | numberFormat }}</span>
+                                </div>
                             </div>
-                            <div>
-                                <h1 class="fs-14 font-p mb-0">EOS 200D II (EF-S 18-55mm f/4-5.6 IS STM)</h1>
-                                <span class="text-grey fs-12 font-p">1 pcs x Rp. 1.000.000</span>
+                        </div>
+                        <div class="col-3 d-flex align-items-center">
+                            <div class="border-start text-center px-3 d-flex justify-content-center flex-column py-3">
+                                <p class="text-grey  fs-14 mb-0">Total Belanja</p>
+                                <p class=" fs-16 fw-semibold mb-0">Rp. {{ item.grand_total | numberFormat }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 d-flex align-items-center">
-                        <div class="border-start text-center px-3 d-flex justify-content-center flex-column py-3">
-                            <p class="text-grey font-p fs-14 mb-0">Total Belanja</p>
-                            <p class="font-p fs-16 fw-semibold mb-0">Rp. 1.000.000</p>
-                        </div>
+                    <div class="p-2 text-end">
+                        <button class="btn btn-sm btn-outline-primary px-5 me-2 fs-12 fw-bold">
+                            Ulasan
+                        </button>
+                        <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold">
+                            Detail
+                        </button>
                     </div>
-                </div>
-                <div class="p-2 font-p text-end">
-                    <button class="btn btn-sm btn-outline-primary px-5 me-2 fs-12 fw-bold">
-                        Ulasan
-                    </button>
-                    <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold">
-                        Detail
-                    </button>
                 </div>
             </div>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="order-item border rounded-3 px-2">
-                <div class="p-2 font-p fs-14 border-bottom">
-                    <span class="me-3">15 Nov 2023</span> <span class="badge bg-success me-3 mb-0">Selesai</span> <span class="text-grey">INV/20231225/MPL/3644556734</span>
-                </div>
-                <div class="row py-3">
-                    <div class="col-9">
-                        <div class="d-flex align-items-center">
-                            <div class="me-3">
-                                <img src="https://www.niaga.asia/wp-content/uploads/2022/06/pexels-arunava-3335016-scaled.jpg" class="rounded-2" width="80" height="80" alt="">
-                            </div>
-                            <div>
-                                <h1 class="fs-14 font-p mb-0">EOS 200D II (EF-S 18-55mm f/4-5.6 IS STM)</h1>
-                                <span class="text-grey fs-12 font-p">1 pcs x Rp. 1.000.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 d-flex align-items-center">
-                        <div class="border-start text-center px-3 d-flex justify-content-center flex-column py-3">
-                            <p class="text-grey font-p fs-14 mb-0">Total Belanja</p>
-                            <p class="font-p fs-16 fw-semibold mb-0">Rp. 1.000.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 font-p text-end">
-                    <button class="btn btn-sm btn-outline-primary px-5 me-2 fs-12 fw-bold">
-                        Ulasan
-                    </button>
-                    <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold">
-                        Detail
-                    </button>
-                </div>
+        </ng-container>
+        <ng-container *ngIf="listOrder.length == 0">
+            <div class="col-12 text-center py-5">
+                <img src="assets/img/undraw/empty-order.svg" alt="empty-address" width="300">
+                <p class="mt-3 font-p">Oops, belum ada transaksi</p>
             </div>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="order-item border rounded-3 px-2">
-                <div class="p-2 font-p fs-14 border-bottom">
-                    <span class="me-3">15 Nov 2023</span> <span class="badge bg-success me-3 mb-0">Selesai</span> <span class="text-grey">INV/20231225/MPL/3644556734</span>
-                </div>
-                <div class="row py-3">
-                    <div class="col-9">
-                        <div class="d-flex align-items-center">
-                            <div class="me-3">
-                                <img src="https://www.niaga.asia/wp-content/uploads/2022/06/pexels-arunava-3335016-scaled.jpg" class="rounded-2" width="80" height="80" alt="">
-                            </div>
-                            <div>
-                                <h1 class="fs-14 font-p mb-0">EOS 200D II (EF-S 18-55mm f/4-5.6 IS STM)</h1>
-                                <span class="text-grey fs-12 font-p">1 pcs x Rp. 1.000.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 d-flex align-items-center">
-                        <div class="border-start text-center px-3 d-flex justify-content-center flex-column py-3">
-                            <p class="text-grey font-p fs-14 mb-0">Total Belanja</p>
-                            <p class="font-p fs-16 fw-semibold mb-0">Rp. 1.000.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 font-p text-end">
-                    <button class="btn btn-sm btn-outline-primary px-5 me-2 fs-12 fw-bold">
-                        Ulasan
-                    </button>
-                    <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold">
-                        Detail
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="order-item border rounded-3 px-2">
-                <div class="p-2 font-p fs-14 border-bottom">
-                    <span class="me-3">15 Nov 2023</span> <span class="badge bg-success me-3 mb-0">Selesai</span> <span class="text-grey">INV/20231225/MPL/3644556734</span>
-                </div>
-                <div class="row py-3">
-                    <div class="col-9">
-                        <div class="d-flex align-items-center">
-                            <div class="me-3">
-                                <img src="https://www.niaga.asia/wp-content/uploads/2022/06/pexels-arunava-3335016-scaled.jpg" class="rounded-2" width="80" height="80" alt="">
-                            </div>
-                            <div>
-                                <h1 class="fs-14 font-p mb-0">EOS 200D II (EF-S 18-55mm f/4-5.6 IS STM)</h1>
-                                <span class="text-grey fs-12 font-p">1 pcs x Rp. 1.000.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 d-flex align-items-center">
-                        <div class="border-start text-center px-3 d-flex justify-content-center flex-column py-3">
-                            <p class="text-grey font-p fs-14 mb-0">Total Belanja</p>
-                            <p class="font-p fs-16 fw-semibold mb-0">Rp. 1.000.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 font-p text-end">
-                    <button class="btn btn-sm btn-outline-primary px-5 me-2 fs-12 fw-bold">
-                        Ulasan
-                    </button>
-                    <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold">
-                        Detail
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="order-item border rounded-3 px-2">
-                <div class="p-2 font-p fs-14 border-bottom">
-                    <span class="me-3">15 Nov 2023</span> <span class="badge bg-success me-3 mb-0">Selesai</span> <span class="text-grey">INV/20231225/MPL/3644556734</span>
-                </div>
-                <div class="row py-3">
-                    <div class="col-9">
-                        <div class="d-flex align-items-center">
-                            <div class="me-3">
-                                <img src="https://www.niaga.asia/wp-content/uploads/2022/06/pexels-arunava-3335016-scaled.jpg" class="rounded-2" width="80" height="80" alt="">
-                            </div>
-                            <div>
-                                <h1 class="fs-14 font-p mb-0">EOS 200D II (EF-S 18-55mm f/4-5.6 IS STM)</h1>
-                                <span class="text-grey fs-12 font-p">1 pcs x Rp. 1.000.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 d-flex align-items-center">
-                        <div class="border-start text-center px-3 d-flex justify-content-center flex-column py-3">
-                            <p class="text-grey font-p fs-14 mb-0">Total Belanja</p>
-                            <p class="font-p fs-16 fw-semibold mb-0">Rp. 1.000.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 font-p text-end">
-                    <button class="btn btn-sm btn-outline-primary px-5 me-2 fs-12 fw-bold">
-                        Ulasan
-                    </button>
-                    <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold">
-                        Detail
-                    </button>
-                </div>
-            </div>
-        </div>
+        </ng-container>
     </div>
 </div>
 

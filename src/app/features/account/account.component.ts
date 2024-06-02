@@ -20,6 +20,7 @@ export class AccountComponent implements OnInit {
 		this.session = this.globalService.getAuth()['user']; 
 		this.model.name = this.session.name;
 		this.getAddress();
+        this.getUser();
 	}
 
 	logout() {
@@ -37,4 +38,11 @@ export class AccountComponent implements OnInit {
             this.totalAddress = res.data.length
 		})
 	}
+
+    getUser() {
+        this.globalService.DataGet(`/public/user`, {id: this.session.id}).subscribe((res:any) => {
+            this.model = res.data;
+        })
+    }
+
 }
