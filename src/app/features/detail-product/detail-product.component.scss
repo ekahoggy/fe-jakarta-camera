@@ -60,3 +60,11 @@
 .stok-tidak-ada {
   color: var(--RN500, #F94D63);
 }
+
+.wrap-image {
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 5/5;
+    }
+}

@@ -1,40 +1,23 @@
 <ng-container *ngIf="loadingPage">
-  <app-spinner></app-spinner>
+    <app-spinner></app-spinner>
 </ng-container>
 
 <ng-container *ngIf="!loadingPage">
-  <section class="breadcrumb mt-lg-5">
-    <div class="container">
-      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb fs-14">
-          <li class="breadcrumb-item">
-            <a href="/home"> <i class="bx bx-home me-1"></i> Beranda </a>
-          </li>
-          <li class="breadcrumb-item active">
-            <a href="/katalog">Produk</a>
-          </li>
-          <li class="breadcrumb-item active">
-            <a href="javascript:void(0)">{{ model.nama }}</a>
-          </li>
-        </ol>
-      </nav>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <img [src]="activePhoto" class="img-preview object-fit-cover rounded-4" width="478" height="378" alt="">
-          <div class="row mt-3">
-            <ng-container *ngFor="let item of model.detail_foto">
-              <div class="col-3">
-                <a href="javascript:void(0)" (click)="activePhoto=item.foto">
-                  <img [src]="item.foto" class="img-list object-fit-cover rounded-4" alt="image-produk">
-                </a>
-              </div>
-            </ng-container>
-          </div>
+    <section class="breadcrumb mt-lg-5">
+        <div class="container">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb fs-14">
+                    <li class="breadcrumb-item">
+                        <a href="/home"> <i class="bx bx-home me-1"></i> Beranda </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <a href="/katalog">Produk</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <a href="javascript:void(0)">{{ model.nama }}</a>
+                    </li>
+                </ol>
+            </nav>
         </div>
         <div class="col-lg-6 mt-4 mt-lg-0">
           <h1 class="fs-2 fw-semibold font-p">
@@ -90,26 +73,26 @@
                     <!--
                       <img [src]="item.image" class="rounded-circle" style="width: 25px; height: 25px;" alt="">
                     -->
-                    {{ item }}
-                  </button>
-                </ng-container>
-              </div>
+                                        {{ item }}
+                                    </button>
+                                </ng-container>
+                            </div>
 
-              <div class="variant ps-3 border-start" *ngIf="varian2_detail.length > 0">
-                <p class="text-grey fs-5 font-p mb-2">Pilih {{ varian2 }} :</p>
-                <ng-container *ngFor="let item of varian2_detail">
-                  <button (click)="pilihVariant2(item)"
-                    class="btn btn-sm border border-light-subtle rounded-5 font-grey font-p ps-2 pe-2 me-1 mb-2"
-                    [ngClass]="{'btn-info': selectVarian2 === item , 'btn-light' : selectVarian2 !== item }">
-                    <!--
+                            <div class="variant ps-3 border-start" *ngIf="varian2_detail.length > 0">
+                                <p class="text-grey fs-5 font-p mb-2">Pilih {{ varian2 }} :</p>
+                                <ng-container *ngFor="let item of varian2_detail">
+                                    <button (click)="pilihVariant2(item)"
+                                        class="btn btn-sm border border-light-subtle rounded-5 font-grey font-p ps-2 pe-2 me-1 mb-2"
+                                        [ngClass]="{'btn-info': selectVarian2 === item , 'btn-light' : selectVarian2 !== item }">
+                                        <!--
                       <img [src]="item.image" class="rounded-circle" style="width: 25px; height: 25px;" alt="">
                     -->
-                    {{ item }}
-                  </button>
-                </ng-container>
-              </div>
-            </div>
-          </div>
+                                        {{ item }}
+                                    </button>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
 
           <div class="d-flex flex-wrap align-items-center mb-3">
             <div class="d-flex mb-3">
@@ -139,265 +122,278 @@
             </button>
           </div>
 
-          <div class="row"
-            *ngIf="model.link_tokped !== null || model.link_bukalapak !== null || model.link_shopee !== null || model.link_lazada !== null || model.link_blibli !== null ">
-            <div class="col-12">
-              <p class="text-grey fs-5 font-p">Order Via :</p>
-            </div>
-            <div class="col-4 col-xl-3 px-1" *ngIf="model.link_tokped">
-              <div class="border">
-                <a target="_blank" [href]="model.link_tokped">
-                  <img src="https://jakartacamera.com/wp-content/uploads/2023/01/tokopedia-jakarta-camera-300x105.webp"
-                    style="width: 100%; max-width: 200px;" alt="tokopedia">
-                </a>
-              </div>
-            </div>
-            <div class="col-4 col-xl-3 px-1" *ngIf="model.link_bukalapak">
-              <div class="border">
-                <a target="_blank" [href]="model.link_bukalapak">
-                  <img src="https://jakartacamera.com/wp-content/uploads/2023/01/bukalapak-jakarta-camera.webp"
-                    style="width: 100%; max-width: 200px;" alt="bukalapak">
-                </a>
-              </div>
-            </div>
-            <div class="col-4 col-xl-3 px-1" *ngIf="model.link_shopee">
-              <div class="border">
-                <a target="_blank" [href]="model.link_shopee">
-                  <img src="https://jakartacamera.com/wp-content/uploads/2023/01/shopee-jakarta-camera.webp"
-                    style="width: 100%; max-width: 200px;" alt="shopee">
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="description pt-4 my-5">
-    <div class="container">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <button class="nav-link rounded-top-4 font-p" [ngClass]="{'active' : desc == 'description'}"
-            (click)="switchDesc('description')">Description</button>
-        </li>
-        <li class="nav-item" *ngIf="false">
-          <button class="nav-link rounded-top-4 font-p" [ngClass]="{'active' : desc == 'additional'}"
-            (click)="switchDesc('additional')">Additional Information</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link rounded-top-4 font-p" [ngClass]="{'active' : desc == 'contents'}"
-            (click)="switchDesc('contents')">Contents in Box</button>
-        </li>
-      </ul>
-      <div class="content mb-5 p-3 mt-4">
-        <div *ngIf="desc == 'description'">
-          <p class="text-grey fs-14 font-p" [innerHTML]="model.deskripsi"></p>
-        </div>
-        <div *ngIf="desc == 'additional'">
-          <p class="text-grey fs-14 font-p" [innerHTML]="model.detail_produk"></p>
-        </div>
-        <div *ngIf="desc == 'contents'">
-          <p class="text-grey fs-14 font-p" [innerHTML]="model.in_box"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="reviews mb-5">
-    <div class="container">
-      <h1 class="fs-5 fw-semibold mb-3 font-p">CUSTOMER REVIEWS</h1>
-      <div class="d-flex justify-content-between">
-        <div class="rating fs-6">
-          <i class='bx bxs-star text-warning'></i>
-          <i class='bx bxs-star text-warning'></i>
-          <i class='bx bxs-star text-warning'></i>
-          <i class='bx bxs-star-half text-warning'></i>
-          <i class='bx bx-star text-warning'></i>
-          <span class="ms-2">Based on 1 review</span>
-        </div>
-        <span>
-          <button class="btn text-primary">Write a review</button>
-        </span>
-      </div>
-
-      <div class="reviews mt-3">
-        <div class="row mb-3">
-          <div class="col-2 col-xl-1">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-              class="object-fit-cover w-100" alt="">
-          </div>
-          <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="detail">
-                <span class="fw-bold fs-6">Galih Satrio - </span> <span>Galih on Aug 22, 2021</span>
-              </div>
-              <div class="rating">
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star-half text-warning'></i>
-                <i class='bx bx-star text-warning'></i>
-              </div>
-            </div>
-            <p class="mt-3 fs-14">
-              Kamera Canon EOS 90D ini benar-benar sesuai dengan harapan saya. Kualitas build-nya kokoh dan terasa
-              sangat premium. Setelah beberapa kali penggunaan, saya sangat terkesan dengan hasil foto dan video yang
-              dihasilkan. Resolusi 32.5 MP dan prosesor DIGIC 8 memberikan detail yang tajam dan warna yang akurat,
-              membuat hasil jepretan terlihat profesional.
-            </p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-2 col-xl-1">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-              class="object-fit-cover w-100" alt="">
-          </div>
-          <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="detail">
-                <span class="fw-bold fs-6">Eka Hoggy - </span> <span>Eka on Aug 22, 2021</span>
-              </div>
-              <div class="rating">
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star-half text-warning'></i>
-                <i class='bx bx-star text-warning'></i>
-              </div>
-            </div>
-            <p class="mt-3 fs-14">
-              Membeli Canon EOS 90D dari [Nama Toko Online] adalah pengalaman yang menyenangkan. Pengiriman sangat cepat
-              dan kemasannya sangat aman. Kamera ini menawarkan kinerja luar biasa dengan kualitas gambar yang
-              mengagumkan. Layar sentuh vari-angle dan daya tahan baterai yang kuat adalah keunggulan utama bagi saya.
-              Saya merasa sangat puas dengan kamera ini dan layanan dari toko ini, dan tidak ragu merekomendasikan
-              kepada siapa pun yang mencari kamera DSLR berkualitas.
-            </p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-2 col-xl-1">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-              class="object-fit-cover w-100" alt="">
-          </div>
-          <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="detail">
-                <span class="fw-bold fs-6">Febri Fatur - </span> <span>Febri on Aug 22, 2021</span>
-              </div>
-              <div class="rating">
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star-half text-warning'></i>
-                <i class='bx bx-star text-warning'></i>
-              </div>
-            </div>
-            <p class="mt-3 fs-14">
-              Saya sangat senang dengan kamera Canon EOS 90D yang saya beli dari [Nama Toko Online]. Proses pembelian
-              mudah dan pengiriman cepat. Kamera ini memiliki performa luar biasa dengan hasil foto yang tajam dan
-              detail. Sistem autofocus 45 titik dan kemampuan perekaman video 4K benar-benar meningkatkan kualitas karya
-              saya. Satu-satunya kekurangan adalah bobot kamera yang agak berat untuk penggunaan dalam waktu lama.
-              Namun, secara keseluruhan, saya sangat puas dan merekomendasikan produk ini.
-            </p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-2 col-xl-1">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-              class="object-fit-cover w-100" alt="">
-          </div>
-          <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="detail">
-                <span class="fw-bold fs-6">Anonymous - </span> <span>Anonymous on Aug 22, 2021</span>
-              </div>
-              <div class="rating">
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star-half text-warning'></i>
-                <i class='bx bx-star text-warning'></i>
-              </div>
-            </div>
-            <p class="mt-3 fs-14">
-              Saya baru saja membeli kamera Canon EOS 90D dari [Nama Toko Online], dan saya sangat puas dengan
-              pengalaman ini. Pengiriman cepat dan aman, kamera tiba dalam kondisi sempurna. Kualitas gambar sangat
-              tajam dan detail, cocok untuk fotografi profesional maupun hobi. Sistem autofocusnya cepat dan akurat,
-              membuatnya mudah menangkap momen dengan sempurna. Fitur-fitur canggih sesuai dengan deskripsi di situs.
-              Saya sangat merekomendasikan kamera ini dan toko ini untuk siapa pun yang mencari kamera berkualitas
-              tinggi.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="flash-sale my-5">
-    <div class="filter-bar mb-3" *ngIf="listProduct.length > 0">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="fw-bolder text-primary border-primary me-4" style="font-size: 15px;">
-            FLASH SALE
-            <i class='bx bxs-bolt'></i>
-            <span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
-              <countdown [config]="{leftTime: 4000}"></countdown>
-            </span>
-          </div>
-          <a href="javascript:void(0)" [routerLink]="['/flash-sale']">
-            Lihat Semua
-            <i class="bx bx-chevron-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="list">
-      <div class="container">
-        <div class="row">
-          <ng-container *ngIf="listProduct.length > 0">
-            <div class="col-12 col-md-6 col-xl-3 mb-3" *ngFor="let item of listProduct; index as i">
-              <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}" *ngIf="4 > i">
-                <div class="square-image wrap-image rounded-4">
-                  <img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
-                  <!-- <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button> -->
+                    <div class="row"
+                        *ngIf="model.link_tokped !== null || model.link_bukalapak !== null || model.link_shopee !== null || model.link_lazada !== null || model.link_blibli !== null ">
+                        <div class="col-12">
+                            <p class="text-grey fs-5 font-p">Order Via :</p>
+                        </div>
+                        <div class="col-4 col-xl-3 px-1" *ngIf="model.link_tokped">
+                            <div class="border">
+                                <a target="_blank" [href]="model.link_tokped">
+                                    <img src="https://jakartacamera.com/wp-content/uploads/2023/01/tokopedia-jakarta-camera-300x105.webp"
+                                        style="width: 100%; max-width: 200px;" alt="tokopedia">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-xl-3 px-1" *ngIf="model.link_bukalapak">
+                            <div class="border">
+                                <a target="_blank" [href]="model.link_bukalapak">
+                                    <img src="https://jakartacamera.com/wp-content/uploads/2023/01/bukalapak-jakarta-camera.webp"
+                                        style="width: 100%; max-width: 200px;" alt="bukalapak">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-xl-3 px-1" *ngIf="model.link_shopee">
+                            <div class="border">
+                                <a target="_blank" [href]="model.link_shopee">
+                                    <img src="https://jakartacamera.com/wp-content/uploads/2023/01/shopee-jakarta-camera.webp"
+                                        style="width: 100%; max-width: 200px;" alt="shopee">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="detail p-2 p-lg-3 h-100">
-                  <span class="category text-black-50" style="font-size: 11px;">PRODUK PILIHAN</span>
-                  <p class="product-name fs-6 mb-0 font-p"> {{item.nama}} </p>
-                  <div class="rating">
+            </div>
+        </div>
+    </section>
+
+    <section class="description pt-4 my-5">
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <button class="nav-link rounded-top-4 font-p" [ngClass]="{'active' : desc == 'description'}"
+                        (click)="switchDesc('description')">Description</button>
+                </li>
+                <li class="nav-item" *ngIf="false">
+                    <button class="nav-link rounded-top-4 font-p" [ngClass]="{'active' : desc == 'additional'}"
+                        (click)="switchDesc('additional')">Additional Information</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link rounded-top-4 font-p" [ngClass]="{'active' : desc == 'contents'}"
+                        (click)="switchDesc('contents')">Contents in Box</button>
+                </li>
+            </ul>
+            <div class="content mb-5 p-3 mt-4">
+                <div *ngIf="desc == 'description'">
+                    <p class="text-grey fs-14 font-p" [innerHTML]="model.deskripsi"></p>
+                </div>
+                <div *ngIf="desc == 'additional'">
+                    <p class="text-grey fs-14 font-p" [innerHTML]="model.detail_produk"></p>
+                </div>
+                <div *ngIf="desc == 'contents'">
+                    <p class="text-grey fs-14 font-p" [innerHTML]="model.in_box"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews mb-5">
+        <div class="container">
+            <h1 class="fs-5 fw-semibold mb-3 font-p">CUSTOMER REVIEWS</h1>
+            <div class="d-flex justify-content-between">
+                <div class="rating fs-6">
                     <i class='bx bxs-star text-warning'></i>
                     <i class='bx bxs-star text-warning'></i>
                     <i class='bx bxs-star text-warning'></i>
                     <i class='bx bxs-star-half text-warning'></i>
                     <i class='bx bx-star text-warning'></i>
-                  </div>
-                  <p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-                  <a href="javascript:void(0)"
-                    class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100"
-                    style="font-size: 12px" (click)="addCartFlashSale(item.id)">
-                    <span class="iconify me-1 mb-1" data-icon="solar:cart-linear"></span>
-                    TAMBAH KE KERANJANG
-                  </a>
+                    <span class="ms-2">Based on 1 review</span>
                 </div>
-              </a>
+                <span>
+                    <button class="btn text-primary">Write a review</button>
+                </span>
             </div>
-          </ng-container>
-          <ng-container *ngIf="listProduct.length == 0">
-            <div class="col text-center">
-              <img src="assets/img/undraw/empty.png" style="width: 400px;" width="200" height="200" alt="empty">
-              <p class="fs-3 fw-bold">Not Found</p>
-            </div>
-          </ng-container>
 
+            <div class="reviews mt-3">
+                <div class="row mb-3">
+                    <div class="col-2 col-xl-1">
+                        <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
+                            class="object-fit-cover w-100" alt="">
+                    </div>
+                    <div class="col-10 col-xl-11 bg-body-tertiary py-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="detail">
+                                <span class="fw-bold fs-6">Galih Satrio - </span> <span>Galih on Aug 22, 2021</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star-half text-warning'></i>
+                                <i class='bx bx-star text-warning'></i>
+                            </div>
+                        </div>
+                        <p class="mt-3 fs-14">
+                            Kamera Canon EOS 90D ini benar-benar sesuai dengan harapan saya. Kualitas build-nya kokoh
+                            dan terasa
+                            sangat premium. Setelah beberapa kali penggunaan, saya sangat terkesan dengan hasil foto dan
+                            video yang
+                            dihasilkan. Resolusi 32.5 MP dan prosesor DIGIC 8 memberikan detail yang tajam dan warna
+                            yang akurat,
+                            membuat hasil jepretan terlihat profesional.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2 col-xl-1">
+                        <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
+                            class="object-fit-cover w-100" alt="">
+                    </div>
+                    <div class="col-10 col-xl-11 bg-body-tertiary py-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="detail">
+                                <span class="fw-bold fs-6">Eka Hoggy - </span> <span>Eka on Aug 22, 2021</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star-half text-warning'></i>
+                                <i class='bx bx-star text-warning'></i>
+                            </div>
+                        </div>
+                        <p class="mt-3 fs-14">
+                            Membeli Canon EOS 90D dari [Nama Toko Online] adalah pengalaman yang menyenangkan.
+                            Pengiriman sangat cepat
+                            dan kemasannya sangat aman. Kamera ini menawarkan kinerja luar biasa dengan kualitas gambar
+                            yang
+                            mengagumkan. Layar sentuh vari-angle dan daya tahan baterai yang kuat adalah keunggulan
+                            utama bagi saya.
+                            Saya merasa sangat puas dengan kamera ini dan layanan dari toko ini, dan tidak ragu
+                            merekomendasikan
+                            kepada siapa pun yang mencari kamera DSLR berkualitas.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2 col-xl-1">
+                        <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
+                            class="object-fit-cover w-100" alt="">
+                    </div>
+                    <div class="col-10 col-xl-11 bg-body-tertiary py-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="detail">
+                                <span class="fw-bold fs-6">Febri Fatur - </span> <span>Febri on Aug 22, 2021</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star-half text-warning'></i>
+                                <i class='bx bx-star text-warning'></i>
+                            </div>
+                        </div>
+                        <p class="mt-3 fs-14">
+                            Saya sangat senang dengan kamera Canon EOS 90D yang saya beli dari [Nama Toko Online].
+                            Proses pembelian
+                            mudah dan pengiriman cepat. Kamera ini memiliki performa luar biasa dengan hasil foto yang
+                            tajam dan
+                            detail. Sistem autofocus 45 titik dan kemampuan perekaman video 4K benar-benar meningkatkan
+                            kualitas karya
+                            saya. Satu-satunya kekurangan adalah bobot kamera yang agak berat untuk penggunaan dalam
+                            waktu lama.
+                            Namun, secara keseluruhan, saya sangat puas dan merekomendasikan produk ini.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-2 col-xl-1">
+                        <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
+                            class="object-fit-cover w-100" alt="">
+                    </div>
+                    <div class="col-10 col-xl-11 bg-body-tertiary py-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="detail">
+                                <span class="fw-bold fs-6">Anonymous - </span> <span>Anonymous on Aug 22, 2021</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star text-warning'></i>
+                                <i class='bx bxs-star-half text-warning'></i>
+                                <i class='bx bx-star text-warning'></i>
+                            </div>
+                        </div>
+                        <p class="mt-3 fs-14">
+                            Saya baru saja membeli kamera Canon EOS 90D dari [Nama Toko Online], dan saya sangat puas
+                            dengan
+                            pengalaman ini. Pengiriman cepat dan aman, kamera tiba dalam kondisi sempurna. Kualitas
+                            gambar sangat
+                            tajam dan detail, cocok untuk fotografi profesional maupun hobi. Sistem autofocusnya cepat
+                            dan akurat,
+                            membuatnya mudah menangkap momen dengan sempurna. Fitur-fitur canggih sesuai dengan
+                            deskripsi di situs.
+                            Saya sangat merekomendasikan kamera ini dan toko ini untuk siapa pun yang mencari kamera
+                            berkualitas
+                            tinggi.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <app-footer></app-footer>
+    <section class="flash-sale my-5">
+        <div class="filter-bar mb-3" *ngIf="listProduct.length > 0">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="fw-bolder text-primary border-primary me-4" style="font-size: 15px;">
+                        FLASH SALE
+                        <i class='bx bxs-bolt'></i>
+                        <span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
+                            <countdown [config]="{leftTime: 4000}"></countdown>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0)" [routerLink]="['/flash-sale']">
+                        Lihat Semua
+                        <i class="bx bx-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <div class="container">
+                <div class="row">
+                    <ng-container *ngIf="listProduct.length > 0">
+                        <div class="col-12 col-md-6 col-xl-3 mb-3" *ngFor="let item of listProduct; index as i">
+                            <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}" *ngIf="4 > i">
+                                <div class="square-image wrap-image rounded-4">
+                                    <img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+                                    <!-- <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button> -->
+                                </div>
+                                <div class="detail p-2 p-lg-3 h-100">
+                                    <span class="category text-black-50" style="font-size: 11px;">PRODUK PILIHAN</span>
+                                    <p class="product-name fs-6 mb-0 font-p"> {{item.nama}} </p>
+                                    <div class="rating">
+                                        <i class='bx bxs-star text-warning'></i>
+                                        <i class='bx bxs-star text-warning'></i>
+                                        <i class='bx bxs-star text-warning'></i>
+                                        <i class='bx bxs-star-half text-warning'></i>
+                                        <i class='bx bx-star text-warning'></i>
+                                    </div>
+                                    <p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
+                                    <a href="javascript:void(0)"
+                                        class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100"
+                                        style="font-size: 12px" (click)="addCartFlashSale(item.id)">
+                                        <span class="iconify me-1 mb-1" data-icon="solar:cart-linear"></span>
+                                        TAMBAH KE KERANJANG
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="listProduct.length == 0">
+                        <div class="col text-center">
+                            <img src="assets/img/undraw/empty.png" style="width: 400px;" width="200" height="200"
+                                alt="empty">
+                            <p class="fs-3 fw-bold">Not Found</p>
+                        </div>
+                    </ng-container>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <app-footer></app-footer>
 </ng-container>

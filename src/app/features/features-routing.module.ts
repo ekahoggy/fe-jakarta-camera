@@ -20,6 +20,7 @@ import { EducationModule } from './education/education.module';
 import { PromoComponent } from './promo/promo.component';
 import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
 import { PaymentComponent } from './payment/payment.component';
+import { NewsDetailComponent } from './news-detail/news-detail.component';
 
 const routes: Routes = [
     {
@@ -90,6 +91,10 @@ const routes: Routes = [
     {
         path: 'news',
         component: NewsComponent
+    },
+    {
+        path: 'news/:slug',
+        component: NewsDetailComponent,
     },
     {
         path: 'flash-sale',
