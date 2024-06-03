@@ -95,7 +95,7 @@
                 </ng-container>
               </div>
 
-              <div class="variant ps-3 border-start" *ngIf="varian2_detail.length > 0">
+              <div class="variant ps-3 border-start" *ngIf="varian2 !== null">
                 <p class="text-grey fs-5 font-p mb-2">Pilih {{ varian2 }} :</p>
                 <ng-container *ngFor="let item of varian2_detail">
                   <button (click)="pilihVariant2(item)"
