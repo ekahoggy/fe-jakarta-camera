@@ -59,21 +59,22 @@
             </div>
           </div>
           <div class="categories fs-12 text-grey mt-2 font-p">
-            <i class='bx bx-box'></i> Kategori: {{ model.kategori }}
+            <i class='bx bx-box'></i> Kategori : {{ model.kategori }} &nbsp;&nbsp;
+            <i class='bx bx-box'></i> Brand : {{ model.brand }}
           </div>
           <div class="border-bottom mt-2 mb-3 w-50"></div>
-          <h2 class="fw-semibold fs-2 font-p">Rp. {{ model.harga | numberFormat }}</h2>
-          <!--
-            <div class="harga-coret my-3">
-              <span class="text-danger border-0 fw-semibold py-1 px-2 rounded-4 fs-5 font-p"
-                style="background-color: #fbbed5">
-                5%
-              </span>
-              <span class="text-grey border-0 fw-semibold py-1 px-2 rounded-4 fs-5 font-p text-decoration-line-through">
-                Rp. 35.899.000
-              </span>
-            </div>
-          -->
+          <h2 class="fw-semibold fs-2 font-p" *ngIf="!model.is_promo">Rp. {{ model.harga | numberFormat }}</h2>
+          <h2 class="fw-semibold fs-2 font-p" *ngIf="model.is_promo">Rp. {{ model.harga_promo | numberFormat }}</h2>
+          <div class="harga-coret my-3" *ngIf="model.is_promo">
+            <span class="text-danger border-0 fw-semibold py-1 px-2 rounded-4 fs-5 font-p"
+              style="background-color: #fbbed5">
+              {{ model.promo.persen }}%
+            </span>
+            <span class="text-grey border-0 fw-semibold py-1 px-2 rounded-4 fs-5 font-p text-decoration-line-through">
+              Rp. {{ model.harga | numberFormat }}
+            </span>
+          </div>
+
           <div class="row mb-3">
             <div class="col-lg-6">
               <p class="text-grey fs-5 font-p mb-2">Detail :</p>
@@ -126,8 +127,13 @@
                 <i class="bx bx-plus"></i>
               </button>
             </div>
+            <button class="btn btn-sm btn-warning rounded-5 fs-6 font-p px-5 py-2 fw-semibold ms-2 mb-3 text-white"
+              *ngIf="model.stok == 0">
+              <i class='bx bx-heart'></i>
+              Pre Order
+            </button>
             <button class="btn btn-sm btn-info rounded-5 fs-6 font-p px-5 py-2 fw-semibold ms-2 mb-3"
-              (click)="addCart()" [disabled]="model.stok == 0">
+              (click)="addCart()" *ngIf="model.stok > 0">
               <i class='bx bxs-cart-alt'></i>
               Tambah ke Keranjang
             </button>
