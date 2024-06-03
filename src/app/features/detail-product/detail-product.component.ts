@@ -20,6 +20,7 @@ export class DetailProductComponent implements OnInit {
   selectVarian1: any = '';
   selectVarian2: any = '';
   activePhoto: string = "";
+  selectedVarian: any = null;
   loadingPage: boolean = true;
 
   constructor(
@@ -121,6 +122,8 @@ export class DetailProductComponent implements OnInit {
       varian2: this.selectVarian2
     }).subscribe((res: any) => {
       this.model.stok = res.data.stok;
+      this.model.harga = res.data.harga;
+      this.selectedVarian = res.data.id;
     });
   }
 
@@ -152,10 +155,13 @@ export class DetailProductComponent implements OnInit {
       let params = {
         user_id: this.globalService.getAuth()['user']['id'],
         product_id: this.model.id,
+        promo_id: this.model.is_promo ? this.model.promo.m_promo_id : null,
+        persen: this.model.is_promo ? this.model.promo.persen : 0,
+        product_varian_id: this.selectedVarian,
         quantity: this.model.quantity
       }
       this.globalService.DataPost('/cart/add', params).subscribe((res: any) => {
-        this.globalService.alertSuccess('Success', res.message);
+        this.globalService.alertSuccess('Berhasil', res.message);
       })
     }
   }
@@ -170,7 +176,7 @@ export class DetailProductComponent implements OnInit {
         quantity: 1
       }
       this.globalService.DataPost('/cart/add', params).subscribe((res: any) => {
-        this.globalService.alertSuccess('Success', res.message);
+        this.globalService.alertSuccess('Berhasil', res.message);
       })
     }
   }

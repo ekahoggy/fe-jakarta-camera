@@ -125,12 +125,14 @@
                   <i class='bx bxs-bolt'></i>-12%
                 </span>
                 <p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-                <a href="javascript:void(0)"
-                  class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100"
-                  style="font-size: 12px" (click)="addCart(item.id)">
-                  <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-                  TAMBAH KE KERANJANG
-                </a>
+                <!--
+                  <a href="javascript:void(0)"
+                    class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100"
+                    style="font-size: 12px" (click)="addCart(item.id)">
+                    <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
+                    TAMBAH KE KERANJANG
+                  </a>
+                -->
               </div>
             </div>
           </ng-template>
@@ -237,12 +239,14 @@
                   <p class="price fs-6 fw-semibold" *ngIf="!item.is_promo">Rp {{ item.harga | numberFormat }}</p>
                   <p class="price fs-6 fw-semibold" *ngIf="item.is_promo">Rp {{ item.harga_promo | numberFormat }}</p>
                 </a>
-                <a href="javascript:void(0)"
-                  class="btn btn-primary btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p w-100 rounded-4 text-light"
-                  style="font-size: 12px" (click)="addCart(item.id)">
-                  <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
-                  TAMBAH KE KERANJANG
-                </a>
+                <!--
+                  <a href="javascript:void(0)"
+                    class="btn btn-primary btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p w-100 rounded-4 text-light"
+                    style="font-size: 12px" (click)="addCart(item.id)">
+                    <span class="iconify fs-6 me-1 mb-1" data-icon="solar:cart-linear"></span>
+                    TAMBAH KE KERANJANG
+                  </a>
+                -->
               </div>
             </div>
           </ng-template>
