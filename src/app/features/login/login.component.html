@@ -8,7 +8,7 @@
                         <div class="text-danger fade show font-p" *ngIf="isError">
                             {{ isPesan }}
                         </div>
-                    </div>  
+                    </div>
                     <div class="mb-3">
                         <label for="email" class="mb-2 font-p fs-14">Email</label>
                         <input type="email" class="form-control font-p fs-14 py-2" [(ngModel)]="model.email" name="email" id="email" aria-describedby="email">
@@ -17,19 +17,19 @@
                         <label for="password" class="mb-2 font-p fs-14">Password</label>
                         <input type="password" class="form-control font-p fs-14 py-2" [(ngModel)]="model.password" name="password" id="password" aria-describedby="password">
                     </div>
-    
-                    <button class="btn btn-primary font-p fs-14 w-100 py-3 mt-3" (click)="login()">Sign In</button>
+
+                    <button class="btn btn-primary font-p fs-14 w-100 py-3 mt-3" (click)="login()">Masuk</button>
                 </form>
 
                 <div class="row justify-content-end mt-3">
                     <div class="col-6 text-end">
-                        <a href="javacript:void()" class="fs-14 fw-semibold font-p text-primary">Forgot Password ?</a>
+                        <a href="javacript:void()" class="fs-14 fw-semibold font-p text-primary">Lupa Password?</a>
                     </div>
                 </div>
             </div>
             <p class="text-center font-p fs-14 fw-semibold mb-5 ps-5">
-                <span>Don't have an account yet? </span> 
-                <a href="/register" class="text-primary">Join here</a>
+                <span>Tidak punya akun Jakarta Camera? </span>
+                <a href="/register" class="text-primary">Daftar Sekarang</a>
             </p>
         </div>
         <div class="background w-50 d-flex align-items-center">
@@ -46,4 +46,3 @@
 
 <app-footer></app-footer>
 
-  
