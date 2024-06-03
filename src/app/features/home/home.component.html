@@ -528,7 +528,21 @@
         </span>
         <div class="row">
             <div class="col-md-12 d-none d-md-block">
-                <div id="popup-carousel" class="carousel slide" data-bs-ride="carousel">
+                <section id="popup-carousel">
+                    <ngb-carousel>
+                      <ng-template ngbSlide>
+                        <div class="picsum-img-wrapper">
+                            <img src="https://jakartacamera.com/wp-content/uploads/2022/09/subscribe-jakarta-camera.webp" class="d-block w-100" alt="promo-subscriber">
+                        </div>
+                      </ng-template>
+                      <ng-template ngbSlide>
+                        <div class="picsum-img-wrapper">
+                            <img src="https://jakartacamera.com/wp-content/uploads/2022/09/subscribe-jakarta-camera.webp" class="d-block w-100" alt="promo-subscriber">
+                        </div>
+                      </ng-template>
+                    </ngb-carousel>
+                </section>
+                <!-- <div id="popup-carousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="https://jakartacamera.com/wp-content/uploads/2022/09/subscribe-jakarta-camera.webp" class="d-block w-100" alt="promo-subscriber">
@@ -537,7 +551,7 @@
                             <img src="..." class="d-block w-100" alt="...">
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- <div class="col-md-6 ">
                 <div class="text-center">
