@@ -2,13 +2,17 @@
   <div class="container fw-semibold">
     <div class="d-flex align-items-center py-2">
       <marquee class="w-100">
-        <span>Kami buka: Senin hingga Sabtu pukul 09.00 hingga 18.00 (Tutup pada akhir pekan dan hari libur nasional)</span>
+        <span>Kami buka: Senin hingga Sabtu pukul 09.00 hingga 18.00 (Tutup pada akhir pekan dan hari libur
+          nasional)</span>
       </marquee>
       <div class="sosmed flex-shrink-1">
         <div class="border-1 border-start ps-3 w-100 d-flex">
-          <a href="https://www.instagram.com/jakarta_camera/" class="fs-6 mx-1" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
-          <a href="https://www.tiktok.com/@jakarta_camera" class="fs-6 mx-1" target="_blank"><i class='bx bxl-tiktok'></i></a>
-          <a href="https://www.youtube.com/channel/UCRUiZWQhTxkDKEibX83gm2g" class="fs-6 mx-1" target="_blank"><i class='bx bxl-youtube'></i></a>
+          <a href="https://www.instagram.com/jakarta_camera/" class="fs-6 mx-1" target="_blank"><i
+              class='bx bxl-instagram-alt'></i></a>
+          <a href="https://www.tiktok.com/@jakarta_camera" class="fs-6 mx-1" target="_blank"><i
+              class='bx bxl-tiktok'></i></a>
+          <a href="https://www.youtube.com/channel/UCRUiZWQhTxkDKEibX83gm2g" class="fs-6 mx-1" target="_blank"><i
+              class='bx bxl-youtube'></i></a>
         </div>
       </div>
 
@@ -74,7 +78,8 @@
           <span class="iconify fs-5 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
         </button>
         <div class="input-group search-bar d-none d-lg-flex">
-          <input type="text" class="form-control me-1" placeholder="Cari produk..." aria-label="Pencarian" aria-describedby="search">
+          <input type="text" class="form-control me-1" placeholder="Cari produk..." aria-label="Pencarian"
+            aria-describedby="search">
           <span class="input-group-text" id="search">
             <span class="iconify fs-6" data-icon="uiw:search"></span>
           </span>
@@ -85,7 +90,7 @@
           <span class="iconify fs-2 me-2" data-icon="mynaui:telephone"></span>
           <div>
             <span class="fw-bold text-grey call-text mb-0">HUBUNGI SEKARANG</span>
-            <a  href="https://api.whatsapp.com/send?phone=+6281298767036&text=Halo+Jakarta+Camera" target="_blank">
+            <a href="https://api.whatsapp.com/send?phone=+6281298767036&text=Halo+Jakarta+Camera" target="_blank">
               <p class="mb-0 fs-6 fw-bold">+62 812 98767036</p>
             </a>
           </div>
@@ -94,7 +99,9 @@
           <a href="javascript:void(0)" [routerLink]="['/account/profile']" class="d-none d-lg-inline" *ngIf="auth">
             <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
           </a>
-          <a href="javascript:void(0)" [routerLink]="['/login']"  class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;" *ngIf="!auth">
+          <a href="javascript:void(0)" [routerLink]="['/login']"
+            class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2"
+            style="background: #0088CC; font-size: 12px;" *ngIf="!auth">
             Masuk &nbsp;| &nbsp;Daftar
           </a>
           <!-- <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span> -->
@@ -114,13 +121,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav fw-bold">
           <li class="nav-item me-4">
-            <a class="nav-link py-4 px-1 px-0"  aria-current="page" href="javascript:void(0)" [routerLink]="['/home']" routerLinkActive="active">BERANDA</a>
+            <a class="nav-link py-4 px-1 px-0" aria-current="page" href="javascript:void(0)" [routerLink]="['/home']"
+              routerLinkActive="active">BERANDA</a>
           </li>
           <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/promo']" routerLinkActive="active">PROMO</a>
+            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/promo']"
+              routerLinkActive="active">PROMO</a>
           </li>
           <li class="nav-item dropdown mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/katalog']" routerLinkActive="active">
+            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/katalog']"
+              routerLinkActive="active">
               PRODUK
               <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
             </a>
@@ -131,22 +141,26 @@
             </div>
           </li>
           <li class="nav-item dropdown mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/service']" routerLinkActive="active">
+            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/service']"
+              routerLinkActive="active">
               LAYANAN
               <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
             </a>
             <div class="dropdown-content">
               <a href="javascript:void(0)" [routerLink]="['/service']">Servis Kamera</a>
-              <a href="javascript:void(0)" [routerLink]="['/service/jasa-foto']">Jasa Foto dan Cetak</a>
               <a href="javascript:void(0)" [routerLink]="['/service/pasang-cctv']">Jasa Pasang CCTV</a>
             </div>
           </li>
           <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/news']" routerLinkActive="active">BERITA</a>
+            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/news']"
+              routerLinkActive="active">BERITA</a>
           </li>
-          <!-- <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/education']" routerLinkActive="active">EDUKASI</a>
-          </li> -->
+          <!--
+          -->
+          <li class="nav-item mx-4">
+            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/education']"
+              routerLinkActive="active">EDUKASI</a>
+          </li>
         </ul>
       </div>
       <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center">
@@ -167,11 +181,12 @@
 </section>
 
 <ng-template #sidebar let-offcanvas>
-	<div class="offcanvas-header">
-		<button type="button" class="btn-close ms-auto" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-	</div>
-	<div class="offcanvas-body px-0">
-		<ul class="list-group list-group-flush fw-semibold">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close ms-auto" aria-label="Close"
+      (click)="offcanvas.dismiss('Cross click')"></button>
+  </div>
+  <div class="offcanvas-body px-0">
+    <ul class="list-group list-group-flush fw-semibold">
       <li class="list-group-item">
         <div class="d-flex align-items-center justify-content-between">
           <span>BERANDA</span>
@@ -180,7 +195,8 @@
       <li class="list-group-item">
         <div class="d-flex align-items-center justify-content-between">
           <span>COLLECTION</span>
-          <button class="btn btn-sm p-0" (click)="collapseCollection = !collapseCollection" [attr.aria-expanded]="!collapseCollection" aria-controls="collapseCollection">
+          <button class="btn btn-sm p-0" (click)="collapseCollection = !collapseCollection"
+            [attr.aria-expanded]="!collapseCollection" aria-controls="collapseCollection">
             <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
           </button>
         </div>
@@ -195,7 +211,8 @@
       <li class="list-group-item">
         <div class="d-flex align-items-center justify-content-between">
           <span>PRODUK</span>
-          <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct" [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
+          <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct"
+            [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
             <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
           </button>
         </div>
@@ -208,5 +225,5 @@
       </li>
       <li class="list-group-item">PAGES</li>
     </ul>
-	</div>
+  </div>
 </ng-template>
