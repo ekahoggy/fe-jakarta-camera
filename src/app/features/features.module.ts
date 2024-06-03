@@ -25,6 +25,7 @@ import { CoreModule } from '../core/core.module';
 import { PromoComponent } from './promo/promo.component';
 import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
 import { PaymentComponent } from './payment/payment.component';
+import { NewsDetailComponent } from './news-detail/news-detail.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { PaymentComponent } from './payment/payment.component';
     PasangCctvComponent,
     PromoComponent,
     JasaFotoComponent,
-    PaymentComponent
+    PaymentComponent,
+    NewsDetailComponent
   ],
   imports: [
     CommonModule,

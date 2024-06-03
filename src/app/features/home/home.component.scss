@@ -183,13 +183,13 @@ a {
 .popup {
     display: block;
     position: fixed;
-    top: 200px;
+    top: 202px;
     right: 5px;
     background-color: #212121;
     color: white;
     padding: 10px;
     width: 100%;
-    max-width: 400px;
+    max-width: 250px;
     z-index: 1;
     border-radius: 10px;
     cursor: pointer;
@@ -253,4 +253,8 @@ a {
   color: #aaaa;
   text-decoration: none;
   cursor: pointer;
+}
+
+::ng-deep .carousel-indicators [data-bs-target] {
+    background-color: #005691;
 }
