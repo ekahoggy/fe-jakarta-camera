@@ -1,39 +1,41 @@
 <ng-container *ngIf="loading.slider && loading.product && loading.category">
-  <app-spinner></app-spinner>
+    <app-spinner></app-spinner>
 </ng-container>
 
 <ng-container *ngIf="!loading.slider && !loading.product && !loading.category">
-  <section class="loading-slider" *ngIf="loading.slider">
-    <div class="bg-grey" style="height: 480px;"></div>
-  </section>
-  <section id="banner-carousel" *ngIf="!loading.slider">
-    <ngb-carousel [showNavigationIndicators]="false">
-      <ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
-        <div class="picsum-img-wrapper">
-          <img [src]="item.picture" class="w-100 object-fit-cover" height="480" alt="Random first slide" (click)="sliderClick(item.url)"/>
+    <section class="loading-slider" *ngIf="loading.slider">
+        <div class="bg-grey" style="height: 480px;"></div>
+    </section>
+    <section id="banner-carousel" *ngIf="!loading.slider">
+        <ngb-carousel [showNavigationIndicators]="false">
+            <ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img [src]="item.picture" class="w-100 object-fit-cover" height="480" alt="Random first slide"
+                        (click)="sliderClick(item.url)" />
+                </div>
+            </ng-template>
+        </ngb-carousel>
+    </section>
+
+    <section class="category py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <ng-container *ngFor="let item of listCategory">
+                    <div class="col-4 col-lg-2 p-3 mb-3">
+                        <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">
+                            <div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100">
+                                <img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
+                                <p class="font-p mb-0 mt-3 text-uppercase" style="font-size: 12px;"> {{ item.kategori }}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </ng-container>
+            </div>
         </div>
-      </ng-template>
-    </ngb-carousel>
-  </section>
+    </section>
 
-  <section class="category py-5">
-    <div class="container">
-      <div class="row justify-content-center">
-        <ng-container *ngFor="let item of listCategory">
-          <div class="col-4 col-lg-2 p-3 mb-3">
-            <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">
-              <div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100">
-                <img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
-                <p class="font-p mb-0 mt-3 text-uppercase" style="font-size: 12px;"> {{ item.kategori }} </p>
-              </div>
-            </a>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-  </section>
-
-  <!-- <section class="category py-5">
+    <!-- <section class="category py-5">
 		<div class="container">
 			<div class="row">
 				<ng-container *ngFor="let item of listCategory">
@@ -50,82 +52,87 @@
 		</div>
 	</section> -->
 
-  <section class="our-advantages">
-    <div class="container">
-      <div class="row justify-content-center py-3">
-        <div class="col-md-6 col-lg-4 border-end">
-          <div class="d-flex justify-content-start align-items-center py-3">
-            <span class="iconify me-3 fs-4" data-icon="mdi:run-fast"></span>
-            <div class="text">
-              <h1 class="mb-0 fw-bold fs-14">CEPAT & MUDAH</h1>
-              <p class="mb-0 text-grey font-p" style="font-size: 12px;">
-                Proses pemesanan hanya dengan beberapa klik!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 border-end">
-          <div class="d-flex justify-content-start align-items-center py-3">
-            <span class="iconify me-3 fs-4" data-icon="mdi:truck-fast"></span>
-            <div class="text">
-              <h1 class="mb-0 fw-bold fs-14">PENGIRIMAN</h1>
-              <p class="mb-0 text-grey font-p" style="font-size: 12px;">Pengiriman tersedia ke seluruh Indonesia</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="d-flex justify-content-start align-items-center py-3">
-            <span class="iconify me-3 fs-4" data-icon="ph:seal-check-bold"></span>
-            <div class="text">
-              <h1 class="mb-0 fw-bold fs-14">GARANSI</h1>
-              <p class="mb-0 text-grey font-p" style="font-size: 12px;">Memberikan jaminan bebas masalah </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--
-  -->
-  <section class="flash-sale my-5">
-    <div class="filter-bar">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="fw-bolder text-primary border-primary me-4" style="font-size: 15px;">
-            FLASH SALE
-            <i class='bx bxs-bolt'></i>
-            <span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
-              <countdown [config]="{leftTime: 4000}"></countdown>
-            </span>
-          </div>
-          <a href="javascript:void(0)" [routerLink]="['/flash-sale']">
-            Lihat Semua
-            <i class="bx bx-chevron-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="container mt-4">
-      <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFlash">
-        <ng-container *ngFor="let item of listProduct; index as i">
-          <ng-template swiperSlide>
-            <div data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
-              <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
-                <div class="position-relative wrap-image rounded-4">
-                  <img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+    <section class="our-advantages">
+        <div class="container">
+            <div class="row justify-content-center py-3">
+                <div class="col-md-6 col-lg-4 border-end">
+                    <div class="d-flex justify-content-start align-items-center py-3">
+                        <span class="iconify me-3 fs-4" data-icon="mdi:run-fast"></span>
+                        <div class="text">
+                            <h1 class="mb-0 fw-bold fs-14">CEPAT & MUDAH</h1>
+                            <p class="mb-0 text-grey font-p" style="font-size: 12px;">
+                                Proses pemesanan hanya dengan beberapa klik!
+                            </p>
+                        </div>
+                    </div>
                 </div>
-              </a>
-              <div class="detail p-2 p-lg-3">
-                <span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }}
-                </span>
-                <h2 class="product-name mb-0 font-p fs-6">{{ item.nama }} </h2>
-                <span class="text-decoration-line-through" style="color: rgb(175, 175, 175); font-size: 14px;">Rp
-                  50,000</span>
-                <span>
-                  <i class='bx bxs-bolt'></i>-12%
-                </span>
-                <p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-                <!--
+                <div class="col-md-6 col-lg-4 border-end">
+                    <div class="d-flex justify-content-start align-items-center py-3">
+                        <span class="iconify me-3 fs-4" data-icon="mdi:truck-fast"></span>
+                        <div class="text">
+                            <h1 class="mb-0 fw-bold fs-14">PENGIRIMAN</h1>
+                            <p class="mb-0 text-grey font-p" style="font-size: 12px;">Pengiriman tersedia ke seluruh
+                                Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="d-flex justify-content-start align-items-center py-3">
+                        <span class="iconify me-3 fs-4" data-icon="ph:seal-check-bold"></span>
+                        <div class="text">
+                            <h1 class="mb-0 fw-bold fs-14">GARANSI</h1>
+                            <p class="mb-0 text-grey font-p" style="font-size: 12px;">Memberikan jaminan bebas masalah
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--
+  -->
+    <section class="flash-sale my-5">
+        <div class="filter-bar">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="fw-bolder text-primary border-primary me-4" style="font-size: 15px;">
+                        FLASH SALE
+                        <i class='bx bxs-bolt'></i>
+                        <span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
+                            <countdown [config]="{leftTime: 4000}"></countdown>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0)" [routerLink]="['/flash-sale']">
+                        Lihat Semua
+                        <i class="bx bx-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFlash">
+                <ng-container *ngFor="let item of listProduct; index as i">
+                    <ng-template swiperSlide>
+                        <div data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                            <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+                                <div class="position-relative wrap-image rounded-4">
+                                    <img [src]="item.foto" class="w-100 object-fit-cover rounded-4"
+                                        alt="Random second slide" />
+                                </div>
+                            </a>
+                            <div class="detail p-2 p-lg-3">
+                                <span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{
+                                    item.kategori }}
+                                </span>
+                                <h2 class="product-name mb-0 font-p fs-6">{{ item.nama }} </h2>
+                                <span class="text-decoration-line-through"
+                                    style="color: rgb(175, 175, 175); font-size: 14px;">Rp
+                                    50,000</span>
+                                <span>
+                                    <i class='bx bxs-bolt'></i>-12%
+                                </span>
+                                <p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
+                                <!--
                   <a href="javascript:void(0)"
                     class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100"
                     style="font-size: 12px" (click)="addCart(item.id)">
@@ -133,113 +140,122 @@
                     TAMBAH KE KERANJANG
                   </a>
                 -->
-              </div>
-            </div>
-          </ng-template>
-        </ng-container>
-      </swiper>
-    </div>
-  </section>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </swiper>
+        </div>
+    </section>
 
-  <section class="benefit border-top">
-    <div class="container py-3 py-lg-5">
-      <div class="row py-lg-3">
-        <div class="col-lg-4">
-          <div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300"
-            data-aos-duration="1000">
-            <div
-              class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto"
-              style="width: 70px; height: 70px;">
-              <div>
-                <span class="iconify text-primary fs-1" data-icon="clarity:camera-line"></span>
-              </div>
-            </div>
-            <h2 class="fs-6 fw-bold mt-3 mb-0">SERVIS KAMERA</h2>
-            <em style="color:#555;font-weight: 600;font-size:0.875rem;">Butuh Kepercayaan?</em>
-            <p class="mt-3 text-subtle" style="font-size: 14px;">
-              Menerima Service / Cleaning segala kerusakan Kamera Digital, Analog, DSLR, Pocket, Prosummer, Mirrorless,
-              Polaroid, Video Camera dll.
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300"
-            data-aos-duration="1000">
-            <div
-              class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto"
-              style="width: 70px; height: 70px;">
-              <div>
-                <span class="iconify text-primary fs-1" data-icon="material-symbols-light:print-outline"></span>
-              </div>
-            </div>
-            <h2 class="fs-6 fw-bold mt-3 mb-0">JASA FOTO DAN CETAK</h2>
-            <em style="color:#555;font-weight: 600;font-size:0.875rem;">Aman & Cepat</em>
-            <p class="mt-3 text-subtle" style="font-size: 14px;">Cetak Foto ukuran 3R 4R 6R 10R atau Pas Foto bisa cetak
-              Foto Visa atau bisa tunggu Foto dan Cetakannya langsung disini.</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300"
-            data-aos-duration="1000">
-            <div
-              class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto"
-              style="width: 70px; height: 70px;">
-              <div>
-                <span class="iconify text-primary fs-1" data-icon="hugeicons:cctv-camera"></span>
-              </div>
-            </div>
-            <h2 class="fs-6 fw-bold mt-3 mb-0">JASA PASANG CCTV</h2>
-            <em style="color:#555;font-weight: 600;font-size:0.875rem;">Bagus & Dapat Diandalkan</em>
-            <p class="mt-3 text-subtle" style="font-size: 14px;">Melayani masalah pemasangan/pemasangan CCTV untuk
-              rumah, ruko, gedung, gudang atau apapun kebutuhan anda.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="products mb-5">
-    <div class="filter-bar border-bottom">
-      <div class="container">
-        <div class="d-flex">
-          <div class="fw-bolder pb-3 me-4"
-            [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'featured', 'text-primary': filterProduct == 'featured'}"
-            style="font-size: 13px;" (click)="changeTipeProduct('featured')" role="button">PRODUK PILIHAN</div>
-          <div class="fw-bolder pb-3 me-4"
-            [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'monthly', 'text-primary': filterProduct == 'monthly'}"
-            style="font-size: 13px;" (click)="changeTipeProduct('monthly')" role="button">PROMO BULANAN</div>
-        </div>
-      </div>
-    </div>
-    <div class="container mt-4">
-      <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
-        <ng-container *ngFor="let item of listProduct; index as i">
-          <ng-template swiperSlide>
-            <div data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
-              <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
-                <div class="position-relative wrap-image rounded-4">
-                  <img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
+    <section class="benefit border-top">
+        <div class="container py-3 py-lg-5">
+            <div class="row py-lg-3">
+                <div class="col-lg-4">
+                    <div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300"
+                        data-aos-duration="1000">
+                        <div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto"
+                            style="width: 70px; height: 70px;">
+                            <div>
+                                <span class="iconify text-primary fs-1" data-icon="clarity:camera-line"></span>
+                            </div>
+                        </div>
+                        <h2 class="fs-6 fw-bold mt-3 mb-0">SERVIS KAMERA</h2>
+                        <em style="color:#555;font-weight: 600;font-size:0.875rem;">Butuh Kepercayaan?</em>
+                        <p class="mt-3 text-subtle" style="font-size: 14px;">
+                            Menerima Service / Cleaning segala kerusakan Kamera Digital, Analog, DSLR, Pocket,
+                            Prosummer, Mirrorless,
+                            Polaroid, Video Camera dll.
+                        </p>
+                    </div>
                 </div>
-              </a>
-              <div class="detail p-2 p-lg-3">
-                <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
-                  <span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{ item.kategori }}</span>
-                  <h2 class="product-name mb-0" style="font-size: 16px;">{{ item.nama }} </h2>
-                  <div class="rating">
-                    <span class="iconify text-warning" data-icon="uis:star"></span>
-                    <span class="iconify text-warning" data-icon="uis:star"></span>
-                    <span class="iconify text-black-50" data-icon="uis:star"></span>
-                    <span class="iconify text-black-50" data-icon="uis:star"></span>
-                    <span class="iconify text-black-50" data-icon="uis:star"></span>
-                  </div>
-                  <span *ngIf="item.is_promo" class="text-decoration-line-through" style="color: rgb(175, 175, 175); font-size: 14px;">Rp {{ item.harga | numberFormat }}</span>
-                  <span *ngIf="item.is_promo">
-                    <i class='bx bxs-bolt'></i>-{{ item.promo.persen }}%
-                  </span>
-                  <p class="price fs-6 fw-semibold" *ngIf="!item.is_promo">Rp {{ item.harga | numberFormat }}</p>
-                  <p class="price fs-6 fw-semibold" *ngIf="item.is_promo">Rp {{ item.harga_promo | numberFormat }}</p>
-                </a>
-                <!--
+                <div class="col-lg-4">
+                    <div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300"
+                        data-aos-duration="1000">
+                        <div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto"
+                            style="width: 70px; height: 70px;">
+                            <div>
+                                <span class="iconify text-primary fs-1"
+                                    data-icon="material-symbols-light:print-outline"></span>
+                            </div>
+                        </div>
+                        <h2 class="fs-6 fw-bold mt-3 mb-0">JASA FOTO DAN CETAK</h2>
+                        <em style="color:#555;font-weight: 600;font-size:0.875rem;">Aman & Cepat</em>
+                        <p class="mt-3 text-subtle" style="font-size: 14px;">Cetak Foto ukuran 3R 4R 6R 10R atau Pas
+                            Foto bisa cetak
+                            Foto Visa atau bisa tunggu Foto dan Cetakannya langsung disini.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="benefit-content p-3 text-center" data-aos="fade-up" data-aos-offset="300"
+                        data-aos-duration="1000">
+                        <div class="d-flex justify-content-center align-items-center p-5 rounded-circle border border-light-subtle border-2 mx-auto"
+                            style="width: 70px; height: 70px;">
+                            <div>
+                                <span class="iconify text-primary fs-1" data-icon="hugeicons:cctv-camera"></span>
+                            </div>
+                        </div>
+                        <h2 class="fs-6 fw-bold mt-3 mb-0">JASA PASANG CCTV</h2>
+                        <em style="color:#555;font-weight: 600;font-size:0.875rem;">Bagus & Dapat Diandalkan</em>
+                        <p class="mt-3 text-subtle" style="font-size: 14px;">Melayani masalah pemasangan/pemasangan CCTV
+                            untuk
+                            rumah, ruko, gedung, gudang atau apapun kebutuhan anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products mb-5">
+        <div class="filter-bar border-bottom">
+            <div class="container">
+                <div class="d-flex">
+                    <div class="fw-bolder pb-3 me-4"
+                        [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'featured', 'text-primary': filterProduct == 'featured'}"
+                        style="font-size: 13px;" (click)="changeTipeProduct('featured')" role="button">PRODUK PILIHAN
+                    </div>
+                    <div class="fw-bolder pb-3 me-4"
+                        [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'monthly', 'text-primary': filterProduct == 'monthly'}"
+                        style="font-size: 13px;" (click)="changeTipeProduct('monthly')" role="button">PROMO BULANAN
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
+                <ng-container *ngFor="let item of listProduct; index as i">
+                    <ng-template swiperSlide>
+                        <div data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                            <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+                                <div class="position-relative wrap-image rounded-4">
+                                    <img [src]="item.foto" class="w-100 object-fit-cover rounded-4"
+                                        alt="Random second slide" />
+                                </div>
+                            </a>
+                            <div class="detail p-2 p-lg-3">
+                                <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+                                    <span class="category text-black-50 text-uppercase" style="font-size: 12px;"> {{
+                                        item.kategori }}</span>
+                                    <h2 class="product-name mb-0" style="font-size: 16px;">{{ item.nama }} </h2>
+                                    <div class="rating">
+                                        <span class="iconify text-warning" data-icon="uis:star"></span>
+                                        <span class="iconify text-warning" data-icon="uis:star"></span>
+                                        <span class="iconify text-black-50" data-icon="uis:star"></span>
+                                        <span class="iconify text-black-50" data-icon="uis:star"></span>
+                                        <span class="iconify text-black-50" data-icon="uis:star"></span>
+                                    </div>
+                                    <span *ngIf="item.is_promo" class="text-decoration-line-through"
+                                        style="color: rgb(175, 175, 175); font-size: 14px;">Rp {{ item.harga |
+                                        numberFormat }}</span>
+                                    <span *ngIf="item.is_promo">
+                                        <i class='bx bxs-bolt'></i>-{{ item.promo.persen }}%
+                                    </span>
+                                    <p class="price fs-6 fw-semibold" *ngIf="!item.is_promo">Rp {{ item.harga |
+                                        numberFormat }}</p>
+                                    <p class="price fs-6 fw-semibold" *ngIf="item.is_promo">Rp {{ item.harga_promo |
+                                        numberFormat }}</p>
+                                </a>
+                                <!--
                   <a href="javascript:void(0)"
                     class="btn btn-primary btn-sm border border-light-subtle rounded-0 fw-semibold py-2 font-p w-100 rounded-4 text-light"
                     style="font-size: 12px" (click)="addCart(item.id)">
@@ -247,197 +263,212 @@
                     TAMBAH KE KERANJANG
                   </a>
                 -->
-              </div>
-            </div>
-          </ng-template>
-        </ng-container>
-      </swiper>
-    </div>
-  </section>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </swiper>
+        </div>
+    </section>
 
-  <section class="view-sale bg-body-tertiary py-lg-5">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-12 col-lg-4 text-lg-end">
-          <h2 class="fw-bold">PENAWARAN PRODUK <br> TERBAIK</h2>
+    <section class="view-sale bg-body-tertiary py-lg-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 col-lg-4 text-lg-end">
+                    <h2 class="fw-bold">PENAWARAN PRODUK <br> TERBAIK</h2>
+                </div>
+                <div class="col-12 col-lg-4 text-lg-center">
+                    <div class="btn btn-primary rounded-5 fw-bold px-5 py-3 mt-3">
+                        LIHAT SEKARANG
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-12 col-lg-4 text-lg-center">
-          <div class="btn btn-primary rounded-5 fw-bold px-5 py-3 mt-3">
-            LIHAT SEKARANG
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="brand">
-    <div class="container border-bottom">
-      <div class="row py-5">
-        <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configBrand">
-          <ng-template swiperSlide>
-            <img src="../../../assets/img/brand/sekonic-light-meter-logo-1.webp" width="150" alt=""
-              data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
-          </ng-template>
-          <ng-template swiperSlide>
-            <img src="../../../assets/img/brand/tamron-lens-logo-1.webp" width="150" alt="" data-aos="fade-right"
-              data-aos-offset="300" data-aos-duration="1000">
-          </ng-template>
-          <ng-template swiperSlide>
-            <img src="../../../assets/img/brand/vanguard-camera-logo-1.webp" width="150" alt="" data-aos="fade-right"
-              data-aos-offset="300" data-aos-duration="1000">
-          </ng-template>
-          <ng-template swiperSlide>
-            <img src="../../../assets/img/brand/laowa-lens-logo-1.webp" width="150" alt="" data-aos="fade-right"
-              data-aos-offset="300" data-aos-duration="1000">
-          </ng-template>
-          <ng-template swiperSlide>
-            <img src="../../../assets/img/brand/bushnell-logo-1.webp" width="150" alt="" data-aos="fade-right"
-              data-aos-offset="300" data-aos-duration="1000">
-          </ng-template>
-          <ng-template swiperSlide>
-            <img src="../../../assets/img/brand/e-image-tripod-logo-1.webp" width="150" alt="" data-aos="fade-right"
-              data-aos-offset="300" data-aos-duration="1000">
-          </ng-template>
-          <ng-template swiperSlide>
-            <img src="../../../assets/img/brand/samllrig-logo-1.webp" width="150" alt="" data-aos="fade-right"
-              data-aos-offset="300" data-aos-duration="1000">
-          </ng-template>
-        </swiper>
-      </div>
-    </div>
-  </section>
+    <section class="brand">
+        <div class="container border-bottom">
+            <div class="row py-5">
+                <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configBrand">
+                    <ng-template swiperSlide>
+                        <img src="../../../assets/img/brand/sekonic-light-meter-logo-1.webp" width="150" alt=""
+                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <img src="../../../assets/img/brand/tamron-lens-logo-1.webp" width="150" alt=""
+                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <img src="../../../assets/img/brand/vanguard-camera-logo-1.webp" width="150" alt=""
+                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <img src="../../../assets/img/brand/laowa-lens-logo-1.webp" width="150" alt=""
+                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <img src="../../../assets/img/brand/bushnell-logo-1.webp" width="150" alt=""
+                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <img src="../../../assets/img/brand/e-image-tripod-logo-1.webp" width="150" alt=""
+                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <img src="../../../assets/img/brand/samllrig-logo-1.webp" width="150" alt=""
+                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                    </ng-template>
+                </swiper>
+            </div>
+        </div>
+    </section>
 
-  <section class="product-filter py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 mb-4">
-          <div class="d-flex justify-content-between align-items-center">
-            <h3 class="fw-bold fs-5">BERITA</h3>
-            <a href="javascript:void(0)" class="text-grey" [routerLink]="['/news']">
-              Lihat Selengkapnya
-              <i class="bx bx-chevron-right"></i>
-            </a>
-          </div>
+    <section class="product-filter py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="fw-bold fs-5">BERITA</h3>
+                        <a href="javascript:void(0)" class="text-grey" [routerLink]="['/news']">
+                            Lihat Selengkapnya
+                            <i class="bx bx-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4 mb-3" *ngFor="let item of listNews; index as i;">
+                    <div class="d-flex align-items-center justify-content-start" *ngIf="9 > i">
+                        <img [src]="item.image" class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                        <div class="detail p-2 p-lg-3">
+                            <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> {{ item.judul }} </h3>
+                            <small class="text-grey">{{ item.created_at | date:'MMM dd, YYY' }}</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-6 col-xl-4 mb-3">
+                    <div class="row">
+                        <div class="col-12 mb-3 px-1 px-lg-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg"
+                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                                <div class="detail p-2 p-lg-3">
+                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog
+                                        populer yang perlu
+                                        kalian coba </h3>
+                                    <small class="text-grey">December 06, 2016</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3 px-1 px-lg-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg"
+                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                                <div class="detail p-2 p-lg-3">
+                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto
+                                        Digital dan Pas Foto
+                                        Jakarta Barat </h3>
+                                    <small class="text-grey">December 06, 2016</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3 px-1 px-lg-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg"
+                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                                <div class="detail p-2 p-lg-3">
+                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic
+                                        Mini, Drone Terkecil
+                                        dan Teringan Dari DJI </h3>
+                                    <small class="text-grey">December 11, 2019</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4 mb-3">
+                    <div class="row">
+                        <div class="col-12 mb-3 px-1 px-lg-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg"
+                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                                <div class="detail p-2 p-lg-3">
+                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog
+                                        populer yang perlu
+                                        kalian coba </h3>
+                                    <small class="text-grey">December 06, 2016</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3 px-1 px-lg-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg"
+                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                                <div class="detail p-2 p-lg-3">
+                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto
+                                        Digital dan Pas Foto
+                                        Jakarta Barat </h3>
+                                    <small class="text-grey">December 06, 2016</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3 px-1 px-lg-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg"
+                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                                <div class="detail p-2 p-lg-3">
+                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic
+                                        Mini, Drone Terkecil
+                                        dan Teringan Dari DJI </h3>
+                                    <small class="text-grey">December 11, 2019</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4 mb-3">
+                    <div class="row">
+                        <div class="col-12 mb-3 px-1 px-lg-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg"
+                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                                <div class="detail p-2 p-lg-3">
+                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog
+                                        populer yang perlu
+                                        kalian coba </h3>
+                                    <small class="text-grey">Februari 08, 2021</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3 px-1 px-lg-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg"
+                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                                <div class="detail p-2 p-lg-3">
+                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto
+                                        Digital dan Pas Foto
+                                        Jakarta Barat </h3>
+                                    <small class="text-grey">Februari 10, 2020</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3 px-1 px-lg-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg"
+                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
+                                <div class="detail p-2 p-lg-3">
+                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic
+                                        Mini, Drone Terkecil
+                                        dan Teringan Dari DJI </h3>
+                                    <small class="text-grey">November 12, 2019</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
         </div>
-        <div class="col-lg-6 col-xl-4 mb-3">
-          <div class="row">
-            <div class="col-12 mb-3 px-1 px-lg-3">
-              <div class="d-flex align-items-center justify-content-start">
-                <img
-                  src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg"
-                  class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                <div class="detail p-2 p-lg-3">
-                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog populer yang perlu
-                    kalian coba </h3>
-                  <small class="text-grey">December 06, 2016</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 mb-3 px-1 px-lg-3">
-              <div class="d-flex align-items-center justify-content-start">
-                <img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg"
-                  class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                <div class="detail p-2 p-lg-3">
-                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto Digital dan Pas Foto
-                    Jakarta Barat </h3>
-                  <small class="text-grey">December 06, 2016</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 mb-3 px-1 px-lg-3">
-              <div class="d-flex align-items-center justify-content-start">
-                <img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg"
-                  class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                <div class="detail p-2 p-lg-3">
-                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic Mini, Drone Terkecil
-                    dan Teringan Dari DJI </h3>
-                  <small class="text-grey">December 11, 2019</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-xl-4 mb-3">
-          <div class="row">
-            <div class="col-12 mb-3 px-1 px-lg-3">
-              <div class="d-flex align-items-center justify-content-start">
-                <img
-                  src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg"
-                  class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                <div class="detail p-2 p-lg-3">
-                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog populer yang perlu
-                    kalian coba </h3>
-                  <small class="text-grey">December 06, 2016</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 mb-3 px-1 px-lg-3">
-              <div class="d-flex align-items-center justify-content-start">
-                <img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg"
-                  class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                <div class="detail p-2 p-lg-3">
-                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto Digital dan Pas Foto
-                    Jakarta Barat </h3>
-                  <small class="text-grey">December 06, 2016</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 mb-3 px-1 px-lg-3">
-              <div class="d-flex align-items-center justify-content-start">
-                <img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg"
-                  class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                <div class="detail p-2 p-lg-3">
-                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic Mini, Drone Terkecil
-                    dan Teringan Dari DJI </h3>
-                  <small class="text-grey">December 11, 2019</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-xl-4 mb-3">
-          <div class="row">
-            <div class="col-12 mb-3 px-1 px-lg-3">
-              <div class="d-flex align-items-center justify-content-start">
-                <img
-                  src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg"
-                  class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                <div class="detail p-2 p-lg-3">
-                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog populer yang perlu
-                    kalian coba </h3>
-                  <small class="text-grey">Februari 08, 2021</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 mb-3 px-1 px-lg-3">
-              <div class="d-flex align-items-center justify-content-start">
-                <img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg"
-                  class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                <div class="detail p-2 p-lg-3">
-                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto Digital dan Pas Foto
-                    Jakarta Barat </h3>
-                  <small class="text-grey">Februari 10, 2020</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 mb-3 px-1 px-lg-3">
-              <div class="d-flex align-items-center justify-content-start">
-                <img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg"
-                  class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                <div class="detail p-2 p-lg-3">
-                  <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic Mini, Drone Terkecil
-                    dan Teringan Dari DJI </h3>
-                  <small class="text-grey">November 12, 2019</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- <section class="product-filter py-5">
+    <!-- <section class="product-filter py-5">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-xl-4 mb-3">
@@ -525,28 +556,30 @@
 		</div>
 	</section> -->
 
-  <div id="popup" [ngClass]="statusPopup ? 'popup' : 'popup popup-close'">
-    <div class="popup-content">
-        <span class="close text-center" id="closePopup" (click)="closePopup()">
-            <i class="bx bx-x"></i>
-        </span>
-        <div class="row">
-            <div class="col-md-12 d-none d-md-block">
-                <section id="popup-carousel">
-                    <ngb-carousel>
-                      <ng-template ngbSlide>
-                        <div class="picsum-img-wrapper">
-                            <img src="https://jakartacamera.com/wp-content/uploads/2022/09/subscribe-jakarta-camera.webp" class="d-block w-100" alt="promo-subscriber">
-                        </div>
-                      </ng-template>
-                      <ng-template ngbSlide>
-                        <div class="picsum-img-wrapper">
-                            <img src="https://jakartacamera.com/wp-content/uploads/2022/09/subscribe-jakarta-camera.webp" class="d-block w-100" alt="promo-subscriber">
-                        </div>
-                      </ng-template>
-                    </ngb-carousel>
-                </section>
-                <!-- <div id="popup-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="popup" [ngClass]="statusPopup ? 'popup' : 'popup popup-close'">
+        <div class="popup-content">
+            <span class="close text-center" id="closePopup" (click)="closePopup()">
+                <i class="bx bx-x"></i>
+            </span>
+            <div class="row">
+                <div class="col-md-12 d-none d-md-block">
+                    <section id="popup-carousel">
+                        <ngb-carousel>
+                            <ng-template ngbSlide>
+                                <div class="picsum-img-wrapper">
+                                    <img src="https://jakartacamera.com/wp-content/uploads/2022/09/subscribe-jakarta-camera.webp"
+                                        class="d-block w-100" alt="promo-subscriber">
+                                </div>
+                            </ng-template>
+                            <ng-template ngbSlide>
+                                <div class="picsum-img-wrapper">
+                                    <img src="https://jakartacamera.com/wp-content/uploads/2022/09/subscribe-jakarta-camera.webp"
+                                        class="d-block w-100" alt="promo-subscriber">
+                                </div>
+                            </ng-template>
+                        </ngb-carousel>
+                    </section>
+                    <!-- <div id="popup-carousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="https://jakartacamera.com/wp-content/uploads/2022/09/subscribe-jakarta-camera.webp" class="d-block w-100" alt="promo-subscriber">
@@ -556,8 +589,8 @@
                         </div>
                     </div>
                 </div> -->
-            </div>
-            <!-- <div class="col-md-6 ">
+                </div>
+                <!-- <div class="col-md-6 ">
                 <div class="text-center">
                     <h1 class="font-p fs-4 fw-bold">Get Discount</h1>
                     <h2 class="font-p fs-1 fs-bold fst-italic">3-5%</h2>
@@ -573,10 +606,10 @@
                     Subscribe
                 </button>
             </div> -->
+            </div>
         </div>
     </div>
-  </div>
 
-  <app-foot-menu class="d-block d-lg-none"></app-foot-menu>
-  <app-footer class="d-none d-lg-block"></app-footer>
+    <app-foot-menu class="d-block d-lg-none"></app-foot-menu>
+    <app-footer class="d-none d-lg-block"></app-footer>
 </ng-container>
