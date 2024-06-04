@@ -1,22 +1,20 @@
 <section class="header">
-  <div class="container fw-semibold">
-    <div class="d-flex align-items-center py-2">
-      <marquee class="w-100">
-        <span>Kami buka: Senin hingga Sabtu pukul 09.00 hingga 18.00 (Tutup pada akhir pekan dan hari libur
-          nasional)</span>
-      </marquee>
-      <div class="sosmed flex-shrink-1">
-        <div class="border-1 border-start ps-3 w-100 d-flex">
-          <a href="https://www.instagram.com/jakarta_camera/" class="fs-6 mx-1" target="_blank"><i
-              class='bx bxl-instagram-alt'></i></a>
-          <a href="https://www.tiktok.com/@jakarta_camera" class="fs-6 mx-1" target="_blank"><i
-              class='bx bxl-tiktok'></i></a>
-          <a href="https://www.youtube.com/channel/UCRUiZWQhTxkDKEibX83gm2g" class="fs-6 mx-1" target="_blank"><i
-              class='bx bxl-youtube'></i></a>
-        </div>
-      </div>
+    <div class="container fw-semibold">
+        <div class="d-flex align-items-center py-2">
+            <marquee class="w-100">
+                <span>Kami buka: Senin hingga Sabtu pukul 09.00 hingga 18.00 (Tutup pada akhir pekan dan hari libur
+                    nasional)</span>
+            </marquee>
+            <div class="sosmed flex-shrink-1">
+                <div class="border-1 border-start ps-3 w-100 d-flex">
+                    <a href="https://www.instagram.com/jakarta_camera/" class="fs-6 mx-1" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+                    <a href="https://www.tiktok.com/@jakarta_camera" class="fs-6 mx-1" target="_blank"><i class='bx bxl-tiktok'></i></a>
+                    <a href="https://www.youtube.com/channel/UCRUiZWQhTxkDKEibX83gm2g" class="fs-6 mx-1"
+                        target="_blank"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
 
-      <!-- <div class="language">
+            <!-- <div class="language">
         <div ngbDropdown placement="bottom-start" class="d-inline-block">
           <button type="button" class="border-0 bg-white" id="dropdownLanguage" ngbDropdownToggle>
             <span class="iconify fs-6 me-1" data-icon="openmoji:flag-united-states"></span>
@@ -34,7 +32,7 @@
           </div>
         </div>
       </div> -->
-      <!-- <div class="col-2 d-flex justify-content-end">
+            <!-- <div class="col-2 d-flex justify-content-end">
         <div class="header-text d-none d-xl-block pe-3">
           FREE RETURNS. STANDARD SHIPPING ORDERS $99+
         </div>
@@ -63,167 +61,263 @@
           <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:youtube"></span>
         </div>
       </div> -->
+        </div>
     </div>
-  </div>
 </section>
 
 <section class="header-menu bg-white">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-center py-3">
-      <div class="header-menu-left d-none d-xl-block">
-        <img src="https://jakartacamera-admin.moodstudio.id/assets/img/logo.png" width="200" alt="">
-      </div>
-      <div class="header-menu-center flex-grow-1 px-lg-3">
-        <button class="btn px-0 me-2 d-lg-none" (click)="openScroll(sidebar)">
-          <span class="iconify fs-5 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
-        </button>
-        <div class="input-group search-bar d-none d-lg-flex">
-          <input type="text" class="form-control me-1" placeholder="Cari produk..." aria-label="Pencarian"
-            aria-describedby="search">
-          <span class="input-group-text" id="search">
-            <span class="iconify fs-6" data-icon="uiw:search"></span>
-          </span>
-        </div>
-      </div>
-      <div class="header-menu-right d-flex align-items-center">
-        <div class="call d-none d-xl-flex align-items-center pe-3">
-          <span class="iconify fs-2 me-2" data-icon="mynaui:telephone"></span>
-          <div>
-            <span class="fw-bold text-grey call-text mb-0">HUBUNGI SEKARANG</span>
-            <a href="https://api.whatsapp.com/send?phone=+6281298767036&text=Halo+Jakarta+Camera" target="_blank">
-              <p class="mb-0 fs-6 fw-bold">+62 812 98767036</p>
-            </a>
-          </div>
-        </div>
-        <div class="interact ps-3">
-          <a href="javascript:void(0)" [routerLink]="['/account/profile']" class="d-none d-lg-inline" *ngIf="auth">
-            <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
-          </a>
-          <a href="javascript:void(0)" [routerLink]="['/login']"
-            class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2"
-            style="background: #0088CC; font-size: 12px;" *ngIf="!auth">
-            Masuk &nbsp;| &nbsp;Daftar
-          </a>
-          <!-- <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span> -->
-          <!-- <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center py-3">
+            <div class="header-menu-left d-none d-xl-block">
+                <img src="https://jakartacamera-admin.moodstudio.id/assets/img/logo.png" width="200" alt="">
+            </div>
+            <div class="header-menu-center flex-grow-1 px-lg-3">
+                <button class="btn px-0 me-2 d-lg-none" (click)="openScroll(sidebar)">
+                    <span class="iconify fs-5 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
+                </button>
+                <div class="input-group search-bar d-none d-lg-flex">
+                    <input type="text" class="form-control me-1" placeholder="Cari produk..." aria-label="Pencarian" aria-describedby="search">
+                    <span class="input-group-text" id="search">
+                        <span class="iconify fs-6" data-icon="uiw:search"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="header-menu-right d-flex align-items-center">
+                <div class="call d-none d-xl-flex align-items-center pe-3">
+                    <span class="iconify fs-2 me-2" data-icon="mynaui:telephone"></span>
+                    <div>
+                        <span class="fw-bold text-grey call-text mb-0">HUBUNGI SEKARANG</span>
+                        <a href="https://api.whatsapp.com/send?phone=+6281298767036&text=Halo+Jakarta+Camera" target="_blank">
+                            <p class="mb-0 fs-6 fw-bold">+62 812 98767036</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="interact ps-3">
+                    <a href="javascript:void(0)" [routerLink]="['/account/profile']" class="d-none d-lg-inline"
+                        *ngIf="auth">
+                        <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
+                    </a>
+                    <a href="javascript:void(0)" [routerLink]="['/login']"
+                        class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2"
+                        style="background: #0088CC; font-size: 12px;" *ngIf="!auth">
+                        Masuk &nbsp;| &nbsp;Daftar
+                    </a>
+                    <button class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;" (click)="openAuth(modalAuth)">
+                        Masuk &nbsp;| &nbsp;Daftar
+                    </button>
+                    <!-- <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span> -->
+                    <!-- <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark">
             <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
             <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
           </a> -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <section class="header-nav bg-white d-none d-xl-block" id="navbar">
-  <nav class="navbar navbar-expand-lg py-0">
-    <div class="container">
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav fw-bold">
-          <li class="nav-item me-4">
-            <a class="nav-link py-4 px-1 px-0" aria-current="page" href="javascript:void(0)" [routerLink]="['/home']"
-              routerLinkActive="active">BERANDA</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/promo']"
-              routerLinkActive="active">PROMO</a>
-          </li>
-          <li class="nav-item dropdown mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/katalog']"
-              routerLinkActive="active">
-              PRODUK
-              <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
-            </a>
-            <div class="dropdown-content">
-              <ng-container *ngFor="let item of listCategories">
-                <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
-              </ng-container>
-            </div>
-          </li>
-          <li class="nav-item dropdown mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/service']"
-              routerLinkActive="active">
-              LAYANAN
-              <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
-            </a>
-            <div class="dropdown-content">
-              <a href="javascript:void(0)" [routerLink]="['/service']">Servis Kamera</a>
-              <a href="javascript:void(0)" [routerLink]="['/service/pasang-cctv']">Jasa Pasang CCTV</a>
-            </div>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/news']"
-              routerLinkActive="active">BERITA</a>
-          </li>
-          <!--
+    <nav class="navbar navbar-expand-lg py-0">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav fw-bold">
+                    <li class="nav-item me-4">
+                        <a class="nav-link py-4 px-1 px-0" aria-current="page" href="javascript:void(0)"
+                            [routerLink]="['/home']" routerLinkActive="active">BERANDA</a>
+                    </li>
+                    <li class="nav-item mx-4">
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/promo']"
+                            routerLinkActive="active">PROMO</a>
+                    </li>
+                    <li class="nav-item dropdown mx-4">
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/katalog']"
+                            routerLinkActive="active">
+                            PRODUK
+                            <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
+                        </a>
+                        <div class="dropdown-content">
+                            <ng-container *ngFor="let item of listCategories">
+                                <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
+                            </ng-container>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown mx-4">
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/service']"
+                            routerLinkActive="active">
+                            LAYANAN
+                            <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="javascript:void(0)" [routerLink]="['/service']">Servis Kamera</a>
+                            <a href="javascript:void(0)" [routerLink]="['/service/pasang-cctv']">Jasa Pasang CCTV</a>
+                        </div>
+                    </li>
+                    <li class="nav-item mx-4">
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/news']"
+                            routerLinkActive="active">BERITA</a>
+                    </li>
+                    <!--
           -->
-          <li class="nav-item mx-4">
-            <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/education']"
-              routerLinkActive="active">EDUKASI</a>
-          </li>
-        </ul>
-      </div>
-      <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center">
-        <i class='bx bx-heart fs-6 me-1'></i>
-        <span class="fw-bold" style="font-size: 12px;">WISHLIST</span>
-      </a>
-      <a href="javascript:void(0)" routerLink="/cart" class="d-flex align-items-center">
-        <i class='bx bxs-cart-alt fs-6 ms-3 ms-2 me-1'></i>
-        <span class="fw-bold" style="font-size: 12px;">KERANJANG</span>
-        <span class="badge rounded-pill text-bg-danger fs-12 ms-1 p-1 px-2">{{ countCart }}</span>
-      </a>
-      <!-- <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
+                    <li class="nav-item mx-4">
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/education']"
+                            routerLinkActive="active">EDUKASI</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center">
+                <i class='bx bx-heart fs-6 me-1'></i>
+                <span class="fw-bold" style="font-size: 12px;">WISHLIST</span>
+            </a>
+            <a href="javascript:void(0)" routerLink="/cart" class="d-flex align-items-center">
+                <i class='bx bxs-cart-alt fs-6 ms-3 ms-2 me-1'></i>
+                <span class="fw-bold" style="font-size: 12px;">KERANJANG</span>
+                <span class="badge rounded-pill text-bg-danger fs-12 ms-1 p-1 px-2">{{ countCart }}</span>
+            </a>
+            <!-- <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
         <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
         <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
       </a> -->
-    </div>
-  </nav>
+        </div>
+    </nav>
 </section>
 
 <ng-template #sidebar let-offcanvas>
-  <div class="offcanvas-header">
-    <button type="button" class="btn-close ms-auto" aria-label="Close"
-      (click)="offcanvas.dismiss('Cross click')"></button>
-  </div>
-  <div class="offcanvas-body px-0">
-    <ul class="list-group list-group-flush fw-semibold">
-      <li class="list-group-item">
-        <div class="d-flex align-items-center justify-content-between">
-          <span>BERANDA</span>
+    <div class="offcanvas-header">
+        <button type="button" class="btn-close ms-auto" aria-label="Close"
+            (click)="offcanvas.dismiss('Cross click')"></button>
+    </div>
+    <div class="offcanvas-body px-0">
+        <ul class="list-group list-group-flush fw-semibold">
+            <li class="list-group-item">
+                <div class="d-flex align-items-center justify-content-between">
+                    <span>BERANDA</span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="d-flex align-items-center justify-content-between">
+                    <span>COLLECTION</span>
+                    <button class="btn btn-sm p-0" (click)="collapseCollection = !collapseCollection"
+                        [attr.aria-expanded]="!collapseCollection" aria-controls="collapseCollection">
+                        <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
+                    </button>
+                </div>
+                <div #collapse="ngbCollapse" [(ngbCollapse)]="collapseCollection">
+                    <ul class="list-group list-group-flush mt-2">
+                        <li class="list-group-item">COLLECTION 1</li>
+                        <li class="list-group-item">COLLECTION 2</li>
+                        <li class="list-group-item">COLLECTION 3</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="d-flex align-items-center justify-content-between">
+                    <span>PRODUK</span>
+                    <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct"
+                        [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
+                        <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
+                    </button>
+                </div>
+                <div #collapse="ngbCollapse" [(ngbCollapse)]="collapseProduct">
+                    <ul class="list-group list-group-flush mt-2">
+                        <li class="list-group-item">Jam Tangan Keren</li>
+                        <li class="list-group-item">Diskon 100%</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="list-group-item">PAGES</li>
+        </ul>
+    </div>
+</ng-template>
+
+<ng-template #modalAuth let-modal>
+    <div class="modal-body">
+        <div class="d-flex justify-content-between">
+            <div class="font-m fs-5 fw-bolder px-3">
+                <span class="pb-2 me-4" [ngClass]="activeTabs == 'login' ? 'border-bottom border-info border-3' : 'text-grey'" role="button" (click)="activePage('login')">Login</span>
+                <span class="pb-2" [ngClass]="activeTabs == 'register' ? 'border-bottom border-info border-3' : 'text-grey'" role="button" (click)="activePage('register')">Register</span>
+            </div>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
         </div>
-      </li>
-      <li class="list-group-item">
-        <div class="d-flex align-items-center justify-content-between">
-          <span>COLLECTION</span>
-          <button class="btn btn-sm p-0" (click)="collapseCollection = !collapseCollection"
-            [attr.aria-expanded]="!collapseCollection" aria-controls="collapseCollection">
-            <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
-          </button>
+        <div class="container-fluid py-5" *ngIf="activeTabs == 'login'">
+            <div class="row justify-content-evenly align-items-center">
+                <div class="col-md-6 col-xl-5">
+                    <img src="../../../assets/img/undraw/login.svg" alt="empty-address" class="w-100" width="300">
+                </div>
+                <div class="col-md-6 col-xl-5">
+                    <h1 class="font-m fs-3 fw-bold text-center">Selamat Datang di Jakcam!</h1>
+                    <p class="font-m fw-bold text-center mb-5">Login dan temukan produk kamera terbaik untuk kebutuhan Anda.</p>
+                    <form (ngSubmit)="login()" class="px-3">
+                        <div class="mb-3">
+                            <div class="text-danger fade show font-p" *ngIf="isError">
+                                {{ isPesan }}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="mb-2 font-p fs-14">Email</label>
+                            <input type="email" class="form-control font-p fs-14 py-2" [(ngModel)]="model.email" name="email" id="email" aria-describedby="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="mb-2 font-p fs-14">Password</label>
+                            <input type="password" class="form-control font-p fs-14 py-2" [(ngModel)]="model.password" name="password" id="password" aria-describedby="password">
+                        </div>
+    
+                        <button class="btn btn-primary font-p fs-14 w-100 py-3 mt-3" (click)="login()">Masuk</button>
+                    </form>
+    
+                    <div class="row justify-content-end mt-3">
+                        <div class="col-6 text-end">
+                            <a href="javacript:void()" class="fs-14 fw-semibold font-m text-primary">Lupa Password?</a>
+                        </div>
+                    </div>
+                    <p class="text-center font-m fs-14 fw-semibold mt-5 pt-5">
+                        <span>Tidak punya akun Jakarta Camera? </span>
+                        <a href="/register" class="text-primary">Daftar Sekarang</a>
+                    </p>
+                </div>
+            </div>
         </div>
-        <div #collapse="ngbCollapse" [(ngbCollapse)]="collapseCollection">
-          <ul class="list-group list-group-flush mt-2">
-            <li class="list-group-item">COLLECTION 1</li>
-            <li class="list-group-item">COLLECTION 2</li>
-            <li class="list-group-item">COLLECTION 3</li>
-          </ul>
+        <div class="container-fluid py-5" *ngIf="activeTabs == 'register'">
+            <div class="row justify-content-evenly align-items-center">
+                <div class="col-md-6 col-xl-5">
+                    <img src="../../../assets/img/undraw/register.svg" alt="empty-address" class="w-100" width="300">
+                </div>
+                <div class="col-md-6 col-xl-5">
+                    <h1 class="font-m fs-3 fw-bold text-center">Bergabung dengan Jakcam!</h1>
+                    <p class="font-m fw-bold text-center mb-5">Daftar sekarang dan dapatkan pengalaman belanja yang lebih baik.</p>
+                    <form (ngSubmit)="register()">
+                        <div class="text-success font-p mb-3" *ngIf="is.success" role="alert">
+                          Selamat, Pendaftaran Akun berhasil! <a href="javascript:void(0)" [routerLink]="['/login']" class="text-primary">Klik</a> untuk Masuk Akun
+                        </div>
+                        <div class="mb-3">
+                          <label for="name" class="mb-2 font-p fs-14">Nama Lengkap <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control font-p fs-14 py-2" id="name" [(ngModel)]="model.name" name="name" required>
+                          <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.name }}</small>
+                        </div>
+                        <div class="mb-3">
+                          <label for="username" class="mb-2 font-p fs-14">Username <span class="text-danger">*</span></label>
+                          <input type="username" class="form-control font-p fs-14 py-2" id="username" [(ngModel)]="model.username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="email" class="mb-2 font-p fs-14">Email <span class="text-danger">*</span></label>
+                          <input type="email" class="form-control font-p fs-14 py-2" id="email" [(ngModel)]="model.email" name="email" required>
+                          <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.email }}</small>
+                        </div>
+                        <div class="mb-3">
+                          <label for="phone_number" class="mb-2 font-p fs-14">No Hp <span class="text-danger">*</span></label>
+                          <div class="input-group">
+                            <span class="input-group-text font-p fs-14" id="phone_number"> +62 </span>
+                            <input type="tel" class="form-control font-p fs-14 py-2" id="phone_number" [(ngModel)]="model.phone_number" name="phone_number" required>
+                          </div>
+                          <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.phone_number }}</small>
+                        </div>
+                        <div class="mb-3">
+                          <label for="password" class="mb-2 font-p fs-14">Kata Sandi <span class="text-danger">*</span></label>
+                          <input type="password" class="form-control font-p fs-14 py-2" id="password" [(ngModel)]="model.password" name="password" required>
+                        </div>
+                        <button class="btn btn-primary font-p fs-14 fw-semibold w-100 py-3 mt-3">Daftar</button>
+                    </form>
+                </div>
+            </div>
         </div>
-      </li>
-      <li class="list-group-item">
-        <div class="d-flex align-items-center justify-content-between">
-          <span>PRODUK</span>
-          <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct"
-            [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
-            <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
-          </button>
-        </div>
-        <div #collapse="ngbCollapse" [(ngbCollapse)]="collapseProduct">
-          <ul class="list-group list-group-flush mt-2">
-            <li class="list-group-item">Jam Tangan Keren</li>
-            <li class="list-group-item">Diskon 100%</li>
-          </ul>
-        </div>
-      </li>
-      <li class="list-group-item">PAGES</li>
-    </ul>
-  </div>
+    </div>
 </ng-template>
