@@ -116,7 +116,7 @@ export class HomeComponent implements OnInit {
                     spaceBetween: 20,
                 },
                 1400: {
-                    slidesPerView: 4,
+                    slidesPerView: 5,
                     spaceBetween: 20,
                 },
             },
@@ -125,7 +125,7 @@ export class HomeComponent implements OnInit {
 
     configFaturedProduct() {
         this.configFeatured = {
-            slidesPerView: 4,
+            slidesPerView: 6,
             spaceBetween: 20,
             navigation: true,
             pagination: false,
@@ -136,19 +136,19 @@ export class HomeComponent implements OnInit {
                     spaceBetween: 10,
                 },
                 480: {
-                    slidesPerView: 3,
+                    slidesPerView: 2,
                     spaceBetween: 10,
                 },
                 768: {
-                    slidesPerView: 2,
+                    slidesPerView: 4,
                     spaceBetween: 20,
                 },
                 1024: {
-                    slidesPerView: 3,
+                    slidesPerView: 5,
                     spaceBetween: 20,
                 },
                 1400: {
-                    slidesPerView: 4,
+                    slidesPerView: 6,
                     spaceBetween: 20,
                 },
             },

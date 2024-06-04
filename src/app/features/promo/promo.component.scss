@@ -1,37 +1,45 @@
 .wrap-image {
+    overflow: hidden;
     img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 5/5;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 5/5;
     }
   
     .btn {
-      font-size: 12px;
-      font-weight: bold;
-      display: none;
-      margin-top: -80px;
-      font-size: clamp(21px, 1.2vw, 80px);
+        font-size: 12px;
+        font-weight: bold;
+        display: none;
+        margin-top: -80px;
+        font-size: clamp(21px, 1.2vw, 80px);
     }
-  }
-  
-  .wrap-image:hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    .btn {
-      display: inline;
-    }
-  }
-  
-  .detail {
+}
+
+.wrap-image img {
+    transform-origin: 65% 75%;
+    transition: transform .5s, filter .5s ease-out;
+}
+
+.wrap-image:hover img {
+    transform: scale(1.1);
+}
+
+.detail {
     .product-name {
-      font-size: clamp(21px, 1.2vw, 80px);
-      white-space: nowrap; 
-      width: 100%; 
-      overflow: hidden;
-      text-overflow: ellipsis; 
+        font-size: clamp(21px, 1.2vw, 80px);
+        white-space: nowrap; 
+        width: 100%; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
     }
-  }
-  
-  .view-sale {
+}
+
+.view-sale {
     background: url('../../../assets/img/background/banner-huge-sale.webp') center center no-repeat;
-  }
+}
+
+.wrap-item {
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
   

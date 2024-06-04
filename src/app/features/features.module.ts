@@ -59,6 +59,8 @@ import { NewsDetailComponent } from './news-detail/news-detail.component';
     CountdownModule,
     CoreModule
   ],
-  exports: []
+  exports: [
+    LoginComponent
+  ]
 })
 export class FeaturesModule { }

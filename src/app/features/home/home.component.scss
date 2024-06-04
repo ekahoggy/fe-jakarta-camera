@@ -1,183 +1,186 @@
 a {
-  text-decoration: none;
-  color: #777;
+    text-decoration: none;
+    color: #777;
 }
 
 ::ng-deep .carousel-control-prev,
 ::ng-deep .carousel-control-next {
-  width: 5% !important;
+    width: 5% !important;
 }
 
 ::ng-deep .carousel-control-prev-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 30 30'><path fill='none' stroke='currentColor' stroke-width='2' d='M17 2L7 12l10 10 0z'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 30 30'><path fill='none' stroke='currentColor' stroke-width='2' d='M17 2L7 12l10 10 0z'/%3e%3c/svg%3e");
 }
 
 ::ng-deep .carousel-control-next-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 30 30'><path fill='none' stroke='currentColor' stroke-width='2' d='m7 2l10 10L7 22 0z'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 30 30'><path fill='none' stroke='currentColor' stroke-width='2' d='m7 2l10 10L7 22 0z'/%3e%3c/svg%3e");
 }
 
 .category {
-  .wrap-category {
-    background-color: #FAFAFA;
-    width: 100%;
-    max-width: 150px;
-    font-size: 12px;
-    color: black;
-    font-weight: bold;
-  }
+    .wrap-category {
+        background-color: #FAFAFA;
+        width: 100%;
+        max-width: 150px;
+        font-size: 12px;
+        color: black;
+        font-weight: bold;
+    }
 
-  .wrap-category:hover {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    background-color: #E8F1F5;
-    color: #005691;
-    font-weight: bold;
-  }
+    .wrap-category:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: #E8F1F5;
+        color: #005691;
+        font-weight: bold;
+    }
 }
 
 .our-advantages {
-  // background-color: #F4F4F4;
-  border-top: solid 1px #e7e7e7;
-  border-bottom: solid 1px #e7e7e7;
+    // background-color: #F4F4F4;
+    border-top: solid 1px #e7e7e7;
+    border-bottom: solid 1px #e7e7e7;
 }
 
 .product-promo {
-  .wrap-text-promo {
-    margin-top: -4rem;
-  }
+    .wrap-text-promo {
+        margin-top: -4rem;
+    }
 }
 
 .view-sale {
-  background: url('../../../assets/img/background/banner-huge-sale.webp') center center no-repeat;
+    background: url('../../../assets/img/background/banner-huge-sale.webp') center center no-repeat;
 }
 
 .flash-sale {
-  ::ng-deep .swiper-button-prev,
-  ::ng-deep .swiper-button-next {
-    top: 30%;
-  }
-
-  ::ng-deep .swiper-button-prev:after,
-  ::ng-deep .swiper-button-next:after {
-    font-size: 25px;
-    color: black;
-  }
-
-  ::ng-deep .swiper-button-next,
-  .swiper-rtl .swiper-button-prev {
-    right: 0px;
-  }
-
-  ::ng-deep .swiper-button-prev,
-  .swiper-rtl .swiper-button-next {
-    left: 0px;
-  }
-
-  .wrap-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 5/4;
-    // max-height: 280px;
-    // height: 280px;
-
-    img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 5/4;
-      // max-height: 280px;
-      // height: 280px;
+    ::ng-deep .swiper-button-prev,
+    ::ng-deep .swiper-button-next {
+        top: 30%;
     }
 
-    .btn {
-      font-size: 12px;
-      font-weight: bold;
-      display: none;
-      margin-top: -80px;
+    ::ng-deep .swiper-button-prev:after,
+    ::ng-deep .swiper-button-next:after {
+        font-size: 25px;
+        color: black;
     }
-  }
 
-  .wrap-image:hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-
-    .btn {
-      display: inline;
+    ::ng-deep .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+        right: 0px;
     }
-  }
 
-  .product-name {
-    font-size: clamp(21px, 1.2vw, 80px);
-    white-space: nowrap; 
-    width: 100%; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-  }
+    ::ng-deep .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+        left: 0px;
+    }
+
+    .wrap-item {
+        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+
+        .wrap-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 5/5;
+    
+            img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 5/5;
+            }
+    
+            .btn {
+                font-size: 12px;
+                font-weight: bold;
+                display: none;
+                margin-top: -80px;
+            }
+        }
+
+        .wrap-image img {
+            transform-origin: 65% 75%;
+            transition: transform .5s, filter .5s ease-out;
+        }
+        
+        .wrap-image:hover img {
+            transform: scale(1.1);
+        }
+    
+        .product-name {
+            font-size: clamp(21px, 1.2vw, 80px);
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
 }
 
 .products {
-  ::ng-deep .swiper-button-prev,
-  ::ng-deep .swiper-button-next {
-    top: 30%;
-  }
-
-  ::ng-deep .swiper-button-prev:after,
-  ::ng-deep .swiper-button-next:after {
-    font-size: 25px;
-    color: black;
-  }
-
-  ::ng-deep .swiper-button-next,
-  .swiper-rtl .swiper-button-prev {
-    right: 0px;
-  }
-
-  ::ng-deep .swiper-button-prev,
-  .swiper-rtl .swiper-button-next {
-    left: 0px;
-  }
-
-  .wrap-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 5/4;
-    // max-height: 280px;
-    // height: 280px;
-
-    img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 5/4;
-      // max-height: 280px;
-      // height: 280px;
+    ::ng-deep .swiper-button-prev,
+    ::ng-deep .swiper-button-next {
+        top: 30%;
     }
 
-    .btn {
-      font-size: 12px;
-      font-weight: bold;
-      display: none;
-      margin-top: -80px;
+    ::ng-deep .swiper-button-prev:after,
+    ::ng-deep .swiper-button-next:after {
+        font-size: 25px;
+        color: black;
     }
-  }
 
-  .wrap-image:hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-
-    .btn {
-      display: inline;
+    ::ng-deep .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+        right: 0px;
     }
-  }
 
-  .product-name {
-    font-size: clamp(21px, 1.2vw, 80px);
-    white-space: nowrap; 
-    width: 100%; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-  }
+    ::ng-deep .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+        left: 0px;
+    }
+    .wrap-item {
+        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+
+        .wrap-image {
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/4;
+    
+            img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4/4;
+            }
+    
+            .btn {
+                font-size: 12px;
+                font-weight: bold;
+                display: none;
+                margin-top: -80px;
+            }
+        }
+
+        .wrap-image img {
+            transform-origin: 65% 75%;
+            transition: transform .5s, filter .5s ease-out;
+        }
+        
+        .wrap-image:hover img {
+            transform: scale(1.1);
+        }
+    
+        .product-name {
+            font-size: clamp(21px, 1.2vw, 80px);
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
 }
 
 .content-up {
-  @media only screen and (min-width: 1200px) {
-    margin-top: 30px;
-  }
+    @media only screen and (min-width: 1200px) {
+        margin-top: 30px;
+    }
 }
 
 .popup {
@@ -194,27 +197,28 @@ a {
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
-      0 6px 10px 0 rgba(0, 0, 0, 0.14),
-      0 1px 18px 0 rgba(0, 0, 0, 0.12);
+        0 6px 10px 0 rgba(0, 0, 0, 0.14),
+        0 1px 18px 0 rgba(0, 0, 0, 0.12);
     animation: slideUp 1.4s ease-out forwards;
-  
+
     p {
-      font-size: 14px;
-      padding-top: 10px;
+        font-size: 14px;
+        padding-top: 10px;
     }
 }
-  
+
 @keyframes slideUp {
     0% {
         transform: translateY(100%);
         opacity: 0;
     }
+
     100% {
         transform: translateY(0);
         opacity: 1;
     }
 }
-  
+
 .popup-close {
     display: none !important;
 }
@@ -234,25 +238,25 @@ a {
 }
 
 .close {
-  color: white;
-  float: right;
-  font-size: 16px;
-  font-weight: bold;
-  position: absolute;
-  top: -10px;
-  right: -5px;
-  border: 1px solid #212121;
-  background: #212121;
-  border-radius: 50px;
-  width: 25px;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+    color: white;
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    border: 1px solid #212121;
+    background: #212121;
+    border-radius: 50px;
+    width: 25px;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 }
 
 .close:hover,
 .close:focus {
-  color: #aaaa;
-  text-decoration: none;
-  cursor: pointer;
+    color: #aaaa;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 ::ng-deep .carousel-indicators [data-bs-target] {

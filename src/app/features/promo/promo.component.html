@@ -104,30 +104,30 @@
 			<div class="col-12 col-lg-8 col-xl-9">
 				<div class="row">
 					<ng-container *ngIf="listProduct.length > 0">
-						<div class="col-6 col-xl-4 mb-3" *ngFor="let item of listProduct; index as i">
+						<div class="col-6 col-lg-4 col-xl-3 mb-3" *ngFor="let item of listProduct; index as i">
 							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
-								<div class="square-image wrap-image rounded-4">
-									<img [src]="item.foto" class="object-fit-cover rounded-4" width="280" height="280" alt="Random second slide" />
-									<!-- <img src="https://source.unsplash.com/random/200x200?camera={{i}}" class="object-fit-cover rounded-4" width="280" height="280" alt="Random second slide" /> -->
-									<!-- <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button> -->
-								</div>
+                                <div class="wrap-item rounded-3 overflow-hidden">
+                                    <div class="square-image wrap-image">
+                                        <img [src]="item.foto" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
+                                    </div>
+                                    <div class="detail p-2">
+                                        <span class="category text-black-50" style="font-size: 11px;">{{ item.kategori }}</span>
+                                        <p class="product-name fs-14 mb-0 font-p"> {{item.nama}} </p>
+                                        <div class="rating">
+                                            <i class='bx bxs-star text-warning'></i>
+                                            <i class='bx bxs-star text-warning'></i>
+                                            <i class='bx bxs-star text-warning'></i>
+                                            <i class='bx bxs-star-half text-warning'></i>
+                                            <i class='bx bx-star text-warning'></i>
+                                        </div>
+                                        <p class="price font-p fs-14 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
+                                        <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px" (click)="addCart(item.id)">
+                                            <span class="iconify me-1 mb-1" data-icon="solar:cart-linear"></span>
+                                            TAMBAH KE KERANJANG
+                                        </a> -->
+                                    </div>
+                                </div>
 							</a>
-							<div class="detail p-2 p-lg-3">
-								<span class="category text-black-50" style="font-size: 11px;">{{ item.kategori }}</span>
-								<p class="product-name fs-6 mb-0 font-p"> {{item.nama}} </p>
-								<div class="rating">
-									<i class='bx bxs-star text-warning'></i>
-									<i class='bx bxs-star text-warning'></i>
-									<i class='bx bxs-star text-warning'></i>
-									<i class='bx bxs-star-half text-warning'></i>
-									<i class='bx bx-star text-warning'></i>
-								</div>
-								<p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-								<a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px" (click)="addCart(item.id)">
-									<span class="iconify me-1 mb-1" data-icon="solar:cart-linear"></span>
-									TAMBAH KE KERANJANG
-								</a>
-							</div>
 						</div>
 						<!-- <div class="col-6 col-md-4 col-xl-3">
 							<div class="square-image">

@@ -1,6 +1,6 @@
-import { Component, HostListener, ElementRef, OnInit, TemplateRef, inject, AfterViewInit } from '@angular/core';
+import { Component, HostListener, OnInit, TemplateRef, inject, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -20,10 +20,17 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 	listCategories: any;
 	auth: any;
 	countCart: any;
+    model: any = {};
+    isError: boolean = false;
+    isPesan: string = "";
+    activeTabs: string = "login";
+    is: any = {};
+    error: any = {};
 
 	constructor(
 		private globalService: GlobalService,
-		private router: Router
+		private router: Router,
+        private modalService: NgbModal
 	) { }
 
 	ngOnInit() : void {
@@ -83,4 +90,61 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 			this.countCart = res.data.length;
 		});
 	}
+
+    openAuth(modal:TemplateRef<any>) {
+        this.modalService.open(modal, { size: 'xl', backdrop: 'static'});
+        this.emptyRegis();
+    }
+
+    activePage(page:string) {
+        this.activeTabs = page;
+        this.emptyLogin();
+    }
+
+    emptyLogin() {
+        this.model = {
+            email: '',
+            password: ''
+        }
+    }
+
+    login() {
+        let param = Object.assign(this.model);
+        this.globalService.DataPost('/auth/login', param).subscribe((res:any) => {
+            if (res.status_code == 200) {
+                const userData = btoa(JSON.stringify(res.data))
+                localStorage.setItem('session', userData)
+                window.location.href = '/home';
+            }
+        }, (error:any) => {
+            this.isError = true;
+            this.isPesan = 'Email or password is wrong!';
+        });
+    }
+
+    emptyRegis() {
+        this.model = {
+          name: '',
+          username: '',
+          email: '',
+          password: '',
+          phone_code: '+62',
+          phone_number: '',
+        }
+        this.error = {};
+    }
+    
+    register() {
+        let param = Object.assign(this.model);
+        this.globalService.DataPost('/auth/register', param).subscribe((res:any) => {
+            if (res.status == 'success') {
+                this.is.success = true;
+                this.emptyRegis();
+            }
+            }, (error:any) => {
+            this.error.email = error.error.errors.email;
+            this.error.name = error.error.errors.name;
+            this.error.phone_number = error.error.errors.phone_number;
+        });
+    }
 }
