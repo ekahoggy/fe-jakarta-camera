@@ -111,9 +111,9 @@
             <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFlash">
                 <ng-container *ngFor="let item of listProduct; index as i">
                     <ng-template swiperSlide>
-                        <div class="wrap-item mb-5 border rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <div class="wrap-item mb-5 rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                             <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
-                                <div class="position-relative wrap-image rounded-3">
+                                <div class="position-relative overflow-hidden wrap-image rounded-3">
                                     <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
                                 </div>
                             </a>
@@ -199,7 +199,7 @@
             <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
                 <ng-container *ngFor="let item of listProduct; index as i">
                     <ng-template swiperSlide>
-                        <div class="wrap-item mb-5 border rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <div class="wrap-item mb-5 rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                             <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
                                 <div class="position-relative wrap-image rounded-3">
                                     <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
@@ -238,7 +238,7 @@
             <div class="row">
                 <ng-container *ngFor="let item of listProduct; index as i">
                     <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3">
-                        <div class="wrap-item border rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <div class="wrap-item rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                             <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
                                 <div class="position-relative wrap-image rounded-3">
                                     <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
