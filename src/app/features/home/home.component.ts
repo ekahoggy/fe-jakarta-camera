@@ -196,7 +196,6 @@ export class HomeComponent implements OnInit {
     }
 
     sliderClick(url: string) {
-        console.log(url);
         if (url !== null || url !== '') {
             window.open(url, '_blank')
         }
