@@ -93,23 +93,20 @@
                     </div>
                 </div>
                 <div class="interact ps-3">
-                    <a href="javascript:void(0)" [routerLink]="['/account/profile']" class="d-none d-lg-inline"
-                        *ngIf="auth">
+                    <a href="javascript:void(0)" [routerLink]="['/account/profile']" class="d-none d-lg-inline" *ngIf="auth">
                         <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
                     </a>
-                    <a href="javascript:void(0)" [routerLink]="['/login']"
-                        class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2"
-                        style="background: #0088CC; font-size: 12px;" *ngIf="!auth">
-                        Masuk &nbsp;| &nbsp;Daftar
-                    </a>
-                    <button class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;" (click)="openAuth(modalAuth)">
+                    <button class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;" (click)="openAuth(modalAuth)"  *ngIf="!auth">
                         Masuk &nbsp;| &nbsp;Daftar
                     </button>
+                    <!-- <a href="javascript:void(0)" [routerLink]="['/login']" class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;" *ngIf="!auth">
+                        Masuk &nbsp;| &nbsp;Daftar
+                    </a> -->
                     <!-- <span class="iconify fs-3 mx-3 d-none d-lg-inline" data-icon="uiw:heart-off"></span> -->
                     <!-- <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark">
-            <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
-            <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
-          </a> -->
+                        <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
+                        <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
+                    </a> -->
                 </div>
             </div>
         </div>
