@@ -26,6 +26,7 @@ import { PromoComponent } from './promo/promo.component';
 import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
 import { PaymentComponent } from './payment/payment.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { NewsDetailComponent } from './news-detail/news-detail.component';
     PromoComponent,
     JasaFotoComponent,
     PaymentComponent,
-    NewsDetailComponent
+    NewsDetailComponent,
+    EmailVerificationComponent
   ],
   imports: [
     CommonModule,

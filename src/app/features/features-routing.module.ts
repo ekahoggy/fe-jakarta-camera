@@ -21,6 +21,7 @@ import { PromoComponent } from './promo/promo.component';
 import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
 import { PaymentComponent } from './payment/payment.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 const routes: Routes = [
     {
@@ -53,6 +54,11 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'verification',
+        component: EmailVerificationComponent,
+        canActivate: [AuthGuard]
+    },
+    {
         path: 'cart',
         component: CartComponent,
         canActivate: [GuestGuard]
@@ -71,10 +77,6 @@ const routes: Routes = [
         path: 'payment',
         component: PaymentComponent,
         canActivate: [GuestGuard]
-    },
-    {
-        path: 'katalog/:slug',
-        component: KatalogComponent,
     },
     {
         path: 'katalog',
