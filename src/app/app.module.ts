@@ -8,6 +8,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { CountdownModule } from 'ngx-countdown';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CountdownModule } from 'ngx-countdown';
     NgbModule,
     HttpClientModule,
     CountdownModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    RecaptchaModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
