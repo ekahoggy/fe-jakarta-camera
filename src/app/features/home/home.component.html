@@ -21,8 +21,8 @@
             <div class="row justify-content-center">
                 <ng-container *ngFor="let item of listCategory">
                     <div class="col-4 col-lg-2 p-3 mb-3">
-                        <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">
-                            <div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100">
+                        <a href="/katalog?category={{item.slug}}">
+                            <div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100 border border-2">
                                 <img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
                                 <p class="font-p mb-0 mt-3 text-uppercase fs-12"> {{ item.kategori }}
                                 </p>

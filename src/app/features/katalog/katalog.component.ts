@@ -20,9 +20,13 @@ export class KatalogComponent {
 	}
 
 	listProduct: any = [];
-	listCategory: any;
-	filter: any = {};
+	listCategory: any = [];
 	listBrand: any = [];
+	filter: any = {};
+	filterCategory: any = [];
+    selectKategori: any;
+    filterBrand: any = [];
+    selectBrand: any;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -31,17 +35,25 @@ export class KatalogComponent {
 	) { }
 
 	ngOnInit() {
-		this.route.params.subscribe(params => {
-			const slug = params['slug'];
-			this.getProduct(slug);
+		this.route.queryParams.subscribe(params => {
+			const slug = params === undefined ? {} : params;
+            this.getProduct(slug);
+            
+            if (params !== undefined) {
+                this.selectKategori = params['category']
+                this.selectBrand = params['brand']
+            }
 		});
 
 		this.getCategories();
 		this.getBrand();
 	}
 
-	getProduct(event: string = '') {
-		this.globalService.DataGet('/public/katalog', { kategori: event ? event : ''}).subscribe((res: any) => {
+	getProduct(event:any) {
+        const params = {
+            filter: JSON.stringify(event)
+        };
+		this.globalService.DataGet('/public/katalog', params).subscribe((res: any) => {
 			this.listProduct = res.data.list;
 		})
 	}
@@ -57,7 +69,23 @@ export class KatalogComponent {
 			this.listCategory = res.data;
 
 			this.listCategory.forEach((val: any) => {
+                // Collapse
 				this.isCollapsedChild[val.slug] = true;
+
+                // Check
+                val.selected = false;
+                if (Array.isArray(this.selectKategori)) {
+                    this.selectKategori.forEach(e => {
+                        if (val.slug == e) {
+                            val.selected = true;
+                        }
+                    });
+                } else {
+                    if (val.slug == this.selectKategori) {
+                        val.selected = true;
+                        this.addFilterKategori(val.slug);
+                    }
+                }
 			})
 		})
 	}
@@ -65,6 +93,23 @@ export class KatalogComponent {
 	getBrand() {
 		this.globalService.DataGet('/public/brand').subscribe((res: any) => {
 			this.listBrand = res.data.list;
+
+            this.listBrand.forEach((val: any) => {
+                // Check
+                val.selected = false;
+                if (Array.isArray(this.selectBrand)) {
+                    this.selectBrand.forEach(e => {
+                        if (val.slug == e) {
+                            val.selected = true;
+                        }
+                    });
+                } else {
+                    if (val.slug == this.selectBrand) {
+                        val.selected = true;
+                        this.addFilterBrand(val.slug);
+                    }
+                }
+			})
 		})
 	}
 
@@ -85,4 +130,48 @@ export class KatalogComponent {
             })
 		}
 	}
+
+    addFilterKategori(e:any) {
+        if (typeof e !== 'string' && e !== undefined) {
+            if (e.target.checked) {
+                this.filterCategory.push(e.target.value);
+            } else {
+                this.removeItemOnArray(this.filterCategory, e.target.value);
+            }
+        } else if (typeof e === 'string') {
+            if (!this.filterCategory.some(([x]: [string, any]) => x === e)) {
+                this.filterCategory.push(e);
+            }
+        }
+
+        this.navigateKatalog();
+    }
+
+    addFilterBrand(e:any) {
+        if (typeof e !== 'string' && e !== undefined) {
+            if (e.target.checked) {
+                this.filterBrand.push(e.target.value);
+            } else {
+                this.removeItemOnArray(this.filterBrand, e.target.value);
+            }
+        } else if (typeof e === 'string') {
+            if (!this.filterBrand.some(([x]: [string, any]) => x === e)) {
+                this.filterBrand.push(e);
+            }
+        }
+
+        this.navigateKatalog();
+    }
+
+    removeItemOnArray(arr: [], element: string) {
+        arr.forEach((value, index) => {
+            if (value == element) arr.splice(index, 1);
+        });
+    }
+
+    navigateKatalog() {
+        let params = { category: this.filterCategory, brand: this.filterBrand };
+        this.router.navigate(['/katalog'], { queryParams: params });
+        this.getProduct(params);
+    }
 }
