@@ -66,6 +66,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkout() {
+    this.loading = true;
     let data = Object.assign(this.model);
     data.user_id = this.userId
     data.total = this.subtotal
@@ -75,7 +76,6 @@ export class CheckoutComponent implements OnInit {
       data: data,
       detail: this.listCart
     }
-    this.loading = true;
     this.globalService.DataPost('/order/pay', params).subscribe((res: any) => {
       this.loading = false;
       this.globalService.alertSuccess("Success", "Success create order")

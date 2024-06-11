@@ -48,9 +48,9 @@
             <div class="col-12 mb-3" *ngFor="let item of listOrder">
                 <div class="order-item border rounded-3 px-2">
                     <div class="p-2 fs-14 border-bottom">
-                        <span class="me-3">{{item.date}}</span> 
-                        <span 
-                            class="badge me-3 mb-0" 
+                        <span class="fw-semibold font-p me-2"><i class='bx bx-shopping-bag me-1'></i> Belanja</span>
+                        <span class="me-3 font-m">{{item.date}}</span> 
+                        <span class="badge me-3 mb-0" 
                             [ngClass]="{
                                 'bg-primary': item.status_order == 'ordered', 
                                 'bg-warning': item.status_order == 'processed', 
@@ -64,7 +64,7 @@
                             item.status_order == 'received' ? 'Diterima' : 
                             item.status_order == 'sent' ? 'Pengiriman' : 'Canceled'
                         }}</span> 
-                        <span class="text-grey">{{item.invoice_number}}</span>
+                        <span class="text-grey font-m">{{item.invoice_number}}</span>
                     </div>
                     <div class="row py-3">
                         <div class="col-9">
@@ -89,7 +89,7 @@
                         <button class="btn btn-sm btn-outline-primary px-5 me-2 fs-12 fw-bold">
                             Ulasan
                         </button>
-                        <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold">
+                        <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold" (click)="openModal(modalDetail)">
                             Detail
                         </button>
                     </div>
@@ -104,5 +104,116 @@
         </ng-container>
     </div>
 </div>
+
+<ng-template #modalDetail let-modal>
+    <div class="modal-header">
+        <div class="font-m fs-5 fw-bolder px-3">Detail Transaksi</div>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="d-flex border-bottom pb-3 mb-3">
+                        <span class="font-p fw-semibold fs-14">Pesanan Selesai</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="font-p fs-12">No Invoice</span>
+                        <span class="font-p fs-12 fw-semibold text-primary">INV/240526/001</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="font-p fs-12">Tanggal Pembelian</span>
+                        <span class="font-p fs-12">25 Desember 2023, 22:49 WIB</span>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="d-flex mb-3">
+                        <span class="font-p fw-semibold fs-14">Detail Produk</span>
+                    </div>
+                    <div class="list-produk border rounded-3 py-4 px-3">
+                        <div class="item d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRExEtIpdxQ4vvk5iZdcejgcXsiPs599UBWrg&s" class="rounded-2 object-fit-cover" alt="" width="50" height="50">
+                                <div class="ms-3">
+                                    <span class="font-p fw-semibold fs-14">Camera Canon EOS9</span> <br>
+                                    <span class="fs-12 font-p text-grey">1 x Rp. 1.299.000</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-m fs-14">Total Harga</div>
+                                <div class="font-p fw-semibold fs-14">Rp. 1.299.000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="d-flex mb-3">
+                        <span class="font-p fw-semibold fs-14">Info Pengiriman</span>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <table class="w-100 font-m fs-12">
+                                <tr height="30">
+                                    <td width="20%" class="align-top">Kurir</td>
+                                    <td width="20" class="text-center align-top">:</td>
+                                    <td class="align-top">J&T - Reguler</td>
+                                </tr>
+                                <tr height="30">
+                                    <td width="20%" class="align-top">No Resi</td>
+                                    <td width="20" class="text-center align-top">:</td>
+                                    <td class="align-top">JT0006793035</td>
+                                </tr>
+                                <tr height="30">
+                                    <td width="20%" class="align-top">Alamat</td>
+                                    <td width="20" class="text-center align-top">:</td>
+                                    <td class="align-top">          
+                                        <b>Galih Satrio</b> <br>
+                                        6285234773288 <br>
+                                        Perumahan Griya Shanta Permata, N-524, Mojolangu, Kec Lowokwaru, Kota Malang (Di samping taman Krida ) Lowokwaru, Kota Malang Jawa Timur 65141
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                   </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="d-flex mb-3">
+                        <span class="font-p fw-semibold fs-14">Rincian Pembayaran</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                        <span class="font-p fs-12">Metode Pembayaran</span>
+                        <span class="font-p fs-12 fw-semibold">BCA Virtual Account</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="font-p fs-12">Total Harga (1 Barang)</span>
+                        <span class="font-p fs-12 fw-semibold">Rp 1.299.000</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="font-p fs-12">Total Biaya Proteksi (1 Polis)</span>
+                        <span class="font-p fs-12 fw-semibold">Rp 2.600</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="font-p fs-12">Total Ongkos Kirim</span>
+                        <span class="font-p fs-12 fw-semibold">Rp 19.000</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="font-p fs-12">Total Diskon Barang</span>
+                        <span class="font-p fs-12 fw-semibold">-Rp 25.000</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                        <span class="font-p fs-12">Biaya Asuransi Pengiriman</span>
+                        <span class="font-p fs-12 fw-semibold">Rp 300</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="font-p fw-semibold fs-14">Total Belanja</span>
+                        <span class="font-p fs-12 fw-semibold">Rp 1.299.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
 
 

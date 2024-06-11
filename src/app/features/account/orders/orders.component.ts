@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class OrdersComponent implements OnInit {
 
 	constructor(
 		private globalService: GlobalService,
+        private modalService: NgbModal,
 	) {}
     
     ngOnInit(): void {
@@ -40,4 +42,9 @@ export class OrdersComponent implements OnInit {
             this.listOrder = res.data.list;
         })
     }
+
+    openModal(modal:TemplateRef<any>) {
+        this.modalService.open(modal, { size: 'md', backdrop: 'static'});
+    }
+
 }

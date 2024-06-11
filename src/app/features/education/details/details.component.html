@@ -27,7 +27,7 @@
         <div class="col-4">
             <div class="bg-secondary rounded-top-4 p-4">
                 <div class="mb-3">
-                    <a href="">
+                    <a href="javascript:void(0)" (click)="openModal(modalVideo)">
                         <div class="px-3 py-2 d-flex justify-content-between align-items-center bg-white rounded-5">
                             <div class=" d-flex align-items-center">
                                 <i class='bx bx-play-circle fs-3 me-2'></i>
@@ -38,24 +38,24 @@
                     </a>
                 </div>
                 <div class="mb-3">
-                    <a href="">
+                    <a href="javascript:void(0)" (click)="alertSubscribe()">
                         <div class="px-3 py-2 d-flex justify-content-between align-items-center bg-white rounded-5">
                             <div class=" d-flex align-items-center">
                                 <i class='bx bx-play-circle fs-3 me-2'></i>
                                 <span class="font-p">Praktek</span>
                             </div>
-                            <span>10 mins</span>
+                            <i class='bx bxs-lock fs-5 me-2'></i>
                         </div>
                     </a>
                 </div>
                 <div class="mb-3">
-                    <a href="">
+                    <a href="javascript:void(0)" (click)="alertSubscribe()">
                         <div class="px-3 py-2 d-flex justify-content-between align-items-center bg-white rounded-5">
                             <div class=" d-flex align-items-center">
                                 <i class='bx bx-play-circle fs-3 me-2'></i>
                                 <span class="font-p">Penutupan</span>
                             </div>
-                            <span>1 mins</span>
+                            <i class='bx bxs-lock fs-5 me-2'></i>
                         </div>
                     </a>
                 </div>
@@ -182,3 +182,60 @@
 
 <app-foot-menu class="d-block d-lg-none"></app-foot-menu>
 <app-footer class="d-none d-lg-block"></app-footer>
+
+<ng-template #modalVideo let-modal>
+    <div class="modal-header">
+        <div class="font-m fs-5 fw-bolder px-3">Make Attractive UI Design with Simple Micro Interaction</div>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid pb-4">
+            <div class="row">
+                <div class="col-12">
+                    <iframe [src]="urlSafe" frameborder="0" class="w-100 h-auto rounded-4" style="aspect-ratio: 5/3;"></iframe>
+                </div>
+                <div class="col-12">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item py-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://img.youtube.com/vi/sVNFrxLW2pA/default.jpg" alt="sVNFrxLW2pA" class="object-fit-cover rounded-3 me-2" width="80" height="50">
+                                    <i class='bx bx-play-circle fs-4 me-2'></i>
+                                    <span class="font-p fs-14 fw-bold">Make Attractive UI Design with Simple Micro Interaction</span>
+                                </div>
+                                <span class="font-p fs-14">10:16</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item py-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://img.youtube.com/vi/ePRf2VrKuj8/default.jpg" alt="ePRf2VrKuj8" class="object-fit-cover rounded-3 me-2" width="80" height="50">
+                                    <span class="font-p fs-14">Belajar Laravel 11 / 1 Setup Laravel</span>
+                                </div>
+                                <span class="font-p fs-14">10:16</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item py-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://img.youtube.com/vi/ayErMS6A4bk/default.jpg" alt="ayErMS6A4bk" class="object-fit-cover rounded-3 me-2" width="80" height="50">
+                                    <span class="font-p fs-14">Belajar Laravel 11 / 3 Styling</span>
+                                </div>
+                                <span class="font-p fs-14">10:16</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item py-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://img.youtube.com/vi/_PTxDnSG6rY/default.jpg" alt="_PTxDnSG6rY" class="object-fit-cover rounded-3 me-2" width="80" height="50">
+                                    <span class="font-p fs-14">Belajar Laravel 11 / 4 Active State</span>
+                                </div>
+                                <span class="font-p fs-14">10:16</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
