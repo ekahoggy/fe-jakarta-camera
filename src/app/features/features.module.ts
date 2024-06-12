@@ -27,6 +27,7 @@ import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
 import { PaymentComponent } from './payment/payment.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
     SwiperModule,
     FormsModule,
     CountdownModule,
-    CoreModule
+    CoreModule,
+    RecaptchaModule
   ],
   exports: [
     LoginComponent
