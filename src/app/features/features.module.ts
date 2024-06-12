@@ -28,6 +28,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
     JasaFotoComponent,
     PaymentComponent,
     NewsDetailComponent,
-    EmailVerificationComponent
+    EmailVerificationComponent,
+    SubscriptionComponent
   ],
   imports: [
     CommonModule,
