@@ -127,14 +127,13 @@
                             routerLinkActive="active">PROMO</a>
                     </li>
                     <li class="nav-item dropdown mx-4">
-                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/katalog']"
-                            routerLinkActive="active">
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/katalog']" routerLinkActive="active">
                             PRODUK
                             <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
                         </a>
                         <div class="dropdown-content">
                             <ng-container *ngFor="let item of listCategories">
-                                <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
+                                <a href="/katalog?category={{item.slug}}">{{ item.kategori }}</a>
                             </ng-container>
                         </div>
                     </li>
@@ -209,8 +208,7 @@
             <li class="list-group-item">
                 <div class="d-flex align-items-center justify-content-between">
                     <span>PRODUK</span>
-                    <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct"
-                        [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
+                    <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct" [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
                         <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
                     </button>
                 </div>

@@ -35,4 +35,8 @@ export class DetailsComponent implements OnInit {
     alertSubscribe() {
         this.globalService.alertQuestion("Anda belum berlangganan", "Untuk mengakses konten edukasi ini, Anda harus berlangganan terlebih dahulu.", 3000);
     }
+
+    openModalSubscribe(modal:TemplateRef<any>) {
+        this.modalService.open(modal, { size: 'xl', backdrop: 'static'});
+    }
 }
