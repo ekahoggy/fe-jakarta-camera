@@ -42,4 +42,67 @@
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
+.products {
+    ::ng-deep .swiper-button-prev,
+    ::ng-deep .swiper-button-next {
+        top: 30%;
+    }
+
+    ::ng-deep .swiper-button-prev:after,
+    ::ng-deep .swiper-button-next:after {
+        font-size: 25px;
+        // color: black;
+    }
+
+    ::ng-deep .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+        right: 0px;
+    }
+
+    ::ng-deep .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+        left: 0px;
+    }
+    .wrap-item {
+        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+
+        .wrap-image {
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/4;
+    
+            img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4/4;
+            }
+    
+            .btn {
+                font-size: 12px;
+                font-weight: bold;
+                display: none;
+                margin-top: -80px;
+            }
+        }
+
+        .wrap-image img {
+            transform-origin: 65% 75%;
+            transition: transform .5s, filter .5s ease-out;
+        }
+        
+        .wrap-image:hover img {
+            transform: scale(1.1);
+        }
+    
+        .product-name {
+            font-size: clamp(21px, 1.2vw, 80px);
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
   

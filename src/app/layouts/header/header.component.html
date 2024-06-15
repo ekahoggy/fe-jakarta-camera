@@ -75,11 +75,30 @@
                 <button class="btn px-0 me-2 d-lg-none" (click)="openScroll(sidebar)">
                     <span class="iconify fs-5 fs-2" data-icon="iconamoon:menu-burger-horizontal-bold"></span>
                 </button>
-                <div class="input-group search-bar d-none d-lg-flex">
-                    <input type="text" class="form-control me-1" placeholder="Cari produk..." aria-label="Pencarian" aria-describedby="search">
+                <div class="input-group search-bar d-none d-lg-flex position-relative">
+                    <input type="text" class="form-control me-1" placeholder="Cari produk..." aria-label="Pencarian" aria-describedby="search" [(ngModel)]="filter.produk" (keyup)="onKeyup($event)" (focus)="boxSearch=true" (focusout)="onBlur()">
                     <span class="input-group-text" id="search">
                         <span class="iconify fs-6" data-icon="uiw:search"></span>
                     </span>
+
+                    <div class="box-filter rounded-2 w-100 bg-white p-3" *ngIf="filter.produk && boxSearch">
+                        <ng-container *ngIf="!loading">
+                            <ng-container *ngFor="let item of listResult">
+                                <a href="/katalog/detail/{{ item.slug }}">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img [src]="item.foto" class="object-fit-cover rounded-2 me-2" width="50" height="50" alt="">
+                                        <div>
+                                            <p class="fs-14 font-m fw-semibold mb-0">{{ item.nama }}</p>
+                                            <p class="text-uppercase font-p fs-12 mb-1 text-grey"> {{ item.kategori }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </ng-container>
+                        </ng-container>
+                        <div class="text-center" *ngIf="loading || listResult.length == 0">
+                            <i class='bx bx-loader-alt bx-spin bx-md'></i>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="header-menu-right d-flex align-items-center">
@@ -119,28 +138,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav fw-bold">
                     <li class="nav-item me-4">
-                        <a class="nav-link py-4 px-1 px-0" aria-current="page" href="javascript:void(0)"
-                            [routerLink]="['/home']" routerLinkActive="active">BERANDA</a>
+                        <a class="nav-link py-4 px-1 px-0" aria-current="page" href="javascript:void(0)" [routerLink]="['/home']" routerLinkActive="active">BERANDA</a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/promo']"
-                            routerLinkActive="active">PROMO</a>
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/promo']" routerLinkActive="active">PROMO</a>
                     </li>
                     <li class="nav-item dropdown mx-4">
-                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/katalog']"
-                            routerLinkActive="active">
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/katalog']" routerLinkActive="active">
                             PRODUK
                             <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
                         </a>
                         <div class="dropdown-content">
                             <ng-container *ngFor="let item of listCategories">
-                                <a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">{{ item.kategori }}</a>
+                                <a href="/katalog?category={{item.slug}}">{{ item.kategori }}</a>
                             </ng-container>
                         </div>
                     </li>
                     <li class="nav-item dropdown mx-4">
-                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/service']"
-                            routerLinkActive="active">
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/service']" routerLinkActive="active">
                             LAYANAN
                             <span class="iconify ms-1 mb-1" data-icon="radix-icons:chevron-down"></span>
                         </a>
@@ -153,15 +168,12 @@
                         <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/news']"
                             routerLinkActive="active">BERITA</a>
                     </li>
-                    <!--
-          -->
                     <li class="nav-item mx-4">
-                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/education']"
-                            routerLinkActive="active">EDUKASI</a>
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/education']" routerLinkActive="active">EDUKASI</a>
                     </li>
                 </ul>
             </div>
-            <a href="javascript:void(0)" routerLink="/wishlist" class="d-flex align-items-center">
+            <a href="javascript:void(0)" routerLink="/account/wishlist" class="d-flex align-items-center">
                 <i class='bx bx-heart fs-6 me-1'></i>
                 <span class="fw-bold" style="font-size: 12px;">WISHLIST</span>
             </a>
@@ -171,17 +183,16 @@
                 <span class="badge rounded-pill text-bg-danger fs-12 ms-1 p-1 px-2">{{ countCart }}</span>
             </a>
             <!-- <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
-        <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
-        <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
-      </a> -->
+                <span class="iconify ms-3 fs-3" data-icon="solar:cart-linear"></span>
+                <span class="iconify ms-2 fs-6" data-icon="radix-icons:chevron-down"></span>
+            </a> -->
         </div>
     </nav>
 </section>
 
 <ng-template #sidebar let-offcanvas>
     <div class="offcanvas-header">
-        <button type="button" class="btn-close ms-auto" aria-label="Close"
-            (click)="offcanvas.dismiss('Cross click')"></button>
+        <button type="button" class="btn-close ms-auto" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
     </div>
     <div class="offcanvas-body px-0">
         <ul class="list-group list-group-flush fw-semibold">
@@ -193,8 +204,7 @@
             <li class="list-group-item">
                 <div class="d-flex align-items-center justify-content-between">
                     <span>COLLECTION</span>
-                    <button class="btn btn-sm p-0" (click)="collapseCollection = !collapseCollection"
-                        [attr.aria-expanded]="!collapseCollection" aria-controls="collapseCollection">
+                    <button class="btn btn-sm p-0" (click)="collapseCollection = !collapseCollection" [attr.aria-expanded]="!collapseCollection" aria-controls="collapseCollection">
                         <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
                     </button>
                 </div>
@@ -209,8 +219,7 @@
             <li class="list-group-item">
                 <div class="d-flex align-items-center justify-content-between">
                     <span>PRODUK</span>
-                    <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct"
-                        [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
+                    <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct" [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
                         <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
                     </button>
                 </div>
@@ -281,33 +290,33 @@
                     <p class="font-m fw-bold text-center mb-5">Daftar sekarang dan dapatkan pengalaman belanja yang lebih baik.</p>
                     <form (ngSubmit)="register()">
                         <div class="text-success font-p mb-3" *ngIf="is.success" role="alert">
-                          Selamat, Pendaftaran Akun berhasil! <a href="javascript:void(0)" [routerLink]="['/login']" class="text-primary">Klik</a> untuk Masuk Akun
+                            Selamat, Pendaftaran Akun berhasil! <a href="javascript:void(0)" [routerLink]="['/login']" class="text-primary">Klik</a> untuk Masuk Akun
                         </div>
                         <div class="mb-3">
-                          <label for="name" class="mb-2 font-p fs-14">Nama Lengkap <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control font-p fs-14 py-2" id="name" [(ngModel)]="model.name" name="name" required>
-                          <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.name }}</small>
+                            <label for="name" class="mb-2 font-p fs-14">Nama Lengkap <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control font-p fs-14 py-2" id="name" [(ngModel)]="model.name" name="name" required>
+                            <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.name }}</small>
                         </div>
                         <div class="mb-3">
-                          <label for="username" class="mb-2 font-p fs-14">Username <span class="text-danger">*</span></label>
-                          <input type="username" class="form-control font-p fs-14 py-2" id="username" [(ngModel)]="model.username" name="username" required>
+                            <label for="username" class="mb-2 font-p fs-14">Username <span class="text-danger">*</span></label>
+                            <input type="username" class="form-control font-p fs-14 py-2" id="username" [(ngModel)]="model.username" name="username" required>
                         </div>
                         <div class="mb-3">
-                          <label for="email" class="mb-2 font-p fs-14">Email <span class="text-danger">*</span></label>
-                          <input type="email" class="form-control font-p fs-14 py-2" id="email" [(ngModel)]="model.email" name="email" required>
-                          <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.email }}</small>
+                            <label for="email" class="mb-2 font-p fs-14">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control font-p fs-14 py-2" id="email" [(ngModel)]="model.email" name="email" required>
+                            <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.email }}</small>
                         </div>
                         <div class="mb-3">
-                          <label for="phone_number" class="mb-2 font-p fs-14">No Hp <span class="text-danger">*</span></label>
-                          <div class="input-group">
-                            <span class="input-group-text font-p fs-14" id="phone_number"> +62 </span>
-                            <input type="tel" class="form-control font-p fs-14 py-2" id="phone_number" [(ngModel)]="model.phone_number" name="phone_number" required>
-                          </div>
-                          <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.phone_number }}</small>
+                            <label for="phone_number" class="mb-2 font-p fs-14">No Hp <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text font-p fs-14" id="phone_number"> +62 </span>
+                                <input type="tel" class="form-control font-p fs-14 py-2" id="phone_number" [(ngModel)]="model.phone_number" name="phone_number" required>
+                            </div>
+                            <small class="text-danger font-p fs-12" *ngIf="error.name">{{ error.phone_number }}</small>
                         </div>
                         <div class="mb-3">
-                          <label for="password" class="mb-2 font-p fs-14">Kata Sandi <span class="text-danger">*</span></label>
-                          <input type="password" class="form-control font-p fs-14 py-2" id="password" [(ngModel)]="model.password" name="password" required>
+                            <label for="password" class="mb-2 font-p fs-14">Kata Sandi <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control font-p fs-14 py-2" id="password" [(ngModel)]="model.password" name="password" required>
                         </div>
                         <button class="btn btn-primary font-p fs-14 fw-semibold w-100 py-3 mt-3">Daftar</button>
                     </form>

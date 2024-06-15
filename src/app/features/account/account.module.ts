@@ -10,13 +10,15 @@ import { CountdownModule } from 'ngx-countdown';
 import { ProfileComponent } from './profile/profile.component';
 import { AddressComponent } from './address/address.component';
 import { OrdersComponent } from './orders/orders.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     AddressComponent,
-    OrdersComponent
+    OrdersComponent,
+    WishlistComponent
   ], 
   imports: [
     CommonModule,

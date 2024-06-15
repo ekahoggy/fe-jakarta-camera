@@ -51,7 +51,24 @@
 					</div>
 
 					<!-- Category -->
-					<div class="category py-2 px-2 border-top">
+                    <div class="category py-2 px-2 border-top">
+                        <div class="d-flex justify-content-between align-items-center" (click)="categories.toggle()" [attr.aria-expanded]="!isCollapsed.categories" aria-controls="collapseCategories">
+                            <span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN KATEGORI</span>
+                            <i class="bx fw-bold" [ngClass]="isCollapsed.categories ? 'bx-minus': 'bx-plus'"></i>
+                        </div>
+                        <div class="ps-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
+                            <ng-container *ngFor="let item of listCategory; index as i">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" [value]="item.slug" id="category-{{i}}" [checked]="item.selected" (change)="addFilterKategori($event)">
+                                    <label class="form-check-label text-grey" for="category">
+                                        {{ item.kategori }}
+                                    </label>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+					<!-- <div class="category py-2 px-2 border-top">
 						<div class="d-flex justify-content-between align-items-center" (click)="categories.toggle()" [attr.aria-expanded]="!isCollapsed.categories" aria-controls="collapseCategories">
 							<span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN KATEGORI</span>
 							<i class="bx fw-bold" [ngClass]="isCollapsed.categories ? 'bx-minus': 'bx-plus'"></i>
@@ -80,10 +97,26 @@
 								</div>
 							</ng-container>
 						</div>
-					</div>
+					</div> -->
 
 					<!-- Brand -->
-					<div class="category py-2 px-2 border-top">
+                    <div class="category py-2 px-2 border-top">
+                        <div class="d-flex justify-content-between align-items-center" (click)="brand.toggle()" [attr.aria-expanded]="!isCollapsed.brand" aria-controls="collapsebrand">
+                            <span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN MEREK</span>
+                            <i class="bx fw-bold" [ngClass]="isCollapsed.brand ? 'bx-minus': 'bx-plus'"></i>
+                        </div>
+                        <div class="ps-3 mt-2" #brand="ngbCollapse" [(ngbCollapse)]="isCollapsed.brand">
+                            <ng-container *ngFor="let item of listBrand; index as i">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" [value]="item.slug" id="brand-{{i}}" [checked]="item.selected" (change)="addFilterBrand($event)">
+                                    <label class="form-check-label text-grey" for="brand">
+                                        {{ item.brand }}
+                                    </label>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+					<!-- <div class="category py-2 px-2 border-top">
 						<div class="d-flex justify-content-between align-items-center" (click)="brand.toggle()" [attr.aria-expanded]="!isCollapsed.brand" aria-controls="collapsebrand">
 							<span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN MEREK</span>
 							<i class="bx fw-bold" [ngClass]="isCollapsed.brand ? 'bx-minus': 'bx-plus'"></i>
@@ -96,15 +129,58 @@
 								</div>
 							</ng-container>
 						</div>
-					</div>
+					</div> -->
 
 				</div>
 			</div>
 
 			<div class="col-12 col-lg-8 col-xl-9">
-				<div class="row">
+                <div class="row">
+                    <div class="col border-bottom">
+                        <section class="products">
+                            <div class="filter-bar mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="fw-bolder text-primary border-primary me-4" style="font-size: 15px;">
+                                        FLASH SALE
+                                        <i class='bx bxs-bolt'></i>
+                                        <span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
+                                            <countdown [config]="{leftTime: 4000}"></countdown>
+                                        </span>
+                                    </div>
+                                    <!-- <a href="javascript:void(0)" [routerLink]="['/flash-sale']">
+                                        Lihat Semua
+                                        <i class="bx bx-chevron-right"></i>
+                                    </a> -->
+                                </div>
+                            </div>
+                            <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFlash">
+                                <ng-container *ngFor="let item of listFlashSale; index as i">
+                                    <ng-template swiperSlide>
+                                        <div class="wrap-item rounded-3 mb-4">
+                                            <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+                                                <div class="position-relative overflow-hidden wrap-image rounded-3">
+                                                    <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
+                                                </div>
+                                            </a>
+                                            <div class="detail p-2 p-lg-3">
+                                                <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
+                                                <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
+                                                <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp 50,000</span>
+                                                <span>
+                                                    <i class='bx bxs-bolt'></i>-12%
+                                                </span>
+                                                <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga | numberFormat }}</p>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </swiper>
+                        </section>
+                    </div>
+                </div>
+				<div class="row mt-3">
 					<ng-container *ngIf="listProduct.length > 0">
-						<div class="col-6 col-lg-4 col-xl-3 mb-3" *ngFor="let item of listProduct; index as i">
+						<div class="col-6 col-md-4 col-xl-3 mb-3" *ngFor="let item of listProduct; index as i">
 							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
                                 <div class="wrap-item rounded-3 overflow-hidden">
                                     <div class="square-image wrap-image">
@@ -129,23 +205,6 @@
                                 </div>
 							</a>
 						</div>
-						<!-- <div class="col-6 col-md-4 col-xl-3">
-							<div class="square-image">
-							<img src="assets/img/earphone.webp" width="280" height="280" alt="Random second slide" />
-							</div>
-							<div class="detail p-2 p-lg-3">
-							<span class="category text-black-50" style="font-size: 11px;">FEATURED PRODUCTS</span>
-							<p class="product-name fs-6 mb-0">Porto Evolution Headset </p>
-							<div class="rating">
-								<span class="iconify text-warning" data-icon="uis:star"></span>
-								<span class="iconify text-warning" data-icon="uis:star"></span>
-								<span class="iconify text-black-50" data-icon="uis:star"></span>
-								<span class="iconify text-black-50" data-icon="uis:star"></span>
-								<span class="iconify text-black-50" data-icon="uis:star"></span>
-							</div>
-							<p class="price fs-6 fw-semibold">Rp 55.000</p>
-							</div>
-						</div> -->
 					</ng-container>
 					<ng-container *ngIf="listProduct.length == 0">
 						<div class="col text-center">

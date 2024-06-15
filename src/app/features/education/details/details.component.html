@@ -60,7 +60,7 @@
                     </a>
                 </div>
             </div>
-            <button class="btn btn-primary w-100 rounded-bottom-4 rounded-top-0 font-m py-3 fs-5 fw-semibold">
+            <button class="btn btn-primary w-100 rounded-bottom-4 rounded-top-0 font-m py-3 fs-5 fw-semibold" (click)="openModalSubscribe(modalSubscribe)">
                 Berlangganan
             </button>
         </div>
@@ -234,6 +234,99 @@
                             </div>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #modalSubscribe let-modal>
+    <div class="modal-body rounded-5">
+        <div class="d-flex justify-content-between mb-5">
+            <div class="font-p fs-4 fw-semibold px-3 mt-3">Benefit Berlangganan</div>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="container-fluid pb-5">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <div class="wrap-subs h-100 rounded-5 p-4">
+                        <p class="fs-6 font-m fw-semibold">1 Bulan</p>
+                        <p class="fs-4 fw-bold font-p">Rp 550,000</p>
+                        <p class="fs-6 font-m">Miliki kelas Premium secara permanen dan bangun sebuah projek nyata</p>
+                        <hr>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Akses kelas selamanya</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Premium rewards</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Career consultation</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Assets & group konsultasi</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Sertifikat kelulusan</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Free update materi selama 3 bulan</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Free akses kelas Freemium</span>
+                        </div>
+
+                        <button class="btn btn-primary rounded-4 font-p fw-semibold fs-14 w-100 py-2 mt-auto">
+                            Berlangganan
+                        </button>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="wrap-subs h-100 rounded-5 p-4">
+                        <p class="fs-6 font-m fw-semibold">3 Bulan</p>
+                        <p class="fs-4 fw-bold font-p">Rp 1,000,000</p>
+                        <p class="fs-6 font-m">Miliki kelas Premium secara permanen dan bangun sebuah projek nyata</p>
+                        <hr>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Akses kelas selamanya</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Premium rewards</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Career consultation</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Assets & group konsultasi</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Sertifikat kelulusan</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Free update materi selama 3 bulan</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class='bx bx-check-circle text-success me-2'></i>
+                            <span class="fs-6 font-m">Free akses kelas Freemium</span>
+                        </div>
+
+                        <button class="btn btn-primary rounded-4 font-p fw-semibold fs-14 w-100 py-2">
+                            Berlangganan
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
