@@ -96,7 +96,7 @@
                     <div class="row" *ngIf="model.recipient">
                         <div class="col-12 mt-3">
                             <button class="btn btn-primary w-100 fs-6 py-2 font-p" (click)="checkout()" [disabled]="loading">
-                                <i class='bx bx-loader-alt bx-spin bx-md' *ngIf="loading"></i>
+                                <i class='bx bx-loader-alt bx-spin' *ngIf="loading"></i>
                                 <span *ngIf="!loading">Bayar</span>
                             </button>
                         </div>

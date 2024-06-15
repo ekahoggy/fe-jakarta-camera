@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+        <h1 class="fs-3 font-p mb-0">Wishlist</h1>
+    </div>
+    <div class="row">
+        <ng-container *ngIf="listProduct.length > 0">
+            <div class="col-6 col-lg-4 col-xl-3 mb-3" *ngFor="let item of listProduct; index as i">
+                <div class="wrap-item rounded-3 overflow-hidden">
+                    <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+                        <div class="square-image wrap-image">
+                            <img [src]="item.foto" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
+                        </div>
+                    </a>
+                    <div class="detail p-2">
+                        <span class="category text-black-50" style="font-size: 11px;">{{ item.kategori }}</span>
+                        <p class="product-name fs-14 mb-0 font-p"> {{item.nama}} </p>
+                        <div class="rating">
+                            <i class='bx bxs-star text-warning'></i>
+                            <i class='bx bxs-star text-warning'></i>
+                            <i class='bx bxs-star text-warning'></i>
+                            <i class='bx bxs-star-half text-warning'></i>
+                            <i class='bx bx-star text-warning'></i>
+                        </div>
+                        <p class="price font-p fs-14 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
+                        <a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100 mb-2" style="font-size: 12px" (click)="addCart(item.id)">
+                            <i class="bx bx-plus"></i>
+                            Keranjang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="listProduct.length == 0">
+            <div class="col text-center">
+                <img src="assets/img/undraw/empty.png" style="width: 400px;" class="object-fit-cover" width="400" alt="empty">
+                <p class="fs-3 fw-bold">Tidak ada produk</p>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+
+

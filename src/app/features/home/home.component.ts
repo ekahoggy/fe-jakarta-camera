@@ -1,10 +1,9 @@
-import * as AOS from 'aos';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
-import { environment } from 'src/environments/environment.development';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
 import { Router } from '@angular/router';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +12,6 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 })
 
 export class HomeComponent implements OnInit {
-  productImageURL: string = environment.productImageURL;
-  originalImageUrl: string = environment.originalImageURL;
   private navbar: HTMLElement | null = null;
   private sticky: number = 0;
   carousel: HTMLElement | null = null;

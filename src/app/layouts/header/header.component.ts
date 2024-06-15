@@ -1,7 +1,9 @@
 import { Component, HostListener, OnInit, TemplateRef, inject, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbModal, NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
+import { debounceTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'app-header',
@@ -9,6 +11,7 @@ import { GlobalService } from 'src/app/services/global.service';
 	styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
+    private searchSubject: Subject<string> = new Subject();
 	private navbar: HTMLElement | null = null;
 	private cart: HTMLElement | null = null;
 	private navbarNav: HTMLElement | null = null;
@@ -26,12 +29,20 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     activeTabs: string = "login";
     is: any = {};
     error: any = {};
+    filter: any = {};
+    listResult: any = [];
+    loading: boolean = false;
+    boxSearch: boolean = false;
 
 	constructor(
 		private globalService: GlobalService,
 		private router: Router,
         private modalService: NgbModal
-	) { }
+	) {
+        this.searchSubject.pipe(debounceTime(1000)).subscribe(searchText => {
+            this.filterProduct(searchText);
+        });
+    }
 
 	ngOnInit() : void {
 		this.auth = this.globalService.getAuth()['user'];
@@ -146,5 +157,33 @@ export class HeaderComponent implements OnInit, AfterViewInit {
             this.error.name = error.error.errors.name;
             this.error.phone_number = error.error.errors.phone_number;
         });
+    }
+
+    onKeyup(event: any) {
+        this.loading = true;
+        const input = event.target.value;
+        const lettersAndNumbers = /^[a-zA-Z0-9]*$/;
+        const isValid = lettersAndNumbers.test(input);
+        if (isValid) {
+            this.searchSubject.next(input);
+        } else {
+            this.loading = false;  // Reset loading if input is invalid
+        }
+    }
+
+    filterProduct(event:any) {
+        const params = {
+            filter: JSON.stringify({ nama: event})
+        };
+        this.globalService.DataGet('/public/katalog', params).subscribe((res: any) => {
+            this.listResult = res.data.list;
+            this.loading = false;
+        })
+    }
+
+    onBlur() {
+        setTimeout(() => {
+            this.boxSearch = false;
+        }, 200); // Delay to allow click event on box-filter
     }
 }
