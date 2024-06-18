@@ -39,11 +39,19 @@
   color: var(--RN500, #F94D63);
 }
 
+.wrap-slider {
+    img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 5/5;
+    }
+}
+
 .wrap-image {
     img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 5/5;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 5/5;
     }
 }
 

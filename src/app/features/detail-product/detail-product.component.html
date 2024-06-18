@@ -403,7 +403,7 @@
                     <section id="banner-carousel">
                         <ngb-carousel #photoSlider [showNavigationIndicators]="false">
                             <ng-template *ngFor="let item of model.detail_foto; index as i" id="{{item.id}}" ngbSlide>
-                                <div class="wrap-image">
+                                <div class="wrap-slider">
                                     <img [src]="item.foto" class="w-100 h-auto object-fit-cover" width="480" height="480"  alt="Random first slide"/>
                                 </div>
                             </ng-template>
