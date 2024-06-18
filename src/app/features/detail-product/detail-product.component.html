@@ -3,32 +3,34 @@
 </ng-container>
 
 <ng-container *ngIf="!loadingPage">
-  <section class="breadcrumb mt-lg-5">
-    <div class="container">
-      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb fs-14">
-          <li class="breadcrumb-item">
-            <a href="/home"> <i class="bx bx-home me-1"></i> Beranda </a>
-          </li>
-          <li class="breadcrumb-item active">
-            <a href="/katalog">Produk</a>
-          </li>
-          <li class="breadcrumb-item active">
-            <a href="javascript:void(0)">{{ model.nama }}</a>
-          </li>
-        </ol>
-      </nav>
-    </div>
-  </section>
+    <section class="breadcrumb mt-lg-5">
+        <div class="container">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb fs-14">
+                    <li class="breadcrumb-item">
+                        <a href="/home"> <i class="bx bx-home me-1"></i> Beranda </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <a href="/katalog">Produk</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <a href="javascript:void(0)">{{ model.nama }}</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
 
   <section>
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <img [src]="activePhoto" class="img-preview object-fit-cover rounded-4" width="478" height="378" alt="">
+            <a href="javascript:void(0);" (click)="openPreviewPhoto(modalPhoto)">
+                <img [src]="activePhoto" class="img-preview object-fit-cover rounded-4" width="478" height="378" [alt]="model.nama">
+            </a>
           <div class="row mt-3">
             <ng-container *ngFor="let item of model.detail_foto">
-              <div class="col-3">
+              <div class="col-2 px-1">
                 <a href="javascript:void(0)" (click)="activePhoto=item.foto">
                   <img [src]="item.foto" class="img-list object-fit-cover rounded-4" alt="image-produk">
                 </a>
@@ -336,66 +338,93 @@
     </div>
   </section>
 
-  <section class="flash-sale my-5">
-    <div class="filter-bar mb-3" *ngIf="listProduct.length > 0">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="fw-bolder text-primary border-primary me-4" style="font-size: 15px;">
-            FLASH SALE
-            <i class='bx bxs-bolt'></i>
-            <span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
-              <countdown [config]="{leftTime: 4000}"></countdown>
-            </span>
-          </div>
-          <a href="javascript:void(0)" [routerLink]="['/flash-sale']">
-            Lihat Semua
-            <i class="bx bx-chevron-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="list">
-      <div class="container">
-        <div class="row">
-          <ng-container *ngIf="listProduct.length > 0">
-            <div class="col-12 col-md-6 col-xl-3 mb-3" *ngFor="let item of listProduct; index as i">
-              <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}" *ngIf="4 > i">
-                <div class="square-image wrap-image rounded-4">
-                  <img [src]="item.foto" class="w-100 object-fit-cover rounded-4" alt="Random second slide" />
-                  <!-- <button class="btn btn-info rounded-0 font-p position-relative w-100 py-3">QUICK VIEW</button> -->
+    <section class="products my-5">
+        <div class="filter-bar mb-3" *ngIf="listProduct.length > 0">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="fw-bolder text-primary border-primary me-4" style="font-size: 15px;">
+                        FLASH SALE
+                        <i class='bx bxs-bolt'></i>
+                        <span class="bg-primary text-light fw-semibold font-p px-2 rounded-1 fs-6 ms-2">
+                            <countdown [config]="{leftTime: 4000}"></countdown>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0)" [routerLink]="['/flash-sale']">
+                        Lihat Semua
+                        <i class="bx bx-chevron-right"></i>
+                    </a>
                 </div>
-                <div class="detail p-2 p-lg-3 h-100">
-                  <span class="category text-black-50" style="font-size: 11px;">PRODUK PILIHAN</span>
-                  <p class="product-name fs-6 mb-0 font-p"> {{item.nama}} </p>
-                  <div class="rating">
-                    <i class='bx bxs-star text-warning'></i>
-                    <i class='bx bxs-star text-warning'></i>
-                    <i class='bx bxs-star text-warning'></i>
-                    <i class='bx bxs-star-half text-warning'></i>
-                    <i class='bx bx-star text-warning'></i>
-                  </div>
-                  <p class="price fs-6 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-                  <a href="javascript:void(0)"
-                    class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100"
-                    style="font-size: 12px" (click)="addCartFlashSale(item.id)">
-                    <span class="iconify me-1 mb-1" data-icon="solar:cart-linear"></span>
-                    TAMBAH KE KERANJANG
-                  </a>
-                </div>
-              </a>
             </div>
-          </ng-container>
-          <ng-container *ngIf="listProduct.length == 0">
-            <div class="col text-center">
-              <img src="assets/img/undraw/empty.png" style="width: 400px;" width="200" height="200" alt="empty">
-              <p class="fs-3 fw-bold">Not Found</p>
-            </div>
-          </ng-container>
-
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="list">
+        <div class="container">
+            <div class="row">
+                <ng-container *ngIf="listProduct.length > 0">
+                    <ng-container *ngFor="let item of listProduct; index as i">
+                        <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3">
+                            <div class="wrap-item rounded-3">
+                                <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+                                    <div class="position-relative wrap-image rounded-top-3">
+                                        <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
+                                    </div>
+                                    <div class="detail p-2 p-lg-3">
+                                        <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
+                                        <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
+                                        <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp 50,000</span>
+                                        <span>
+                                            <i class='bx bxs-bolt'></i>-12%
+                                        </span>
+                                        <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga | numberFormat }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngIf="listProduct.length == 0">
+                    <div class="col text-center">
+                        <img src="assets/img/undraw/empty.png" style="width: 400px;" width="200" height="200" alt="empty">
+                        <p class="fs-3 fw-bold">Not Found</p>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        </div>
+    </section>
 
   <app-footer></app-footer>
 </ng-container>
+
+<ng-template #modalPhoto let-modal>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-8">
+                    <section id="banner-carousel">
+                        <ngb-carousel #photoSlider [showNavigationIndicators]="false">
+                            <ng-template *ngFor="let item of model.detail_foto; index as i" id="{{item.id}}" ngbSlide>
+                                <div class="wrap-image">
+                                    <img [src]="item.foto" class="w-100 h-auto object-fit-cover" width="480" height="480"  alt="Random first slide"/>
+                                </div>
+                            </ng-template>
+                        </ngb-carousel>
+                    </section>
+                </div>
+                <div class="col-4">
+                    <h1 class="fs-4 fw-semibold font-p mt-4 mb-3">{{ model.nama }}</h1>
+                    <div class="row">
+                        <ng-container *ngFor="let item of model.detail_foto; index as i">
+                            <div class="col-4 p-1">
+                                <a href="javascript:void(0)" (click)="photoSlider.select(item.id)">
+                                    <div class="wrap-image overflow-hidden rounded-2">
+                                        <img [src]="item.foto" class="w-100 h-auto object-fit-cover rounded-2" width="480" height="480"  alt="Random first slide"/>
+                                    </div>
+                                </a>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
