@@ -1,182 +1,77 @@
 <section class="breadcrumb mt-lg-5">
-    <div class="container">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb fs-14">
-                <li class="breadcrumb-item">
-                    <a href="/home">
-                        <i class="bx bx-home me-1"></i> Beranda
-                    </a>
-                </li>
-                <li class="breadcrumb-item active">
-                    <a href="/education">Edukasi</a>
-                </li>
-            </ol>
-        </nav>
-    </div>
+  <div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb fs-14">
+        <li class="breadcrumb-item">
+          <a href="/home">
+            <i class="bx bx-home me-1"></i> Beranda
+          </a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a href="/education">Edukasi</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
 </section>
 
 <section class="loading-slider" *ngIf="loading.slider">
-    <div class="bg-grey" style="height: 480px;"></div>
+  <div class="bg-grey" style="height: 480px;"></div>
 </section>
 
 <section id="banner-carousel mt-5" *ngIf="!loading.slider">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <ngb-carousel [showNavigationIndicators]="false">
-                    <ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
-                        <div class="picsum-img-wrapper">
-                            <img [src]="item.picture" class="w-100 object-fit-cover rounded-4" height="480" alt="Random first slide" (click)="sliderClick(item.url)" />
-                        </div>
-                    </ng-template>
-                </ngb-carousel>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <ngb-carousel [showNavigationIndicators]="false">
+          <ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
+            <div class="picsum-img-wrapper">
+              <img [src]="item.gambar" class="w-100 object-fit-cover rounded-4" height="480" alt="Random first slide"
+                (click)="sliderClick(item.url)" />
             </div>
-        </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
     </div>
+  </div>
 </section>
 
 <div class="container mt-4">
-    <!-- Kategori -->
-    <div class="row">
-        <div class="col-12">
-            <h1 class="fs-4 fw-bold font-m">Kategori</h1>
-        </div>
-        <div class="col py-2">
-            <button class="btn btn-primary btn-sm font-m fw-semibold me-2">Kamera Digital</button>
-            <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">Video Editor</button>
-            <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">Lightroom</button>
-            <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">Adobe Premier</button>
-            <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">Sony Vegas Pro</button>
-            <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">Programming</button>
-            <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">UI/UX</button>
-            <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">Figma</button>
-            <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">Photoshop</button>
-        </div>
+  <!-- Kategori -->
+  <div class="row">
+    <div class="col-12">
+      <h1 class="fs-4 fw-bold font-m">Kategori</h1>
     </div>
+    <div class="col py-2">
+      <button *ngFor="let item of listKategori" class="btn btn-primary btn-sm font-m fw-semibold me-2">{{ item.kategori }}</button>
+      <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">Photoshop</button>
+    </div>
+  </div>
 
-    <!-- List Edukasi -->
-    <div class="row my-5">
-        <div class="col-3 mb-3">
-            <a href="/education/desain-ui-menarik-dengan-interaksi-mikro-sederhana">
-                <div class="wrap-item h-100 rounded-4 overflow-hidden">
-                    <div class="head-item overflow-hidden">
-                        <img src="https://miro.medium.com/v2/resize:fit:1011/1*CiC4C7bodsoTkLq_ap2SHg.png" class="object-fit-cover rounded-top-4" width="280" height="200" alt="Random second slide" />
-                    </div>
-                    <div class="body-item p-3">
-                        <p class="font-m fw-bold fs-6">Make Attractive UI Design with Simple Micro Interaction</p>
-                        <span class="font-p">Rp 100.000</span>
-                        <div class="rating">
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star-half text-warning"></i>
-                            <i class="bx bx-star text-warning"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
+  <!-- List Edukasi -->
+  <div class="row my-5">
+    <div class="col-3 mb-3" *ngFor="let item of listEdukasi">
+      <a href="javascript:void(0);" routerLink="/education/{{ item.slug }}">
+        <div class="wrap-item h-100 rounded-4 overflow-hidden">
+          <div class="head-item overflow-hidden">
+            <img [src]="item.gambar"
+              class="object-fit-cover rounded-top-4" width="280" height="200" alt="Random second slide" />
+          </div>
+          <div class="body-item p-3">
+            <p class="font-m fw-bold fs-6">{{ item.judul }}</p>
+            <span class="font-p">Rp {{ item.harga | number }}</span>
+            <div class="rating">
+              <i class="bx bxs-star text-warning"></i>
+              <i class="bx bxs-star text-warning"></i>
+              <i class="bx bxs-star text-warning"></i>
+              <i class="bx bxs-star-half text-warning"></i>
+              <i class="bx bx-star text-warning"></i>
+            </div>
+          </div>
         </div>
-        <div class="col-3 mb-3">
-            <a href="/education/desain-ui-menarik-dengan-interaksi-mikro-sederhana">
-                <div class="wrap-item h-100 rounded-4 overflow-hidden">
-                    <div class="head-item overflow-hidden">
-                        <img src="https://miro.medium.com/v2/resize:fit:1200/1*bl0mLTGKrUfdIPS0hSKUBA.jpeg" class="object-fit-cover rounded-top-4" width="280" height="200" alt="Random second slide" />
-                    </div>
-                    <div class="body-item p-3">
-                        <p class="font-m fw-bold fs-6">Mastering Figma: Modern UI Dashboard Design</p>
-                        <span class="font-p">Rp 100.000</span>
-                        <div class="rating">
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star-half text-warning"></i>
-                            <i class="bx bx-star text-warning"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-3 mb-3">
-            <a href="/education/desain-ui-menarik-dengan-interaksi-mikro-sederhana">
-                <div class="wrap-item h-100 rounded-4 overflow-hidden">
-                    <div class="head-item overflow-hidden">
-                        <img src="https://help.figma.com/hc/article_attachments/18924884984727" class="object-fit-cover rounded-top-4" width="280" height="200" alt="Random second slide" />
-                    </div>
-                    <div class="body-item p-3">
-                        <p class="font-m fw-bold fs-6">UI Design: Wireframe to Visual Design</p>
-                        <span class="font-p">Rp 100.000</span>
-                        <div class="rating">
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star-half text-warning"></i>
-                            <i class="bx bx-star text-warning"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-3 mb-3">
-            <a href="/education/desain-ui-menarik-dengan-interaksi-mikro-sederhana">
-                <div class="wrap-item h-100 rounded-4 overflow-hidden">
-                    <div class="head-item overflow-hidden">
-                        <img src="https://play-lh.googleusercontent.com/KMK77z5MXYgJiNzI2nPD8EyXQtz4-G73hj3LfJZamcPRD6VLlevK-cbQ8arRlJIZclk=w526-h296-rw" class="object-fit-cover rounded-top-4" width="280" height="200" alt="Random second slide" />
-                    </div>
-                    <div class="body-item p-3">
-                        <p class="font-m fw-bold fs-6">Learn Icon Pack Design with Figma</p>
-                        <span class="font-p">Rp 100.000</span>
-                        <div class="rating">
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star-half text-warning"></i>
-                            <i class="bx bx-star text-warning"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-3 mb-3">
-            <a href="/education/desain-ui-menarik-dengan-interaksi-mikro-sederhana">
-                <div class="wrap-item h-100 rounded-4 overflow-hidden">
-                    <div class="head-item overflow-hidden">
-                        <img src="https://helpx.adobe.com/content/dam/help/en/xd/help/Getting-Started-Prototype-XD.png" class="object-fit-cover rounded-top-4" width="280" height="200" alt="Random second slide" />
-                    </div>
-                    <div class="body-item p-3">
-                        <p class="font-m fw-bold fs-6">Adobe XD Untuk Designer Pemula</p>
-                        <span class="font-p">Rp 100.000</span>
-                        <div class="rating">
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star-half text-warning"></i>
-                            <i class="bx bx-star text-warning"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-3 mb-3">
-            <a href="/education/desain-ui-menarik-dengan-interaksi-mikro-sederhana">
-                <div class="wrap-item h-100 rounded-4 overflow-hidden">
-                    <div class="head-item">
-                        <img src="https://public-media.interaction-design.org/images/uploads/7b9d726df9d9b4bfcadc5c4c00771fce.jpg" class="object-fit-cover rounded-top-4" width="280" height="200" alt="Random second slide" />
-                    </div>
-                    <div class="body-item p-3">
-                        <p class="font-m fw-bold fs-6">Intro to UX Design Research</p>
-                        <span class="font-p">Rp 100.000</span>
-                        <div class="rating">
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star-half text-warning"></i>
-                            <i class="bx bx-star text-warning"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+      </a>
     </div>
+  </div>
 </div>
 
 <app-foot-menu class="d-block d-lg-none"></app-foot-menu>

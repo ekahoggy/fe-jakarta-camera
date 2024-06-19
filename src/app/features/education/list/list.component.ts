@@ -8,31 +8,53 @@ import { GlobalService } from 'src/app/services/global.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-    loading = {
-        slider: false
-    };
-    listSlider: any;
+  loading = {
+    slider: false,
+    kategori: false,
+    edukasi: false,
+  };
+  listSlider: any;
+  listKategori: any;
+  listEdukasi: any;
 
-    constructor(
-        private globalService: GlobalService,
-        private router: Router,
-    ) { }
+  constructor(
+    private globalService: GlobalService,
+    private router: Router,
+  ) { }
 
-    ngOnInit(): void {
-        this.getSlider()
+  ngOnInit(): void {
+    this.getSlider()
+    this.getKategori()
+    this.getEdukasi()
+  }
+
+  getSlider() {
+    this.loading.slider = true;
+    this.globalService.DataGet('/public/edukasi/slider').subscribe((res: any) => {
+      this.listSlider = res.data;
+      this.loading.slider = false;
+    })
+  }
+
+  getKategori() {
+    this.loading.kategori = true;
+    this.globalService.DataGet('/public/edukasi/kategori').subscribe((res: any) => {
+      this.listKategori = res.data;
+      this.loading.kategori = false;
+    })
+  }
+
+  getEdukasi() {
+    this.loading.edukasi = true;
+    this.globalService.DataGet('/public/edukasi/list').subscribe((res: any) => {
+      this.listEdukasi = res.data;
+      this.loading.edukasi = false;
+    })
+  }
+
+  sliderClick(url: string) {
+    if (url !== null || url !== '') {
+      window.open(url, '_blank')
     }
-
-    getSlider() {
-        this.loading.slider = true;
-        this.globalService.DataGet('/public/slider').subscribe((res: any) => {
-            this.listSlider = res.data.list;
-            this.loading.slider = false;
-        })
-    }
-
-    sliderClick(url: string) {
-        if (url !== null || url !== '') {
-            window.open(url, '_blank')
-        }
-    }
+  }
 }

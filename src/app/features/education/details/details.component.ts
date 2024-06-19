@@ -10,33 +10,50 @@ import { GlobalService } from 'src/app/services/global.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-    model: any = [];
-    listCategory: any = [];
-    urlSafe: any;
-    
-    constructor(
-        private globalService: GlobalService,
-        private route: ActivatedRoute,
-        private modalService: NgbModal,
-        public sanitizer: DomSanitizer,
-    ) {}
+  model: any = [];
+  detail: any = [];
+  listCategory: any = [];
+  urlSafe: any;
+  loadingPage: boolean = true;
 
-    ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            const slug = params['slug'];
-        });
-    }
+  constructor(
+    private globalService: GlobalService,
+    private route: ActivatedRoute,
+    private modalService: NgbModal,
+    public sanitizer: DomSanitizer,
+  ) { }
 
-    openModal(modal:TemplateRef<any>) {
-        this.modalService.open(modal, { size: 'xl', backdrop: 'static'});
-        this.urlSafe = this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/sVNFrxLW2pA");
-    }
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const slug = params['slug'];
+      this.getDataBySlug(slug);
+    });
+  }
 
-    alertSubscribe() {
-        this.globalService.alertQuestion("Anda belum berlangganan", "Untuk mengakses konten edukasi ini, Anda harus berlangganan terlebih dahulu.", 3000);
-    }
+  getDataBySlug(slug){
+    this.loadingPage = true;
+    this.globalService.DataGet(`/public/edukasi/${slug}`).subscribe((res: any) => {
+      this.model = res.data;
+      this.detail = res.detail;
+    })
+  }
 
-    openModalSubscribe(modal:TemplateRef<any>) {
-        this.modalService.open(modal, { size: 'xl', backdrop: 'static'});
+  openModal(modal: TemplateRef<any>, is_lock) {
+    if(is_lock === 1){
+      this.alertSubscribe()
     }
+    else{
+      this.modalService.open(modal, { size: 'xl', backdrop: 'static' });
+      this.urlSafe = this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/sVNFrxLW2pA");
+    }
+  }
+
+
+  alertSubscribe() {
+    this.globalService.alertQuestion("Anda belum berlangganan", "Untuk mengakses konten edukasi ini, Anda harus berlangganan terlebih dahulu.", 3000);
+  }
+
+  openModalSubscribe(modal: TemplateRef<any>) {
+    this.modalService.open(modal, { size: 'xl', backdrop: 'static' });
+  }
 }
