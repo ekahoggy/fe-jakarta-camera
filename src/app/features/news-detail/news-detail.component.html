@@ -1,180 +1,183 @@
 <section class="breadcrumb mt-lg-5">
-    <div class="container">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb fs-14">
-                <li class="breadcrumb-item">
-                    <a href="/home">
-                        <i class="bx bx-home me-1"></i> Homepage
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="/news">Berita</a>
-                </li>
-                <li class="breadcrumb-item active">
-                    <a href="/news/{{model.slug}}">{{ model.judul }}</a>
-                </li>
-            </ol>
-        </nav>
-    </div>
+  <div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb fs-14">
+        <li class="breadcrumb-item">
+          <a href="/home">
+            <i class="bx bx-home me-1"></i> Homepage
+          </a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="/news">Berita</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a href="/news/{{model.slug}}">{{ model.judul }}</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
 </section>
 
 <section>
-    <div class="container pb-5">
-        <div class="row">
-            <div class="col-9">
-                <div class="list-news mb-4">
-                    <h1 class="fs-2 mb-5">{{ model.judul }}</h1>
-                    <img [src]="model.image" class="img-thumbnail object-fit-cover w-100 mb-3" height="200" height="">
-                    <div [innerHTML]="model.content"></div>
-                </div>
-
-                <div class="share my-5">
-                    <p class="font-p fs-6 fw-semibold mb-2">Share :</p>
-                    <div class="d-flex align-items-center">
-                        <button class="btn py-2 px-3 text-white d-flex align-items-center me-2"
-                            style="background-color: #3b5998;" (click)="clickShareButton('facebook')">
-                            <i class='bx bxl-facebook-circle fs-5 me-2'></i>
-                            Facebook
-                        </button>
-                        <button class="btn py-2 px-3 text-white d-flex align-items-center me-2"
-                            style="background-color: #1da1f2;" (click)="clickShareButton('twitter')">
-                            <i class='bx bxl-twitter fs-5 me-2'></i>
-                            Twitter
-                        </button>
-                        <button class="btn py-2 px-3 text-white d-flex align-items-center me-2"
-                            style="background-color: green;" (click)="clickShareButton('wa')">
-                            <i class='bx bxl-whatsapp fs-5 me-2'></i>
-                            Whatsapp
-                        </button>
-                        <button class="btn py-2 px-3 text-white d-flex align-items-center me-2"
-                            style="background-color: #0077b5;" (click)="clickShareButton('link')">
-                            <i class='bx bx-link fs-5 me-2'></i>
-                            Copy Link
-                        </button>
-                    </div>
-                </div>
-
-                <div class="komentar mb-5">
-                    <h1 class="fs-4 font-m mb-2">Tinggalkan komentar</h1>
-                    <p class="font-m fs-14">Alamat email Anda tidak akan dipublikasikan. Bidang yang wajib diisi ditandai *</p>
-                    <div class="row">
-                        <div class="col-12 mb-3">
-                            <textarea class="form-control" name="komentar" id="komentar" placeholder="Tulis disini..." rows="5"></textarea>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" class="form-control" id="nama" placeholder="Nama*">
-                        </div>
-                        <div class="col-6">
-                            <input type="text" class="form-control" id="email" placeholder="Email*">
-                        </div>
-                        <div class="col-12 mt-3">
-                            <re-captcha (resolved)="resolved($event)"
-                                siteKey="6LfhN_YpAAAAAMMV3ucOg56y-f6rGyrxX6RfynTv"></re-captcha>
-                        </div>
-                        <div class="col mt-3">
-                            <button class="btn btn-info font-m fs-14 px-3 py-2">
-                                Kirim Komentar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="reviews mt-3">
-                    <h1 class="fs-4 font-m mb-4">Komentar Terkait</h1>
-                    <div class="row mb-3">
-                      <div class="col-2 col-xl-1">
-                        <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" class="object-fit-cover w-100" alt="">
-                      </div>
-                      <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-                        <div class="d-flex align-items-center justify-content-between">
-                          <div class="detail">
-                            <span class="fw-bold fs-6">Galih Satrio - </span> <span>Galih on Aug 22, 2021</span>
-                          </div>
-                          <!-- <div class="rating">
-                            <i class='bx bxs-star text-warning'></i>
-                            <i class='bx bxs-star text-warning'></i>
-                            <i class='bx bxs-star text-warning'></i>
-                            <i class='bx bxs-star-half text-warning'></i>
-                            <i class='bx bx-star text-warning'></i>
-                          </div> -->
-                        </div>
-                        <p class="mt-3 fs-14">
-                          Kamera Canon EOS 90D ini benar-benar sesuai dengan harapan saya. Kualitas build-nya kokoh dan terasa
-                          sangat premium. Setelah beberapa kali penggunaan, saya sangat terkesan dengan hasil foto dan video yang
-                          dihasilkan. Resolusi 32.5 MP dan prosesor DIGIC 8 memberikan detail yang tajam dan warna yang akurat,
-                          membuat hasil jepretan terlihat profesional.
-                        </p>
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-2 col-xl-1">
-                        <img
-                          src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-                          class="object-fit-cover w-100" alt="">
-                      </div>
-                      <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-                        <div class="d-flex align-items-center justify-content-between">
-                          <div class="detail">
-                            <span class="fw-bold fs-6">Eka Hoggy - </span> <span>Eka on Aug 22, 2021</span>
-                          </div>
-                          <!-- <div class="rating">
-                            <i class='bx bxs-star text-warning'></i>
-                            <i class='bx bxs-star text-warning'></i>
-                            <i class='bx bxs-star text-warning'></i>
-                            <i class='bx bxs-star-half text-warning'></i>
-                            <i class='bx bx-star text-warning'></i>
-                          </div> -->
-                        </div>
-                        <p class="mt-3 fs-14">
-                          Membeli Canon EOS 90D dari [Nama Toko Online] adalah pengalaman yang menyenangkan. Pengiriman sangat cepat
-                          dan kemasannya sangat aman. Kamera ini menawarkan kinerja luar biasa dengan kualitas gambar yang
-                          mengagumkan. Layar sentuh vari-angle dan daya tahan baterai yang kuat adalah keunggulan utama bagi saya.
-                          Saya merasa sangat puas dengan kamera ini dan layanan dari toko ini, dan tidak ragu merekomendasikan
-                          kepada siapa pun yang mencari kamera DSLR berkualitas.
-                        </p>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="right-content border sticky-top p-3" style="z-index: 1; top: 100px;">
-                    <h1 class="font-p fs-6 fw-semibold mb-4">Postingan Terbaru</h1>
-                    <div class="list-recent d-flex mb-3">
-                        <img src="https://source.unsplash.com/random/60x60?flower=1" class="rounded me-3" alt=""
-                            width="60" height="60">
-                        <div>
-                            <div class="title"> Post Format - Photo</div>
-                            <small class="date text-grey">December 06, 2016</small>
-                        </div>
-                    </div>
-                    <div class="list-recent d-flex mb-3">
-                        <img src="https://source.unsplash.com/random/60x60?human=1" class="rounded me-3" alt=""
-                            width="60" height="60">
-                        <div>
-                            <div class="title"> Post Format - Video</div>
-                            <small class="date text-grey">December 06, 2016</small>
-                        </div>
-                    </div>
-                    <div class="list-recent d-flex mb-3">
-                        <img src="https://source.unsplash.com/random/60x60?laptop=1" class="rounded me-3" alt=""
-                            width="60" height="60">
-                        <div>
-                            <div class="title"> Post Format - Photo</div>
-                            <small class="date text-grey">December 06, 2016</small>
-                        </div>
-                    </div>
-                    <h1 class="font-p fs-6 fw-semibold mt-5 mb-4">TAG</h1>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Blog</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Clothing</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Dresses</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Fashion</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Photography</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Shoes</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Women</button>
-                </div>
-
-            </div>
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-9">
+        <div class="list-news mb-4">
+          <h1 class="fs-2 mb-5">{{ model.judul }}</h1>
+          <img [src]="model.image" class="img-thumbnail object-fit-cover w-100 mb-3" height="200" height="">
+          <div [innerHTML]="model.content"></div>
         </div>
+
+        <div class="share my-5">
+          <p class="font-p fs-6 fw-semibold mb-2">Share :</p>
+          <div class="d-flex align-items-center">
+            <button class="btn py-2 px-3 text-white d-flex align-items-center me-2" style="background-color: #3b5998;"
+              (click)="clickShareButton('facebook')">
+              <i class='bx bxl-facebook-circle fs-5 me-2'></i>
+              Facebook
+            </button>
+            <button class="btn py-2 px-3 text-white d-flex align-items-center me-2" style="background-color: #1da1f2;"
+              (click)="clickShareButton('twitter')">
+              <i class='bx bxl-twitter fs-5 me-2'></i>
+              Twitter
+            </button>
+            <button class="btn py-2 px-3 text-white d-flex align-items-center me-2" style="background-color: green;"
+              (click)="clickShareButton('wa')">
+              <i class='bx bxl-whatsapp fs-5 me-2'></i>
+              Whatsapp
+            </button>
+            <button class="btn py-2 px-3 text-white d-flex align-items-center me-2" style="background-color: #0077b5;"
+              (click)="clickShareButton('link')">
+              <i class='bx bx-link fs-5 me-2'></i>
+              Copy Link
+            </button>
+          </div>
+        </div>
+
+        <div class="komentar mb-5">
+          <h1 class="fs-4 font-m mb-2">Tinggalkan komentar</h1>
+          <p class="font-m fs-14">Alamat email Anda tidak akan dipublikasikan. Bidang yang wajib diisi ditandai *</p>
+          <div class="row">
+            <div class="col-12 mb-3">
+              <textarea class="form-control" name="komentar" id="komentar" placeholder="Tulis disini..."
+                rows="5"></textarea>
+            </div>
+            <div class="col-6">
+              <input type="text" class="form-control" id="nama" placeholder="Nama*">
+            </div>
+            <div class="col-6">
+              <input type="text" class="form-control" id="email" placeholder="Email*">
+            </div>
+            <div class="col-12 mt-3">
+              <re-captcha (resolved)="resolved($event)" siteKey="6LeHRDsfAAAAAOkNj6VcGBU8jcX1qjiMqV_jhXMf"></re-captcha>
+            </div>
+            <div class="col mt-3">
+              <button class="btn btn-info font-m fs-14 px-3 py-2">
+                Kirim Komentar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="reviews mt-3">
+          <h1 class="fs-4 font-m mb-4">Komentar Terkait</h1>
+          <div class="row mb-3">
+            <div class="col-2 col-xl-1">
+              <img
+                src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
+                class="object-fit-cover w-100" alt="">
+            </div>
+            <div class="col-10 col-xl-11 bg-body-tertiary py-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="detail">
+                  <span class="fw-bold fs-6">Galih Satrio - </span> <span>Galih on Aug 22, 2021</span>
+                </div>
+                <!-- <div class="rating">
+                            <i class='bx bxs-star text-warning'></i>
+                            <i class='bx bxs-star text-warning'></i>
+                            <i class='bx bxs-star text-warning'></i>
+                            <i class='bx bxs-star-half text-warning'></i>
+                            <i class='bx bx-star text-warning'></i>
+                          </div> -->
+              </div>
+              <p class="mt-3 fs-14">
+                Kamera Canon EOS 90D ini benar-benar sesuai dengan harapan saya. Kualitas build-nya kokoh dan terasa
+                sangat premium. Setelah beberapa kali penggunaan, saya sangat terkesan dengan hasil foto dan video yang
+                dihasilkan. Resolusi 32.5 MP dan prosesor DIGIC 8 memberikan detail yang tajam dan warna yang akurat,
+                membuat hasil jepretan terlihat profesional.
+              </p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-2 col-xl-1">
+              <img
+                src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
+                class="object-fit-cover w-100" alt="">
+            </div>
+            <div class="col-10 col-xl-11 bg-body-tertiary py-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="detail">
+                  <span class="fw-bold fs-6">Eka Hoggy - </span> <span>Eka on Aug 22, 2021</span>
+                </div>
+                <!-- <div class="rating">
+                            <i class='bx bxs-star text-warning'></i>
+                            <i class='bx bxs-star text-warning'></i>
+                            <i class='bx bxs-star text-warning'></i>
+                            <i class='bx bxs-star-half text-warning'></i>
+                            <i class='bx bx-star text-warning'></i>
+                          </div> -->
+              </div>
+              <p class="mt-3 fs-14">
+                Membeli Canon EOS 90D dari [Nama Toko Online] adalah pengalaman yang menyenangkan. Pengiriman sangat
+                cepat
+                dan kemasannya sangat aman. Kamera ini menawarkan kinerja luar biasa dengan kualitas gambar yang
+                mengagumkan. Layar sentuh vari-angle dan daya tahan baterai yang kuat adalah keunggulan utama bagi saya.
+                Saya merasa sangat puas dengan kamera ini dan layanan dari toko ini, dan tidak ragu merekomendasikan
+                kepada siapa pun yang mencari kamera DSLR berkualitas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="right-content border sticky-top p-3" style="z-index: 1; top: 100px;">
+          <h1 class="font-p fs-6 fw-semibold mb-4">Postingan Terbaru</h1>
+          <div class="list-recent d-flex mb-3">
+            <img src="https://source.unsplash.com/random/60x60?flower=1" class="rounded me-3" alt="" width="60"
+              height="60">
+            <div>
+              <div class="title"> Post Format - Photo</div>
+              <small class="date text-grey">December 06, 2016</small>
+            </div>
+          </div>
+          <div class="list-recent d-flex mb-3">
+            <img src="https://source.unsplash.com/random/60x60?human=1" class="rounded me-3" alt="" width="60"
+              height="60">
+            <div>
+              <div class="title"> Post Format - Video</div>
+              <small class="date text-grey">December 06, 2016</small>
+            </div>
+          </div>
+          <div class="list-recent d-flex mb-3">
+            <img src="https://source.unsplash.com/random/60x60?laptop=1" class="rounded me-3" alt="" width="60"
+              height="60">
+            <div>
+              <div class="title"> Post Format - Photo</div>
+              <small class="date text-grey">December 06, 2016</small>
+            </div>
+          </div>
+          <h1 class="font-p fs-6 fw-semibold mt-5 mb-4">TAG</h1>
+          <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Blog</button>
+          <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Clothing</button>
+          <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Dresses</button>
+          <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Fashion</button>
+          <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Photography</button>
+          <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Shoes</button>
+          <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Women</button>
+        </div>
+
+      </div>
     </div>
+  </div>
 </section>
 
 <app-footer></app-footer>
