@@ -194,26 +194,26 @@ export class PromoComponent implements OnInit {
     configSwiperFlash() {
         this.configFlash = {
             slidesPerView: 5,
-            spaceBetween: 20,
+            spaceBetween: 15,
             navigation: true,
             pagination: false,
             scrollbar: { draggable: true },
             breakpoints: {
                 480: {
                     slidesPerView: 2,
-                    spaceBetween: 10,
+                    spaceBetween: 15,
                 },
                 770: {
                     slidesPerView: 3,
-                    spaceBetween: 20,
+                    spaceBetween: 15,
                 },
                 992: {
                     slidesPerView: 3,
-                    spaceBetween: 20,
+                    spaceBetween: 15,
                 },
                 1200: {
                     slidesPerView: 4,
-                    spaceBetween: 20,
+                    spaceBetween: 15,
                 },
             },
         }

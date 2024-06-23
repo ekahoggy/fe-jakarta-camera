@@ -25,10 +25,10 @@
 <section class="cart mb-5 pb-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-xl-7">
+            <div class="col-lg-6 col-xl-7 mb-3">
                 <form>
-                    <p class="fs-4">Kontak Customer</p>
-                    <div class="form-group mb-2">
+                    <p class="fs-4 font-m fw-semibold">Kontak Customer</p>
+                    <div class="form-group mb-3">
                         <label for="email" class="form-label font-p fs-14">Email</label>
                         <input type="email" class="form-control font-p fs-14" id="email" aria-describedby="email" [(ngModel)]="model.email" name="email">
                     </div>
@@ -37,17 +37,17 @@
                         <label class="form-check-label font-p fs-14" for="subsribe">Email saya untuk promo menarik lainnya</label>
                     </div>
 
-                    <p class="fs-4">Alamat Pengiriman</p>
+                    <p class="fs-4 font-m fw-semibold mt-5">Alamat Pengiriman</p>
                     <fieldset [disabled]="true" *ngIf="model.recipient">
                         <div class="row">
                             <div class="col-6">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label for="recipient" class="form-label font-p fs-14">Penerima</label>
                                     <input type="text" class="form-control font-p fs-14" id="recipient" [(ngModel)]="model.recipient" name="recipient">
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label for="phone_number" class="form-label font-p fs-14">Nomor Telepon</label>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="phone_number"> {{ model.phone_code }} </span>
@@ -56,37 +56,37 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label for="address" class="form-label font-p fs-14">Alamat</label>
                                     <textarea type="text" class="form-control font-p fs-14" id="address" [(ngModel)]="model.address" name="address" rows="3"></textarea>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label for="province_name" class="form-label font-p fs-14">Provinsi</label>
                                     <input type="text" class="form-control font-p fs-14" id="province_name" [(ngModel)]="model.province_name" name="province_name">
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label for="city_name" class="form-label font-p fs-14">Kota</label>
                                     <input type="text" class="form-control font-p fs-14" id="city_name" [(ngModel)]="model.city_name" name="city_name">
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label for="subdistrict_name" class="form-label font-p fs-14">Kecamatan</label>
                                     <input type="text" class="form-control font-p fs-14" id="subdistrict_name" [(ngModel)]="model.subdistrict_name" name="subdistrict_name">
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label for="village_name" class="form-label font-p fs-14">Desa</label>
                                     <input type="text" class="form-control font-p fs-14" id="village_name" [(ngModel)]="model.village_name" name="village_name">
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label for="postal_code" class="form-label font-p fs-14">Kode Pos</label>
                                     <input type="text" class="form-control font-p fs-14" id="postal_code" [(ngModel)]="model.postal_code" name="postal_code">
                                 </div>
@@ -116,22 +116,31 @@
 
             <div class="col-lg-6 col-xl-5">
                 <div class="cart-total border rounded-2 border-opacity-10 p-4">
-                    <table class="w-100">
-                        <tr height="110" *ngFor="let item of listCart; index as i">
-                            <td width="30%">
-                                <div class="image-thumbnail" style="width: 100%; max-width: 100px;">
-                                    <img [src]="item.foto" class="object-fit-cover w-100 h-auto rounded-1" width="64" height="64" alt="">
+                    <a href="javascript:void(0)" (click)="openVoucher(modalVoucher)">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+                            <div class="text-primary d-flex align-items-center">
+                                <i class='bx bxs-discount fs-4 me-2'></i>
+                                <span class="fs-5 fw-semibold font-m">Gunakan Voucher</span>
+                            </div>
+                            <i class="bx bx-chevron-right text-grey fs-5"></i>
+                        </div>
+                    </a>
+                    <div class="container-fluid">
+                        <div class="row" *ngFor="let item of listCart; index as i">
+                            <div class="col-2 p-0">
+                                <div class="image-thumbnail text-center">
+                                    <img [src]="item.foto" class="object-fit-cover rounded-1" width="64" height="64" alt="">
                                 </div>
-                            </td>
-                            <td>
-                                <p class="mb-0"> {{ item.nama }} </p>
-                                <small class="font-p">{{item.quantity}} x {{item.harga | numberFormat}} </small>
-                            </td>
-                            <td class="text-end align-bottom">
-                                <div class="font-p mb-4">Rp {{ item.subtotal_price | numberFormat }}</div>
-                            </td>
-                        </tr>
-                    </table>
+                            </div>
+                            <div class="col-7 pe-0">
+                                <p class="mb-0 font-m fs-14"> {{ item.nama }} </p>
+                                <small class="font-p fs-12">{{item.quantity}} x {{item.harga | numberFormat}} </small>
+                            </div>
+                            <div class="col-3 p-0">
+                                <p class="font-p fw-semibold text-end fs-14 mt-3">Rp {{ item.subtotal_price | numberFormat }}</p>
+                            </div>
+                        </div>
+                    </div>
                     <table class="w-100 mt-3">
                         <tr height="30" class="mt-3">
                             <td class="font-p fs-14">Subtotal</td>
@@ -153,3 +162,73 @@
 </section>
 
 <app-footer></app-footer>
+
+<ng-template #modalVoucher let-offcanvas>
+	<div class="offcanvas-header px-3">
+		<h4 class="offcanvas-title" id="offcanvas-basic-title">Voucher</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+	</div>
+	<div class="offcanvas-body px-3">
+        <div class="container-fluid">
+            <div class="list">
+                <div class="list-item border rounded-4 py-3 mb-3">
+                    <div class="container-fluid px-3">
+                        <div class="row">
+                            <div class="col-2 d-flex justify-content-center align-items-center">
+                                <i class='bx bxs-discount bx-lg text-primary'></i>
+                            </div>
+                            <div class="col-8 font-m">
+                                <p class="mb-1">Gratis Ongkir</p> 
+                                <p class="mb-1 fs-14 text-primary fw-semibold">Potongan 80%</p> 
+                                <p class="mb-1 fs-12">Berlaku hingga 30 Juni 2024 <span class="text-success font-p">S&K</span></p> 
+                            </div>
+                            <div class="col-2 d-flex justify-content-center align-items-center">
+                                <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase">
+                                    Gunakan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item border rounded-4 py-3 mb-3">
+                    <div class="container-fluid px-3">
+                        <div class="row">
+                            <div class="col-2 d-flex justify-content-center align-items-center">
+                                <i class='bx bxs-coupon bx-lg text-grey'></i>
+                            </div>
+                            <div class="col-8 font-m">
+                                <p class="mb-1">Voucher Pembelian</p> 
+                                <p class="mb-1 fs-14 text-primary fw-semibold">Potongan 50%</p> 
+                                <p class="mb-1 fs-12">Berlaku hingga 30 Juni 2024 <span class="text-success font-p">S&K</span></p> 
+                            </div>
+                            <div class="col-2 d-flex justify-content-center align-items-center">
+                                <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase">
+                                    Gunakan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item border rounded-4 py-3 mb-3">
+                    <div class="container-fluid px-3">
+                        <div class="row">
+                            <div class="col-2 d-flex justify-content-center align-items-center">
+                                <i class='bx bxs-coupon bx-lg text-grey'></i>
+                            </div>
+                            <div class="col-8 font-m">
+                                <p class="mb-1">Voucher Romadhoni</p> 
+                                <p class="mb-1 fs-14 text-primary fw-semibold">Potongan 80%</p> 
+                                <p class="mb-1 fs-12">Berlaku hingga 30 Juni 2024 <span class="text-success font-p">S&K</span></p> 
+                            </div>
+                            <div class="col-2 d-flex justify-content-center align-items-center">
+                                <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase">
+                                    Gunakan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</ng-template>

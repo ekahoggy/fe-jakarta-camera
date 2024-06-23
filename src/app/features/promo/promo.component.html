@@ -158,7 +158,7 @@
                                     <ng-template swiperSlide>
                                         <div class="wrap-item rounded-3 mb-4">
                                             <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
-                                                <div class="position-relative overflow-hidden wrap-image rounded-3">
+                                                <div class="position-relative overflow-hidden wrap-image rounded-top-3">
                                                     <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
                                                 </div>
                                             </a>
@@ -180,7 +180,7 @@
                 </div>
 				<div class="row mt-3">
 					<ng-container *ngIf="listProduct.length > 0">
-						<div class="col-6 col-md-4 col-xl-3 mb-3" *ngFor="let item of listProduct; index as i">
+						<div class="col-6 col-md-4 col-xl-3 mb-2 px-2" *ngFor="let item of listProduct; index as i">
 							<a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
                                 <div class="wrap-item rounded-3 overflow-hidden">
                                     <div class="square-image wrap-image">

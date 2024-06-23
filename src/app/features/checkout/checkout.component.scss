@@ -1,3 +1,25 @@
 .breadcrumb {
     font-size: clamp(21px, 1.2vw, 80px);
 }
+
+.img-thumbnail {
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 5/5;
+    }
+}
+
+::ng-deep .offcanvas.offcanvas-bottom {
+    height: 70vh;
+}
+
+::ng-deep .offcanvas {
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
