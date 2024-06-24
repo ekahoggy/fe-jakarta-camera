@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddressComponent } from './address/address.component';
 import { OrdersComponent } from './orders/orders.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { MapComponent } from 'src/app/core/map/map.component';
 
 
 @NgModule({
