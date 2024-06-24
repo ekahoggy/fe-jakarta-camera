@@ -96,4 +96,8 @@ export class CheckoutComponent implements OnInit {
     openVoucher(content: TemplateRef<any>) {
 		this.offcanvasService.open(content, { position: 'bottom' });
 	}
+
+    openPengiriman(content: TemplateRef<any>) {
+		this.offcanvasService.open(content, { position: 'bottom' });
+	}
 }

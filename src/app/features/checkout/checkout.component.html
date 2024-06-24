@@ -141,14 +141,27 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="fs-14 font-m fw-semibold">Pengiriman</span>
+                        <a href="javascript:void(0);" (click)="openPengiriman(modalPengiriman)" class="text-primary fw-bold font-p fs-12">Pilih</a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <div class="font-p">
+                            <p class="fw-semibold fs-14 mb-1">JNE</p>
+                            <p class="mb-0 fs-12">Estimasi tiba 27 - 30 Jun</p>
+                        </div>
+                        <div class="font-p fw-semibold fs-14">
+                            Rp50.000
+                        </div>
+                    </div>
                     <table class="w-100 mt-3">
-                        <tr height="30" class="mt-3">
-                            <td class="font-p fs-14">Subtotal</td>
-                            <td class="text-end font-p fs-14">Rp {{ subtotal | numberFormat }}</td>
+                        <tr height="40">
+                            <td class="font-p fs-14 align-middle">Subtotal</td>
+                            <td class="text-end font-p fs-14 align-middle">Rp {{ subtotal | numberFormat }}</td>
                         </tr>
-                        <tr height="60" class="pb-3">
-                            <td class="font-p fs-14">Biaya Pengiriman</td>
-                            <td class="text-end font-p fs-14">Rp. 0</td>
+                        <tr height="50">
+                            <td class="font-p fs-14">Voucher</td>
+                            <td class="text-end font-p fs-14">-Rp {{ '2000' | numberFormat }}</td>
                         </tr>
                         <tr height="60" class="border-top">
                             <td class="fs-6 font-p fw-semibold">Grandtotal</td>
@@ -170,6 +183,11 @@
 	</div>
 	<div class="offcanvas-body px-3">
         <div class="container-fluid">
+            <div class="row mb-3">
+                <div class="col">
+                    <input type="text" class="form-control font-m fs-14" placeholder="Masukkan kode voucher...">
+                </div>
+            </div>
             <div class="list">
                 <div class="list-item border rounded-4 py-3 mb-3">
                     <div class="container-fluid px-3">
@@ -227,6 +245,61 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</ng-template>
+
+<ng-template #modalPengiriman let-offcanvas>
+	<div class="offcanvas-header px-3">
+		<h4 class="offcanvas-title" id="offcanvas-basic-title">Pengiriman</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+	</div>
+	<div class="offcanvas-body px-3">
+        <div class="container-fluid">
+            <div class="list">
+                <div class="list-item border rounded-4 p-3 mb-3">
+                    <a href="javascript:void(0);">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="font-p">
+                                <p class="fw-semibold fs-14 mb-1">JNE</p>
+                                <p class="mb-0 fs-12">Estimasi tiba 27 - 30 Jun</p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="font-p fw-semibold fs-14">Rp50.000</span> 
+                                <i class="bx bx-check bx-sm text-primary"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="list-item border rounded-4 p-3 mb-3">
+                    <a href="javascript:void(0);">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="font-p">
+                                <p class="fw-semibold fs-14 mb-1">JNT</p>
+                                <p class="mb-0 fs-12">Estimasi tiba 27 - 30 Jun</p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="font-p fw-semibold fs-14">Rp25.000</span> 
+                                <i class="bx bx-check bx-sm text-primary" *ngIf="false"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="list-item border rounded-4 p-3 mb-3">
+                    <a href="javascript:void(0);">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="font-p">
+                                <p class="fw-semibold fs-14 mb-1">Ninja Express</p>
+                                <p class="mb-0 fs-12">Estimasi tiba 27 - 30 Jun</p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="font-p fw-semibold fs-14">Rp30.000</span> 
+                                <i class="bx bx-check bx-sm text-primary" *ngIf="false"></i>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
