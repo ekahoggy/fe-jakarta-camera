@@ -101,23 +101,23 @@ export class HomeComponent implements OnInit {
       breakpoints: {
         100: {
           slidesPerView: 2,
-          spaceBetween: 10,
+          spaceBetween: 15,
         },
         480: {
           slidesPerView: 3,
-          spaceBetween: 10,
+          spaceBetween: 15,
         },
         768: {
           slidesPerView: 2,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
         1024: {
           slidesPerView: 4,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
         1400: {
           slidesPerView: 5,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
       },
     }
@@ -126,30 +126,30 @@ export class HomeComponent implements OnInit {
   configFaturedProduct() {
     this.configFeatured = {
       slidesPerView: 6,
-      spaceBetween: 20,
+      spaceBetween: 15,
       navigation: true,
       pagination: false,
       scrollbar: { draggable: true },
       breakpoints: {
         100: {
           slidesPerView: 2,
-          spaceBetween: 10,
+          spaceBetween: 15,
         },
         480: {
           slidesPerView: 2,
-          spaceBetween: 10,
+          spaceBetween: 15,
         },
         768: {
           slidesPerView: 4,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
         1024: {
           slidesPerView: 5,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
         1400: {
           slidesPerView: 6,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
       },
     }
@@ -165,23 +165,23 @@ export class HomeComponent implements OnInit {
       breakpoints: {
         100: {
           slidesPerView: 2,
-          spaceBetween: 10,
+          spaceBetween: 15,
         },
         480: {
           slidesPerView: 3,
-          spaceBetween: 10,
+          spaceBetween: 15,
         },
         768: {
           slidesPerView: 4,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
         1024: {
           slidesPerView: 5,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
         1400: {
           slidesPerView: 6,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
       },
     }

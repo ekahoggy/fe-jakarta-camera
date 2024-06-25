@@ -37,7 +37,9 @@
             <div class="col-9">
                 <ng-container *ngIf="listNews.length > 0">
                     <div class="list-news mb-4" *ngFor="let item of listNews; index as i">
-                        <img [src]="item.image" class="img-thumbnail w-100" width="200" height="">
+                        <div class="wrap-image">
+                            <img [src]="item.image" class="img-thumbnail object-fit-cover" width="200" height="">
+                        </div>
                         <div class="row mt-3">
                             <div class="col-1">
                                 <div class="border fs-4 font-p text-center py-1">
@@ -50,8 +52,7 @@
                             <div class="col-11">
                                 <h1 class="fw-semibold fs-4 font-p">{{ item.judul }}</h1>
                                 <div [innerHTML]="item.content | limitSentences:3"></div>
-                                <div
-                                    class="py-4 mt-5 border-top border-bottom d-flex justify-content-between align-items-center text-grey px-2">
+                                <div class="py-4 mt-5 border-top border-bottom d-flex justify-content-between align-items-center text-grey px-2">
                                     <div class="font-p fs-14">
                                         <i class='bx bx-calendar fs-6 me-1'></i> <span class="me-3">{{ item.created_at | date:'MMMM dd, YYY' }}</span>
                                         <i class="bx bxs-user fs-6 me-1"></i> <span>{{ item.pembuat }}</span>

@@ -64,20 +64,20 @@
     transform: scale(1.1);
 }
 
-::ng-deep .carousel-control-prev-icon {
+::ng-deep #banner-carousel-modal .carousel-control-prev-icon {
     background-color: black;
     padding: 0.5rem;
 }
 
-::ng-deep .carousel-control-next-icon {
+::ng-deep #banner-carousel-modal .carousel-control-next-icon {
     background-color: black;
     padding: 0.5rem;
 }
 
-::ng-deep .carousel-control-prev {
+::ng-deep #banner-carousel-modal .carousel-control-prev {
     width: 5%;
 }
-::ng-deep .carousel-control-next {
+::ng-deep #banner-carousel-modal .carousel-control-next {
     width: 5%;
 }
 

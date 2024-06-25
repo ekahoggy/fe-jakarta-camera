@@ -19,7 +19,6 @@ export class AppComponent extends MetaDataService implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.routes);
     this.updateTags('', '', '', '');
   }
 }
