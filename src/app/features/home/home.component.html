@@ -202,7 +202,7 @@
                 <i class='bx bxs-offer text-primary fs-5'></i>
             </div>
             <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
-                <ng-container *ngFor="let item of listProduct; index as i">
+                <ng-container *ngFor="let item of listProductPromo; index as i">
                     <ng-template swiperSlide>
                         <div class="wrap-item mb-5 rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                             <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
@@ -212,12 +212,11 @@
                                 <div class="detail p-2 p-lg-3">
                                     <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
                                     <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
-                                    <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp
-                                        50,000</span>
+                                    <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp {{ item.harga | numberFormat }}</span>
                                     <span>
-                                        <i class='bx bxs-bolt'></i>-12%
+                                        <i class='bx bxs-bolt'></i>{{ item.persen }}%
                                     </span>
-                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga | numberFormat }}</p>
+                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo | numberFormat }}</p>
                                 </div>
                             </a>
                         </div>

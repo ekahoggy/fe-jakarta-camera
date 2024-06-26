@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   configFlash: SwiperOptions = {};
   listSlider: any = [];
   listProduct: any = [];
+  listProductPromo: any = [];
+  listProductFlashsale: any = [];
   listCategory: any = [];
   statusPopup: boolean = true;
   listNews: any = [];
@@ -45,6 +47,7 @@ export class HomeComponent implements OnInit {
     this.getSlider();
     this.getCategories();
     this.getProduct();
+    this.getProductPromo();
     this.configSlider();
     this.configFaturedProduct();
     this.configSwiperBrand();
@@ -233,6 +236,14 @@ export class HomeComponent implements OnInit {
     this.loading.product = true;
     this.globalService.DataGet('/public/produk').subscribe((res: any) => {
       this.listProduct = res.data.list;
+      this.loading.product = false;
+    })
+  }
+
+  getProductPromo() {
+    this.loading.product = true;
+    this.globalService.DataGet('/public/produkPromo').subscribe((res: any) => {
+      this.listProductPromo = res.data;
       this.loading.product = false;
     })
   }
