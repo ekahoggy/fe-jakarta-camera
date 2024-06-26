@@ -54,6 +54,6 @@ export class DetailsComponent implements OnInit {
   }
 
   openModalSubscribe(modal: TemplateRef<any>) {
-    this.modalService.open(modal, { size: 'xl', backdrop: 'static' });
+    this.modalService.open(modal, { size: 'md', backdrop: 'static' });
   }
 }

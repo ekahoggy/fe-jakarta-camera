@@ -1,0 +1,20 @@
+.konten {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.pembayaran {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+::ng-deep .offcanvas.offcanvas-bottom {
+    height: 70vh;
+}
+
+::ng-deep .offcanvas {
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
