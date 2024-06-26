@@ -334,7 +334,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-xl-4 mb-3" *ngFor="let item of listNews; index as i;">
-                    <a href="/news/{{item.slug}}">
+                    <a href="javascript:void(0)" (click)="clickViewsNews(item)">
                         <div class="d-flex align-items-center justify-content-start" *ngIf="9 > i">
                             <img [src]="item.image" class="object-fit-cover rounded-1" width="100" height="100"
                                 alt="news-1" />

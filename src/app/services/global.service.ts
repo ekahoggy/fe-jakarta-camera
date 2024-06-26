@@ -113,4 +113,10 @@ export class GlobalService {
 	isObject(variable: any) {
 		return typeof variable === 'object' && variable !== null;
 	}
+
+  clickToViewsNews(item){
+    this.DataPost(`/public/news/view/`+item.id).subscribe((res: any) => {
+      this.router.navigate([`/news/`+item.slug]);
+    })
+  }
 }

@@ -256,6 +256,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  clickViewsNews(item){
+    this.globalService.clickToViewsNews(item);
+  }
+
   closePopup() {
     this.statusPopup = false;
   }
