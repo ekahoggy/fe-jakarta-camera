@@ -256,6 +256,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  clickProduk(item){
+    this.router.navigate([`/katalog/detail/`+item.slug]);
+    this.globalService.productToLocalStorage(item);
+  }
+
   clickViewsNews(item){
     this.globalService.clickToViewsNews(item);
   }

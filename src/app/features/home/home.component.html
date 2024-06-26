@@ -111,8 +111,9 @@
             <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFlash">
                 <ng-container *ngFor="let item of listProduct; index as i">
                     <ng-template swiperSlide>
-                        <div class="wrap-item mb-5 rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
-                            <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+                        <div class="wrap-item mb-5 rounded-3" data-aos="fade-right" data-aos-offset="300"
+                            data-aos-duration="1000">
+                            <a href="javascript:void(0)" (click)="clickProduk(item)">
                                 <div class="position-relative overflow-hidden wrap-image rounded-top-3 border-bottom">
                                     <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3"
                                         alt="Random second slide" />
@@ -204,19 +205,23 @@
             <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFeatured">
                 <ng-container *ngFor="let item of listProductPromo; index as i">
                     <ng-template swiperSlide>
-                        <div class="wrap-item mb-5 rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
-                            <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+                        <div class="wrap-item mb-5 rounded-3" data-aos="fade-right" data-aos-offset="300"
+                            data-aos-duration="1000">
+                            <a href="javascript:void(0)" (click)="clickProduk(item)">
                                 <div class="position-relative wrap-image rounded-top-3">
-                                    <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
+                                    <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3"
+                                        alt="Random second slide" />
                                 </div>
                                 <div class="detail p-2 p-lg-3">
                                     <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
                                     <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
-                                    <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp {{ item.harga | numberFormat }}</span>
+                                    <span class="text-decoration-line-through fs-14"
+                                        style="color: rgb(175, 175, 175);">Rp {{ item.harga | numberFormat }}</span>
                                     <span>
                                         <i class='bx bxs-bolt'></i>{{ item.persen }}%
                                     </span>
-                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo | numberFormat }}</p>
+                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo | numberFormat }}
+                                    </p>
                                 </div>
                             </a>
                         </div>
@@ -245,7 +250,7 @@
                     <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3 px-2">
                         <div class="wrap-item rounded-3" data-aos="fade-right" data-aos-offset="300"
                             data-aos-duration="1000">
-                            <a href="javascript:void(0)" routerLink="/katalog/detail/{{ item.slug }}">
+                            <a href="javascript:void(0)" (click)="clickProduk(item)">
                                 <div class="position-relative wrap-image rounded-top-3">
                                     <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3"
                                         alt="Random second slide" />
@@ -346,217 +351,9 @@
                         </div>
                     </a>
                 </div>
-                <!-- <div class="col-lg-6 col-xl-4 mb-3">
-                    <div class="row">
-                        <div class="col-12 mb-3 px-1 px-lg-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg"
-                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                                <div class="detail p-2 p-lg-3">
-                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog
-                                        populer yang perlu
-                                        kalian coba </h3>
-                                    <small class="text-grey">December 06, 2016</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3 px-1 px-lg-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg"
-                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                                <div class="detail p-2 p-lg-3">
-                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto
-                                        Digital dan Pas Foto
-                                        Jakarta Barat </h3>
-                                    <small class="text-grey">December 06, 2016</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3 px-1 px-lg-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg"
-                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                                <div class="detail p-2 p-lg-3">
-                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic
-                                        Mini, Drone Terkecil
-                                        dan Teringan Dari DJI </h3>
-                                    <small class="text-grey">December 11, 2019</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-4 mb-3">
-                    <div class="row">
-                        <div class="col-12 mb-3 px-1 px-lg-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg"
-                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                                <div class="detail p-2 p-lg-3">
-                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog
-                                        populer yang perlu
-                                        kalian coba </h3>
-                                    <small class="text-grey">December 06, 2016</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3 px-1 px-lg-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg"
-                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                                <div class="detail p-2 p-lg-3">
-                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto
-                                        Digital dan Pas Foto
-                                        Jakarta Barat </h3>
-                                    <small class="text-grey">December 06, 2016</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3 px-1 px-lg-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg"
-                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                                <div class="detail p-2 p-lg-3">
-                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic
-                                        Mini, Drone Terkecil
-                                        dan Teringan Dari DJI </h3>
-                                    <small class="text-grey">December 11, 2019</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-4 mb-3">
-                    <div class="row">
-                        <div class="col-12 mb-3 px-1 px-lg-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="https://jakartacamera.com/wp-content/uploads/2021/02/135539589_206619544497817_5451536832784279782_n1.jpg"
-                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                                <div class="detail p-2 p-lg-3">
-                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> 7 jenis vlog
-                                        populer yang perlu
-                                        kalian coba </h3>
-                                    <small class="text-grey">Februari 08, 2021</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3 px-1 px-lg-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="https://jakartacamera.com/wp-content/uploads/2020/02/3-e1611044321135.jpg"
-                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                                <div class="detail p-2 p-lg-3">
-                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> Cetak Foto
-                                        Digital dan Pas Foto
-                                        Jakarta Barat </h3>
-                                    <small class="text-grey">Februari 10, 2020</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3 px-1 px-lg-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="https://jakartacamera.com/wp-content/uploads/2019/11/images-5-1-e1611044466244.jpg"
-                                    class="object-fit-cover rounded-1" width="100" height="100" alt="news-1" />
-                                <div class="detail p-2 p-lg-3">
-                                    <h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 10px"> DJI Mavic
-                                        Mini, Drone Terkecil
-                                        dan Teringan Dari DJI </h3>
-                                    <small class="text-grey">November 12, 2019</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
-
-    <!-- <section class="product-filter py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-xl-4 mb-3">
-					<h3 class="fw-bold fs-6 mb-4">TOP RATED PRODUCT</h3>
-					<div class="row">
-						<ng-container *ngFor="let item of listProduct; index as i">
-							<div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
-								<div class="d-flex align-items-center justify-content-start">
-									<img src="https://source.unsplash.com/random/140x140?camera={{i}}"
-										class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
-									<div class="detail p-2 p-lg-3">
-										<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}
-										</h3>
-										<div class="rating">
-											<span class="iconify text-warning" data-icon="uis:star"></span>
-											<span class="iconify text-warning" data-icon="uis:star"></span>
-											<span class="iconify text-black-50" data-icon="uis:star"></span>
-											<span class="iconify text-black-50" data-icon="uis:star"></span>
-											<span class="iconify text-black-50" data-icon="uis:star"></span>
-										</div>
-										<span
-											class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
-										<span class="price font-p fw-semibold fs-14">Rp{{ item.harga | numberFormat }}</span>
-									</div>
-								</div>
-							</div>
-						</ng-container>
-					</div>
-				</div>
-				<div class="col-lg-6 col-xl-4 mb-3">
-					<h3 class="fw-bold fs-6 mb-4">BEST SELLING PRODUCTS</h3>
-					<div class="row">
-						<ng-container *ngFor="let item of listProduct; index as i">
-							<div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
-								<div class="d-flex align-items-center justify-content-start">
-									<img src="https://source.unsplash.com/random/140x140?camera={{i + 10}}"
-										class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
-									<div class="detail p-2 p-lg-3">
-										<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}
-										</h3>
-										<div class="rating">
-											<span class="iconify text-warning" data-icon="uis:star"></span>
-											<span class="iconify text-warning" data-icon="uis:star"></span>
-											<span class="iconify text-black-50" data-icon="uis:star"></span>
-											<span class="iconify text-black-50" data-icon="uis:star"></span>
-											<span class="iconify text-black-50" data-icon="uis:star"></span>
-										</div>
-										<span
-											class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
-										<span class="price font-p fw-semibold fs-14">Rp{{ item.harga | numberFormat }}</span>
-									</div>
-								</div>
-							</div>
-						</ng-container>
-					</div>
-				</div>
-				<div class="col-lg-6 col-xl-4 mb-3">
-					<h3 class="fw-bold fs-6 mb-4">LATEST PRODUCTS</h3>
-					<div class="row">
-						<ng-container *ngFor="let item of listProduct; index as i">
-							<div class="col-12 mb-3 px-1 px-lg-3" *ngIf="i < 3">
-								<div class="d-flex align-items-center justify-content-start">
-									<img src="https://source.unsplash.com/random/140x140?camera={{i + 20}}"
-										class="object-fit-cover" width="140" height="140" alt="{{ item.slug }}" />
-									<div class="detail p-2 p-lg-3">
-										<h3 class="product-name fs-6 mb-0 fw-normal" style="font-size: 12px">{{ item.nama }}
-										</h3>
-										<div class="rating">
-											<span class="iconify text-warning" data-icon="uis:star"></span>
-											<span class="iconify text-warning" data-icon="uis:star"></span>
-											<span class="iconify text-black-50" data-icon="uis:star"></span>
-											<span class="iconify text-black-50" data-icon="uis:star"></span>
-											<span class="iconify text-black-50" data-icon="uis:star"></span>
-										</div>
-										<span
-											class="price-coret text-grey font-p text-decoration-line-through fw-semibold me-2 fs-14">Rp100.000</span>
-										<span class="price font-p fw-semibold fs-14">Rp{{ item.harga | numberFormat }}</span>
-									</div>
-								</div>
-							</div>
-						</ng-container>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
 
     <div id="popup" *ngIf="aktifPopup" [ngClass]="statusPopup ? 'popup' : 'popup popup-close'">
         <div class="popup-content">

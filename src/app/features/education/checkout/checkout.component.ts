@@ -10,17 +10,17 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class CheckoutComponent implements OnInit {
 
-    constructor(
-        private globalService: GlobalService,
-        private router: Router,
-        private offcanvasService: NgbOffcanvas,
-    ) { }
-    
-    ngOnInit(): void {
-        
-    }
+  constructor(
+    private globalService: GlobalService,
+    private router: Router,
+    private offcanvasService: NgbOffcanvas,
+  ) { }
 
-    openVoucher(content: TemplateRef<any>) {
-		this.offcanvasService.open(content, { position: 'bottom' });
-	}
+  ngOnInit(): void {
+
+  }
+
+  openVoucher(content: TemplateRef<any>) {
+    this.offcanvasService.open(content, { position: 'bottom' });
+  }
 }

@@ -1,62 +1,71 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
-    selector: 'app-details',
-    templateUrl: './details.component.html',
-    styleUrls: ['./details.component.scss']
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-    model: any = [];
-    detail: any = [];
-    listCategory: any = [];
-    urlSafe: any;
-    loadingPage: boolean = true;
-    play: boolean = false;
-    activeTab: string = 'deskripsi';
+  model: any = [];
+  detail: any = [];
+  listCategory: any = [];
+  introVideo: any;
+  loadingPage: boolean = true;
+  play: boolean = false;
+  activeTab: string = 'deskripsi';
+  dataDetailClick: any = {
+    title: '',
+    url_video: '',
+  };
 
-    constructor(
-        private globalService: GlobalService,
-        private route: ActivatedRoute,
-        private modalService: NgbModal,
-        public sanitizer: DomSanitizer,
-    ) { }
+  constructor(
+    private globalService: GlobalService,
+    private route: ActivatedRoute,
+    private modalService: NgbModal,
+    public sanitizer: DomSanitizer,
+  ) { }
 
-    ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            const slug = params['slug'];
-            this.getDataBySlug(slug);
-        });
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const slug = params['slug'];
+      this.getDataBySlug(slug);
+    });
+  }
+
+  getDataBySlug(slug) {
+    this.loadingPage = true;
+    this.globalService.DataGet(`/public/edukasi/${slug}`).subscribe((res: any) => {
+      this.model = res.data;
+      this.detail = res.detail;
+      this.introVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.model.mainVideo);
+    })
+  }
+
+  clickVideo(item) {
+    this.dataDetailClick.title = item.title;
+    this.dataDetailClick.url_video = this.sanitizer.bypassSecurityTrustResourceUrl(item.url_video);;
+  }
+
+  openModal(modal: TemplateRef<any>, item) {
+    if (item.is_lock === 1) {
+      this.alertSubscribe()
     }
-
-    getDataBySlug(slug) {
-        this.loadingPage = true;
-        this.globalService.DataGet(`/public/edukasi/${slug}`).subscribe((res: any) => {
-            this.model = res.data;
-            this.detail = res.detail;
-            this.urlSafe = this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/sVNFrxLW2pA");
-        })
+    else {
+      this.clickVideo(item);
+      this.modalService.open(modal, { size: 'xl', backdrop: 'static' });
     }
-
-    openModal(modal: TemplateRef<any>, is_lock) {
-        if (is_lock === 1) {
-            this.alertSubscribe()
-        }
-        else {
-            this.modalService.open(modal, { size: 'xl', backdrop: 'static' });
-            this.urlSafe = this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/sVNFrxLW2pA");
-        }
-    }
+  }
 
 
-    alertSubscribe() {
-        this.globalService.alertQuestion("Anda belum berlangganan", "Untuk mengakses konten edukasi ini, Anda harus berlangganan terlebih dahulu.", 3000);
-    }
+  alertSubscribe() {
+    this.globalService.alertQuestion("Anda belum berlangganan", "Untuk mengakses konten edukasi ini, Anda harus berlangganan terlebih dahulu.", 3000);
+  }
 
-    openModalSubscribe(modal: TemplateRef<any>) {
-        this.modalService.open(modal, { size: 'md', backdrop: 'static' });
-    }
+  openModalSubscribe(modal: TemplateRef<any>) {
+    this.modalService.open(modal, { size: 'md', backdrop: 'static' });
+  }
 }
