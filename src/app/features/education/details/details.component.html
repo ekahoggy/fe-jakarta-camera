@@ -20,9 +20,29 @@
 
 <div class="container mt-4">
     <h1 class="fs-2 font-p fw-bolder">{{ model.judul }}</h1>
-    <div class="row mt-5 pb-5">
+    <div class="row mt-5 mb-4">
         <div class="col-8">
-            <img src="https://miro.medium.com/v2/resize:fit:1011/1*CiC4C7bodsoTkLq_ap2SHg.png" class="object-fit-cover rounded-4 w-100 h-auto" width="280" height="200" alt="Random second slide" />
+            <div class="position-relative" *ngIf="!play">
+                <img src="https://miro.medium.com/v2/resize:fit:1011/1*CiC4C7bodsoTkLq_ap2SHg.png" class="object-fit-cover rounded-4 w-100 h-auto opacity-75" style="aspect-ratio: 5/2.7;" width="280" height="200" alt="Random second slide" />
+                <button class="btn btn-primary rounded-circle position-absolute top-50 start-50 translate-middle" style="width: 70px; height: 70px;" (click)="play=true">
+                    <i class='bx bx-play bx-lg'></i>
+                </button>
+            </div>
+            <div class="video" *ngIf="!!play">
+                <iframe [src]="urlSafe" frameborder="0" class="w-100 h-auto rounded-4" style="aspect-ratio: 5/2.7;"></iframe>
+            </div>
+            <div class="detail p-3">
+                <div class="harga">
+                    <span class="fs-2 font-p fw-bold me-2">Rp 150.000</span> <span class="font-p text-grey text-decoration-line-through">Rp 300.000</span>
+                </div>
+                <div class="rating mt-2 text-warning">
+                    <i class='bx bxs-star bx-sm'></i>
+                    <i class='bx bxs-star bx-sm'></i>
+                    <i class='bx bxs-star bx-sm'></i>
+                    <i class='bx bxs-star-half bx-sm'></i>
+                    <i class='bx bx-star bx-sm'></i>
+                </div>
+            </div>
         </div>
         <div class="col-4">
             <div class="bg-secondary rounded-top-4 p-4">
@@ -38,21 +58,74 @@
                     </a>
                 </div>
             </div>
-            <button class="btn btn-primary w-100 rounded-bottom-4 rounded-top-0 font-m py-3 fs-5 fw-semibold"
-                (click)="openModalSubscribe(modalSubscribe)">
+            <button class="btn btn-primary w-100 rounded-bottom-4 rounded-top-0 font-m py-3 fs-5 fw-semibold" (click)="openModalSubscribe(modalSubscribe)">
                 Berlangganan
             </button>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <button class="btn btn-primary fs-6 font-p rounded-5 px-4 py-2 me-3">Deskripsi</button>
-            <button class="btn btn-outline-primary fs-6 font-p rounded-5 px-4 py-2 me-3">Peralatan</button>
-            <button class="btn btn-outline-primary fs-6 font-p rounded-5 px-4 py-2 me-3">Ulasan</button>
+            <a class="btn fs-6 font-p rounded-5 px-4 py-2 me-3" [ngClass]="activeTab == 'deskripsi' ? 'btn-primary' : 'btn-outline-primary'" (click)="activeTab = 'deskripsi'">Deskripsi</a>
+            <a class="btn fs-6 font-p rounded-5 px-4 py-2 me-3" [ngClass]="activeTab == 'ulasan' ? 'btn-primary' : 'btn-outline-primary'" (click)="activeTab = 'ulasan'">Ulasan</a>
         </div>
+
         <div class="col-12 my-3 p-4">
-            <h2 class="fs-3 fw-bold font-m mb-4">Deskripsi</h2>
-            <div class="font-p fs-6" [innerHtml]="model.deskripsi">
+            <div class="desc mb-5" *ngIf="activeTab == 'deskripsi'">
+                <h2 class="fs-3 fw-bold font-m mb-4">Deskripsi</h2>
+                <div class="font-p fs-14 p-2" [innerHtml]="model.deskripsi"></div>
+            </div>
+            <div class="ulasan" *ngIf="activeTab == 'ulasan'">
+                <h2 class="fs-3 fw-bold font-m mb-4">Ulasan</h2>
+                <div class="reviews">
+                    <div class="row mb-3">
+                        <div class="col-2 col-xl-1">
+                            <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" class="object-fit-cover w-100" alt="">
+                        </div>
+                        <div class="col-10 col-xl-11 bg-body-tertiary rounded-end-4 rounded-bottom-4 py-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="detail">
+                                    <span class="fw-bold fs-6 font-m">Galih - </span> <span class="font-m fs-14">Galih on Jun 19, 2024</span>
+                                </div>
+                                <div class="rating text-warning">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star-half'></i>
+                                    <i class='bx bx-star'></i>
+                                </div>
+                            </div>
+                            <p class="mt-3 fs-14 font-m px-2">
+                                Saya ingin menyampaikan apresiasi saya yang tulus atas edukasi ini. Penulisannya sangat informatif dan detail, menunjukkan pemahaman mendalam terhadap topik yang dibahas. Setiap poin dijelaskan dengan
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-2 col-xl-1">
+                            <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" class="object-fit-cover w-100" alt="">
+                        </div>
+                        <div class="col-10 col-xl-11 bg-body-tertiary rounded-end-4 rounded-bottom-4 py-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="detail">
+                                    <span class="fw-bold fs-6 font-m">Hoggy - </span> <span class="font-m fs-14">Hoggy on Jun 19, 2024</span>
+                                </div>
+                                <div class="rating text-warning">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star-half'></i>
+                                </div>
+                            </div>
+                            <p class="mt-3 fs-14 font-m px-2">
+                                Konten edukasi yang disajikan sangat informatif dan bermanfaat. Setiap materi disusun dengan baik dan mudah dipahami, 
+                                membuat proses belajar menjadi lebih menyenangkan dan efektif. Penggunaan contoh-contoh nyata serta penjelasan yang 
+                                mendetail membantu memperjelas konsep-konsep yang disampaikan. Selain itu, kualitas produksi dan presentasi konten ini 
+                                juga patut diacungi jempol, sehingga mempermudah pemahaman dan meningkatkan minat belajar. Konten ini sangat direkomendasikan 
+                                bagi siapa saja yang ingin memperluas pengetahuan dan keterampilan mereka.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -66,8 +139,7 @@
             <a href="">
                 <div class="wrap-item h-100 rounded-4 overflow-hidden">
                     <div class="head-item overflow-hidden">
-                        <img src="https://miro.medium.com/v2/resize:fit:1011/1*CiC4C7bodsoTkLq_ap2SHg.png"
-                            class="object-fit-cover rounded-top-4" width="280" height="200" alt="Random second slide" />
+                        <img src="https://miro.medium.com/v2/resize:fit:1011/1*CiC4C7bodsoTkLq_ap2SHg.png" class="object-fit-cover rounded-top-4" width="280" height="200" alt="Random second slide" />
                     </div>
                     <div class="body-item p-3">
                         <p class="font-m fw-bold fs-6">Make Attractive UI Design with Simple Micro Interaction</p>
@@ -155,19 +227,16 @@
         <div class="container-fluid pb-4">
             <div class="row">
                 <div class="col-12">
-                    <iframe [src]="urlSafe" frameborder="0" class="w-100 h-auto rounded-4"
-                        style="aspect-ratio: 5/3;"></iframe>
+                    <iframe [src]="urlSafe" frameborder="0" class="w-100 h-auto rounded-4" style="aspect-ratio: 5/3;"></iframe>
                 </div>
                 <div class="col-12">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item py-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
-                                    <img src="https://img.youtube.com/vi/sVNFrxLW2pA/default.jpg" alt="sVNFrxLW2pA"
-                                        class="object-fit-cover rounded-3 me-2" width="80" height="50">
+                                    <img src="https://img.youtube.com/vi/sVNFrxLW2pA/default.jpg" alt="sVNFrxLW2pA" class="object-fit-cover rounded-3 me-2" width="80" height="50">
                                     <i class='bx bx-play-circle fs-4 me-2'></i>
-                                    <span class="font-p fs-14 fw-bold">Make Attractive UI Design with Simple Micro
-                                        Interaction</span>
+                                    <span class="font-p fs-14 fw-bold">Make Attractive UI Design with Simple Micro Interaction</span>
                                 </div>
                                 <span class="font-p fs-14">10:16</span>
                             </div>
@@ -175,8 +244,7 @@
                         <li class="list-group-item py-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
-                                    <img src="https://img.youtube.com/vi/ePRf2VrKuj8/default.jpg" alt="ePRf2VrKuj8"
-                                        class="object-fit-cover rounded-3 me-2" width="80" height="50">
+                                    <img src="https://img.youtube.com/vi/ePRf2VrKuj8/default.jpg" alt="ePRf2VrKuj8" class="object-fit-cover rounded-3 me-2" width="80" height="50">
                                     <span class="font-p fs-14">Belajar Laravel 11 / 1 Setup Laravel</span>
                                 </div>
                                 <span class="font-p fs-14">10:16</span>
