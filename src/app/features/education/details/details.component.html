@@ -23,7 +23,7 @@
   <div class="row mt-5 mb-4">
     <div class="col-8">
       <div class="position-relative" *ngIf="!play">
-        <img src="https://miro.medium.com/v2/resize:fit:1011/1*CiC4C7bodsoTkLq_ap2SHg.png"
+        <img [src]="model.url_gambar"
           class="object-fit-cover rounded-4 w-100 h-auto opacity-75" style="aspect-ratio: 5/2.7;" width="280"
           height="200" alt="Random second slide" />
         <button class="btn btn-primary rounded-circle position-absolute top-50 start-50 translate-middle"
@@ -63,7 +63,7 @@
         </div>
       </div>
       <button class="btn btn-primary w-100 rounded-bottom-4 rounded-top-0 font-m py-3 fs-5 fw-semibold"
-        (click)="openModalSubscribe(modalSubscribe)">
+        (click)="toSubscribe()">
         Berlangganan
       </button>
     </div>
@@ -74,6 +74,9 @@
         [ngClass]="activeTab == 'deskripsi' ? 'btn-primary' : 'btn-outline-primary'"
         (click)="activeTab = 'deskripsi'">Deskripsi</a>
       <a class="btn fs-6 font-p rounded-5 px-4 py-2 me-3"
+        [ngClass]="activeTab == 'peralatan' ? 'btn-primary' : 'btn-outline-primary'"
+        (click)="activeTab = 'peralatan'">Peralatan</a>
+      <a class="btn fs-6 font-p rounded-5 px-4 py-2 me-3"
         [ngClass]="activeTab == 'ulasan' ? 'btn-primary' : 'btn-outline-primary'"
         (click)="activeTab = 'ulasan'">Ulasan</a>
     </div>
@@ -82,6 +85,10 @@
       <div class="desc mb-5" *ngIf="activeTab == 'deskripsi'">
         <h2 class="fs-3 fw-bold font-m mb-4">Deskripsi</h2>
         <div class="font-p fs-14 p-2" [innerHtml]="model.deskripsi"></div>
+      </div>
+      <div class="desc mb-5" *ngIf="activeTab == 'peralatan'">
+        <h2 class="fs-3 fw-bold font-m mb-4">Peralatan</h2>
+        <div class="font-p fs-14 p-2" [innerHtml]="model.peralatan"></div>
       </div>
       <div class="ulasan" *ngIf="activeTab == 'ulasan'">
         <h2 class="fs-3 fw-bold font-m mb-4">Ulasan</h2>
@@ -249,21 +256,27 @@
     <div class="container-fluid pb-4">
       <div class="row">
         <div class="col-12">
-          <iframe [src]="dataDetailClick.url_video" frameborder="0" class="w-100 h-auto rounded-4" style="aspect-ratio: 5/3;"></iframe>
+          <iframe [src]="dataDetailClick.url_video" frameborder="0" class="w-100 h-auto rounded-4"
+            style="aspect-ratio: 16/9;"></iframe>
         </div>
         <div class="col-12">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item py-3" style="cursor: pointer;" *ngFor="let item of detail" (click)="clickVideo(item)">
+            <li class="list-group-item py-3" style="cursor: pointer;" *ngFor="let item of detail;index as i;"
+              (click)="clickVideo(item)">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
+                  <span>{{i + 1}}. </span> &nbsp;
                   <!--
                     <img src="https://img.youtube.com/vi/sVNFrxLW2pA/default.jpg" alt="sVNFrxLW2pA"
                       class="object-fit-cover rounded-3 me-2" width="80" height="50">
                   -->
-                  <i class='bx bx-play-circle fs-4 me-2' *ngIf="item.is_lock === 0"></i>
+
                   <span [ngClass]="item.is_lock === 0 ? 'font-p fs-14 fw-bold' : 'font-p fs-14'">{{ item.title }}</span>
                 </div>
-                <span class="font-p fs-14">-</span>
+                <span class="font-p fs-14">
+                  <i class='bx bx-play-circle fs-4 me-2' *ngIf="item.is_lock === 0"></i>
+                  <i class='bx bxs-lock fs-5 me-2' *ngIf="item.is_lock == 1"></i>
+                </span>
               </div>
             </li>
           </ul>

@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { DomSanitizer, Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
 
@@ -25,6 +25,7 @@ export class DetailsComponent implements OnInit {
   constructor(
     private globalService: GlobalService,
     private route: ActivatedRoute,
+    private router: Router,
     private modalService: NgbModal,
     public sanitizer: DomSanitizer,
   ) { }
@@ -46,8 +47,10 @@ export class DetailsComponent implements OnInit {
   }
 
   clickVideo(item) {
-    this.dataDetailClick.title = item.title;
-    this.dataDetailClick.url_video = this.sanitizer.bypassSecurityTrustResourceUrl(item.url_video);;
+    if(item.is_lock === 0){
+      this.dataDetailClick.title = item.title;
+      this.dataDetailClick.url_video = this.sanitizer.bypassSecurityTrustResourceUrl(item.url_video);;
+    }
   }
 
   openModal(modal: TemplateRef<any>, item) {
@@ -60,6 +63,9 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+  toSubscribe(){
+    this.router.navigate([`/education/checkout/`+this.model.slug]);
+  }
 
   alertSubscribe() {
     this.globalService.alertQuestion("Anda belum berlangganan", "Untuk mengakses konten edukasi ini, Anda harus berlangganan terlebih dahulu.", 3000);

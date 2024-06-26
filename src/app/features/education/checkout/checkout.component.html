@@ -1,173 +1,175 @@
 <section class="breadcrumb mt-lg-4 mb-3">
-    <div class="container">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb fs-14">
-                <li class="breadcrumb-item">
-                    <a href="/home">
-                        <i class="bx bx-home me-1"></i> Beranda
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="/education">Edukasi</a>
-                </li>
-                <li class="breadcrumb-item active fw-semibold">
-                    <a href="/checkout">Checkout</a>
-                </li>
-            </ol>
-        </nav>
-    </div>
+  <div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb fs-14">
+        <li class="breadcrumb-item">
+          <a href="/home">
+            <i class="bx bx-home me-1"></i> Beranda
+          </a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="/education">Edukasi</a>
+        </li>
+        <li class="breadcrumb-item active fw-semibold">
+          <a href="/checkout">Checkout</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
 </section>
 
 <div class="container mb-5 pb-lg-5">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h1 class="fs-2 fontp-p fw-bold mb-3">Checkout Edukasi</h1>
-            <h2 class="fs-6 font-m">Daftar di kelas Premium kami <br> dan mulai membangun proyek nyata.</h2>
-        </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="fs-2 fontp-p fw-bold mb-3">Checkout Edukasi</h1>
+      <h2 class="fs-6 font-m">Daftar di kelas Premium kami <br> dan mulai membangun proyek nyata.</h2>
     </div>
-    <div class="row mt-5">
-        <div class="col-5">
-            <div class="konten p-3 p-lg-4 rounded-4">
-                <img src="https://miro.medium.com/v2/resize:fit:1011/1*CiC4C7bodsoTkLq_ap2SHg.png" class="object-fit-cover rounded-4 w-100 h-auto" width="280" height="200" alt="Random second slide" />
-                <div class="deskripsi p-2 mt-2">
-                    <p class="font-p fw-bold fs-5 mb-0">Ada Bercak Coklat di Wajah Seperti Ini. Kenali Munculnya Freckles</p>
-                </div>
-            </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-5">
+      <div class="konten p-3 p-lg-4 rounded-4">
+        <img [src]="model.url_gambar"
+          class="object-fit-cover rounded-4 w-100 h-auto" width="280" height="200" alt="Random second slide" />
+        <div class="deskripsi p-2 mt-2">
+          <p class="font-p fw-bold fs-5 mb-0">{{ model.judul }}</p>
         </div>
-        <div class="col-7">
-            <div class="pembayaran p-3 p-lg-5 rounded-4">
-                <h3 class="fs-5 fw-bold font-p mb-3 text-center">Pembayaran</h3>
-                <div class="mb-4">
-                    <label class="fs-6 fw-bold font-p text-primary mb-2">Kode Promo</label>
-                    <button class="btn btn-secondary w-100 rounded-2 text-primary" (click)="openVoucher(modalVoucher)">
-                        <div class="d-flex align-items-center">
-                            <i class="bx bxs-coupon bx-md me-2"></i> 
-                            <span class="font-p fw-semibold">Masukkan kode voucher</span>
-                        </div>
-                    </button>
-                </div>
-                <div class="mb-3">
-                    <label class="fs-6 fw-bold font-p text-primary mb-3">Detail Pembayaran</label>
-                    <div class="row mb-3">
-                        <div class="col-6 text-start">
-                            <span class="font-m">Harga normal</span>
-                        </div>
-                        <div class="col-6 text-end">
-                            <span class="font-m">Rp 100.000</span>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-6 text-start">
-                            <span class="font-m">Harga diskon</span>
-                        </div>
-                        <div class="col-6 text-end">
-                            <span class="font-m">Rp 90.000</span>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-6 text-start">
-                            <span class="font-m">Promo</span>
-                        </div>
-                        <div class="col-6 text-end">
-                            <span class="font-m">Rp 2.000</span>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-6 text-start">
-                            <span class="font-m fw-bold">Total Transfer</span>
-                        </div>
-                        <div class="col-6 text-end">
-                            <span class="font-m fw-bolder">Rp 88.000</span>
-                        </div>
-                    </div>
-                    <div class="mb-3 mt-4 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label font-m" for="exampleCheck1">Saya setuju dengan <a href="" class="fw-bolder">Terms & Conditions</a></label>
-                    </div>
-                    <button class="btn btn-primary w-100 font-p fw-semibold rounded-5 py-2">
-                        Bayar
-                    </button>
-                </div>
- 
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-7">
+      <div class="pembayaran p-3 p-lg-5 rounded-4">
+        <h3 class="fs-5 fw-bold font-p mb-3 text-center">Pembayaran</h3>
+        <div class="mb-4">
+          <label class="fs-6 fw-bold font-p text-primary mb-2">Kode Promo</label>
+          <button class="btn btn-secondary w-100 rounded-2 text-primary" (click)="openVoucher(modalVoucher)">
+            <div class="d-flex align-items-center">
+              <i class="bx bxs-coupon bx-md me-2"></i>
+              <span class="font-p fw-semibold">Masukkan kode voucher</span>
+            </div>
+          </button>
+        </div>
+        <div class="mb-3">
+          <label class="fs-6 fw-bold font-p text-primary mb-3">Detail Pembayaran</label>
+          <div class="row mb-3">
+            <div class="col-6 text-start">
+              <span class="font-m">Harga normal</span>
+            </div>
+            <div class="col-6 text-end">
+              <span class="font-m">Rp {{ detailCheckout.harga | numberFormat }}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6 text-start">
+              <span class="font-m">Harga diskon</span>
+            </div>
+            <div class="col-6 text-end">
+              <span class="font-m">Rp {{ detailCheckout.promo | numberFormat }}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6 text-start">
+              <span class="font-m">Voucher</span>
+            </div>
+            <div class="col-6 text-end">
+              <span class="font-m">Rp {{ detailCheckout.voucher | numberFormat }}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6 text-start">
+              <span class="font-m fw-bold">Total Transfer</span>
+            </div>
+            <div class="col-6 text-end">
+              <span class="font-m fw-bolder">Rp {{ detailCheckout.total | numberFormat }}</span>
+            </div>
+          </div>
+          <div class="mb-3 mt-4 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="approveSNK">
+            <label class="form-check-label font-m" for="exampleCheck1">Saya setuju dengan <a href=""
+                class="fw-bolder">Terms & Conditions</a></label>
+          </div>
+          <button class="btn btn-primary w-100 font-p fw-semibold rounded-5 py-2" [disabled]="!approveSNK">
+            Bayar
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 
 <app-foot-menu class="d-block d-lg-none"></app-foot-menu>
 <app-footer class="d-none d-lg-block"></app-footer>
 
 <ng-template #modalVoucher let-offcanvas>
-	<div class="offcanvas-header px-3">
-		<h4 class="offcanvas-title" id="offcanvas-basic-title">Voucher</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-	</div>
-	<div class="offcanvas-body px-3">
-        <div class="container-fluid">
-            <div class="row mb-3">
-                <div class="col">
-                    <input type="text" class="form-control font-m fs-14" placeholder="Masukkan kode voucher...">
-                </div>
-            </div>
-            <div class="list">
-                <div class="list-item border rounded-4 py-3 mb-3">
-                    <div class="container-fluid px-3">
-                        <div class="row">
-                            <div class="col-2 d-flex justify-content-center align-items-center">
-                                <i class='bx bxs-discount bx-lg text-primary'></i>
-                            </div>
-                            <div class="col-8 font-m">
-                                <p class="mb-1">Gratis Ongkir</p> 
-                                <p class="mb-1 fs-14 text-primary fw-semibold">Potongan 80%</p> 
-                                <p class="mb-1 fs-12">Berlaku hingga 30 Juni 2024 <span class="text-success font-p">S&K</span></p> 
-                            </div>
-                            <div class="col-2 d-flex justify-content-center align-items-center">
-                                <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase">
-                                    Gunakan
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-item border rounded-4 py-3 mb-3">
-                    <div class="container-fluid px-3">
-                        <div class="row">
-                            <div class="col-2 d-flex justify-content-center align-items-center">
-                                <i class='bx bxs-coupon bx-lg text-grey'></i>
-                            </div>
-                            <div class="col-8 font-m">
-                                <p class="mb-1">Voucher Pembelian</p> 
-                                <p class="mb-1 fs-14 text-primary fw-semibold">Potongan 50%</p> 
-                                <p class="mb-1 fs-12">Berlaku hingga 30 Juni 2024 <span class="text-success font-p">S&K</span></p> 
-                            </div>
-                            <div class="col-2 d-flex justify-content-center align-items-center">
-                                <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase">
-                                    Gunakan
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-item border rounded-4 py-3 mb-3">
-                    <div class="container-fluid px-3">
-                        <div class="row">
-                            <div class="col-2 d-flex justify-content-center align-items-center">
-                                <i class='bx bxs-coupon bx-lg text-grey'></i>
-                            </div>
-                            <div class="col-8 font-m">
-                                <p class="mb-1">Voucher Romadhoni</p> 
-                                <p class="mb-1 fs-14 text-primary fw-semibold">Potongan 80%</p> 
-                                <p class="mb-1 fs-12">Berlaku hingga 30 Juni 2024 <span class="text-success font-p">S&K</span></p> 
-                            </div>
-                            <div class="col-2 d-flex justify-content-center align-items-center">
-                                <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase">
-                                    Gunakan
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="offcanvas-header px-3">
+    <h4 class="offcanvas-title" id="offcanvas-basic-title">Voucher</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+  </div>
+  <div class="offcanvas-body px-3">
+    <div class="container-fluid">
+      <div class="row mb-3">
+        <div class="col">
+          <input type="text" class="form-control font-m fs-14" placeholder="Masukkan kode voucher...">
         </div>
-	</div>
+      </div>
+      <div class="list">
+        <div class="list-item border rounded-4 py-3 mb-3">
+          <div class="container-fluid px-3">
+            <div class="row">
+              <div class="col-2 d-flex justify-content-center align-items-center">
+                <i class='bx bxs-discount bx-lg text-primary'></i>
+              </div>
+              <div class="col-8 font-m">
+                <p class="mb-1">Gratis Ongkir</p>
+                <p class="mb-1 fs-14 text-primary fw-semibold">Potongan 80%</p>
+                <p class="mb-1 fs-12">Berlaku hingga 30 Juni 2024 <span class="text-success font-p">S&K</span></p>
+              </div>
+              <div class="col-2 d-flex justify-content-center align-items-center">
+                <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase">
+                  Gunakan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list-item border rounded-4 py-3 mb-3">
+          <div class="container-fluid px-3">
+            <div class="row">
+              <div class="col-2 d-flex justify-content-center align-items-center">
+                <i class='bx bxs-coupon bx-lg text-grey'></i>
+              </div>
+              <div class="col-8 font-m">
+                <p class="mb-1">Voucher Pembelian</p>
+                <p class="mb-1 fs-14 text-primary fw-semibold">Potongan 50%</p>
+                <p class="mb-1 fs-12">Berlaku hingga 30 Juni 2024 <span class="text-success font-p">S&K</span></p>
+              </div>
+              <div class="col-2 d-flex justify-content-center align-items-center">
+                <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase">
+                  Gunakan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list-item border rounded-4 py-3 mb-3">
+          <div class="container-fluid px-3">
+            <div class="row">
+              <div class="col-2 d-flex justify-content-center align-items-center">
+                <i class='bx bxs-coupon bx-lg text-grey'></i>
+              </div>
+              <div class="col-8 font-m">
+                <p class="mb-1">Voucher Romadhoni</p>
+                <p class="mb-1 fs-14 text-primary fw-semibold">Potongan 80%</p>
+                <p class="mb-1 fs-12">Berlaku hingga 30 Juni 2024 <span class="text-success font-p">S&K</span></p>
+              </div>
+              <div class="col-2 d-flex justify-content-center align-items-center">
+                <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase">
+                  Gunakan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ng-template>

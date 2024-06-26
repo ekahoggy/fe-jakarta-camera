@@ -10,7 +10,7 @@ const routes: Routes = [
         component: ListComponent
     },
     {
-        path: 'checkout',
+        path: 'checkout/:slug',
         component: CheckoutComponent
     },
     {
