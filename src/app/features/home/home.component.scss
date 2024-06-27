@@ -17,6 +17,27 @@ a {
 }
 
 .category {
+    ::ng-deep .swiper-button-prev,
+    ::ng-deep .swiper-button-next {
+        top: 50%;
+    }
+
+    ::ng-deep .swiper-button-prev:after,
+    ::ng-deep .swiper-button-next:after {
+        font-size: 25px;
+        color: black;
+    }
+
+    ::ng-deep .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+        right: 0px;
+    }
+
+    ::ng-deep .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+        left: 0px;
+    }
+
     .wrap-category {
         background-color: #FAFAFA;
         width: 100%;

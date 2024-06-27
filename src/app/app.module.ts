@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { CountdownModule } from 'ngx-countdown';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
     HttpClientModule,
     CountdownModule,
     SweetAlert2Module.forRoot(),
-    RecaptchaModule
+    RecaptchaModule,
+    LeafletModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
