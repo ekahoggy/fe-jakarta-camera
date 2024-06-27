@@ -38,6 +38,10 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  getVoucher(){
+
+  }
+
   hitungCheckout(){
     this.detailCheckout.harga = this.model.harga
     this.detailCheckout.promo = 0;
