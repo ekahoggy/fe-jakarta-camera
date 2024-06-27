@@ -4,8 +4,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { NumberFormatPipe } from './number-format/number-format.pipe';
 import { LimitSentencesPipe } from './limit-sentences/limit-sentences.pipe';
 import { MapComponent } from './map/map.component';
-
-
+import { GoogleMapsModule } from '@angular/google-maps';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,9 @@ import { MapComponent } from './map/map.component';
     MapComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    GoogleMapsModule,
+    LeafletModule,
   ],
   exports: [
     SpinnerComponent,
