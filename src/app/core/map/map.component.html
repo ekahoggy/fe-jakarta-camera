@@ -1,1 +1,9 @@
-<div id="map" style="height: 300px;"></div>
+<div class="mb-1 custom-padding">
+    <input #mapSearchField class="my-map-search-field form-control" type="text" *ngIf="search && !style" placeholder="Cari Alamat Kamu">
+    <input #mapSearchField class="my-map-search-field form-control newTextField" type="text" *ngIf="search && style" placeholder="Cari Alamat Kamu">
+</div>
+<div leaflet (leafletMapReady)="onMapReady($event)" [leafletLayersControl]="layersControl" [leafletOptions]="mapOptions" style="height: 300px;">
+    <button class="btn btn-light navigation" *ngIf="geocoding" (click)="getPosition()">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/center-direction.png" class="img-lur" />
+    </button>
+</div>

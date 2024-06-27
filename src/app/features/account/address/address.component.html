@@ -123,7 +123,7 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label for="pin_point" class="form-label font-p fs-14">Pin Poin</label>
-                    <app-map></app-map>
+                    <app-map [isViewParent]="false" [lat]="model.latitude" [long]="model.longitude" (koordinat)="setKoordinat($event)" [search]="true" [style]="true" [geocoding]="true"></app-map>
                 </div>
             </div>
         </div>

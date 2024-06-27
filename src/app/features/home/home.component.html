@@ -220,8 +220,7 @@
                                     <span>
                                         <i class='bx bxs-bolt'></i>{{ item.persen }}%
                                     </span>
-                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo | numberFormat }}
-                                    </p>
+                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo ? item.harga_promo : 0  | numberFormat }} </p>
                                 </div>
                             </a>
                         </div>

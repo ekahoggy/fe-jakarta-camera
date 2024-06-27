@@ -157,4 +157,9 @@ export class AddressComponent {
         });
     }
 
+    setKoordinat(event) {
+        this.model.latitude = event.lat;
+        this.model.longitude = event.long;
+    }
+
 }
