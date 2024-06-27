@@ -34,12 +34,12 @@ export class MapComponent implements OnInit {
             'Street Maps': tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
                 {
                     detectRetina: true,
-                    attribution: '<a href="https://ptsuparmatbk.com/">PT. Suparma Tbk</a>',
+                    attribution: '<a href="https://jakartacamera.com/">Jakarta Camera</a>',
                 }
             ),
             'Wikimedia Maps': tileLayer('http://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', {
                 detectRetina: true,
-                attribution: '<a href="https://ptsuparmatbk.com/">PT. Suparma Tbk</a>',
+                attribution: '<a href="https://jakartacamera.com/">Jakarta Camera</a>',
             })
         },
     };

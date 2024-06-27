@@ -10,8 +10,7 @@
         <ngb-carousel [showNavigationIndicators]="false">
             <ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
                 <div class="picsum-img-wrapper">
-                    <img [src]="item.picture" class="w-100 object-fit-cover" height="480" alt="Random first slide"
-                        (click)="sliderClick(item.url)" />
+                    <img [src]="item.picture" class="w-100 object-fit-cover" height="480" alt="Random first slide" (click)="sliderClick(item.url)" />
                 </div>
             </ng-template>
         </ngb-carousel>
@@ -19,18 +18,31 @@
 
     <section class="category py-4">
         <div class="container">
-            <div class="row justify-content-center">
+            <!-- <div class="row justify-content-center">
                 <ng-container *ngFor="let item of listCategory">
-                    <div class="col-4 col-lg-2 p-3 mb-3">
+                    <div class="col-6 col-md-4 col-lg-2 p-3 mb-md-3">
                         <a href="/katalog?category={{item.slug}}">
                             <div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100 border border-2">
                                 <img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
-                                <p class="font-p mb-0 mt-3 text-uppercase fs-12"> {{ item.kategori }}
-                                </p>
+                                <p class="font-p mb-0 mt-3 text-uppercase fs-12"> {{ item.kategori }} </p>
                             </div>
                         </a>
                     </div>
                 </ng-container>
+            </div> -->
+            <div class="row justify-content-center py-4">
+                <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configCategory">
+                    <ng-container *ngFor="let item of listCategory; index as i">
+                        <ng-template swiperSlide>
+                            <a href="/katalog?category={{item.slug}}">
+                                <div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100 border border-2">
+                                    <img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
+                                    <p class="font-p mb-0 mt-3 text-uppercase fs-12"> {{ item.kategori }} </p>
+                                </div>
+                            </a>
+                        </ng-template>
+                    </ng-container>
+                </swiper>
             </div>
         </div>
     </section>
@@ -111,8 +123,7 @@
             <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configFlash">
                 <ng-container *ngFor="let item of listProduct; index as i">
                     <ng-template swiperSlide>
-                        <div class="wrap-item mb-5 rounded-3" data-aos="fade-right" data-aos-offset="300"
-                            data-aos-duration="1000">
+                        <div class="wrap-item mb-5 rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                             <a href="javascript:void(0)" (click)="clickProduk(item)">
                                 <div class="position-relative overflow-hidden wrap-image rounded-top-3 border-bottom">
                                     <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3"
