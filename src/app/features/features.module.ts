@@ -29,6 +29,7 @@ import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { SuccessVerificationComponent } from './success-verification/success-verification.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     PaymentComponent,
     NewsDetailComponent,
     EmailVerificationComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    SuccessVerificationComponent
   ],
   imports: [
     CommonModule,
