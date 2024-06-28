@@ -8,7 +8,7 @@ import {
     ViewChild,
     ElementRef,
 } from '@angular/core';
-import { icon, latLng, Map, point, marker, polyline, tileLayer } from 'leaflet';
+import { icon, latLng, Map, marker, tileLayer } from 'leaflet';
 import { GoogleMap } from '@angular/google-maps';
 import { GlobalService } from 'src/app/services/global.service';
 
@@ -26,6 +26,7 @@ export class MapComponent implements OnInit {
     @Input() long: any;
     @Input() isViewParent: any;
     @Input() style = false;
+    @Input() disabledMap = false;
     @Output() koordinat = new EventEmitter<string>();
 
     isView;
