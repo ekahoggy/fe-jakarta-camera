@@ -23,6 +23,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { SuccessVerificationComponent } from './success-verification/success-verification.component';
 
 const routes: Routes = [
     {
@@ -57,6 +58,11 @@ const routes: Routes = [
     {
         path: 'verification',
         component: EmailVerificationComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'success-verification',
+        component: SuccessVerificationComponent,
         canActivate: [AuthGuard]
     },
     {

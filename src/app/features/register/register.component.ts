@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class RegisterComponent implements OnInit {
 
     constructor(
         private globalService: GlobalService,
+        private router: Router,
     ) { }
 
     ngOnInit(): void {
@@ -38,6 +40,12 @@ export class RegisterComponent implements OnInit {
             if (res.status == 'success') {
                 this.is.success = true;
                 this.empty();
+                
+                const param = {
+                    'email': res.user.email,
+                };
+                const data = btoa(JSON.stringify(param));
+                this.router.navigate(['/verification'], { queryParams: { 'data': data } });
             }
         }, (error: any) => {
             this.error.email = error.error.errors.email;
