@@ -114,11 +114,11 @@ export class HomeComponent implements OnInit {
                     spaceBetween: 15,
                 },
                 768: {
-                    slidesPerView: 2,
+                    slidesPerView: 4,
                     spaceBetween: 15,
                 },
                 1024: {
-                    slidesPerView: 4,
+                    slidesPerView: 5,
                     spaceBetween: 15,
                 },
                 1400: {

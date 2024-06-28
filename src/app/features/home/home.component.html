@@ -18,30 +18,18 @@
 
     <section class="category py-4">
         <div class="container">
-            <!-- <div class="row justify-content-center">
-                <ng-container *ngFor="let item of listCategory">
-                    <div class="col-6 col-md-4 col-lg-2 p-3 mb-md-3">
-                        <a href="/katalog?category={{item.slug}}">
-                            <div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100 border border-2">
-                                <img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
-                                <p class="font-p mb-0 mt-3 text-uppercase fs-12"> {{ item.kategori }} </p>
-                            </div>
-                        </a>
-                    </div>
-                </ng-container>
-            </div> -->
             <div class="row justify-content-center py-4">
                 <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configCategory">
-                    <ng-container *ngFor="let item of listCategory; index as i">
-                        <ng-template swiperSlide>
+                    <ng-template *ngFor="let item of listCategory; index as i" swiperSlide>
+                        <div class="h-100 p-3">
                             <a href="/katalog?category={{item.slug}}">
                                 <div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100 border border-2">
                                     <img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
                                     <p class="font-p mb-0 mt-3 text-uppercase fs-12"> {{ item.kategori }} </p>
                                 </div>
                             </a>
-                        </ng-template>
-                    </ng-container>
+                        </div>
+                    </ng-template>
                 </swiper>
             </div>
         </div>
