@@ -12,7 +12,6 @@ export class PaymentComponent implements OnInit {
   urlSafe: any;
 
   constructor(
-    private globalService: GlobalService,
     private router: Router,
     private route: ActivatedRoute,
     public sanitizer: DomSanitizer,
