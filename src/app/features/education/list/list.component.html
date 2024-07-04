@@ -48,16 +48,15 @@
     </div>
 
     <!-- List Edukasi -->
-    <div class="row my-5">
-        <div class="col-3 mb-3" *ngFor="let item of listEdukasi">
+    <div class="row justify-content-center my-5">
+        <div class="col-10 col-sm-6 col-md-4 col-lg-3 px-4 px-sm-2 mb-3" *ngFor="let item of listEdukasi">
             <a href="javascript:void(0);" routerLink="/education/{{ item.slug }}">
                 <div class="wrap-item h-100 rounded-4 overflow-hidden">
                     <div class="head-item overflow-hidden">
-                        <img [src]="item.gambar" class="object-fit-cover rounded-top-4" width="280" height="200"
-                            alt="Random second slide" />
+                        <img [src]="item.gambar" class="object-fit-cover w-100 rounded-top-4" width="280" height="200" alt="Random second slide" />
                     </div>
                     <div class="body-item p-3">
-                        <p class="font-m fw-bold fs-6">{{ item.judul }}</p>
+                        <p class="font-m fw-bold fs-14">{{ item.judul }}</p>
                         <span class="font-p">Rp {{ item.harga | number }}</span>
                         <div class="rating">
                             <i class="bx bxs-star text-warning"></i>

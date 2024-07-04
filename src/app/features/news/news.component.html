@@ -1,103 +1,96 @@
 <section class="breadcrumb mt-lg-5">
-  <div class="container">
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-      <ol class="breadcrumb fs-14">
-        <li class="breadcrumb-item">
-          <a href="/home">
-            <i class="bx bx-home me-1"></i> Homepage
-          </a>
-        </li>
-        <li class="breadcrumb-item active">
-          <a href="/news">Berita</a>
-        </li>
-      </ol>
-    </nav>
-  </div>
+    <div class="container">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb fs-14">
+                <li class="breadcrumb-item">
+                    <a href="/home">
+                        <i class="bx bx-home me-1"></i> Homepage
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a href="/news">Berita</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
 </section>
 
 <section>
-  <div class="container pb-5">
-    <div class="row mb-3">
-      <div class="col-8">
-        <button class="btn font-p fs-12 me-2" [ngClass]="filter.kategori == '' ? 'btn-primary': 'btn-outline-primary'"
-          (click)="filterCategory('')">Semua</button>
-        <ng-container *ngFor="let item of listCategory">
-          <button class="btn font-p fs-12 me-2 text-capitalize"
-            [ngClass]="filter.kategori == item.kategori ? 'btn-primary': 'btn-outline-primary'"
-            (click)="filterCategory(item.kategori)">{{item.kategori}}</button>
-        </ng-container>
-      </div>
-      <div class="col-4">
-        <div class="searching position-relative">
-          <input type="text" class="form-control fs-12 font-p" placeholder="Cari berita..." [(ngModel)]="filter.judul"
-            name="judul" (keydown.enter)="getNews()">
-          <div class="position-absolute end-0 top-0 pt-1 pe-2">
-            <i class="bx bx-search mt-1"></i>
-          </div>
+    <div class="container pb-5">
+        <div class="row mb-3">
+            <div class="col-lg-8">
+                <button class="btn font-p fs-12 me-2 mb-2" [ngClass]="filter.kategori == '' ? 'btn-primary': 'btn-outline-primary'" (click)="filterCategory('')">Semua</button>
+                <ng-container *ngFor="let item of listCategory">
+                    <button class="btn font-p fs-12 me-2 mb-2 text-capitalize" [ngClass]="filter.kategori == item.kategori ? 'btn-primary': 'btn-outline-primary'" (click)="filterCategory(item.kategori)">{{item.kategori}}</button>
+                </ng-container>
+            </div>
+            <div class="col-lg-4">
+                <div class="searching position-relative">
+                    <input type="text" class="form-control fs-12 font-p" placeholder="Cari berita..." [(ngModel)]="filter.judul" name="judul" (keydown.enter)="getNews()">
+                    <div class="position-absolute end-0 top-0 pt-1 pe-2">
+                        <i class="bx bx-search mt-1"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-9">
-        <ng-container *ngIf="listNews.length > 0">
-          <div class="list-news mb-4" *ngFor="let item of listNews; index as i">
-            <div class="wrap-image">
-              <img [src]="item.image" class="img-thumbnail object-fit-cover" width="200" height="">
+        <div class="row">
+            <div class="col-xl-9">
+                <ng-container *ngIf="listNews.length > 0">
+                    <div class="list-news mb-4" *ngFor="let item of listNews; index as i">
+                        <div class="wrap-image">
+                            <img [src]="item.image" class="img-thumbnail object-fit-cover" width="200" height="">
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-2 col-xl-1">
+                                <div class="border fs-4 font-p text-center py-1">
+                                    {{ item.created_at | date:'dd' }}
+                                </div>
+                                <div class="bg-dark text-center py-1 fs-6 text-white text-uppercase font-p">
+                                    {{ item.created_at | date:'MMM' }}
+                                </div>
+                            </div>
+                            <div class="col-10 col-xl-11">
+                                <h1 class="fw-semibold fs-4 font-p" (click)="clickViewsNews(item)">{{ item.judul }}</h1>
+                                <div [innerHTML]="item.content | limitSentences:3"></div>
+                                <div class="py-4 mt-5 border-top border-bottom d-flex justify-content-between align-items-center text-grey px-2">
+                                    <div class="font-p fs-14">
+                                        <i class='bx bx-calendar fs-6 me-1'></i> <span class="me-3">{{ item.created_at | date:'MMMM dd, YYY' }}</span>
+                                        <i class="bx bxs-user fs-6 me-1"></i> <span>{{ item.pembuat }}</span>
+                                    </div>
+                                    <a href="javascript:void(0);" (click)="clickViewsNews(item)" class="text-grey font-p d-flex align-items-center">
+                                        <span class="fs-14">Read More</span>
+                                        <i class='bx bx-chevron-right fs-4 me-1'></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="listNews.length == 0">
+                    <div class="text-center font-p mt-5">
+                        <img src="../../../assets/img/undraw/empty-article.svg" alt="empty-address" width="200">
+                        <p class="mt-3 fs-4 fw-semibold">Artikel tidak ditemukan</p>
+                    </div>
+                </ng-container>
             </div>
-            <div class="row mt-3">
-              <div class="col-1">
-                <div class="border fs-4 font-p text-center py-1">
-                  {{ item.created_at | date:'dd' }}
-                </div>
-                <div class="bg-dark text-center py-1 fs-6 text-white text-uppercase font-p">
-                  {{ item.created_at | date:'MMM' }}
-                </div>
-              </div>
-              <div class="col-11">
-                <h1 class="fw-semibold fs-4 font-p" (click)="clickViewsNews(item)">{{ item.judul }}</h1>
-                <div [innerHTML]="item.content | limitSentences:3"></div>
-                <div
-                  class="py-4 mt-5 border-top border-bottom d-flex justify-content-between align-items-center text-grey px-2">
-                  <div class="font-p fs-14">
-                    <i class='bx bx-calendar fs-6 me-1'></i> <span class="me-3">{{ item.created_at | date:'MMMM dd, YYY'
-                      }}</span>
-                    <i class="bx bxs-user fs-6 me-1"></i> <span>{{ item.pembuat }}</span>
-                  </div>
-                  <a href="javascript:void(0);" (click)="clickViewsNews(item)" class="text-grey font-p d-flex align-items-center">
-                    <span class="fs-14">Read More</span>
-                    <i class='bx bx-chevron-right fs-4 me-1'></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="listNews.length == 0">
-          <div class="text-center font-p mt-5">
-            <img src="../../../assets/img/undraw/empty-article.svg" alt="empty-address" width="200">
-            <p class="mt-3 fs-4 fw-semibold">Artikel tidak ditemukan</p>
-          </div>
-        </ng-container>
-      </div>
-      <div class="col-3">
-        <div class="right-content border sticky-top p-3" style="z-index: 1; top: 100px;">
-          <h1 class="font-p fs-6 fw-semibold mb-4">Postingan Terbaru</h1>
-          <div class="list-recent d-flex mb-3" *ngFor="let item of listNewsTerbaru">
-            <img [src]="item.image" class="rounded me-3" [alt]="item.image_alt" width="60"
-              height="60">
-            <div>
-              <div class="title"> {{ item.judul}}</div>
-              <small class="date text-grey">{{ item.created_at | date:'MMMM dd, YYY' }}</small>
-            </div>
-          </div>
+            <div class="col-xl-3">
+                <div class="right-content border sticky-top p-3" style="z-index: 1; top: 100px;">
+                    <h1 class="font-p fs-6 fw-semibold mb-4">Postingan Terbaru</h1>
+                    <div class="list-recent d-flex mb-3" *ngFor="let item of listNewsTerbaru">
+                        <img [src]="item.image" class="rounded me-3" [alt]="item.image_alt" width="60" height="60">
+                        <div>
+                            <div class="title fs-14"> {{ item.judul | limitSentences:1}}</div>
+                            <small class="date text-grey fs-12">{{ item.created_at | date:'MMMM dd, YYY' }}</small>
+                        </div>
+                    </div>
 
-          <h1 class="font-p fs-6 fw-semibold mt-5 mb-4">TAG</h1>
-          <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2" *ngFor="let item of tags">{{item}}</button>
+                    <h1 class="font-p fs-6 fw-semibold mt-4 mb-4">TAG</h1>
+                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2" *ngFor="let item of tags">{{item}}</button>
+                </div>
+
+            </div>
         </div>
-
-      </div>
     </div>
-  </div>
 </section>
 
 <app-footer></app-footer>
