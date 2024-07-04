@@ -1,8 +1,17 @@
 .background {
 	background-image: url('../../../assets/img/background/background-auth.png');
 	width: 100%;
-	height: 80vh;
-	background-size: contain;
+	background-size: cover;
 	background-position: bottom right;
 	background-repeat: no-repeat;
+}
+
+.wrap-form {
+    margin-top: 2rem; margin-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+   .wrap-form {
+        margin-top: 10rem; margin-bottom: 10rem;
+   }
 }

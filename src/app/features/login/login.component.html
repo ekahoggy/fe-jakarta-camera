@@ -1,41 +1,43 @@
 <section style="background-color: #FBFBFB;">
-  <div class="d-flex justify-content-end">
-    <div class="w-50 row align-items-end justify-content-center">
-      <div class="col-8" style="padding-left: 200px;">
-        <h2 class="font-p fw-bold fs-2 mb-5 font-p text-center">Login</h2>
-        <form (ngSubmit)="login()">
-          <div class="mb-3">
-            <div class="text-danger fade show font-p" *ngIf="isError">
-              {{ isPesan }}
+  <div class="d-flex justify-content-center justify-content-xl-end">
+    <div class="wrap-form w-lg-50 row align-items-end justify-content-center">
+      <div class="col-lg-8">
+        <div class="container-fluid">
+            <h2 class="font-p fw-bold fs-2 mb-5 font-p text-center">Login</h2>
+            <form (ngSubmit)="login()">
+              <div class="mb-3">
+                <div class="text-danger fade show font-p" *ngIf="isError">
+                  {{ isPesan }}
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="mb-2 font-p fs-14">Email</label>
+                <input type="email" class="form-control font-p fs-14 py-2" [(ngModel)]="model.email" name="email" id="email"
+                  aria-describedby="email">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="mb-2 font-p fs-14">Password</label>
+                <input type="password" class="form-control font-p fs-14 py-2" [(ngModel)]="model.password" name="password"
+                  id="password" aria-describedby="password">
+              </div>
+    
+              <button class="btn btn-primary font-p fs-14 w-100 py-3 mt-3" (click)="login()">Masuk</button>
+              <!-- <button class="btn btn-danger font-p fs-14 w-100 py-3 mt-3" (click)="google()"><i class='bx bxl-google'></i>Google</button> -->
+            </form>
+    
+            <div class="row justify-content-end mt-3">
+              <div class="col-6 text-end">
+                <a href="javacript:void()" class="fs-14 fw-bold font-m text-primary">Lupa Password?</a>
+              </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="mb-2 font-p fs-14">Email</label>
-            <input type="email" class="form-control font-p fs-14 py-2" [(ngModel)]="model.email" name="email" id="email"
-              aria-describedby="email">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="mb-2 font-p fs-14">Password</label>
-            <input type="password" class="form-control font-p fs-14 py-2" [(ngModel)]="model.password" name="password"
-              id="password" aria-describedby="password">
-          </div>
-
-          <button class="btn btn-primary font-p fs-14 w-100 py-3 mt-3" (click)="login()">Masuk</button>
-          <!-- <button class="btn btn-danger font-p fs-14 w-100 py-3 mt-3" (click)="google()"><i class='bx bxl-google'></i>Google</button> -->
-        </form>
-
-        <div class="row justify-content-end mt-3">
-          <div class="col-6 text-end">
-            <a href="javacript:void()" class="fs-14 fw-semibold font-p text-primary">Lupa Password?</a>
-          </div>
         </div>
       </div>
-      <p class="text-center font-p fs-14 fw-semibold mb-5 ps-5">
+      <p class="text-center font-m fs-14 fw-bold mt-5">
         <span>Tidak punya akun Jakarta Camera? </span>
         <a href="/register" class="text-primary">Daftar Sekarang</a>
       </p>
     </div>
-    <div class="background w-50 d-flex align-items-center">
+    <div class="background w-50 d-none d-xl-flex align-items-center">
       <div class="container-fluid">
         <div class="row align-items-center">
           <div class="col-6">
