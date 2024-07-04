@@ -13,6 +13,7 @@ export class ResetPasswordComponent implements OnInit {
     loading: boolean = false;
     passwordStrength: string = "";
     passwordStrengthMessage: string = "";
+    alert: boolean = false;
 
     constructor(
         private passwordStrengthService: PasswordStrengthService,
@@ -35,9 +36,9 @@ export class ResetPasswordComponent implements OnInit {
     postResetPassword() {
         let params = Object.assign(this.model);
         this.globalService.DataPost('/auth/reset-password', params).subscribe((res:any) => {
-
+            this.alert = true;
         }, (error: any) => {
-
+            this.alert = false;
         })
     }
 }
