@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 import { Meta, Title } from '@angular/platform-browser';
-import Swal from 'sweetalert2';
 import { MetaDataService } from 'src/app/services/meta-data.service';
+import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -29,7 +29,7 @@ export class NewsDetailComponent extends MetaDataService implements OnInit {
 
     ngOnInit(): void {
         this.auth = this.globalService.getAuth()["user"];
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params:any) => {
             const slug = params['slug'];
             this.getNews(slug);
         });
