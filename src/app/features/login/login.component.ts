@@ -63,19 +63,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  google(modal){
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    // window.open('http://localhost:8000/google/redirect');
-    // this.modalService.open(modal, { size: 'md', backdrop: 'static'});
-    // this.http.get(this.apiURL + '/google/redirect', {}).subscribe((res: any) => {
-    //   if (res.status_code == 200) {
-    //     const userData = btoa(JSON.stringify(res.data))
-    //     localStorage.setItem('session', userData)
-    //     window.location.href = '/home';
-    //   }
-    // }, (error: any) => {
-    //   this.isError = true;
-    //   this.isPesan = 'Email or password is wrong!';
-    // });
+  google() {
+    this.globalService.DataGet('/auth/google/callback', {}).subscribe((res: any) => {
+      if (res.status_code == 200) {
+        const userData = btoa(JSON.stringify(res.data))
+        localStorage.setItem('session', userData)
+        window.location.href = '/home';
+      }
+    }, (error: any) => {
+      this.isError = true;
+      this.isPesan = 'Email or password is wrong!';
+    });
   }
 }
