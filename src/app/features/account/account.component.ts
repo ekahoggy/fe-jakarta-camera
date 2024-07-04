@@ -1,3 +1,4 @@
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 
@@ -11,19 +12,21 @@ export class AccountComponent implements OnInit {
 	address: any = {};
 	session: any = [];
     totalAddress: number = 0;
-	
+
 	constructor(
 		private globalService: GlobalService,
+    private socialAuthService: SocialAuthService
 	) { }
 
 	ngOnInit(): void {
-		this.session = this.globalService.getAuth()['user']; 
+		this.session = this.globalService.getAuth()['user'];
 		this.model.name = this.session.name;
 		this.getAddress();
         this.getUser();
 	}
 
 	logout() {
+    this.socialAuthService.signOut();
 		this.globalService.destroyAuth();
 	}
 

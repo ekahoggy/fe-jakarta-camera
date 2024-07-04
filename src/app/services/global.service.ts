@@ -83,8 +83,8 @@ export class GlobalService {
     }
 
     destroyAuth() {
-        localStorage.removeItem('session');
-        window.location.href = '/login';
+      localStorage.removeItem('session');
+      window.location.href = '/login';
     }
 
     alertSuccess(title: string, text: string, timer: number = 1500) {
