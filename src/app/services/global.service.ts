@@ -117,7 +117,7 @@ export class GlobalService {
 
     clickToViewsNews(item) {
         this.DataPost(`/public/news/view/` + item.id).subscribe((res: any) => {
-            this.router.navigate([`/news/` + item.slug]);
+            this.router.navigate([`/news/${item.slug}`]);
         })
     }
 

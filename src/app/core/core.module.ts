@@ -12,7 +12,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     SpinnerComponent,
     NumberFormatPipe,
     LimitSentencesPipe,
-    MapComponent
+    MapComponent,
   ],
   imports: [
     CommonModule,
@@ -23,7 +23,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     SpinnerComponent,
     NumberFormatPipe,
     MapComponent,
-    LimitSentencesPipe
+    LimitSentencesPipe,
   ]
 })
 export class CoreModule { }

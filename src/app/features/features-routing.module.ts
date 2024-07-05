@@ -24,6 +24,7 @@ import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { SuccessVerificationComponent } from './success-verification/success-verification.component';
+import { AuthModule } from './auth/auth.module';
 
 const routes: Routes = [
     {
@@ -44,6 +45,11 @@ const routes: Routes = [
         component: AccountComponent,
         loadChildren: () => import('./account/account.module').then((m) => m.AccountModule),
         canActivate: [GuestGuard]
+    },
+    {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+        canActivate: [AuthGuard]
     },
     {
         path: 'login',
