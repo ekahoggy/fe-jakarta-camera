@@ -10,6 +10,8 @@ import { AuthGuard } from './services/guards/auth.guard';
 import { CountdownModule } from 'ngx-countdown';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { GoogleLoginProvider, GoogleSigninButtonModule, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { environment } from 'src/environments/environment.development';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,25 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     CountdownModule,
     SweetAlert2Module.forRoot(),
     RecaptchaModule,
-    LeafletModule
+    LeafletModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(environment.googleIdClient),
+          },
+        ],
+      }
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

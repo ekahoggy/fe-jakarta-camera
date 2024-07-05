@@ -20,9 +20,9 @@ export class OrdersComponent implements OnInit {
 		private globalService: GlobalService,
         private modalService: NgbModal,
 	) {}
-    
+
     ngOnInit(): void {
-        this.session = this.globalService.getAuth()['user']; 
+        this.session = this.globalService.getAuth()['user'];
         this.empty();
         this.getOrder();
     }
@@ -58,11 +58,11 @@ export class OrdersComponent implements OnInit {
     onMouseEnter(index: number): void {
         this.hoveredStar = index;
     }
-    
+
     onMouseLeave(): void {
         this.hoveredStar = -1;
     }
-    
+
     rate(index: number): void {
         this.selectedStar = index + 1;
 
