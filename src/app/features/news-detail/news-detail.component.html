@@ -97,72 +97,21 @@
                             <span class="fs-4 font-p">Belum ada Komentar...</span>
                         </div>
                     </div>
-                    <!-- <div class="row mb-3">
-                        <div class="col-2 col-xl-1">
-                            <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" class="object-fit-cover w-100" alt="">
-                        </div>
-                        <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="detail">
-                                    <span class="fw-bold fs-6">Eka Hoggy - </span> <span>Eka on Aug 22, 2021</span>
-                                </div>
-                                <div class="rating">
-                                    <i class='bx bxs-star text-warning'></i>
-                                    <i class='bx bxs-star text-warning'></i>
-                                    <i class='bx bxs-star text-warning'></i>
-                                    <i class='bx bxs-star-half text-warning'></i>
-                                    <i class='bx bx-star text-warning'></i>
-                                </div>
-                            </div>
-                            <p class="mt-3 fs-14">
-                                Membeli Canon EOS 90D dari [Nama Toko Online] adalah pengalaman yang menyenangkan.
-                                Pengiriman sangat
-                                cepat
-                                dan kemasannya sangat aman. Kamera ini menawarkan kinerja luar biasa dengan kualitas
-                                gambar yang
-                                mengagumkan. Layar sentuh vari-angle dan daya tahan baterai yang kuat adalah keunggulan
-                                utama bagi saya.
-                                Saya merasa sangat puas dengan kamera ini dan layanan dari toko ini, dan tidak ragu
-                                merekomendasikan
-                                kepada siapa pun yang mencari kamera DSLR berkualitas.
-                            </p>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="right-content border sticky-top p-3" style="z-index: 1; top: 100px;">
-                    <h1 class="font-p fs-6 fw-semibold mb-4">Postingan Terbaru</h1>
-                    <div class="list-recent d-flex mb-3">
-                        <img src="https://source.unsplash.com/random/60x60?flower=1" class="rounded me-3" alt="" width="60" height="60">
-                        <div>
-                            <div class="title"> Post Format - Photo</div>
-                            <small class="date text-grey">December 06, 2016</small>
-                        </div>
+              <div class="right-content border sticky-top p-3" style="z-index: 1; top: 100px;">
+                <h1 class="font-p fs-6 fw-semibold mb-4">Postingan Terbaru</h1>
+                <div class="list-recent d-flex mb-3" *ngFor="let item of listNewsTerbaru">
+                    <img [src]="item.image" class="rounded me-3" [alt]="item.image_alt" width="60" height="60">
+                    <div>
+                        <div class="title fs-14"> {{ item.judul | limitSentences:1}}</div>
+                        <small class="date text-grey fs-12">{{ item.created_at | date:'MMMM dd, YYY' }}</small>
                     </div>
-                    <div class="list-recent d-flex mb-3">
-                        <img src="https://source.unsplash.com/random/60x60?human=1" class="rounded me-3" alt="" width="60" height="60">
-                        <div>
-                            <div class="title"> Post Format - Video</div>
-                            <small class="date text-grey">December 06, 2016</small>
-                        </div>
-                    </div>
-                    <div class="list-recent d-flex mb-3">
-                        <img src="https://source.unsplash.com/random/60x60?laptop=1" class="rounded me-3" alt="" width="60" height="60">
-                        <div>
-                            <div class="title"> Post Format - Photo</div>
-                            <small class="date text-grey">December 06, 2016</small>
-                        </div>
-                    </div>
-                    <h1 class="font-p fs-6 fw-semibold mt-5 mb-4">TAG</h1>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Blog</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Clothing</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Dresses</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Fashion</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Photography</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Shoes</button>
-                    <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2">Women</button>
                 </div>
+                <h1 class="font-p fs-6 fw-semibold mt-4 mb-4">TAG</h1>
+                <button class="btn btn-secondary font-p rounded-1 fs-6 me-2 mb-2" *ngFor="let item of tags">{{item}}</button>
+              </div>
 
             </div>
         </div>

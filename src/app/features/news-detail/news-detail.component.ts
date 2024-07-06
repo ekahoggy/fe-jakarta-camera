@@ -15,6 +15,8 @@ export class NewsDetailComponent extends MetaDataService implements OnInit {
     model: any = [];
     webUrl = environment.url;
     listCategory: any = [];
+    listNewsTerbaru: any = [];
+    tags: any = [];
     listComment: any = [];
     auth: any;
 
@@ -34,6 +36,7 @@ export class NewsDetailComponent extends MetaDataService implements OnInit {
             this.getNews(slug);
         });
         this.getCategory();
+        this.getNewsTerbaru()
     }
 
     getNews(slug: string) {
@@ -90,7 +93,7 @@ export class NewsDetailComponent extends MetaDataService implements OnInit {
                 break;
             default:
                 this.copy();
-                break;  
+                break;
         }
     }
 
@@ -115,4 +118,11 @@ export class NewsDetailComponent extends MetaDataService implements OnInit {
             this.globalService.alertError('Mohon Maaf', error.error.message);
         });
     }
+
+    getNewsTerbaru() {
+      this.globalService.DataGet('/public/news/getNewsTerbaru').subscribe((res: any) => {
+          this.listNewsTerbaru = res.data.article;
+          this.tags = res.data.tags;
+      })
+  }
 }
