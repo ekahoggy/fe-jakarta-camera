@@ -152,7 +152,7 @@ export class CheckoutComponent implements OnInit {
                 this.model = address;
                 this.model.email = this.session.email;
 
-                // this.getCourier();
+                this.getCourier();
             }
         }, (error: any) => {
             this.model.email = this.session.email;
