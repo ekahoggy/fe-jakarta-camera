@@ -9,11 +9,13 @@ import Swal from 'sweetalert2';
 })
 export class CartComponent implements OnInit {
   listData: any;
+  listDataTerhapus: any = [];
   loading: boolean = false;
   subTotal: number = 0;
   grandTotal: number = 0;
   auth: any;
   totalCart: number = 0;
+  disabledPlus: boolean = false;
 
   constructor(
     private globalService: GlobalService,
@@ -48,7 +50,10 @@ export class CartComponent implements OnInit {
   }
 
   changeQuantity(i: number) {
-    if (this.listData[i].quantity === '0') {
+    if(this.listData[i].quantity >= this.listData[i].sisa_stok){
+      this.listData[i].quantity = this.listData[i].sisa_stok;
+      this.changeCart(this.listData[i]);
+    }else if (this.listData[i].quantity === 0) {
       this.listData[i].quantity = 1;
       this.changeCart(this.listData[i]);
     }
@@ -83,12 +88,39 @@ export class CartComponent implements OnInit {
   kalkulasi() {
     this.subTotal = 0;
     this.grandTotal = 0;
-    let hargaDiskon = 0;
+    let terhapus = [];
     if (this.listData.length > 0) {
-      this.listData.forEach((val: any) => {
-        this.subTotal += (val.harga * val.quantity)
-        this.grandTotal += (val.harga * val.quantity)
+      this.listData.forEach((item: any) => {
+        item.use_foto = item.foto;
+        item.sisa_stok = 0;
+        item.disabled = false;
+        if(item.product_varian_id !== null){
+          item.sisa_stok = item.stok_varian;
+          item.use_foto = item.foto_varian;
+        }
+        else{
+          item.sisa_stok = item.stok;
+        }
+
+        if(item.sisa_stok <= item.quantity){
+          item.disabled = true;
+        }
+        else{
+          item.disabled = false;
+        }
+
+        if(item.sisa_stok == 0){
+          this.listDataTerhapus.push(item);
+        }
       })
+
+      const filteredData = this.listData.filter(item => item.sisa_stok !== 0);
+      this.listData = filteredData;
+
+      this.listData.forEach(item => {
+        this.subTotal += (item.harga * item.quantity)
+        this.grandTotal += (item.harga * item.quantity)
+      });
     }
   }
 }
