@@ -29,13 +29,13 @@
                 <form>
                     <p class="fs-4 font-m fw-semibold">Kontak Customer</p>
                     <div class="form-group mb-3">
-                        <label for="email" class="form-label font-p fs-14">Email</label>
-                        <input type="email" class="form-control font-p fs-14" id="email" aria-describedby="email"
+                        <label for="email_subscribe" class="form-label font-p fs-14">Email</label>
+                        <input type="email_subscribe" class="form-control font-p fs-14" id="email_subscribe" aria-describedby="email_subscribe"
                             [(ngModel)]="model.email" name="email">
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="subsribe">
-                        <label class="form-check-label font-p fs-14" for="subsribe">Email saya untuk promo menarik
+                        <input type="checkbox" class="form-check-input" [(ngModel)]="model.subscribe" name="subscribe" id="subscribe">
+                        <label class="form-check-label font-p fs-14" for="subscribe">Email saya untuk promo menarik
                             lainnya</label>
                     </div>
 
