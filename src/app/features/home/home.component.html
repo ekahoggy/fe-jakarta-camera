@@ -10,8 +10,11 @@
         <ngb-carousel [showNavigationIndicators]="false">
             <ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
                 <div class="picsum-img-wrapper">
-                    <img [src]="item.picture" class="w-100 object-fit-cover" height="480" alt="Random first slide"
-                        (click)="sliderClick(item.url)" />
+                    <picture (click)="sliderClick(item.url)">
+                        <source [srcset]="item.picture" media="(min-width: 768px)">
+                        <source [srcset]="item.picture_mobile">
+                        <img [src]="item.picture_mobile" class="w-100 object-fit-cover" height="480" [alt]="item.title"/>
+                    </picture>
                 </div>
             </ng-template>
         </ngb-carousel>

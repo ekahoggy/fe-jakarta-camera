@@ -12,6 +12,7 @@ import { AddressComponent } from './address/address.component';
 import { OrdersComponent } from './orders/orders.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { MapComponent } from 'src/app/core/map/map.component';
+import { OrdersEducationComponent } from './orders-education/orders-education.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MapComponent } from 'src/app/core/map/map.component';
     ProfileComponent,
     AddressComponent,
     OrdersComponent,
-    WishlistComponent
+    WishlistComponent,
+    OrdersEducationComponent
   ], 
   imports: [
     CommonModule,

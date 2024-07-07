@@ -25,7 +25,7 @@
                 <div class="list-news mb-4">
                     <h1 class="font-m fw-bold fs-2 mb-5">{{ model.judul }}</h1>
                     <img [src]="model.image" class="img-thumbnail object-fit-cover w-100 mb-3" height="200" height="">
-                    <div [innerHTML]="model.content"></div>
+                    <div class="overflow-hidden" [innerHTML]="model.content"></div>
                 </div>
 
                 <div class="share my-5">
@@ -76,9 +76,9 @@
                 <div class="reviews mt-3">
                     <h1 class="fs-4 font-m mb-4">Komentar Terkait</h1>
                     <ng-container *ngIf="listComment.length > 0">
-                        <div class="row mb-3" *ngFor="let item of listComment">
+                        <div class="row justify-content-end mb-3" *ngFor="let item of listComment">
                             <div class="col-2 col-xl-1">
-                                <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" class="object-fit-cover w-100" alt="">
+                                <img src="../../../assets/img/avatar/avatar-user.png" class="object-fit-cover w-100 rounded-circle" style="aspect-ratio: 4/4" alt="">
                             </div>
                             <div class="col-10 col-xl-11 bg-body-tertiary rounded-end-4 rounded-bottom-4 py-3">
                                 <div class="d-flex align-items-center justify-content-between">
@@ -90,6 +90,21 @@
                                     {{ item.komentar }}
                                 </p>
                             </div>
+                            <ng-container *ngIf="item.balasan">
+                                <div class="col-2 col-xl-1 mt-3">
+                                    <img src="../../../assets/img/avatar/avatar-admin.png" class="object-fit-cover w-100 rounded-circle" style="aspect-ratio: 4/4" alt="">
+                                </div>
+                                <div class="col-9 col-xl-10 mt-3 bg-light rounded-end-4 rounded-bottom-4 py-3">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="detail">
+                                            <span class="fw-bold fs-6 font-m">Admin - </span> <span class="font-m fs-14">Admin on {{ item.tanggal_balasan | date:'MMM dd, yyy' }}</span>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 fs-14 font-m px-2">
+                                        {{ item.balasan }}
+                                    </p>
+                                </div>
+                            </ng-container>
                         </div>
                     </ng-container>
                     <div class="row" *ngIf="listComment.length == 0">

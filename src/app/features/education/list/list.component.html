@@ -42,14 +42,20 @@
             <h1 class="fs-4 fw-bold font-m">Kategori</h1>
         </div>
         <div class="col py-2">
-            <button *ngFor="let item of listKategori" class="btn btn-primary btn-sm font-m fw-semibold me-2">{{ item.kategori }}</button>
-            <button class="btn btn-outline-primary btn-sm font-m fw-semibold me-2">Photoshop</button>
+            <button class="btn btn-sm font-m fw-semibold me-2" [ngClass]="filter.kategori == '' ? 'btn-primary' : 'btn-outline-primary'" (click)="filter.kategori=''; getEdukasi()">
+                Semua
+              </button>
+            <ng-container *ngFor="let item of listKategori">
+                <button class="btn btn-sm font-m fw-semibold me-2" [ngClass]="filter.kategori == item.kategori ? 'btn-primary' : 'btn-outline-primary'" (click)="filter.kategori=item.kategori; getEdukasi()">
+                    {{ item.kategori }}
+                </button>
+            </ng-container>
         </div>
     </div>
 
     <!-- List Edukasi -->
-    <div class="row justify-content-center my-5">
-        <div class="col-10 col-sm-6 col-md-4 col-lg-3 px-4 px-sm-2 mb-3" *ngFor="let item of listEdukasi">
+    <div class="row my-5">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-4 px-sm-2 mb-3" *ngFor="let item of listEdukasi">
             <a href="javascript:void(0);" routerLink="/education/{{ item.slug }}">
                 <div class="wrap-item h-100 rounded-4 overflow-hidden">
                     <div class="head-item overflow-hidden">

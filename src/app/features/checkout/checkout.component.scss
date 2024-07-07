@@ -1,9 +1,10 @@
 .breadcrumb {
-    font-size: clamp(21px, 1.2vw, 80px);
+    font-size: clamp(16px, 2vw, 28px);
 }
 
-.img-thumbnail {
+.image-thumbnail {
     overflow: hidden;
+
     img {
         width: 100%;
         height: auto;

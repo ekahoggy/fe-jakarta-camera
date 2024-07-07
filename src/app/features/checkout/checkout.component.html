@@ -1,20 +1,20 @@
-<section class="breadcrumb my-3 my-lg-5">
+<section class="breadcrumb my-3 py-3 my-lg-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-2 text-center mb-1">
-                <a href="javascript:void(0)"><span class="fw-bold text-primary">Keranjang</span></a>
+            <div class="col-3 col-lg-2 text-lg-center mb-1">
+                <a href="/cart"><span class="fw-bold text-primary">Keranjang</span></a>
             </div>
             <div class="col-1 d-none d-lg-block text-center">
                 <span class="iconify text-grey" data-icon="ion:chevron-right"></span>
             </div>
-            <div class="col-12 col-lg-3 text-center mb-1">
+            <div class="col-4 col-lg-3 text-lg-center mb-1">
                 <span class="iconify text-grey me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
-                <a href="javascript:void(0)"><span class="fw-bold text-primary">Proses Pembayaran</span></a>
+                <a href="javascript:void(0)"><span class="fw-bold text-primary">Checkout</span></a>
             </div>
             <div class="col-1 d-none d-lg-block text-center">
                 <span class="iconify text-grey" data-icon="ion:chevron-right"></span>
             </div>
-            <div class="col-12 col-lg-2 text-center mb-1">
+            <div class="col-4 col-lg-2 text-lg-center mb-1">
                 <span class="iconify text-grey me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
                 <a href="javascript:void(0)"><span class="fw-bold">Selesai</span></a>
             </div>
@@ -30,13 +30,11 @@
                     <p class="fs-4 font-m fw-semibold">Kontak Customer</p>
                     <div class="form-group mb-3">
                         <label for="email_subscribe" class="form-label font-p fs-14">Email</label>
-                        <input type="email_subscribe" class="form-control font-p fs-14" id="email_subscribe" aria-describedby="email_subscribe"
-                            [(ngModel)]="model.email" name="email">
+                        <input type="email_subscribe" class="form-control font-p fs-14" id="email_subscribe" aria-describedby="email_subscribe" [(ngModel)]="model.email" name="email">
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" [(ngModel)]="model.subscribe" name="subscribe" id="subscribe">
-                        <label class="form-check-label font-p fs-14" for="subscribe">Email saya untuk promo menarik
-                            lainnya</label>
+                        <label class="form-check-label font-p fs-14" for="subscribe">Email saya untuk promo menarik lainnya</label>
                     </div>
 
                     <p class="fs-4 font-m fw-semibold mt-5">Alamat Pengiriman</p>
@@ -45,8 +43,7 @@
                             <div class="col-6">
                                 <div class="form-group mb-3">
                                     <label for="recipient" class="form-label font-p fs-14">Penerima</label>
-                                    <input type="text" class="form-control font-p fs-14" id="recipient"
-                                        [(ngModel)]="model.recipient" name="recipient">
+                                    <input type="text" class="form-control font-p fs-14" id="recipient" [(ngModel)]="model.recipient" name="recipient">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -54,51 +51,44 @@
                                     <label for="phone_number" class="form-label font-p fs-14">Nomor Telepon</label>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="phone_number"> {{ model.phone_code }} </span>
-                                        <input type="text" class="form-control font-p fs-14" id="phone_number"
-                                            [(ngModel)]="model.phone_number" name="phone_number">
+                                        <input type="text" class="form-control font-p fs-14" id="phone_number" [(ngModel)]="model.phone_number" name="phone_number">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="address" class="form-label font-p fs-14">Alamat</label>
-                                    <textarea type="text" class="form-control font-p fs-14" id="address"
-                                        [(ngModel)]="model.address" name="address" rows="3"></textarea>
+                                    <textarea type="text" class="form-control font-p fs-14" id="address" [(ngModel)]="model.address" name="address" rows="3"></textarea>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-3">
                                     <label for="province_name" class="form-label font-p fs-14">Provinsi</label>
-                                    <input type="text" class="form-control font-p fs-14" id="province_name"
-                                        [(ngModel)]="model.province_name" name="province_name">
+                                    <input type="text" class="form-control font-p fs-14" id="province_name" [(ngModel)]="model.province_name" name="province_name">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-3">
                                     <label for="city_name" class="form-label font-p fs-14">Kota</label>
-                                    <input type="text" class="form-control font-p fs-14" id="city_name"
-                                        [(ngModel)]="model.city_name" name="city_name">
+                                    <input type="text" class="form-control font-p fs-14" id="city_name" [(ngModel)]="model.city_name" name="city_name">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-3">
                                     <label for="subdistrict_name" class="form-label font-p fs-14">Kecamatan</label>
-                                    <input type="text" class="form-control font-p fs-14" id="subdistrict_name"
-                                        [(ngModel)]="model.subdistrict_name" name="subdistrict_name">
+                                    <input type="text" class="form-control font-p fs-14" id="subdistrict_name" [(ngModel)]="model.subdistrict_name" name="subdistrict_name">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-3">
                                     <label for="village_name" class="form-label font-p fs-14">Desa</label>
-                                    <input type="text" class="form-control font-p fs-14" id="village_name"
-                                        [(ngModel)]="model.village_name" name="village_name">
+                                    <input type="text" class="form-control font-p fs-14" id="village_name" [(ngModel)]="model.village_name" name="village_name">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-3">
                                     <label for="postal_code" class="form-label font-p fs-14">Kode Pos</label>
-                                    <input type="text" class="form-control font-p fs-14" id="postal_code"
-                                        [(ngModel)]="model.postal_code" name="postal_code">
+                                    <input type="text" class="form-control font-p fs-14" id="postal_code" [(ngModel)]="model.postal_code" name="postal_code">
                                 </div>
                             </div>
                             <div class="col-12">
@@ -111,11 +101,8 @@
                     </fieldset>
                     <div class="row justify-content-center" *ngIf="!model.recipient">
                         <div class="col-8 text-center">
-                            <img src="../../../assets/img/undraw/empty.png" class="w-100" alt="empty-address"
-                                width="300">
-                            <p class="font-p fs-14">Mohon Maaf, alamat pengiriman anda belum ada, harap tambahkan alamat
-                                pengiriman di
-                                menu akun</p>
+                            <img src="../../../assets/img/undraw/empty.png" class="w-100" alt="empty-address" width="300">
+                            <p class="font-p fs-14">Mohon Maaf, alamat pengiriman anda belum ada, harap tambahkan alamat pengiriman di menu akun</p>
                             <a href="/account/address" class="btn btn-primary btn-sm rounded-5 px-3">
                                 <i class='bx bx-map-pin me-1'></i>
                                 Tambahkan Alamat
@@ -126,10 +113,9 @@
             </div>
 
             <div class="col-lg-6 col-xl-5">
-                <div class="cart-total border rounded-2 border-opacity-10 p-4">
+                <div class="cart-total border rounded-2 border-opacity-10 p-2 p-md-4">
                     <a href="javascript:void(0)" (click)="openVoucher(modalVoucher)">
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4"
-                            *ngIf="isAvailableVoucher">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4" *ngIf="isAvailableVoucher">
                             <div class="text-primary d-flex align-items-center">
                                 <i class='bx bxs-discount fs-4 me-2'></i>
                                 <span class="fs-5 fw-semibold font-m">{{ selectedVoucher.redeem_code }}</span>
@@ -147,26 +133,25 @@
                     </a>
                     <div class="container-fluid">
                         <div class="row my-2" *ngFor="let item of listCart; index as i">
-                            <div class="col-2 p-0">
+                            <div class="col-3 col-md-2 p-0">
                                 <div class="image-thumbnail text-center">
-                                    <img [src]="item.use_foto" class="object-fit-cover rounded-1" width="64" height="64"
-                                        alt="">
+                                    <img [src]="item.use_foto" class="object-fit-cover photo-produk rounded-1" width="64" height="64" alt="">
                                 </div>
                             </div>
-                            <div class="col-7 pe-0 list-nama-produk">
+                            <div class="col-6 col-md-7 ps-1 pe-0 list-nama-produk">
                                 <p class="mb-0 font-m fs-14 nama-produk"> {{ item.nama }} </p>
                                 <small class="font-p fs-12">{{item.quantity}} x {{item.harga | numberFormat}} </small>
                             </div>
                             <div class="col-3 p-0">
-                                <p class="font-p fw-semibold text-end fs-14 mt-3">Rp {{ item.subtotal_price |
-                                    numberFormat }}</p>
+                                <div class="d-flex align-items-center justify-content-end h-100">
+                                    <p class="font-p fw-semibold mb-0 fs-12">Rp {{ item.subtotal_price | numberFormat }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <span class="fs-14 font-m fw-semibold">Pengiriman</span>
-                        <a href="javascript:void(0);" (click)="openPengiriman(modalPengiriman)"
-                            class="text-primary fw-bold font-p fs-12">Pilih</a>
+                        <a href="javascript:void(0);" (click)="openPengiriman(modalPengiriman)" class="text-primary fw-bold font-p fs-12">Pilih</a>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2" *ngIf="isAvailableKurir">
                         <div class="font-p">

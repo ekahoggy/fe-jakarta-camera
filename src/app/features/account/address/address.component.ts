@@ -12,7 +12,7 @@ export class AddressComponent {
     listData: any = [];
     isForm: boolean = false;
     isEdit: boolean = false;
-    pageTitle: string = 'My Address';
+    pageTitle: string = 'Alamat Pengiriman';
     listVillage: any = [];
     listSubdistrict: any = [];
     listCity: any = [];
@@ -41,7 +41,7 @@ export class AddressComponent {
     }
 
     index() {
-        this.pageTitle = 'My Address';
+        this.pageTitle = 'Alamat Pengiriman';
         this.isForm = false;
         this.isEdit = false;
         this.getData();
