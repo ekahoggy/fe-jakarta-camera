@@ -1,45 +1,46 @@
 .header {
-  font-size: 11px;
-  color: #777777;
-  border-bottom: 1px solid #e7e7e7;
+    font-size: 11px;
+    color: #777777;
+    border-bottom: 1px solid #e7e7e7;
 
-  .dropdown-menu {
-    padding-top: 0;
-    padding-bottom: 0;
-    border: 0;
-    transform: translate(-9px, 28px) !important;
-  }
-
-  .header-text {
-    border-right: 1px solid #e7e7e7;
-  }
-
-  .menu {
-    border-right: 1px solid #e7e7e7;
-
-    .menu-item {
-      color: #777777;
-      text-decoration: none;
-    }
-  }
-
-  .menu-sm {
     .dropdown-menu {
-      padding: 10px 0px;
-      .dropdown-links {
-        font-size: 12px;
-      }
+        padding-top: 0;
+        padding-bottom: 0;
+        border: 0;
+        transform: translate(-9px, 28px) !important;
     }
-  }
+
+    .header-text {
+        border-right: 1px solid #e7e7e7;
+    }
+
+    .menu {
+        border-right: 1px solid #e7e7e7;
+
+        .menu-item {
+            color: #777777;
+            text-decoration: none;
+        }
+    }
+
+    .menu-sm {
+        .dropdown-menu {
+            padding: 10px 0px;
+
+            .dropdown-links {
+                font-size: 12px;
+            }
+        }
+    }
 }
 
 .header-menu {
-  @media only screen and (max-width: 1200px) {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-  }
+    @media only screen and (max-width: 1200px) {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
 
     .header-menu-center {
         .search-bar {
@@ -53,6 +54,7 @@
                 border-bottom-left-radius: 25px;
                 padding: 10px 5px 10px 12px;
             }
+
             span {
                 font-size: 13px;
                 border: 0;
@@ -70,71 +72,77 @@
         }
     }
 
-  .header-menu-right {
-    .call-text {
-      font-size: 11px;
+    .header-menu-right {
+        .call-text {
+            font-size: 11px;
+        }
     }
-  }
 }
 
 .header-nav {
-  border-top: 1px solid #e7e7e7;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 4px;
+    border-top: 1px solid #e7e7e7;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 4px;
 
-  @media only screen and (min-width: 1200px) {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-  }
-
-  .navbar-nav {
-    font-size: 12px;
-
-    .nav-link {
-      color: black;
-      border-top: 2px solid transparent;
+    @media only screen and (min-width: 1200px) {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 2;
     }
 
-    .nav-link.active, .nav-link.show {
-      color: #005691;
-      border-top: 2px solid #007dd3;
-    }
+    .navbar-nav {
+        font-size: 12px;
 
-    .nav-link:hover, .nav-link:focus {
-      color: #005691;
-    }
+        .nav-link {
+            color: black;
+            border-top: 2px solid transparent;
+        }
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #fff;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
+        .nav-link.active,
+        .nav-link.show {
+            color: #005691;
+            border-top: 2px solid #007dd3;
+        }
 
-    .dropdown-content a {
-      color: black;
-      padding: 10px 14px;
-      text-decoration: none;
-      display: block;
-    }
+        .nav-link:hover,
+        .nav-link:focus {
+            color: #005691;
+        }
 
-    .dropdown-content a:hover {color: #005691}
-    .dropdown:hover .dropdown-content {display: block;}
-  }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 10px 14px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            color: #005691
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    }
 }
 
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 ::ng-deep .offcanvas.offcanvas-start {
-  left: -90px;
-  padding-left: 90px;
+    left: -90px;
+    padding-left: 90px;
 }
-

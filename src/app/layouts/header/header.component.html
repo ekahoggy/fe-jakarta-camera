@@ -69,6 +69,17 @@
                     <button class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;" (click)="openAuth(modalAuth)" *ngIf="!auth">
                         Masuk &nbsp;| &nbsp;Daftar
                     </button>
+                    <div class="d-flex d-lg-none align-items-center" *ngIf="auth">
+                        <a href="javascript:void(0)" routerLink="/account/wishlist" class="d-flex align-items-center">
+                            <i class='bx bx-heart fs-6 me-1'></i>
+                            <span class="fw-semibold font-p fs-12">WISHLIST</span>
+                        </a>
+                        <a href="javascript:void(0)" routerLink="/cart" class="d-flex align-items-center">
+                            <i class='bx bxs-cart-alt fs-6 ms-3 ms-2 me-1'></i>
+                            <span class="fw-semibold font-p fs-12">KERANJANG</span>
+                            <span class="badge rounded-pill text-bg-danger fs-12 ms-1 p-1 px-2">{{ countCart }}</span>
+                        </a>
+                    </div>
                     <!-- <a href="javascript:void(0)" [routerLink]="['/login']" class="btn btn-primary border-0 rounded-5 font-p py-2 px-4 mt-2" style="background: #0088CC; font-size: 12px;" *ngIf="!auth">
                         Masuk &nbsp;| &nbsp;Daftar
                     </a> -->
@@ -116,8 +127,7 @@
                         </div>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/news']"
-                            routerLinkActive="active">BERITA</a>
+                        <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/news']" routerLinkActive="active">BERITA</a>
                     </li>
                     <li class="nav-item mx-4">
                         <a class="nav-link py-4 px-1 px-0" href="javascript:void(0)" [routerLink]="['/education']" routerLinkActive="active">EDUKASI</a>
@@ -126,11 +136,11 @@
             </div>
             <a href="javascript:void(0)" routerLink="/account/wishlist" class="d-flex align-items-center">
                 <i class='bx bx-heart fs-6 me-1'></i>
-                <span class="fw-bold" style="font-size: 12px;">WISHLIST</span>
+                <span class="fw-bold fs-12">WISHLIST</span>
             </a>
             <a href="javascript:void(0)" routerLink="/cart" class="d-flex align-items-center">
                 <i class='bx bxs-cart-alt fs-6 ms-3 ms-2 me-1'></i>
-                <span class="fw-bold" style="font-size: 12px;">KERANJANG</span>
+                <span class="fw-bold fs-12">KERANJANG</span>
                 <span class="badge rounded-pill text-bg-danger fs-12 ms-1 p-1 px-2">{{ countCart }}</span>
             </a>
             <!-- <a href="javascript:void(0)" routerLink="/cart" class="text-dark d-none" id="cart-bottom">
@@ -146,42 +156,72 @@
         <button type="button" class="btn-close ms-auto" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
     </div>
     <div class="offcanvas-body px-0">
-        <ul class="list-group list-group-flush fw-semibold">
+        <ul class="list-group font-m list-group-flush fw-semibold fs-14">
             <li class="list-group-item">
-                <div class="d-flex align-items-center justify-content-between">
-                    <span>BERANDA</span>
-                </div>
+                <a href="/home">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <span>Beranda</span>
+                    </div>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="/promo">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <span>Promo</span>
+                    </div>
+                </a>
             </li>
             <li class="list-group-item">
                 <div class="d-flex align-items-center justify-content-between">
-                    <span>COLLECTION</span>
-                    <button class="btn btn-sm p-0" (click)="collapseCollection = !collapseCollection" [attr.aria-expanded]="!collapseCollection" aria-controls="collapseCollection">
-                        <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
-                    </button>
-                </div>
-                <div #collapse="ngbCollapse" [(ngbCollapse)]="collapseCollection">
-                    <ul class="list-group list-group-flush mt-2">
-                        <li class="list-group-item">COLLECTION 1</li>
-                        <li class="list-group-item">COLLECTION 2</li>
-                        <li class="list-group-item">COLLECTION 3</li>
-                    </ul>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="d-flex align-items-center justify-content-between">
-                    <span>PRODUK</span>
+                    <a href="/katalog">
+                        <span>Produk</span>
+                    </a>
                     <button class="btn btn-sm p-0" (click)="collapseProduct = !collapseProduct" [attr.aria-expanded]="!collapseProduct" aria-controls="collapseProduct">
                         <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
                     </button>
                 </div>
                 <div #collapse="ngbCollapse" [(ngbCollapse)]="collapseProduct">
                     <ul class="list-group list-group-flush mt-2">
-                        <li class="list-group-item">Jam Tangan Keren</li>
-                        <li class="list-group-item">Diskon 100%</li>
+                        <ng-container *ngFor="let item of listCategories">
+                            <li class="list-group-item">
+                                <a href="/katalog?category={{item.slug}}">{{ item.kategori }}</a>
+                            </li>
+                        </ng-container>
                     </ul>
                 </div>
             </li>
-            <li class="list-group-item">PAGES</li>
+            <li class="list-group-item">
+                <div class="d-flex align-items-center justify-content-between">
+                    <span>Layanan</span>
+                    <button class="btn btn-sm p-0" (click)="collapseService = !collapseService" [attr.aria-expanded]="!collapseService" aria-controls="collapseService">
+                        <span class="iconify fs-6" data-icon="radix-icons:chevron-down"></span>
+                    </button>
+                </div>
+                <div #collapse="ngbCollapse" [(ngbCollapse)]="collapseService">
+                    <ul class="list-group list-group-flush mt-2">
+                        <li class="list-group-item">
+                            <a href="/service">Servis Kamera</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/service/pasang-cctv">Jasa Pasang CCTV</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <a href="javascript:void(0)" [routerLink]="['/news']" routerLinkActive="active">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <span>Berita</span>
+                    </div>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="javascript:void(0)" [routerLink]="['/education']" routerLinkActive="active">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <span>Edukasi</span>
+                    </div>
+                </a>
+            </li>
         </ul>
     </div>
 </ng-template>
@@ -197,12 +237,12 @@
         </div>
         <div class="container-fluid py-5" *ngIf="activeTabs == 'login'">
             <div class="row justify-content-evenly align-items-center">
-                <div class="col-md-6 col-xl-5">
-                    <img src="../../../assets/img/undraw/login.svg" alt="empty-address" class="w-100" width="300">
+                <div class="col-7 col-md-6 col-xl-5">
+                    <img src="../../../assets/img/undraw/login.svg" alt="empty-address" class="w-100 mb-3" width="300">
                 </div>
                 <div class="col-md-6 col-xl-5">
                     <h1 class="font-m fs-3 fw-bold text-center">Selamat Datang di Jakcam!</h1>
-                    <p class="font-m fw-bold text-center mb-5">Login dan temukan produk kamera terbaik untuk kebutuhan Anda.</p>
+                    <p class="font-m fw-bold text-center mb-lg-5 fs-14">Login dan temukan produk kamera terbaik untuk kebutuhan Anda.</p>
                     <form (ngSubmit)="login()" class="px-3">
                         <div class="mb-3">
                             <div class="text-danger fade show font-p" *ngIf="isError">
