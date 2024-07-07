@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
@@ -21,7 +22,10 @@ export class DetailProductComponent implements OnInit {
   varian2_detail: any = [];
   selectVarian1: any = '';
   selectVarian2: any = '';
-  activePhoto: string = "";
+  activePhoto: any = {
+    foto: '',
+    is_video: 'tidak'
+  };
   selectedVarian: any = null;
   loadingPage: boolean = true;
   slug:string = '';
@@ -31,6 +35,7 @@ export class DetailProductComponent implements OnInit {
     private router: Router,
     private globalService: GlobalService,
     private modalService: NgbModal,
+    public sanitizer: DomSanitizer,
   ) { }
 
   ngOnInit() {
@@ -104,9 +109,38 @@ export class DetailProductComponent implements OnInit {
       }
 
       this.model.quantity = 1;
-      this.activePhoto = this.model.foto;
+      this.activePhoto = {
+        foto: this.model.foto,
+        is_video: 'tidak'
+      }
+
+      this.model.detail_foto.forEach(item => {
+        if(item.is_video == 'ya'){
+          item.video = this.sanitizer.bypassSecurityTrustResourceUrl(item.foto);
+          this.activePhoto = {
+            foto: item.video,
+            is_video: 'ya'
+          }
+        }
+      });
       this.loadingPage = false;
     })
+  }
+
+  clickFoto(item){
+    if(item.is_video == 'ya'){
+      item.video = this.sanitizer.bypassSecurityTrustResourceUrl(item.foto);
+      this.activePhoto = {
+        foto : item.video,
+        is_video: 'ya'
+      }
+    }
+    else{
+      this.activePhoto = {
+        foto : item.foto,
+        is_video: 'tidak'
+      }
+    }
   }
 
   getLastSeenProduk(){

@@ -26,15 +26,16 @@
       <div class="row">
         <div class="col-lg-6">
           <a href="javascript:void(0);" (click)="openPreviewPhoto(modalPhoto)">
-            <img [src]="activePhoto" class="img-preview object-fit-cover rounded-4" width="478" height="378"
-              [alt]="model.nama">
-          </a>
-          <div class="row mt-3">
-            <ng-container *ngFor="let item of model.detail_foto">
-              <div class="col-2 px-1">
-                <a href="javascript:void(0)" (click)="activePhoto=item.foto">
-                  <img [src]="item.foto" class="img-list object-fit-cover rounded-4" alt="image-produk">
-                </a>
+            <video [src]="activePhoto.foto" *ngIf="activePhoto.is_video == 'ya'" class="img-preview object-fit-cover w-100 h-auto rounded-4" style="aspect-ratio: 5/2.7;" controls></video>
+            <img [src]="activePhoto.foto" *ngIf="activePhoto.is_video == 'tidak'" class="img-preview object-fit-cover rounded-4" width="478" height="378" [alt]="model.nama">
+            </a>
+            <div class="row mt-3">
+              <ng-container *ngFor="let item of model.detail_foto">
+                <div class="col-2 px-1">
+                  <a href="javascript:void(0)" (click)="clickFoto(item)">
+                    <video [src]="item.video" *ngIf="item.is_video == 'ya'" class="img-list object-fit-cover rounded-4"></video>
+                    <img [src]="item.foto" *ngIf="item.is_video == 'tidak'" class="img-list object-fit-cover rounded-4" alt="image-produk">
+                  </a>
               </div>
             </ng-container>
           </div>
@@ -400,7 +401,8 @@
             <ngb-carousel #photoSlider [showNavigationIndicators]="false">
               <ng-template *ngFor="let item of model.detail_foto; index as i" id="{{item.id}}" ngbSlide>
                 <div class="wrap-slider">
-                  <img [src]="item.foto" class="w-100 h-auto object-fit-cover" width="480" height="480"
+                  <video [src]="item.foto" *ngIf="item.is_video == 'ya'" class="object-fit-cover w-100 h-auto" style="aspect-ratio: 5/2.7;" controls></video>
+                  <img [src]="item.foto" *ngIf="item.is_video == 'tidak'" class="w-100 h-auto object-fit-cover" width="480" height="480"
                     alt="Random first slide" />
                 </div>
               </ng-template>
@@ -414,8 +416,8 @@
               <div class="col-4 p-1">
                 <a href="javascript:void(0)" (click)="photoSlider.select(item.id)">
                   <div class="wrap-image overflow-hidden rounded-2">
-                    <img [src]="item.foto" class="w-100 h-auto object-fit-cover rounded-2" width="480" height="480"
-                      alt="Random first slide" />
+                    <video [src]="item.video" *ngIf="item.is_video == 'ya'" class="w-100 h-auto object-fit-cover rounded-2"></video>
+                    <img [src]="item.foto" *ngIf="item.is_video == 'tidak'" class="w-100 h-auto object-fit-cover rounded-2" width="480" height="480" alt="Random first slide" />
                   </div>
                 </a>
               </div>
