@@ -18,7 +18,8 @@ export class NewsDetailComponent extends MetaDataService implements OnInit {
     listNewsTerbaru: any = [];
     tags: any = [];
     listComment: any = [];
-    auth: any;
+    slug: string = "";
+    auth: any = {};
 
     constructor(
         private globalService: GlobalService,
@@ -33,10 +34,14 @@ export class NewsDetailComponent extends MetaDataService implements OnInit {
         this.auth = this.globalService.getAuth()["user"];
         this.route.params.subscribe((params:any) => {
             const slug = params['slug'];
+            this.slug = slug;
             this.getNews(slug);
         });
         this.getCategory();
         this.getNewsTerbaru()
+    }
+    empty() {
+        this.model = {};
     }
 
     getNews(slug: string) {
@@ -114,6 +119,8 @@ export class NewsDetailComponent extends MetaDataService implements OnInit {
         const final = Object.assign(params)
         this.globalService.DataPost('/public/news/post', final).subscribe((res: any) => {
             this.globalService.alertSuccess('Berhasil', 'Komentar berhasil di unggah');
+            this.empty();
+            this.getNews(this.slug);
         }, (error:any) => {
             this.globalService.alertError('Mohon Maaf', error.error.message);
         });
