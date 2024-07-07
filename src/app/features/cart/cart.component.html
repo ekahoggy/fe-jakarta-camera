@@ -1,236 +1,244 @@
 <section class="breadcrumb my-3 my-lg-5" *ngIf="totalCart > 0">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-2 text-center mb-1">
-        <a href="javascript:void(0)"><span class="fw-bold text-primary">Keranjang</span></a>
-      </div>
-      <div class="col-1 d-none d-lg-block text-center">
-        <span class="iconify text-grey" data-icon="ion:chevron-right"></span>
-      </div>
-      <div class="col-12 col-lg-3 text-center mb-1">
-        <span class="iconify text-grey me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
-        <a href="javascript:void(0)"><span class="fw-bold">Proses Pembayaran</span></a>
-      </div>
-      <div class="col-1 d-none d-lg-block text-center">
-        <span class="iconify text-grey" data-icon="ion:chevron-right"></span>
-      </div>
-      <div class="col-12 col-lg-2 text-center mb-1">
-        <span class="iconify text-grey me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
-        <a href="javascript:void(0)"><span class="fw-bold">Selesai</span></a>
-      </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-2 text-center mb-1">
+                <a href="javascript:void(0)"><span class="fw-bold text-primary">Keranjang</span></a>
+            </div>
+            <div class="col-1 d-none d-lg-block text-center">
+                <span class="iconify text-grey" data-icon="ion:chevron-right"></span>
+            </div>
+            <div class="col-12 col-lg-3 text-center mb-1">
+                <span class="iconify text-grey me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
+                <a href="javascript:void(0)"><span class="fw-bold">Proses Pembayaran</span></a>
+            </div>
+            <div class="col-1 d-none d-lg-block text-center">
+                <span class="iconify text-grey" data-icon="ion:chevron-right"></span>
+            </div>
+            <div class="col-12 col-lg-2 text-center mb-1">
+                <span class="iconify text-grey me-2 mb-2 d-inline d-lg-none" data-icon="ion:chevron-right"></span>
+                <a href="javascript:void(0)"><span class="fw-bold">Selesai</span></a>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <section *ngIf="totalCart == 0">
-  <div class="container my-5">
-    <div class="row">
-      <div class="col text-center">
-        <img src="../../../assets/img/illustration/empty-cart.png" width="400" alt="complete-order">
-        <h1 class="fs-2 mt-3">Keranjang Kosong</h1>
-        <h2 class="fs-4">Pilih dulu produknya!</h2>
-      </div>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col text-center">
+                <img src="../../../assets/img/illustration/empty-cart.png" width="400" alt="complete-order">
+                <h1 class="fs-2 mt-3">Keranjang Kosong</h1>
+                <h2 class="fs-4">Pilih dulu produknya!</h2>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <section class="cart mb-5 mb-lg-5 pb-lg-5" *ngIf="totalCart > 0">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <ul class="list-group">
-          <li class="list-group-item py-3" *ngFor="let item of listData; index as i">
-            <div class="row">
-              <div class="col">
-                <div class="row">
-                  <div class="col-2 pe-0" style="min-width: 100px;">
-                    <img [src]="item.use_foto" class="object-fit-cover img-product rounded-2 w-100" width="100" height="80" alt="gambar product">
-                  </div>
-                  <div class="col d-flex justify-content-center flex-column">
-                    <p class="font-p mb-2 fs-6">
-                      {{ item.nama }}
-                      <span *ngIf="item.varian1 !== null">, {{ item.varian1 }}</span>
-                      <span *ngIf="item.varian2 !== null">, {{ item.varian2 }}</span>
-                    </p>
-                    <div class="harga-coret my-2" *ngIf="item.is_promo">
-                      <span class="text-danger border-0 fw-semibold py-1 px-2 rounded-4 fs-14 font-p"
-                        style="background-color: #fbbed5">
-                        {{ item.promo.persen }}%
-                      </span>
-                      <span
-                        class="text-grey border-0 fw-semibold py-1 px-2 rounded-4 fs-14 font-p text-decoration-line-through">
-                        Rp. {{ item.harga_asli | numberFormat }}
-                      </span><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <ul class="list-group">
+                    <li class="list-group-item py-3" *ngFor="let item of listData; index as i">
+                        <div class="row">
+                            <div class="col-sm-8 col-xl-9">
+                                <div class="row">
+                                    <div class="col-3 col-sm-2 pe-0">
+                                        <img [src]="item.use_foto" class="object-fit-cover img-product rounded-2 w-100" width="100" height="80" alt="gambar product">
+                                    </div>
+                                    <div class="col-9 col-sm-10">
+                                        <div class="d-flex justify-content-center flex-column">
+                                            <p class="product-name font-p mb-2 fs-6">
+                                                {{ item.nama }}
+                                                <span *ngIf="item.varian1 !== null">, {{ item.varian1 }}</span>
+                                                <span *ngIf="item.varian2 !== null">, {{ item.varian2 }}</span>
+                                            </p>
+    
+                                            <!-- harga normal -->
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <div class="harga-coret my-2" *ngIf="item.is_promo">
+                                                        <span class="text-danger border-0 fw-semibold py-1 px-2 rounded-4 fs-14 font-p" style="background-color: #fbbed5">
+                                                            {{ item.promo.persen }}%
+                                                        </span>
+                                                        <span class="text-grey border-0 fw-semibold py-1 px-2 rounded-4 fs-14 font-p text-decoration-line-through">
+                                                            Rp. {{ item.harga_asli | numberFormat }}
+                                                        </span><br>
+            
+                                                        <span class="font-p fs-14 fw-semibold">
+                                                            Rp {{ item.harga | numberFormat }}
+                                                        </span>
+                                                    </div>
+                                                    <span class="font-p fs-14 fw-semibold" *ngIf="!item.is_promo">
+                                                        Rp {{ item.harga | numberFormat }}
+                                                    </span>
+                                                </div>
+                                         
+                                                <span class="font-p fw-semibold d-block d-sm-none">Rp {{ item.harga * item.quantity | numberFormat }}</span>
+                                            </div>
+                                            <div class="d-flex justify-content-end d-sm-none mt-3">
+                                                <button class="btn me-3 mt-2" role="button" (click)="deleteCart(item.id)">
+                                                    <span class="iconify text-grey" data-icon="fa6-regular:trash-can"></span>
+                                                </button>
+                                                <div class="d-flex align-items-center">
+                                                    <button class="btn btn-sm border border-end-0 rounded-0 p-1 align-middle" [disabled]="loading" (click)="reduceTotal(i)">
+                                                        <span class="iconify" data-icon="mdi-light:minus"></span>
+                                                    </button>
+                                                    <input type="text"
+                                                        class="form-control form-control-sm border rounded-0 p-1 align-middle fw-bold text-center"
+                                                        [(ngModel)]="item.quantity" name="quantity_{{i}}"
+                                                        oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                                        (change)="changeQuantity(i)" style="width: 50px;"
+                                                        [disabled]="loading">
+                                                    <button
+                                                        class="btn btn-sm border border-start-0 rounded-0 p-1 align-middle"
+                                                        [disabled]="loading" (click)="addTotal(i)">
+                                                        <span class="iconify" data-icon="mdi-light:plus"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="d-block text-end d-sm-none" *ngIf="item.sisa_stok <= 2">
+                                                <span class="text-danger fs-12 font-m">Sisa Stok : {{ item.sisa_stok | number }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xl-3">
+                                <div class="d-none d-sm-flex flex-column">
+                                    <p class="font-p fw-semibold fs-6 text-end my-3 d-none d-sm-block">Rp {{ item.harga * item.quantity | numberFormat }}</p>
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <button class="btn d-none d-sm-block me-1" role="button" (click)="deleteCart(item.id)">
+                                            <i class="bx bx-trash text-grey fs-5"></i>
+                                        </button>
+                                        <div class="d-flex align-items-center">
+                                            <button class="btn border border-end-0 rounded-0 p-1 align-middle" [disabled]="loading" (click)="reduceTotal(i)">
+                                                <span class="iconify" data-icon="mdi-light:minus"></span>
+                                            </button>
+                                            <input type="text"
+                                                class="form-control border rounded-0 p-1 align-middle fw-bold text-center"
+                                                [(ngModel)]="item.quantity" name="quantity_{{i}}"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                                (change)="changeQuantity(i)" style="width: 50px;"
+                                                [disabled]="loading || item.disabled">
+                                            <button class="btn border border-start-0 rounded-0 p-1 align-middle"
+                                                [disabled]="loading || item.disabled" (click)="addTotal(i)">
+                                                <span class="iconify" data-icon="mdi-light:plus"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="text-end" *ngIf="item.sisa_stok <= 2">
+                                        <span class="text-danger fs-12 font-m">Sisa Stok : {{ item.sisa_stok | number }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
 
-                      <span class="font-p fs-14 fw-semibold">
-                        Rp {{ item.harga | numberFormat }}
-                      </span>
+                <!-- Terhapus -->
+
+                <ul class="list-group my-5" *ngIf="listDataTerhapus.length > 0">
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="fs-5 fw-bold">Stok Habis</span>
+                        </div>
                     </div>
+                    <li class="list-group-item py-3" *ngFor="let item of listDataTerhapus; index as i"
+                        style="background-color: #dedede;">
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-2 pe-0" style="min-width: 100px;">
+                                        <img [src]="item.use_foto" class="object-fit-cover img-product rounded-2 w-100" width="100" height="80" alt="gambar product">
+                                    </div>
+                                    <div class="col d-flex justify-content-center flex-column">
+                                        <p class="font-p mb-2 fs-6">
+                                            {{ item.nama }}
+                                            <span *ngIf="item.varian1 !== null">, {{ item.varian1 }}</span>
+                                            <span *ngIf="item.varian2 !== null">, {{ item.varian2 }}</span>
+                                        </p>
+                                        <div class="harga-coret my-2" *ngIf="item.is_promo">
+                                            <span class="text-danger border-0 fw-semibold py-1 px-2 rounded-4 fs-14 font-p" style="background-color: #fbbed5">
+                                                {{ item.promo.persen }}%
+                                            </span>
+                                            <span
+                                                class="text-grey border-0 fw-semibold py-1 px-2 rounded-4 fs-14 font-p text-decoration-line-through">
+                                                Rp. {{ item.harga_asli | numberFormat }}
+                                            </span><br>
 
-                    <!-- harga normal -->
-                    <span class="font-p fs-14 fw-semibold" *ngIf="!item.is_promo">
-                      Rp {{ item.harga | numberFormat }}
-                    </span>
+                                            <span class="font-p fs-14 fw-semibold">
+                                                Rp {{ item.harga | numberFormat }}
+                                            </span>
+                                        </div>
 
-                    <span class="font-p fw-semibold d-block d-sm-none">Rp {{ item.harga_total | numberFormat }}</span>
-                    <div class="d-flex justify-content-between d-sm-none mt-3">
-                      <button class="btn me-3 mt-2" role="button" (click)="deleteCart(item.id)">
-                        <span class="iconify text-grey" data-icon="fa6-regular:trash-can"></span>
-                      </button>
-                      <div class="d-flex align-items-center">
-                        <button class="btn btn-sm border border-end-0 rounded-0 p-1 align-middle" [disabled]="loading"
-                          (click)="reduceTotal(i)">
-                          <span class="iconify" data-icon="mdi-light:minus"></span>
-                        </button>
-                        <input type="text"
-                          class="form-control form-control-sm border rounded-0 p-1 align-middle fw-bold text-center"
-                          [(ngModel)]="item.quantity" name="quantity_{{i}}"
-                          oninput="this.value = this.value.replace(/[^0-9]/g, '');" (change)="changeQuantity(i)"
-                          style="width: 50px;" [disabled]="loading">
-                        <button class="btn btn-sm border border-start-0 rounded-0 p-1 align-middle" [disabled]="loading"
-                          (click)="addTotal(i)">
-                          <span class="iconify" data-icon="mdi-light:plus"></span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                                        <!-- harga normal -->
+                                        <span class="font-p fs-14 fw-semibold" *ngIf="!item.is_promo">
+                                            Rp {{ item.harga | numberFormat }}
+                                        </span>
+
+                                        <span class="font-p fw-semibold d-block d-sm-none">Rp {{ item.harga_total | numberFormat }}</span>
+                                        <div class="d-flex justify-content-between d-sm-none mt-3">
+                                            <button class="btn me-3 mt-2" role="button" (click)="deleteCart(item.id)">
+                                                <span class="iconify text-grey" data-icon="fa6-regular:trash-can"></span>
+                                            </button>
+                                            <div class="d-flex align-items-center">
+                                                <button class="btn btn-sm border border-end-0 rounded-0 p-1 align-middle" [disabled]="loading" (click)="reduceTotal(i)">
+                                                    <span class="iconify" data-icon="mdi-light:minus"></span>
+                                                </button>
+                                                <input type="text"
+                                                    class="form-control form-control-sm border rounded-0 p-1 align-middle fw-bold text-center"
+                                                    [(ngModel)]="item.quantity" name="quantity_{{i}}"
+                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                                    (change)="changeQuantity(i)" style="width: 50px;"
+                                                    [disabled]="loading">
+                                                <button
+                                                    class="btn btn-sm border border-start-0 rounded-0 p-1 align-middle"
+                                                    [disabled]="loading" (click)="addTotal(i)">
+                                                    <span class="iconify" data-icon="mdi-light:plus"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <div class="d-none d-sm-flex flex-column">
+                                    <button class="btn d-none d-sm-block me-1" role="button"
+                                        (click)="deleteCart(item.id)">
+                                        <i class="bx bx-trash text-grey fs-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="form-group mt-4" *ngIf="false">
+                    <label for="inputState" class="form-label font-p fs-14">Catatan untuk Jakarta Camera</label>
+                    <textarea type="text" class="form-control fs-12 font-p px-2 py-2" rows="5"></textarea>
                 </div>
-              </div>
-              <div class="col-3">
-                <div class="d-none d-sm-flex flex-column">
-                  <p class="font-p fw-semibold fs-6 text-end my-3 d-none d-sm-block">Rp {{ item.harga * item.quantity |
-                    numberFormat }}</p>
-                  <div class="d-flex align-items-center">
-                    <button class="btn d-none d-sm-block me-1" role="button" (click)="deleteCart(item.id)">
-                      <i class="bx bx-trash text-grey fs-5"></i>
-                    </button>
-                    <div class="d-flex align-items-center">
-                      <button class="btn border border-end-0 rounded-0 p-1 align-middle" [disabled]="loading"
-                        (click)="reduceTotal(i)">
-                        <span class="iconify" data-icon="mdi-light:minus"></span>
-                      </button>
-                      <input type="text" class="form-control border rounded-0 p-1 align-middle fw-bold text-center"
-                        [(ngModel)]="item.quantity" name="quantity_{{i}}"
-                        oninput="this.value = this.value.replace(/[^0-9]/g, '');" (change)="changeQuantity(i)"
-                        style="width: 50px;" [disabled]="loading || item.disabled">
-                      <button class="btn border border-start-0 rounded-0 p-1 align-middle" [disabled]="loading || item.disabled"
-                        (click)="addTotal(i)">
-                        <span class="iconify" data-icon="mdi-light:plus"></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center ms-3" *ngIf="item.sisa_stok <= 2">
-                    <span class="sisa-stok">Sisa Stok : {{ item.sisa_stok | number }}</span>
-                  </div>
-                </div>
-              </div>
             </div>
-          </li>
-        </ul>
-
-        <!-- Terhapus -->
-
-        <ul class="list-group my-5" *ngIf="listDataTerhapus.length > 0">
-          <div class="row">
-            <div class="col-12">
-              <span class="fs-5 fw-bold">Stok Habis</span>
-            </div>
-          </div>
-          <li class="list-group-item py-3" *ngFor="let item of listDataTerhapus; index as i" style="background-color: #dedede;">
-            <div class="row">
-              <div class="col">
-                <div class="row">
-                  <div class="col-2 pe-0" style="min-width: 100px;">
-                    <img [src]="item.use_foto" class="object-fit-cover img-product rounded-2 w-100" width="100" height="80" alt="gambar product">
-                  </div>
-                  <div class="col d-flex justify-content-center flex-column">
-                    <p class="font-p mb-2 fs-6">
-                      {{ item.nama }}
-                      <span *ngIf="item.varian1 !== null">, {{ item.varian1 }}</span>
-                      <span *ngIf="item.varian2 !== null">, {{ item.varian2 }}</span>
-                    </p>
-                    <div class="harga-coret my-2" *ngIf="item.is_promo">
-                      <span class="text-danger border-0 fw-semibold py-1 px-2 rounded-4 fs-14 font-p"
-                        style="background-color: #fbbed5">
-                        {{ item.promo.persen }}%
-                      </span>
-                      <span
-                        class="text-grey border-0 fw-semibold py-1 px-2 rounded-4 fs-14 font-p text-decoration-line-through">
-                        Rp. {{ item.harga_asli | numberFormat }}
-                      </span><br>
-
-                      <span class="font-p fs-14 fw-semibold">
-                        Rp {{ item.harga | numberFormat }}
-                      </span>
+            <div class="col-lg-4 mt-3 mt-lg-0">
+                <div class="cart-total border rounded-2 border-opacity-10 py-4">
+                    <div class="title fs-5 font-p fw-bold px-2 px-lg-3">Total Keranjang</div>
+                    <div class="body px-3 px-lg-4 mt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold fs-6 font-p">Subtotal</span>
+                            <span class="font-p">Rp {{ subTotal | numberFormat }}</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-semibold fs-6">Total</span>
+                            <span class="fw-bold fs-6"> Rp {{ grandTotal | numberFormat }}</span>
+                        </div>
+                        <a class="btn btn-primary w-100 font-p fw-semibold rounded-5 py-2 mt-4" href="javascript:void(0)" routerLink="/checkout"> 
+                            Proses Checkout <span class="iconify ms-1 mb-1 fs-5" data-icon="lucide:arrow-right"></span>
+                        </a>
                     </div>
-
-                    <!-- harga normal -->
-                    <span class="font-p fs-14 fw-semibold" *ngIf="!item.is_promo">
-                      Rp {{ item.harga | numberFormat }}
-                    </span>
-
-                    <span class="font-p fw-semibold d-block d-sm-none">Rp {{ item.harga_total | numberFormat }}</span>
-                    <div class="d-flex justify-content-between d-sm-none mt-3">
-                      <button class="btn me-3 mt-2" role="button" (click)="deleteCart(item.id)">
-                        <span class="iconify text-grey" data-icon="fa6-regular:trash-can"></span>
-                      </button>
-                      <div class="d-flex align-items-center">
-                        <button class="btn btn-sm border border-end-0 rounded-0 p-1 align-middle" [disabled]="loading"
-                          (click)="reduceTotal(i)">
-                          <span class="iconify" data-icon="mdi-light:minus"></span>
-                        </button>
-                        <input type="text"
-                          class="form-control form-control-sm border rounded-0 p-1 align-middle fw-bold text-center"
-                          [(ngModel)]="item.quantity" name="quantity_{{i}}"
-                          oninput="this.value = this.value.replace(/[^0-9]/g, '');" (change)="changeQuantity(i)"
-                          style="width: 50px;" [disabled]="loading">
-                        <button class="btn btn-sm border border-start-0 rounded-0 p-1 align-middle" [disabled]="loading"
-                          (click)="addTotal(i)">
-                          <span class="iconify" data-icon="mdi-light:plus"></span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-1">
-                <div class="d-none d-sm-flex flex-column">
-                  <button class="btn d-none d-sm-block me-1" role="button" (click)="deleteCart(item.id)">
-                    <i class="bx bx-trash text-grey fs-5"></i>
-                  </button>
-                </div>
-              </div>
             </div>
-          </li>
-        </ul>
-        <div class="form-group mt-4" *ngIf="false">
-          <label for="inputState" class="form-label font-p fs-14">Catatan untuk Jakarta Camera</label>
-          <textarea type="text" class="form-control fs-12 font-p px-2 py-2" rows="5"></textarea>
         </div>
-      </div>
-      <div class="col-lg-4 mt-3 mt-lg-0">
-        <div class="cart-total border rounded-2 border-opacity-10 py-4">
-          <div class="title fs-5 font-p fw-bold px-2 px-lg-3">Total Keranjang</div>
-          <div class="body px-3 px-lg-4 mt-4">
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="fw-bold fs-6 font-p">Subtotal</span>
-              <span class="font-p">Rp {{ subTotal | numberFormat }}</span>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="fw-semibold fs-6">Total</span>
-              <span class="fw-bold fs-6"> Rp {{ grandTotal | numberFormat }}</span>
-            </div>
-            <a class="btn btn-primary w-100 font-p fw-semibold rounded-5 py-2 mt-4" href="javascript:void(0)"
-              routerLink="/checkout">
-              Proses Checkout
-              <span class="iconify ms-1 mb-1 fs-5" data-icon="lucide:arrow-right"></span>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <app-footer></app-footer>

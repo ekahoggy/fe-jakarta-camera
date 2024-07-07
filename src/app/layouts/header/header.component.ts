@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   private headerMenu: HTMLElement | null = null;
   private sticky: number = 0;
   private offcanvasService = inject(NgbOffcanvas);
-  collapseCollection: boolean = true;
+  collapseService: boolean = true;
   collapseProduct: boolean = true;
   listCategories: any;
   auth: any;
