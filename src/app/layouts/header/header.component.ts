@@ -41,6 +41,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   socialUser!: SocialUser;
   isLoggedin?: boolean;
 
+  modelSocialMedia: any= {};
+  linkWa: any;
+
   constructor(
     private globalService: GlobalService,
     private router: Router,
@@ -61,12 +64,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     if (this.navbar) {
       this.sticky = this.navbar.offsetTop - 20;
     }
-
+    this.getSocialMedia();
     this.getCategories();
-    console.log(serviceAuth == null)
 
     if (serviceAuth == null) {
-      console.log('here')
       this.socialAuthService.authState.subscribe((user) => {
         this.socialUser = user;
         this.isLoggedin = user != null;
@@ -216,5 +217,33 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.boxSearch = false;
     }, 200); // Delay to allow click event on box-filter
+  }
+
+  getSocialMedia() {
+    this.globalService.DataGet("/setting", { kategori: 'M' }).subscribe((res: any) => {
+      res.data.forEach((val, k) => {
+        if (val.name === 'instagram') {
+          this.modelSocialMedia.instagram = val.value
+        }
+        if (val.name === 'tiktok') {
+          this.modelSocialMedia.tiktok = val.value
+        }
+        if (val.name === 'youtube') {
+          this.modelSocialMedia.youtube = val.value
+        }
+      });
+    });
+    this.globalService.DataGet("/setting", { kategori: 'A' }).subscribe((res: any) => {
+      res.data.forEach((val, k) => {
+        if (val.name === 'no_hp') {
+          this.modelSocialMedia.no_hp = val.value
+          if (this.modelSocialMedia.no_hp.startsWith('0')) {
+            // Ganti angka pertama '0' dengan '+62'
+            this.modelSocialMedia.no_hp = '+62' + this.modelSocialMedia.no_hp.slice(1);
+          }
+          this.linkWa = `https://api.whatsapp.com/send?phone=${this.modelSocialMedia.no_hp}&text=Halo+Jakarta+Camera`
+        }
+      });
+    });
   }
 }

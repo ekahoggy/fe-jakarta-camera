@@ -9,11 +9,13 @@ import Swal from 'sweetalert2';
 })
 export class CartComponent implements OnInit {
   listData: any;
+  listDataTerhapus: any = [];
   loading: boolean = false;
   subTotal: number = 0;
   grandTotal: number = 0;
   auth: any;
   totalCart: number = 0;
+  disabledPlus: boolean = false;
 
   constructor(
     private globalService: GlobalService,
@@ -30,6 +32,7 @@ export class CartComponent implements OnInit {
     }
     this.globalService.DataGet('/cart/get', params).subscribe((res: any) => {
       this.listData = res.data;
+      this.listDataTerhapus = res.stok_habis;
       this.totalCart = res.data.length;
       this.kalkulasi();
     });
@@ -48,7 +51,10 @@ export class CartComponent implements OnInit {
   }
 
   changeQuantity(i: number) {
-    if (this.listData[i].quantity === '0') {
+    if(this.listData[i].quantity >= this.listData[i].sisa_stok){
+      this.listData[i].quantity = this.listData[i].sisa_stok;
+      this.changeCart(this.listData[i]);
+    }else if (this.listData[i].quantity === 0) {
       this.listData[i].quantity = 1;
       this.changeCart(this.listData[i]);
     }
@@ -83,12 +89,23 @@ export class CartComponent implements OnInit {
   kalkulasi() {
     this.subTotal = 0;
     this.grandTotal = 0;
-    let hargaDiskon = 0;
     if (this.listData.length > 0) {
-      this.listData.forEach((val: any) => {
-        this.subTotal += (val.harga * val.quantity)
-        this.grandTotal += (val.harga * val.quantity)
+      this.listData.forEach((item: any) => {
+        if(item.sisa_stok <= item.quantity){
+          item.disabled = true;
+        }
+        else{
+          item.disabled = false;
+        }
       })
+
+      const filteredData = this.listData.filter(item => item.sisa_stok !== 0);
+      this.listData = filteredData;
+
+      this.listData.forEach(item => {
+        this.subTotal += (item.harga * item.quantity)
+        this.grandTotal += (item.harga * item.quantity)
+      });
     }
   }
 }

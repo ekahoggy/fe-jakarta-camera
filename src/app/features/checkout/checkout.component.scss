@@ -23,3 +23,14 @@
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
 }
+
+.list-nama-produk{
+  max-width: 400px;
+
+  .nama-produk {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 250px;
+  }
+}

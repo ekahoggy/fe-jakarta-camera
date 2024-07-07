@@ -234,7 +234,7 @@ export class HomeComponent implements OnInit {
     }
 
     getSettingPopUp() {
-        this.globalService.DataGet('/public/settingPopup', { kategori: 'W' }).subscribe((res: any) => {
+        this.globalService.DataGet('/public/setting', { kategori: 'W' }).subscribe((res: any) => {
             res.data.forEach(setting => {
                 if (setting.name === 'popup') {
                     if (setting.value === 'YES') {

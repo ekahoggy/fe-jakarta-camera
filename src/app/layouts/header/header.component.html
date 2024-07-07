@@ -7,60 +7,11 @@
             </marquee>
             <div class="sosmed flex-shrink-1">
                 <div class="border-1 border-start ps-3 w-100 d-flex">
-                    <a href="https://www.instagram.com/jakarta_camera/" class="fs-6 mx-1" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
-                    <a href="https://www.tiktok.com/@jakarta_camera" class="fs-6 mx-1" target="_blank"><i class='bx bxl-tiktok'></i></a>
-                    <a href="https://www.youtube.com/channel/UCRUiZWQhTxkDKEibX83gm2g" class="fs-6 mx-1"
-                        target="_blank"><i class='bx bxl-youtube'></i></a>
+                    <a *ngIf="modelSocialMedia.instagram" [href]="modelSocialMedia.instagram" class="fs-6 mx-1" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+                    <a *ngIf="modelSocialMedia.tiktok" [href]="modelSocialMedia.tiktok" class="fs-6 mx-1" target="_blank"><i class='bx bxl-tiktok'></i></a>
+                    <a *ngIf="modelSocialMedia.youtube" [href]="modelSocialMedia.youtube" class="fs-6 mx-1" target="_blank"><i class='bx bxl-youtube'></i></a>
                 </div>
             </div>
-
-            <!-- <div class="language">
-        <div ngbDropdown placement="bottom-start" class="d-inline-block">
-          <button type="button" class="border-0 bg-white" id="dropdownLanguage" ngbDropdownToggle>
-            <span class="iconify fs-6 me-1" data-icon="openmoji:flag-united-states"></span>
-            ENGLISH
-          </button>
-          <div ngbDropdownMenu aria-labelledby="dropdownLanguage" style="font-size: 11px;">
-            <button ngbDropdownItem>
-              <span class="iconify fs-6 me-1" data-icon="openmoji:flag-united-states"></span>
-              ENGLISH
-            </button>
-            <button ngbDropdownItem>
-              <span class="iconify fs-6 me-1" data-icon="openmoji:flag-indonesia"></span>
-              INDONESIA
-            </button>
-          </div>
-        </div>
-      </div> -->
-            <!-- <div class="col-2 d-flex justify-content-end">
-        <div class="header-text d-none d-xl-block pe-3">
-          FREE RETURNS. STANDARD SHIPPING ORDERS $99+
-        </div>
-        <div class="menu d-none d-lg-flex justify-content-between align-items-center">
-          <a class="menu-item px-2"> My Account </a>
-          <a class="menu-item pe-2"> Contact Us </a>
-          <a class="menu-item pe-2"> Whistlist </a>
-          <a class="menu-item pe-2"> Log In </a>
-        </div>
-        <div class="menu-sm d-lg-none">
-          <div ngbDropdown class="d-inline-block">
-            <button type="button" class="bg-transparent border-0" id="dropdownLInks" ngbDropdownToggle>
-              Links
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownLInks">
-              <a href="" class="dropdown-links" ngbDropdownItem> My Account </a>
-              <a href="" class="dropdown-links" ngbDropdownItem> Contact Us </a>
-              <a href="" class="dropdown-links" ngbDropdownItem> Whistlist </a>
-              <a href="" class="dropdown-links" ngbDropdownItem> Log In </a>
-            </div>
-          </div>
-        </div>
-        <div class="sosmed border-1 border-start px-1">
-          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:instagram"></span>
-          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:tiktok"></span>
-          <span class="iconify fs-6 mx-1 mx-md-2" data-icon="jam:youtube"></span>
-        </div>
-      </div> -->
         </div>
     </div>
 </section>
@@ -106,8 +57,8 @@
                     <span class="iconify fs-2 me-2" data-icon="mynaui:telephone"></span>
                     <div>
                         <span class="fw-bold text-grey call-text mb-0">HUBUNGI SEKARANG</span>
-                        <a href="https://api.whatsapp.com/send?phone=+6281298767036&text=Halo+Jakarta+Camera" target="_blank">
-                            <p class="mb-0 fs-6 fw-bold">+62 812 98767036</p>
+                        <a [href]="linkWa" target="_blank">
+                            <p class="mb-0 fs-6 fw-bold">{{ modelSocialMedia.no_hp }}</p>
                         </a>
                     </div>
                 </div>
@@ -266,13 +217,13 @@
                             <label for="password" class="mb-2 font-p fs-14">Password</label>
                             <input type="password" class="form-control font-p fs-14 py-2" [(ngModel)]="model.password" name="password" id="password" aria-describedby="password">
                         </div>
-    
+
                         <button class="btn btn-primary font-p fs-14 w-100 py-3 mt-3" (click)="login()">Masuk</button>
                         <div class="text-end mt-3">
                             <a href="javacript:void()" class="fs-14 fw-semibold font-m text-primary">Lupa Password?</a>
                         </div>
                     </form>
-    
+
                     <p class="text-center font-m fs-14 fw-semibold mt-5 pt-5">
                         <span>Tidak punya akun Jakarta Camera? </span>
                         <a href="/register" class="text-primary">Daftar Sekarang</a>

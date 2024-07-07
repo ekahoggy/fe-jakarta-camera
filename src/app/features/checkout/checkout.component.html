@@ -109,15 +109,6 @@
                             </div>
                         </div>
                     </fieldset>
-                    <div class="row" *ngIf="model.recipient">
-                        <div class="col-12 mt-3">
-                            <button class="btn btn-primary w-100 fs-6 py-2 font-p" (click)="checkout()"
-                                [disabled]="loading || disabled">
-                                <i class='bx bx-loader-alt bx-spin' *ngIf="loading"></i>
-                                <span *ngIf="!loading">Bayar</span>
-                            </button>
-                        </div>
-                    </div>
                     <div class="row justify-content-center" *ngIf="!model.recipient">
                         <div class="col-8 text-center">
                             <img src="../../../assets/img/undraw/empty.png" class="w-100" alt="empty-address"
@@ -155,15 +146,15 @@
                         </div>
                     </a>
                     <div class="container-fluid">
-                        <div class="row" *ngFor="let item of listCart; index as i">
+                        <div class="row my-2" *ngFor="let item of listCart; index as i">
                             <div class="col-2 p-0">
                                 <div class="image-thumbnail text-center">
-                                    <img [src]="item.foto" class="object-fit-cover rounded-1" width="64" height="64"
+                                    <img [src]="item.use_foto" class="object-fit-cover rounded-1" width="64" height="64"
                                         alt="">
                                 </div>
                             </div>
-                            <div class="col-7 pe-0">
-                                <p class="mb-0 font-m fs-14"> {{ item.nama }} </p>
+                            <div class="col-7 pe-0 list-nama-produk">
+                                <p class="mb-0 font-m fs-14 nama-produk"> {{ item.nama }} </p>
                                 <small class="font-p fs-12">{{item.quantity}} x {{item.harga | numberFormat}} </small>
                             </div>
                             <div class="col-3 p-0">
@@ -198,6 +189,19 @@
                         <tr height="60" class="border-top">
                             <td class="fs-6 font-p fw-semibold">Grandtotal</td>
                             <td class="text-end fs-6 font-p fw-semibold">Rp {{ total | numberFormat }}</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <div class="row" *ngIf="model.recipient">
+                              <div class="col-12 mt-3">
+                                  <button class="btn btn-primary w-100 fs-6 py-2 font-p" (click)="checkout()"
+                                      [disabled]="loading || disabled">
+                                      <i class='bx bx-loader-alt bx-spin' *ngIf="loading"></i>
+                                      <span *ngIf="!loading">Bayar</span>
+                                  </button>
+                              </div>
+                            </div>
+                          </td>
                         </tr>
                     </table>
                 </div>

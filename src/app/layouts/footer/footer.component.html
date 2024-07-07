@@ -4,13 +4,13 @@
       <div class="col-md-3">
         <h6 class="text-white fw-bold mb-3">INFORMASI KONTAK</h6>
         <p class="text-white mb-0">ALAMAT:</p>
-        <p class="text-white-50 mb-1">Jl. Kedoya Duri Raya No. 20A Jakarta Barat 11520</p>
+        <p class="text-white-50 mb-1">{{ model.alamat }}</p>
         <p class="text-white mb-0">NO HANDPHONE:</p>
-        <p class="text-white-50 mb-1">021-58354635 - 58354655</p>
+        <p class="text-white-50 mb-1">{{ model.no_telp }}</p>
         <p class="text-white mb-0">WHATSAPP:</p>
-        <p class="text-white-50 mb-1">0812 9876 7036</p>
+        <p class="text-white-50 mb-1">{{ model.no_hp }}</p>
         <p class="text-white mb-0">HARI/JAM KERJA:</p>
-        <p class="text-white-50 mb-1">Senin - Minggu / 9:00 AM - 8:00 PM</p>
+        <p class="text-white-50 mb-1">{{ model.hari_kerja }}</p>
       </div>
       <div class="col-md-9">
         <div class="row">
@@ -23,13 +23,7 @@
                   </div>
                   <div class="col-md-11">
                     <p class="text-white-50">
-                      Jakarta Camera adalah toko terpercaya yang melayani jual beli dan sewa kamera di Jakarta. 
-                      Kami menyediakan berbagai jenis kamera dan perlengkapan fotografi berkualitas tinggi untuk memenuhi kebutuhan Anda, 
-                      baik untuk keperluan profesional maupun hobi. 
-                    </p>
-                    <p class="mb-1 text-white-50">
-                      Selain itu, kami juga menawarkan layanan servis kamera 
-                      yang profesional dan handal, memastikan peralatan Anda selalu dalam kondisi prima.
+                      {{ modelTentang.tentang_kami }}
                     </p>
                   </div>
                 </div>
@@ -52,30 +46,30 @@
                   <div class="col-12 mt-5">
                     <h6 class="text-white fw-bold mb-3">ORDER VIA</h6>
                   </div>
-                  <div class="col-6 col-xl-3">
+                  <div class="col-6 col-xl-3" *ngIf="modelMarketplace.tokopedia">
                     <p class="mb-1">
-                      <a class="text-white-50" target="_blank" href="https://www.tokopedia.com/jakcam">
+                      <a class="text-white-50" target="_blank" [href]="modelMarketplace.tokopedia">
                         <img src="https://jakartacamera.com/wp-content/uploads/2023/01/tokopedia-jakarta-camera-300x105.webp" alt="tokopedia" height="50">
                       </a>
                     </p>
                   </div>
-                  <div class="col-6 col-xl-3">
+                  <div class="col-6 col-xl-3" *ngIf="modelMarketplace.bukalapak">
                     <p class="mb-1">
-                      <a class="text-white-50" target="_blank" href="https://www.bukalapak.com/jakarta-camera-official">
+                      <a class="text-white-50" target="_blank" [href]="modelMarketplace.bukalapak">
                         <img src="https://jakartacamera.com/wp-content/uploads/2023/01/bukalapak-jakarta-camera.webp" alt="bukalapak" height="50">
                       </a>
                     </p>
                   </div>
-                  <div class="col-6 col-xl-3">
+                  <div class="col-6 col-xl-3" *ngIf="modelMarketplace.shopee">
                     <p class="mb-1">
-                      <a class="text-white-50" target="_blank" href="https://shopee.co.id/jakartacam">
+                      <a class="text-white-50" target="_blank" [href]="modelMarketplace.shopee">
                         <img src="https://jakartacamera.com/wp-content/uploads/2023/01/shopee-jakarta-camera.webp" alt="shopee" height="50">
                       </a>
                     </p>
                   </div>
-                  <div class="col-6 col-xl-3">
+                  <div class="col-6 col-xl-3" *ngIf="modelMarketplace.blibli">
                     <p class="mb-1">
-                      <a class="text-white-50" target="_blank" href="https://www.blibli.com/merchant/cam-store/JAC-16049">
+                      <a class="text-white-50" target="_blank" [href]="modelMarketplace.shopee">
                         <img src="https://jakartacamera.com/wp-content/uploads/2023/01/bli-bli-jakarta-camera.webp" alt="bli-bli" height="50">
                       </a>
                     </p>
@@ -89,7 +83,7 @@
     </div>
     <div class="row mt-5 pt-3">
       <div class="col text-white-50">
-        © Jakarta Kamera 2024. All Rights Reserved
+        © Jakarta Kamera {{year}}. All Rights Reserved
       </div>
     </div>
   </div>
