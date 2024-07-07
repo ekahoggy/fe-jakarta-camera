@@ -146,15 +146,15 @@
                         </div>
                     </a>
                     <div class="container-fluid">
-                        <div class="row" *ngFor="let item of listCart; index as i">
+                        <div class="row my-2" *ngFor="let item of listCart; index as i">
                             <div class="col-2 p-0">
                                 <div class="image-thumbnail text-center">
-                                    <img [src]="item.foto" class="object-fit-cover rounded-1" width="64" height="64"
+                                    <img [src]="item.use_foto" class="object-fit-cover rounded-1" width="64" height="64"
                                         alt="">
                                 </div>
                             </div>
-                            <div class="col-7 pe-0">
-                                <p class="mb-0 font-m fs-14"> {{ item.nama }} </p>
+                            <div class="col-7 pe-0 list-nama-produk">
+                                <p class="mb-0 font-m fs-14 nama-produk"> {{ item.nama }} </p>
                                 <small class="font-p fs-12">{{item.quantity}} x {{item.harga | numberFormat}} </small>
                             </div>
                             <div class="col-3 p-0">

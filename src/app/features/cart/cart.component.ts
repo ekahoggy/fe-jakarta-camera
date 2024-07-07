@@ -32,6 +32,7 @@ export class CartComponent implements OnInit {
     }
     this.globalService.DataGet('/cart/get', params).subscribe((res: any) => {
       this.listData = res.data;
+      this.listDataTerhapus = res.stok_habis;
       this.totalCart = res.data.length;
       this.kalkulasi();
     });
@@ -88,29 +89,13 @@ export class CartComponent implements OnInit {
   kalkulasi() {
     this.subTotal = 0;
     this.grandTotal = 0;
-    let terhapus = [];
     if (this.listData.length > 0) {
       this.listData.forEach((item: any) => {
-        item.use_foto = item.foto;
-        item.sisa_stok = 0;
-        item.disabled = false;
-        if(item.product_varian_id !== null){
-          item.sisa_stok = item.stok_varian;
-          item.use_foto = item.foto_varian;
-        }
-        else{
-          item.sisa_stok = item.stok;
-        }
-
         if(item.sisa_stok <= item.quantity){
           item.disabled = true;
         }
         else{
           item.disabled = false;
-        }
-
-        if(item.sisa_stok == 0){
-          this.listDataTerhapus.push(item);
         }
       })
 

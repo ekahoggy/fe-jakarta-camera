@@ -152,7 +152,7 @@ export class CheckoutComponent implements OnInit {
                 this.model = address;
                 this.model.email = this.session.email;
 
-                this.getCourier();
+                // this.getCourier();
             }
         }, (error: any) => {
             this.model.email = this.session.email;
@@ -162,21 +162,25 @@ export class CheckoutComponent implements OnInit {
     kalkulasi() {
         this.subtotal = 0;
         this.total = 0;
-        this.listCart.forEach((val: any) => {
-            val.price = val.harga
-            val.subtotal_price = (val.harga * val.quantity)
-            val.grandtotal_price = (val.harga * val.quantity)
 
-            this.subtotal += (val.harga * val.quantity);
-        })
+        const filteredData = this.listCart.filter(item => item.sisa_stok !== 0);
+        this.listCart = filteredData;
+
+        this.listCart.forEach(val => {
+          val.price = val.harga
+          val.subtotal_price = (val.harga * val.quantity)
+          val.grandtotal_price = (val.harga * val.quantity)
+
+          this.subtotal += (val.harga * val.quantity);
+        });
 
         if (this.selectedVoucher) {
-            if (this.selectedVoucher.type === 'P') {
-                this.voucher = (this.selectedVoucher.voucher_value / 100) * this.subtotal;
-            }
-            if (this.selectedVoucher.type === 'N') {
-                this.voucher = this.selectedVoucher.voucher_value;
-            }
+          if (this.selectedVoucher.type === 'P') {
+            this.voucher = (this.selectedVoucher.voucher_value / 100) * this.subtotal;
+          }
+          if (this.selectedVoucher.type === 'N') {
+            this.voucher = this.selectedVoucher.voucher_value;
+          }
         }
         this.total = this.subtotal + this.pengiriman - this.voucher;
     }
