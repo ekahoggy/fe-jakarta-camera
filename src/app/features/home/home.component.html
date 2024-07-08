@@ -224,9 +224,7 @@
                                     <span>
                                         <i class='bx bxs-bolt'></i>{{ item.persen }}%
                                     </span>
-                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo ? item.harga_promo
-                                        : 0 | numberFormat
-                                        }} </p>
+                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo | numberFormat }} </p>
                                 </div>
                             </a>
                         </div>
@@ -237,17 +235,9 @@
     </section>
 
     <section class="products mb-5">
-        <!-- <div class="filter-bar border-bottom">
-            <div class="container">
-                <div class="d-flex">
-                    <div class="fw-bolder pb-3 me-4" [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'featured', 'text-primary': filterProduct == 'featured'}" style="font-size: 13px;" (click)="changeTipeProduct('featured')" role="button">PRODUK PILIHAN</div>
-                    <div class="fw-bolder pb-3 me-4" [ngClass]="{'border-bottom border-primary border-2': filterProduct == 'monthly', 'text-primary': filterProduct == 'monthly'}" style="font-size: 13px;" (click)="changeTipeProduct('monthly')" role="button">PROMO BULANAN</div>
-                </div>
-            </div>
-        </div> -->
         <div class="container">
             <div class="mb-4 d-flex align-items-center">
-                <span class="fw-bolder text-primary fs-6 me-2">PRODUK TERPOPULER</span>
+                <span class="fw-bolder text-primary fs-6 me-2">SEMUA PRODUK</span>
                 <i class='bx bx-badge-check text-primary fs-5'></i>
             </div>
             <div class="row">
@@ -259,16 +249,16 @@
                                     <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
                                 </div>
                                 <div class="detail p-2 p-lg-3">
-                                    <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
-                                    <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
-                                    <span class="text-decoration-line-through fs-14"
-                                        style="color: rgb(175, 175, 175);">Rp
-                                        50,000</span>
-                                    <span>
-                                        <i class='bx bxs-bolt'></i>-12%
-                                    </span>
-                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga | numberFormat }}</p>
-                                </div>
+                                  <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
+                                  <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
+                                  <span class="text-decoration-line-through fs-14"
+                                      style="color: rgb(175, 175, 175);" *ngIf="item.is_promo">Rp {{ item.harga |
+                                      numberFormat }}</span>
+                                  <span *ngIf="item.is_promo">
+                                      <i class='bx bxs-bolt'></i>{{ item.promo.persen }}%
+                                  </span>
+                                  <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo | numberFormat }} </p>
+                              </div>
                             </a>
                         </div>
                     </div>
