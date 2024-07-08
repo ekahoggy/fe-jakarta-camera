@@ -126,12 +126,18 @@
                                 <div class="detail p-2 p-lg-3">
                                     <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
                                     <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
-                                    <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp
-                                        50,000</span>
+                                    <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp 50,000</span>
                                     <span>
                                         <i class='bx bxs-bolt'></i>-12%
                                     </span>
-                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga | numberFormat }}</p>
+                                    <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga | numberFormat }}</p>
+                                    <div class="star fs-12">
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 0, 'bx-star': item.rating < 1 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 1, 'bx-star': item.rating < 2 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 2, 'bx-star': item.rating < 3 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 3, 'bx-star': item.rating < 4 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 4, 'bx-star': item.rating < 5 }"></i>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -212,19 +218,23 @@
                             data-aos-duration="1000">
                             <a href="javascript:void(0)" (click)="clickProduk(item)">
                                 <div class="position-relative wrap-image rounded-top-3">
-                                    <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3"
-                                        alt="Random second slide" />
+                                    <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
                                 </div>
                                 <div class="detail p-2 p-lg-3">
                                     <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
                                     <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
-                                    <span class="text-decoration-line-through fs-14"
-                                        style="color: rgb(175, 175, 175);">Rp {{ item.harga |
-                                        numberFormat }}</span>
+                                    <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp {{ item.harga | numberFormat }}</span>
                                     <span>
                                         <i class='bx bxs-bolt'></i>{{ item.persen }}%
                                     </span>
-                                    <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo | numberFormat }} </p>
+                                    <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga_promo | numberFormat }} </p>
+                                    <div class="star fs-12">
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 0, 'bx-star': item.rating < 1 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 1, 'bx-star': item.rating < 2 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 2, 'bx-star': item.rating < 3 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 3, 'bx-star': item.rating < 4 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 4, 'bx-star': item.rating < 5 }"></i>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -243,21 +253,26 @@
             <div class="row">
                 <ng-container *ngFor="let item of listProduct; index as i">
                     <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3 px-2">
-                        <div class="wrap-item rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <div class="wrap-item h-100 rounded-3" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                             <a href="javascript:void(0)" (click)="clickProduk(item)">
                                 <div class="position-relative wrap-image rounded-top-3">
                                     <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
                                 </div>
                                 <div class="detail p-2 p-lg-3">
-                                  <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
-                                  <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
-                                  <span class="text-decoration-line-through fs-14"
-                                      style="color: rgb(175, 175, 175);" *ngIf="item.is_promo">Rp {{ item.harga |
-                                      numberFormat }}</span>
-                                  <span *ngIf="item.is_promo">
-                                      <i class='bx bxs-bolt'></i>{{ item.promo.persen }}%
-                                  </span>
-                                  <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga_promo | numberFormat }} </p>
+                                    <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
+                                    <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
+                                    <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);" *ngIf="item.is_promo">Rp {{ item.harga | numberFormat }}</span>
+                                    <span *ngIf="item.is_promo">
+                                        <i class='bx bxs-bolt'></i>{{ item.promo.persen }}%
+                                    </span>
+                                    <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga_promo | numberFormat }} </p>
+                                    <div class="star fs-12">
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 0, 'bx-star': item.rating < 1 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 1, 'bx-star': item.rating < 2 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 2, 'bx-star': item.rating < 3 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 3, 'bx-star': item.rating < 4 }"></i>
+                                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 4, 'bx-star': item.rating < 5 }"></i>
+                                    </div>
                               </div>
                             </a>
                         </div>

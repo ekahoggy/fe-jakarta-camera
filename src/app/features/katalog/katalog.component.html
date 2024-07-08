@@ -128,14 +128,14 @@
                                     <div class="detail p-2">
                                         <span class="category text-black-50" style="font-size: 11px;">{{ item.kategori }}</span>
                                         <p class="product-name fs-14 mb-0 font-p"> {{item.nama}} </p>
-                                        <div class="rating">
-                                            <i class='bx bxs-star text-warning'></i>
-                                            <i class='bx bxs-star text-warning'></i>
-                                            <i class='bx bxs-star text-warning'></i>
-                                            <i class='bx bxs-star-half text-warning'></i>
-                                            <i class='bx bx-star text-warning'></i>
+                                        <p class="price font-p fs-14 fw-semibold mb-1">Rp {{ item.harga | numberFormat }}</p>
+                                        <div class="star fs-12">
+                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 0, 'bx-star': item.rating < 1 }"></i>
+                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 1, 'bx-star': item.rating < 2 }"></i>
+                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 2, 'bx-star': item.rating < 3 }"></i>
+                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 3, 'bx-star': item.rating < 4 }"></i>
+                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 4, 'bx-star': item.rating < 5 }"></i>
                                         </div>
-                                        <p class="price font-p fs-14 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
                                         <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px" (click)="addCart(item.id)">
                                             <span class="iconify me-1 mb-1" data-icon="solar:cart-linear"></span>
                                             Keranjang
