@@ -74,7 +74,10 @@
                                 </div>
                                 <div>
                                     <h1 class="fs-14 font-p mb-0">{{ detail.nama }}</h1>
-                                    <span class="text-grey fs-12 font-p ">{{ detail.qty }} pcs x Rp. {{ detail.price | numberFormat }}</span>
+                                    <p class="text-grey fs-12 font-p mb-1">{{ detail.qty }} pcs x Rp. {{ detail.price | numberFormat }}</p>
+                                    <button class="btn btn-sm btn-primary me-2 fs-12 fw-bold" (click)="openModalRating(modalRating, item.id, detail)">
+                                        Ulasan
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -86,9 +89,6 @@
                         </div>
                     </div>
                     <div class="p-2 text-end">
-                        <button class="btn btn-sm btn-outline-primary px-5 me-2 fs-12 fw-bold" (click)="openModalRating(modalRating)">
-                            Ulasan
-                        </button>
                         <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold" (click)="openModalDetail(modalDetail)">
                             Detail
                         </button>
@@ -225,8 +225,8 @@
                 <div class="col-12 mb-4">
                     <div class="text-center">
                         <h1 class="fs-5 font-p fw-semibold mb-4">Beri Rating Produk</h1>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRExEtIpdxQ4vvk5iZdcejgcXsiPs599UBWrg&s" class="rounded-2 object-fit-cover mb-3" width="100" height="100" alt="">
-                        <p class="font-m fw-semibold fs-5">Camera Canon EOS9</p>
+                        <img [src]="dataUlasan.photo" class="rounded-2 object-fit-cover mb-3" width="100" height="100" alt="">
+                        <p class="font-m fw-semibold fs-5">{{ dataUlasan.nama }}</p>
 
                         <div class="rating text-warning fs-1 mb-1">
                             <ng-container *ngFor="let star of stars; let i = index">
@@ -235,15 +235,15 @@
                                   (mouseleave)="onMouseLeave()"
                                   (click)="rate(i)"
                                   class="bx"
-                                  [ngClass]="{'bx-star': i > hoveredStar, 'bxs-star': i <= hoveredStar || i < selectedStar }"
+                                  [ngClass]="{'bx-star': i > hoveredStar, 'bxs-star': i <= hoveredStar || i < dataUlasan.rating, 'pointer-none' : dataUlasan.ulasan_id }"
                                 ></span>
                             </ng-container>
                         </div>
                         <p class="font-m fs-5" *ngIf="!!pesan">{{pesan}}</p>
                     </div>
                     <div class="mb-3">
-                        <label for="form-label font-p fs-14">Review</label>
-                        <textarea class="form-control font-m fs-14" name="review" id="review" rows="6"></textarea>
+                        <label for="form-label font-p fs-14">Ulasan</label>
+                        <textarea class="form-control font-m fs-14" name="ulasan" id="ulasan" [(ngModel)]="dataUlasan.ulasan" rows="6" placeholder="Berikan pengalaman belanja kamu" [disabled]="dataUlasan.ulasan_id"></textarea>
                     </div>
                 </div>
                 <div class="col-12 text-end">
@@ -251,8 +251,9 @@
                         <i class="bx bx-chevron-left me-1"></i>
                         Kembali
                     </button>
-                    <button class="btn btn-primary btn-sm">
-                        <i class='bx bxs-send me-1'></i>
+                    <button class="btn btn-primary btn-sm" [disabled]="loading" (click)="postUlasan()" *ngIf="!dataUlasan.ulasan_id">
+                        <i class='bx bxs-send me-1' *ngIf="!loading"></i>
+                        <i class='bx bx-loader-alt bx-spin me-1' *ngIf="loading"></i>
                         Kirim
                     </button>
                 </div>

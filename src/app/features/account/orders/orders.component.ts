@@ -15,6 +15,8 @@ export class OrdersComponent implements OnInit {
     hoveredStar: number = -1;
     selectedStar: number = -1;
     pesan:string = "";
+    dataUlasan: any = {}
+    loading: boolean = false;
 
 	constructor(
 		private globalService: GlobalService,
@@ -33,6 +35,7 @@ export class OrdersComponent implements OnInit {
             status: '',
             nama: ''
         }
+        this.dataUlasan = {};
     }
 
     filterStatus(status:string) {
@@ -51,8 +54,31 @@ export class OrdersComponent implements OnInit {
         this.modalService.open(modal, { size: 'md', backdrop: 'static'});
     }
 
-    openModalRating(modal:TemplateRef<any>) {
+    openModalRating(modal:TemplateRef<any>, id, detail) {
+        console.log(detail)
         this.modalService.open(modal, { size: 'md', backdrop: 'static'});
+        this.dataUlasan.ulasan_id = detail.ulasan_id ? detail.ulasan_id : 0;
+        this.dataUlasan.m_produk_id = detail.product_id;
+        this.dataUlasan.user_id = this.session.id;
+        this.dataUlasan.t_order_id = id;
+        this.dataUlasan.nama = detail.nama;
+        this.dataUlasan.photo = detail.photo;
+        this.dataUlasan.rating = detail.rating ? detail.rating : 5;
+        this.dataUlasan.ulasan = detail.ulasan ? detail.ulasan : "";
+    }
+
+    postUlasan() {
+        this.loading = true;
+        const final = Object.assign(this.dataUlasan)
+        this.globalService.DataPost('/public/post-ulasan', final).subscribe((res: any) => {
+            this.globalService.alertSuccess('Berhasil', 'Ulasan berhasil di kirim');
+            this.empty();
+            this.modalService.dismissAll();
+            this.loading = false;
+        }, (error:any) => {
+            this.globalService.alertError('Mohon Maaf', error.error.message);
+            this.loading = false;
+        });
     }
 
     onMouseEnter(index: number): void {
@@ -64,17 +90,17 @@ export class OrdersComponent implements OnInit {
     }
 
     rate(index: number): void {
-        this.selectedStar = index + 1;
+        this.dataUlasan.rating = index + 1;
 
-        if (this.selectedStar == 1) {
+        if (this.dataUlasan.rating == 1) {
             this.pesan = 'Sangat Mengecewakan';
-        } else if (this.selectedStar == 2) {
+        } else if (this.dataUlasan.rating == 2) {
             this.pesan = 'Kurang Memuaskan';
-        } else if (this.selectedStar == 3) {
+        } else if (this.dataUlasan.rating == 3) {
             this.pesan = 'Biasa Saja';
-        } else if (this.selectedStar == 4) {
+        } else if (this.dataUlasan.rating == 4) {
             this.pesan = 'Pengalaman yang Baik';
-        } else if (this.selectedStar == 5) {
+        } else if (this.dataUlasan.rating == 5) {
             this.pesan = 'Pengalaman yang Sangat Baik';
         }
     }

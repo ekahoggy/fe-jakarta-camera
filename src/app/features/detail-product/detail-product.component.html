@@ -48,14 +48,14 @@
           </h1>
           <div class="rating d-flex align-items-center">
             <div class="star">
-              <i class='bx bxs-star text-warning'></i>
-              <i class='bx bxs-star text-warning'></i>
-              <i class='bx bxs-star text-warning'></i>
-              <i class='bx bxs-star-half text-warning'></i>
-              <i class='bx bx-star text-warning'></i>
+                <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 0, 'bx-star': rataRating < 1 }"></i>
+                <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 1, 'bx-star': rataRating < 2 }"></i>
+                <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 2, 'bx-star': rataRating < 3 }"></i>
+                <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 3, 'bx-star': rataRating < 4 }"></i>
+                <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 4, 'bx-star': rataRating < 5 }"></i>
             </div>
             <div class="ms-2 text-grey font-p font-14">
-              12 Reviews &nbsp; | &nbsp;
+              {{ totalUlasan }} Ulasan &nbsp; | &nbsp;
               <i class='bx bx-notepad'></i>
               <span *ngIf="model.stok == 1">Stok : <span class="stok-sisa">Sisa {{ model.stok }}</span></span>
               <span *ngIf="model.stok > 1">Stok : {{ model.stok }}</span>
@@ -210,134 +210,47 @@
 
   <section class="reviews mb-5">
     <div class="container">
-      <h1 class="fs-5 fw-semibold mb-3 font-p">CUSTOMER REVIEWS</h1>
+      <h1 class="fs-5 fw-semibold mb-3 font-p">Ulasan Pelanggan</h1>
       <div class="d-flex justify-content-between">
-        <div class="rating fs-6">
-          <i class='bx bxs-star text-warning'></i>
-          <i class='bx bxs-star text-warning'></i>
-          <i class='bx bxs-star text-warning'></i>
-          <i class='bx bxs-star-half text-warning'></i>
-          <i class='bx bx-star text-warning'></i>
-          <span class="ms-2">Based on 1 review</span>
+        <div class="star">
+            <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 0, 'bx-star': rataRating < 1 }"></i>
+            <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 1, 'bx-star': rataRating < 2 }"></i>
+            <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 2, 'bx-star': rataRating < 3 }"></i>
+            <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 3, 'bx-star': rataRating < 4 }"></i>
+            <i class='bx text-warning' [ngClass]="{'bxs-star': rataRating > 4, 'bx-star': rataRating < 5 }"></i>
+            <span class="ms-2" *ngIf="totalUlasan > 0">Berdasarkan {{ totalUlasan }} ulasan</span>
+            <span class="ms-2" *ngIf="totalUlasan < 1">Belum Ada Ulasan</span>
         </div>
-        <span>
+        <!-- <span>
           <button class="btn text-primary">Write a review</button>
-        </span>
+        </span> -->
       </div>
 
       <div class="reviews mt-3">
-        <div class="row mb-3">
-          <div class="col-2 col-xl-1">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-              class="object-fit-cover w-100" alt="">
-          </div>
-          <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="detail">
-                <span class="fw-bold fs-6">Galih Satrio - </span> <span>Galih on Aug 22, 2021</span>
+        <ng-container *ngFor="let item of listUlasan">
+            <div class="row mb-3">
+              <div class="col-2 col-xl-1">
+                <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" class="object-fit-cover w-100" alt="">
               </div>
-              <div class="rating">
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star-half text-warning'></i>
-                <i class='bx bx-star text-warning'></i>
-              </div>
-            </div>
-            <p class="mt-3 fs-14">
-              Kamera Canon EOS 90D ini benar-benar sesuai dengan harapan saya. Kualitas build-nya kokoh dan terasa
-              sangat premium. Setelah beberapa kali penggunaan, saya sangat terkesan dengan hasil foto dan video yang
-              dihasilkan. Resolusi 32.5 MP dan prosesor DIGIC 8 memberikan detail yang tajam dan warna yang akurat,
-              membuat hasil jepretan terlihat profesional.
-            </p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-2 col-xl-1">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-              class="object-fit-cover w-100" alt="">
-          </div>
-          <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="detail">
-                <span class="fw-bold fs-6">Eka Hoggy - </span> <span>Eka on Aug 22, 2021</span>
-              </div>
-              <div class="rating">
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star-half text-warning'></i>
-                <i class='bx bx-star text-warning'></i>
+              <div class="col-10 col-xl-11 bg-body-tertiary rounded-bottom-5 rounded-end-5 p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="detail font-m">
+                    <span class="fw-bold fs-6">{{ item.name }} - </span> <span class="fs-14">{{ item.username }} on {{ item.created_at | date:'MMMM dd, YYY' }}</span>
+                  </div>
+                  <div class="rating">
+                    <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 0, 'bx-star': item.rating < 1 }"></i>
+                    <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 1, 'bx-star': item.rating < 2 }"></i>
+                    <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 2, 'bx-star': item.rating < 3 }"></i>
+                    <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 3, 'bx-star': item.rating < 4 }"></i>
+                    <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 4, 'bx-star': item.rating < 5 }"></i>
+                  </div>
+                </div>
+                <p class="mt-3 fs-14 ps-2">
+                    {{ item.ulasan }}
+                </p>
               </div>
             </div>
-            <p class="mt-3 fs-14">
-              Membeli Canon EOS 90D dari [Nama Toko Online] adalah pengalaman yang menyenangkan. Pengiriman sangat cepat
-              dan kemasannya sangat aman. Kamera ini menawarkan kinerja luar biasa dengan kualitas gambar yang
-              mengagumkan. Layar sentuh vari-angle dan daya tahan baterai yang kuat adalah keunggulan utama bagi saya.
-              Saya merasa sangat puas dengan kamera ini dan layanan dari toko ini, dan tidak ragu merekomendasikan
-              kepada siapa pun yang mencari kamera DSLR berkualitas.
-            </p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-2 col-xl-1">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-              class="object-fit-cover w-100" alt="">
-          </div>
-          <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="detail">
-                <span class="fw-bold fs-6">Febri Fatur - </span> <span>Febri on Aug 22, 2021</span>
-              </div>
-              <div class="rating">
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star-half text-warning'></i>
-                <i class='bx bx-star text-warning'></i>
-              </div>
-            </div>
-            <p class="mt-3 fs-14">
-              Saya sangat senang dengan kamera Canon EOS 90D yang saya beli dari [Nama Toko Online]. Proses pembelian
-              mudah dan pengiriman cepat. Kamera ini memiliki performa luar biasa dengan hasil foto yang tajam dan
-              detail. Sistem autofocus 45 titik dan kemampuan perekaman video 4K benar-benar meningkatkan kualitas karya
-              saya. Satu-satunya kekurangan adalah bobot kamera yang agak berat untuk penggunaan dalam waktu lama.
-              Namun, secara keseluruhan, saya sangat puas dan merekomendasikan produk ini.
-            </p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-2 col-xl-1">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-              class="object-fit-cover w-100" alt="">
-          </div>
-          <div class="col-10 col-xl-11 bg-body-tertiary py-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="detail">
-                <span class="fw-bold fs-6">Anonymous - </span> <span>Anonymous on Aug 22, 2021</span>
-              </div>
-              <div class="rating">
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star text-warning'></i>
-                <i class='bx bxs-star-half text-warning'></i>
-                <i class='bx bx-star text-warning'></i>
-              </div>
-            </div>
-            <p class="mt-3 fs-14">
-              Saya baru saja membeli kamera Canon EOS 90D dari [Nama Toko Online], dan saya sangat puas dengan
-              pengalaman ini. Pengiriman cepat dan aman, kamera tiba dalam kondisi sempurna. Kualitas gambar sangat
-              tajam dan detail, cocok untuk fotografi profesional maupun hobi. Sistem autofocusnya cepat dan akurat,
-              membuatnya mudah menangkap momen dengan sempurna. Fitur-fitur canggih sesuai dengan deskripsi di situs.
-              Saya sangat merekomendasikan kamera ini dan toko ini untuk siapa pun yang mencari kamera berkualitas
-              tinggi.
-            </p>
-          </div>
-        </div>
+        </ng-container>
       </div>
     </div>
   </section>
@@ -366,12 +279,18 @@
                     <div class="detail p-2 p-lg-3">
                       <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
                       <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
-                      <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp
-                        50,000</span>
+                      <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp 50,000</span>
                       <span>
                         <i class='bx bxs-bolt'></i>-12%
                       </span>
-                      <p class="price fs-14 fw-semibold font-p">Rp {{ item.harga | numberFormat }}</p>
+                      <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga | numberFormat }}</p>
+                      <div class="star fs-12">
+                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 0, 'bx-star': item.rating < 1 }"></i>
+                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 1, 'bx-star': item.rating < 2 }"></i>
+                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 2, 'bx-star': item.rating < 3 }"></i>
+                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 3, 'bx-star': item.rating < 4 }"></i>
+                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 4, 'bx-star': item.rating < 5 }"></i>
+                    </div>
                     </div>
                   </a>
                 </div>
