@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
-  selector: 'app-subscription',
-  templateUrl: './subscription.component.html',
-  styleUrls: ['./subscription.component.scss']
+  selector: 'app-unsubscripe',
+  templateUrl: './unsubscripe.component.html',
+  styleUrls: ['./unsubscripe.component.scss']
 })
-export class SubscriptionComponent implements OnInit {
+export class UnsubscripeComponent {
     session: any;
     model:any = {}
     loading: boolean = false;

@@ -17,6 +17,7 @@ export class OrdersComponent implements OnInit {
     pesan:string = "";
     dataUlasan: any = {}
     loading: boolean = false;
+    dataDetail: any = {};
 
 	constructor(
 		private globalService: GlobalService,
@@ -50,8 +51,10 @@ export class OrdersComponent implements OnInit {
         })
     }
 
-    openModalDetail(modal:TemplateRef<any>) {
+    openModalDetail(modal:TemplateRef<any>, data) {
         this.modalService.open(modal, { size: 'md', backdrop: 'static'});
+        this.dataDetail = data;
+        console.log(data)
     }
 
     openModalRating(modal:TemplateRef<any>, id, detail) {

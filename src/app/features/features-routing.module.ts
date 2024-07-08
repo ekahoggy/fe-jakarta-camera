@@ -25,6 +25,7 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { SuccessVerificationComponent } from './success-verification/success-verification.component';
 import { AuthModule } from './auth/auth.module';
+import { UnsubscripeComponent } from './unsubscripe/unsubscripe.component';
 
 const routes: Routes = [
     {
@@ -92,8 +93,12 @@ const routes: Routes = [
         canActivate: [GuestGuard]
     },
     {
-        path: 'subscription',
+        path: 'subscribe',
         component: SubscriptionComponent,
+    },
+    {
+        path: 'unsubscribe',
+        component: UnsubscripeComponent,
     },
     {
         path: 'katalog',
