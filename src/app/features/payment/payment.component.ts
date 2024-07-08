@@ -4,28 +4,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
-  selector: 'app-payment',
-  templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss']
+    selector: 'app-payment',
+    templateUrl: './payment.component.html',
+    styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
-  urlSafe: any;
+    urlSafe: any;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    public sanitizer: DomSanitizer,
-  ) { }
+    constructor(
+        private router: Router,
+        private route: ActivatedRoute,
+        public sanitizer: DomSanitizer,
+    ) { }
 
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      const url = JSON.parse(atob(params['data']));
-      this.urlSafe = this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(url.url);
-    });
-  }
+    ngOnInit(): void {
+        this.route.queryParams.subscribe(params => {
+            const url = JSON.parse(atob(params['data']));
+            this.urlSafe = this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(url.url);
+        });
+    }
 
-  onSuccess() {
-		this.router.navigate(['/complete-order']);
-  }
+    onSuccess() {
+        this.router.navigate(['/complete-order']);
+    }
 
 }
