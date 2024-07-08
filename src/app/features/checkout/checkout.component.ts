@@ -126,9 +126,10 @@ export class CheckoutComponent implements OnInit {
 
     getVoucher() {
         let params = {
-            jenis: 'produk'
+            jenis: 'produk',
+            user_id: this.userId
         }
-        this.globalService.DataGet('/voucher', params).subscribe((res: any) => {
+        this.globalService.DataGet('/public/voucher', params).subscribe((res: any) => {
             this.listVoucher = res.data;
         });
     }

@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
   auth: any;
   totalCart: number = 0;
   disabledPlus: boolean = false;
+  disabledProses: boolean = true;
 
   constructor(
     private globalService: GlobalService,
@@ -107,5 +108,10 @@ export class CartComponent implements OnInit {
         this.grandTotal += (item.harga * item.quantity)
       });
     }
+
+    if(this.grandTotal > 0){
+      this.disabledProses = false;
+    }
   }
+
 }
