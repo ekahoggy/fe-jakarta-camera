@@ -30,6 +30,7 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
 import { RecaptchaModule } from 'ng-recaptcha';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { SuccessVerificationComponent } from './success-verification/success-verification.component';
+import { UnsubscripeComponent } from './unsubscripe/unsubscripe.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { SuccessVerificationComponent } from './success-verification/success-ver
     NewsDetailComponent,
     EmailVerificationComponent,
     SubscriptionComponent,
-    SuccessVerificationComponent
+    SuccessVerificationComponent,
+    UnsubscripeComponent
   ],
   imports: [
     CommonModule,

@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <div class="p-2 text-end">
-                        <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold" (click)="openModalDetail(modalDetail)">
+                        <button class="btn btn-sm btn-primary px-5 fs-12 fw-bold" (click)="openModalDetail(modalDetail, item)">
                             Detail
                         </button>
                     </div>
@@ -119,32 +119,34 @@
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="font-p fs-12">No Invoice</span>
-                        <span class="font-p fs-12 fw-semibold text-primary">INV/240526/001</span>
+                        <span class="font-p fs-12 fw-semibold text-primary"> {{ dataDetail.invoice_number }} </span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="font-p fs-12">Tanggal Pembelian</span>
-                        <span class="font-p fs-12">25 Desember 2023, 22:49 WIB</span>
+                        <span class="font-p fs-12">{{ dataDetail.date }}</span>
                     </div>
                 </div>
                 <div class="col-12 mb-4">
                     <div class="d-flex mb-3">
                         <span class="font-p fw-semibold">Detail Produk</span>
                     </div>
-                    <div class="list-produk border rounded-3 py-4 px-3">
-                        <div class="item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRExEtIpdxQ4vvk5iZdcejgcXsiPs599UBWrg&s" class="rounded-2 object-fit-cover" alt="" width="50" height="50">
-                                <div class="ms-3">
-                                    <span class="font-p fw-semibold fs-14">Camera Canon EOS9</span> <br>
-                                    <span class="fs-12 font-p text-grey">1 x Rp. 1.299.000</span>
+                    <ng-container *ngFor="let detail of dataDetail.detail">
+                        <div class="list-produk border rounded-3 py-4 px-3">
+                            <div class="item d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img [src]="detail.photo" class="rounded-2 object-fit-cover" alt="" width="50" height="50">
+                                    <div class="ms-3">
+                                        <span class="font-p fw-semibold fs-14">{{ detail.nama }}</span> <br>
+                                        <span class="fs-12 font-p text-grey">{{ detail.qty }} x Rp. {{ detail.price | numberFormat }}</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-m fs-14">Total Harga</div>
+                                    <div class="font-p fw-semibold fs-14">Rp. {{ detail.subtotal | numberFormat }}</div>
                                 </div>
                             </div>
-                            <div>
-                                <div class="font-m fs-14">Total Harga</div>
-                                <div class="font-p fw-semibold fs-14">Rp. 1.299.000</div>
-                            </div>
                         </div>
-                    </div>
+                    </ng-container>
                 </div>
                 <div class="col-12 mb-4">
                     <div class="d-flex mb-3">
