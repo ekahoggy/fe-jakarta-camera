@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent extends MetaDataService implements OnInit {
     model: any = {};
     is: any = {};
     error: any = {};
@@ -15,9 +17,14 @@ export class RegisterComponent implements OnInit {
     constructor(
         private globalService: GlobalService,
         private router: Router,
-    ) { }
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
     ngOnInit(): void {
+        this.updateTags();
         this.empty();
         this.is.success = false;
     }

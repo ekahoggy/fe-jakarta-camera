@@ -1,21 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-pasang-cctv',
   templateUrl: './pasang-cctv.component.html',
   styleUrls: ['./pasang-cctv.component.scss']
 })
-export class PasangCctvComponent {
+export class PasangCctvComponent extends MetaDataService implements OnInit {
   	model: any = {};
 	is: any = {};
 	base64Image: string | null = null;
 
 	constructor(
 		private globalService: GlobalService,
-	) { }
+        titleService: Title,
+        metaService: Meta
+	) {
+        super(titleService, metaService);
+    }
 
 	ngOnInit(): void {
+        this.updateTags('Pasang CCTV', 'service/pasang-cctv');
 		this.empty();
 	}
 

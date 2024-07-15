@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
+
 interface CollapseStatus {
   [key: string]: boolean;
 }
@@ -10,7 +13,7 @@ interface CollapseStatus {
   templateUrl: './katalog.component.html',
   styleUrls: ['./katalog.component.scss']
 })
-export class KatalogComponent {
+export class KatalogComponent extends MetaDataService implements OnInit {
   isCollapsedChild: CollapseStatus = {};
   isCollapsed = {
     categories: false,
@@ -32,9 +35,14 @@ export class KatalogComponent {
     private route: ActivatedRoute,
     private globalService: GlobalService,
     private router: Router,
-  ) { }
+    titleService: Title,
+    metaService: Meta
+  ) { 
+    super(titleService, metaService);
+  }
 
   ngOnInit() {
+    this.updateTags('Katalog', 'katalog');
     this.route.queryParams.subscribe(params => {
       const slug = params === undefined ? {} : params;
       this.getProduct(slug);

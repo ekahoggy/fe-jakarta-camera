@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { NgbModal, NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 import { environment } from 'src/environments/environment.development';
-import Swal from 'sweetalert2';
-import {
-  SocialAuthService,
-  GoogleLoginProvider,
-  SocialUser,
-} from '@abacritt/angularx-social-login';
+import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +15,7 @@ import {
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent extends MetaDataService implements OnInit {
   apiURL: string = environment.api
   model: any = {};
   isError: boolean = false;
@@ -25,15 +23,20 @@ export class LoginComponent implements OnInit {
   socialUser!: SocialUser;
   isLoggedin?: boolean;
 
-  constructor(
-    private globalService: GlobalService,
-    private router: Router,
-    private http: HttpClient,
-    private modalService: NgbModal,
-    private socialAuthService: SocialAuthService
-  ) { }
+    constructor(
+        private globalService: GlobalService,
+        private router: Router,
+        private http: HttpClient,
+        private modalService: NgbModal,
+        private socialAuthService: SocialAuthService,
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
   ngOnInit(): void {
+    this.updateTags();
     this.empty();
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;

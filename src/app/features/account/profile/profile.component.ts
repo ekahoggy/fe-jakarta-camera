@@ -1,21 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent extends MetaDataService implements OnInit {
     model: any = {}
     session: any;
     base64Image: string = '';
 
     constructor(
 		private globalService: GlobalService,
-	) {}
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
     ngOnInit(): void {
+        this.updateTags('Profil', 'account/profile');
 		this.session = this.globalService.getAuth()['user']; 
         this.getData();
         this.empty();

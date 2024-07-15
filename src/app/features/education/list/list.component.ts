@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-list',
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent extends MetaDataService implements OnInit {
     loading = {
         slider: false,
         kategori: false,
@@ -21,9 +23,14 @@ export class ListComponent implements OnInit {
     constructor(
         private globalService: GlobalService,
         private router: Router,
-    ) { }
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
     ngOnInit(): void {
+        this.updateTags('Edukasi', 'education');
         this.empty()
         this.getSlider()
         this.getKategori()

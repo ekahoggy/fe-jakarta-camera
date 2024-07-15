@@ -1,13 +1,15 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-orders-education',
   templateUrl: './orders-education.component.html',
   styleUrls: ['./orders-education.component.scss']
 })
-export class OrdersEducationComponent {
+export class OrdersEducationComponent extends MetaDataService implements OnInit {
     session: any = {};
     filter: any = {};
     listOrder: any = [];
@@ -19,9 +21,14 @@ export class OrdersEducationComponent {
 	constructor(
 		private globalService: GlobalService,
         private modalService: NgbModal,
-	) {}
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
     ngOnInit(): void {
+        this.updateTags('Riwayat Pembelian Edukasi', 'account/orders-education');
         this.session = this.globalService.getAuth()['user'];
         this.empty();
         this.getOrder();

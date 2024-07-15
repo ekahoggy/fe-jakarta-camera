@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-import * as AOS from 'aos';
+import { Meta, Title } from '@angular/platform-browser';
+import { MetaDataService } from 'src/app/services/meta-data.service';
 
 interface CollapseStatus {
   [key: string]: boolean;
@@ -14,7 +15,7 @@ interface CollapseStatus {
   templateUrl: './promo.component.html',
   styleUrls: ['./promo.component.scss']
 })
-export class PromoComponent implements OnInit {
+export class PromoComponent extends MetaDataService implements OnInit {
   isCollapsedChild: CollapseStatus = {};
   isCollapsed = {
     categories: false,
@@ -36,9 +37,14 @@ export class PromoComponent implements OnInit {
     private route: ActivatedRoute,
     private globalService: GlobalService,
     private router: Router,
-  ) { }
+    titleService: Title,
+    metaService: Meta
+  ) { 
+    super(titleService, metaService);
+  }
 
   ngOnInit() {
+    this.updateTags('Promo', 'promo');
     this.route.queryParams.subscribe(params => {
       const slug = params === undefined ? {} : params;
       this.getProduct(slug);

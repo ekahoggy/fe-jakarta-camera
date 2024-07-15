@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 import Swal from 'sweetalert2';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent extends MetaDataService implements OnInit {
   listData: any;
   listDataTerhapus: any = [];
   loading: boolean = false;
@@ -18,11 +20,16 @@ export class CartComponent implements OnInit {
   disabledPlus: boolean = false;
   disabledProses: boolean = true;
 
-  constructor(
-    private globalService: GlobalService,
-  ) { }
+    constructor(
+        private globalService: GlobalService,
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
   ngOnInit() {
+    this.updateTags('Keranjang', 'cart');
     this.auth = this.globalService.getAuth()['user'];
     this.getData();
   }
