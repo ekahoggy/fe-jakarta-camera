@@ -160,7 +160,7 @@ export class DetailProductComponent extends MetaDataService implements OnInit {
         let lastSeen = this.globalService.getProductFromLocalStorage();
         this.globalService.DataPost('/public/getLastSeenProduk', { lastseen: lastSeen }).subscribe((res: any) => {
             this.listLastSeenProduk = res.data.list;
-
+            
             const index = this.listLastSeenProduk.indexOf(this.slug);
             if (index !== -1) {
                 // Jika 'baru' sudah ada, hapus dari array
