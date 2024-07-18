@@ -276,20 +276,16 @@
                       <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
                     </div>
                     <div class="detail p-2 p-lg-3">
-                      <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
-                      <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
-                      <span class="text-decoration-line-through fs-14" style="color: rgb(175, 175, 175);">Rp 50,000</span>
-                      <span>
-                        <i class='bx bxs-bolt'></i>-12%
-                      </span>
-                      <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga | numberFormat }}</p>
-                      <div class="star fs-12">
-                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 0, 'bx-star': item.rating < 1 }"></i>
-                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 1, 'bx-star': item.rating < 2 }"></i>
-                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 2, 'bx-star': item.rating < 3 }"></i>
-                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 3, 'bx-star': item.rating < 4 }"></i>
-                        <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 4, 'bx-star': item.rating < 5 }"></i>
-                    </div>
+                        <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
+                        <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
+                        <span class="text-decoration-line-through fs-12" style="color: rgb(175, 175, 175);" *ngIf="item.is_promo">Rp {{ item.harga | numberFormat }}</span>
+                        <span class="fs-12" [ngClass]="{'visibility-hidden': !item.is_promo}">
+                            <i class='bx bxs-bolt'></i>{{ item.promo.persen }}%
+                        </span>
+                        <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga_promo | numberFormat }} </p>
+                        <div class="star fs-12 font-m">
+                            <i class="bx bxs-star text-warning"></i> {{ item.rating }} &VerticalLine; {{ item.total_terjual }} Terjual
+                        </div>
                     </div>
                   </a>
                 </div>
