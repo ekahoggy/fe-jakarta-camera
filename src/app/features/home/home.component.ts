@@ -1,8 +1,10 @@
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
+import { MetaDataService } from 'src/app/services/meta-data.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
-import { Router } from '@angular/router';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+import { Meta, Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import * as AOS from 'aos';
 
 @Component({
@@ -11,7 +13,7 @@ import * as AOS from 'aos';
     styleUrls: ['./home.component.scss'],
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent extends MetaDataService implements OnInit {
     private navbar: HTMLElement | null = null;
     private sticky: number = 0;
     carousel: HTMLElement | null = null;
@@ -39,9 +41,14 @@ export class HomeComponent implements OnInit {
     constructor(
         private globalService: GlobalService,
         private router: Router,
-    ) { }
+        titleService: Title,
+        metaService: Meta
+    ) {
+        super(titleService, metaService);
+    }
 
     ngOnInit() {
+        this.updateTags('Beranda', 'home');
         this.init();
         AOS.init();
         this.getSettingPopUp();
@@ -54,7 +61,6 @@ export class HomeComponent implements OnInit {
         this.configSwiperBrand();
         this.configSwiperFlash();
         this.configSwiperCategory();
-
         this.getNews();
         this.carousel = document.getElementById("banner-carousel");
         if (this.navbar) {

@@ -1,13 +1,15 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss']
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent extends MetaDataService implements OnInit {
     session: any = {};
     filter: any = {};
     listOrder: any = [];
@@ -18,13 +20,19 @@ export class OrdersComponent implements OnInit {
     dataUlasan: any = {}
     loading: boolean = false;
     dataDetail: any = {};
+    tampilResi: boolean = false;
 
 	constructor(
 		private globalService: GlobalService,
         private modalService: NgbModal,
-	) {}
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
     ngOnInit(): void {
+        this.updateTags('Riwayat Pembelian', 'account/orders');
         this.session = this.globalService.getAuth()['user'];
         this.empty();
         this.getOrder();
@@ -54,11 +62,9 @@ export class OrdersComponent implements OnInit {
     openModalDetail(modal:TemplateRef<any>, data) {
         this.modalService.open(modal, { size: 'md', backdrop: 'static'});
         this.dataDetail = data;
-        console.log(data)
     }
 
     openModalRating(modal:TemplateRef<any>, id, detail) {
-        console.log(detail)
         this.modalService.open(modal, { size: 'md', backdrop: 'static'});
         this.dataUlasan.ulasan_id = detail.ulasan_id ? detail.ulasan_id : 0;
         this.dataUlasan.m_produk_id = detail.product_id;
@@ -76,6 +82,7 @@ export class OrdersComponent implements OnInit {
         this.globalService.DataPost('/public/post-ulasan', final).subscribe((res: any) => {
             this.globalService.alertSuccess('Berhasil', 'Ulasan berhasil di kirim');
             this.empty();
+            this.getOrder();
             this.modalService.dismissAll();
             this.loading = false;
         }, (error:any) => {

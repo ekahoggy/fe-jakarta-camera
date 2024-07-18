@@ -260,12 +260,11 @@
                                 <div class="d-flex align-items-center">
                                     <span>{{i + 1}}. </span> &nbsp;
                                     <!--
-                    <img src="https://img.youtube.com/vi/sVNFrxLW2pA/default.jpg" alt="sVNFrxLW2pA"
-                      class="object-fit-cover rounded-3 me-2" width="80" height="50">
-                  -->
+                                        <img src="https://img.youtube.com/vi/sVNFrxLW2pA/default.jpg" alt="sVNFrxLW2pA"
+                                        class="object-fit-cover rounded-3 me-2" width="80" height="50">
+                                    -->
 
-                                    <span [ngClass]="item.is_lock === 0 ? 'font-p fs-14 fw-bold' : 'font-p fs-14'">{{
-                                        item.title }}</span>
+                                    <span [ngClass]="item.is_lock === 0 ? 'font-p fs-14 fw-bold' : 'font-p fs-14'">{{ item.title }}</span>
                                 </div>
                                 <span class="font-p fs-14">
                                     <i class='bx bx-play-circle fs-4 me-2' *ngIf="item.is_lock === 0"></i>

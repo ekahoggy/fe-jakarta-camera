@@ -1,21 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-news',
     templateUrl: './news.component.html',
     styleUrls: ['./news.component.scss']
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent extends MetaDataService implements OnInit {
     listNews: any = [];
     listNewsTerbaru: any = [];
     tags: any = [];
     listCategory: any = [];
     filter: any = {};
 
-    constructor(private globalService: GlobalService) { }
+    constructor(
+        private globalService: GlobalService,
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
     ngOnInit(): void {
+        this.updateTags('Berita', 'news');
         this.getNews();
         this.getNewsTerbaru();
         this.getCategory();

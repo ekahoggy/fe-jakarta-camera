@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,7 +9,7 @@ import Swal from 'sweetalert2';
     templateUrl: './address.component.html',
     styleUrls: ['./address.component.scss'],
 })
-export class AddressComponent {
+export class AddressComponent extends MetaDataService implements OnInit {
     model: any = {};
     listData: any = [];
     isForm: boolean = false;
@@ -21,9 +23,14 @@ export class AddressComponent {
 
     constructor(
         private globalService: GlobalService,
-    ) { }
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
     ngOnInit(): void {
+        this.updateTags('Alamat', 'account/address');
         this.auth = this.globalService.getAuth()["user"];
         this.empty();
         this.getData();

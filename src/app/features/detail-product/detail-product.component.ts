@@ -3,13 +3,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-detail-product',
     templateUrl: './detail-product.component.html',
     styleUrls: ['./detail-product.component.scss']
 })
-export class DetailProductComponent implements OnInit {
+export class DetailProductComponent extends MetaDataService implements OnInit {
     desc: string = 'description';
     configRekomendasi: any = {};
     model: any = {};
@@ -39,7 +41,11 @@ export class DetailProductComponent implements OnInit {
         private globalService: GlobalService,
         private modalService: NgbModal,
         public sanitizer: DomSanitizer,
-    ) { }
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
     ngOnInit() {
         this.route.params.subscribe(params => {
@@ -93,6 +99,7 @@ export class DetailProductComponent implements OnInit {
     getProduct(slug: string) {
         this.loadingPage = true;
         this.globalService.DataGet('/public/getProdukSlug', { slug: slug }).subscribe((res: any) => {
+            this.updateTags(res.data.nama, `katalog/detail/${res.data.slug}`, res.data.nama, res.data.foto);
             this.model = res.data;
 
             //proses variant

@@ -2,13 +2,15 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
+import { MetaDataService } from 'src/app/services/meta-data.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-checkout',
     templateUrl: './checkout.component.html',
     styleUrls: ['./checkout.component.scss']
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent extends MetaDataService implements OnInit {
     listCart: any;
     loading: boolean = false;
     subtotal: number = 0;
@@ -38,9 +40,14 @@ export class CheckoutComponent implements OnInit {
         private globalService: GlobalService,
         private router: Router,
         private offcanvasService: NgbOffcanvas,
-    ) { }
+        titleService: Title,
+        metaService: Meta
+    ) { 
+        super(titleService, metaService);
+    }
 
     ngOnInit() {
+        this.updateTags('Checkout', 'checkout');
         this.session = this.globalService.getAuth()['user'];
         this.model.email = this.session.email;
         this.userId = this.session.id
