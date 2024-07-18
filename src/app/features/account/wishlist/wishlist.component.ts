@@ -23,7 +23,7 @@ export class WishlistComponent extends MetaDataService implements OnInit {
 
     ngOnInit(): void {
         this.updateTags('Wishlist', 'account/wishlist');
-        this.getProduct();
+        this.getWishlist();
     }
 
     getProduct() {
@@ -32,6 +32,15 @@ export class WishlistComponent extends MetaDataService implements OnInit {
 		})
 	}
     
+    getWishlist() {
+        let params = {
+            user_id: this.globalService.getAuth()['user']['id'],
+        }
+        this.globalService.DataGet('/wishlist/', params).subscribe((res:any) => {
+            this.listProduct = res.data.list;
+        })
+	}
+
     addCart(productId:string) {
 		if (this.globalService.getAuth() === null) {
 		    this.router.navigate(['/login']);

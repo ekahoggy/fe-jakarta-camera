@@ -33,6 +33,7 @@ export class ServisKameraComponent extends MetaDataService implements OnInit {
 			email: '',
 			phone_code: '+62',
 			phone_number: '',
+            keterangan: ''
 		}
 		this.is = {
 			success: false,

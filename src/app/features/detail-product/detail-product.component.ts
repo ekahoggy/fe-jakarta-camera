@@ -268,4 +268,18 @@ export class DetailProductComponent extends MetaDataService implements OnInit {
             this.rataRating = res.data.rataRating;
         })
     }
+
+    addWishlist() {
+        if (this.globalService.getAuth() === null) {
+            this.router.navigate(['/login']);
+        } else {
+            let params = {
+                user_id: this.globalService.getAuth()['user']['id'],
+                product_id: this.model.id,
+            }
+            this.globalService.DataPost('/public/wishlist', params).subscribe((res: any) => {
+                this.globalService.alertSuccess('Berhasil', 'Menabahkan produk ke wishlist');
+            })
+        }
+    }
 }
