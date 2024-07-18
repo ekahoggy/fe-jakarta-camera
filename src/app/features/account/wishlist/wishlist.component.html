@@ -12,17 +12,17 @@
                         </div>
                     </a>
                     <div class="detail p-2">
-                        <span class="category text-black-50" style="font-size: 11px;">{{ item.kategori }}</span>
-                        <p class="product-name fs-14 mb-0 font-p"> {{item.nama}} </p>
-                        <div class="rating">
-                            <i class='bx bxs-star text-warning'></i>
-                            <i class='bx bxs-star text-warning'></i>
-                            <i class='bx bxs-star text-warning'></i>
-                            <i class='bx bxs-star-half text-warning'></i>
-                            <i class='bx bx-star text-warning'></i>
+                        <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
+                        <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
+                        <span class="text-decoration-line-through fs-12" style="color: rgb(175, 175, 175);" *ngIf="item.is_promo">Rp {{ item.harga | numberFormat }}</span>
+                        <span class="fs-12" [ngClass]="{'visibility-hidden': !item.is_promo}">
+                            <i class='bx bxs-bolt'></i>{{ item.promo.persen }}%
+                        </span>
+                        <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga_promo | numberFormat }} </p>
+                        <div class="star fs-12 font-m">
+                            <i class="bx bxs-star text-warning"></i> {{ item.rating }} &VerticalLine; {{ item.total_terjual }} Terjual
                         </div>
-                        <p class="price font-p fs-14 fw-semibold">Rp {{ item.harga | numberFormat }}</p>
-                        <a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100 mb-2" style="font-size: 12px" (click)="addCart(item.id)">
+                        <a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100 mb-2 mt-3" style="font-size: 12px" (click)="addCart(item.id)">
                             <i class="bx bx-plus"></i>
                             Keranjang
                         </a>

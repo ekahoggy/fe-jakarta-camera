@@ -77,7 +77,7 @@
                     <div class="mb-3">
                         <label for="keterangan" class="text-grey mb-2 fs-14">Jelaskan apa yang rusak <span class="text-danger">*</span></label>
                         <textarea type="keterangan" class="form-control py-2" id="keterangan" [(ngModel)]="model.keterangan" name="keterangan" aria-describedby="keterangan" rows="4" required></textarea>
-                        <small class="text-danger font-p fs-12" *ngIf="error.keterangan">{{ error.keterangan }}</small> <small class="float-end font-m fs-12">{{ model.keterangan.length }}/50</small>
+                        <small class="text-danger font-p fs-12" *ngIf="error.keterangan">{{ error.keterangan }}</small> <small class="float-end font-m fs-12">{{ !!model.keterangan.length ? model.keterangan.length : 0 }}/50</small>
                     </div>
                     <!-- <div class="mb-3">
                         <label for="file" class="text-grey mb-2 fs-14">File <span class="text-danger">*</span></label>

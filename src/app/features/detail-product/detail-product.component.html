@@ -131,8 +131,7 @@
                 <i class="bx bx-plus"></i>
               </button>
             </div>
-            <button class="btn btn-sm btn-warning rounded-5 fs-6 font-p px-5 py-2 fw-semibold ms-2 mb-3 text-white"
-              *ngIf="model.stok == 0">
+            <button class="btn btn-sm btn-warning rounded-5 fs-6 font-p px-5 py-2 fw-semibold ms-2 mb-3 text-white" (click)="addWishlist()" *ngIf="model.stok == 0">
               <i class='bx bx-heart'></i>
               Pre Order
             </button>
