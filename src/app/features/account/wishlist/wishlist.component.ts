@@ -17,7 +17,7 @@ export class WishlistComponent extends MetaDataService implements OnInit {
 		private router: Router,
         titleService: Title,
         metaService: Meta
-    ) { 
+    ) {
         super(titleService, metaService);
     }
 
@@ -31,12 +31,12 @@ export class WishlistComponent extends MetaDataService implements OnInit {
 			this.listProduct = res.data.list;
 		})
 	}
-    
+
     getWishlist() {
         let params = {
             user_id: this.globalService.getAuth()['user']['id'],
         }
-        this.globalService.DataGet('/wishlist/', params).subscribe((res:any) => {
+        this.globalService.DataGet('/public/wishlist', params).subscribe((res:any) => {
             this.listProduct = res.data.list;
         })
 	}

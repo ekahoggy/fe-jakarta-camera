@@ -79,6 +79,12 @@
             </span>
           </div>
 
+          <!-- informasi diskon -->
+          <div class="alert alert-warning" role="alert" *ngIf="model.is_promo">
+            Promo Min Beli : {{ model.promo.promo_min_beli }}<br>
+            Sisa Promo : {{ model.promo.qty }}
+          </div>
+
           <div class="row mb-3">
             <div class="col-lg-6">
               <p class="text-grey fs-5 font-p mb-2">Detail :</p>
