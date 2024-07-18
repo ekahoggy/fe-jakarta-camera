@@ -75,8 +75,8 @@
                                 <div>
                                     <h1 class="fs-14 font-p mb-0">{{ detail.nama }}</h1>
                                     <p class="text-grey fs-12 font-p mb-1">{{ detail.qty }} pcs x Rp. {{ detail.price | numberFormat }}</p>
-                                    <button class="btn btn-sm btn-primary me-2 fs-12 fw-bold" (click)="openModalRating(modalRating, item.id, detail)">
-                                        Ulasan
+                                    <button class="btn btn-sm btn-primary me-2 fs-12 fw-bold float-end" (click)="openModalRating(modalRating, item.id, detail)" *ngIf="item.status_order == 'received'">
+                                        {{ !!detail.ulasan_id ? 'Lihat Ulasan' : 'Beri Ulasan' }}
                                     </button>
                                 </div>
                             </div>
@@ -132,17 +132,17 @@
                     </div>
                     <ng-container *ngFor="let detail of dataDetail.detail">
                         <div class="list-produk border rounded-3 py-4 px-3">
-                            <div class="item d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
+                            <div class="item row">
+                                <div class="col-9 d-flex align-items-center">
                                     <img [src]="detail.photo" class="rounded-2 object-fit-cover" alt="" width="50" height="50">
                                     <div class="ms-3">
-                                        <span class="font-p fw-semibold fs-14">{{ detail.nama }}</span> <br>
+                                        <p class="font-p fw-semibold fs-12 mb-0">{{ detail.nama }}</p>
                                         <span class="fs-12 font-p text-grey">{{ detail.qty }} x Rp. {{ detail.price | numberFormat }}</span>
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="font-m fs-14">Total Harga</div>
-                                    <div class="font-p fw-semibold fs-14">Rp. {{ detail.subtotal | numberFormat }}</div>
+                                <div class="col-3 d-flex flex-column justify-content-center">   
+                                    <div class="font-m fs-12">Total Harga</div>
+                                    <div class="font-p fw-semibold fs-12">Rp. {{ detail.subtotal | numberFormat }}</div>
                                 </div>
                             </div>
                         </div>
@@ -155,26 +155,68 @@
                     <div class="row">
                         <div class="col">
                             <table class="w-100 font-m fs-12">
-                                <tr height="30">
+                                <tr height="30" *ngIf="dataDetail.shipping_sender">
                                     <td width="20%" class="align-top">Kurir</td>
                                     <td width="20" class="text-center align-top">:</td>
-                                    <td class="align-top">J&T - Reguler</td>
-                                </tr>
-                                <tr height="30">
-                                    <td width="20%" class="align-top">No Resi</td>
-                                    <td width="20" class="text-center align-top">:</td>
-                                    <td class="align-top">JT0006793035</td>
+                                    <td class="align-top">{{ dataDetail.shipping_sender }} - {{ dataDetail.shipping_group }}</td>
                                 </tr>
                                 <tr height="30">
                                     <td width="20%" class="align-top">Alamat</td>
                                     <td width="20" class="text-center align-top">:</td>
                                     <td class="align-top">          
-                                        <b>Galih Satrio</b> <br>
-                                        6285234773288 <br>
-                                        Perumahan Griya Shanta Permata, N-524, Mojolangu, Kec Lowokwaru, Kota Malang (Di samping taman Krida ) Lowokwaru, Kota Malang Jawa Timur 65141
+                                        <b> {{ dataDetail.recipient }} </b> <br>
+                                        {{ dataDetail.phone_code }} {{ dataDetail.phone_number }} <br>
+                                        {{ dataDetail.address }}, {{ dataDetail.village_name }}, Kec {{ dataDetail.subdistrict_name }}, Kota {{ dataDetail.city_name }}, {{ dataDetail.province_name }} {{ dataDetail.postal_code }}
+                                    </td>
+                                </tr>
+                                <tr height="30" *ngIf="dataDetail.awb_shipping">
+                                    <td width="20%" class="align-middle">No Resi</td>
+                                    <td width="20" class="text-center align-middle">:</td>
+                                    <td class="align-middle">
+                                        {{ dataDetail.awb_shipping }}
+                                        <span class="badge text-bg-secondary fs-12 ms-1" role="button" (click)="tampilResi = !tampilResi">
+                                            <i class='bx bx-show-alt' *ngIf="!tampilResi"></i>
+                                            <i class='bx bx-low-vision' *ngIf="tampilResi"></i>
+                                        </span>
                                     </td>
                                 </tr>
                             </table>
+                        </div>
+                   </div>
+                   <div class="row mt-3" *ngIf="tampilResi">
+                        <div class="col-12">
+                            <div class="bg-secondary rounded-3 p-3">
+                                <div class="steps">
+                                    <div class="line"></div>
+                                    <div class="item row">
+                                        <div class="col-3 pe-0 d-flex">
+                                            <div class="icon-box me-1">
+                                                <span class="iconify icon" [attr.data-icon]="'material-symbols:check-circle-outline-rounded'"></span>
+                                            </div>
+                                            <div class="font-m mt-1 fs-12">2024/07/01 <br> 11:51</div>
+                                        </div>
+                                        <div class="col-9">
+                                            <p class="font-m mb-0 fs-12">Courier order is confirmed. jne has been notified to pick up. Pickup Number: 4108392400001008</p>
+                                            <p class="mb-2">Konfirmasi</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="steps">
+                                    <div class="line"></div>
+                                    <div class="item row">
+                                        <div class="col-3 pe-0 d-flex">
+                                            <div class="icon-box me-1">
+                                                <span class="iconify icon" [attr.data-icon]="'material-symbols:check-circle-outline-rounded'"></span>
+                                            </div>
+                                            <div class="font-m mt-1 fs-12">2024/07/01 <br> 11:51</div>
+                                        </div>
+                                        <div class="col-9">
+                                            <p class="font-m mb-0 fs-12">Item has been picked and ready to be shipped.</p>
+                                            <p class="mb-2">Picked</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                    </div>
                 </div>
@@ -184,31 +226,23 @@
                     </div>
                     <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                         <span class="font-p fs-12">Metode Pembayaran</span>
-                        <span class="font-p fs-12 fw-semibold">BCA Virtual Account</span>
+                        <span class="font-p fs-12 fw-semibold">{{ dataDetail.pay_channel }} ( {{ dataDetail.pay_method }} )</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="font-p fs-12">Total Harga (1 Barang)</span>
-                        <span class="font-p fs-12 fw-semibold">Rp 1.299.000</span>
+                        <span class="font-p fs-12">Total Harga ({{dataDetail.detail.length}} Barang)</span>
+                        <span class="font-p fs-12 fw-semibold">Rp {{ dataDetail.total_price | numberFormat }}</span>
                     </div>
-                    <div class="d-flex justify-content-between mb-3">
-                        <span class="font-p fs-12">Total Biaya Proteksi (1 Polis)</span>
-                        <span class="font-p fs-12 fw-semibold">Rp 2.600</span>
-                    </div>
-                    <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex justify-content-between mb-3" *ngIf="dataDetail.total_pengiriman">
                         <span class="font-p fs-12">Total Ongkos Kirim</span>
-                        <span class="font-p fs-12 fw-semibold">Rp 19.000</span>
+                        <span class="font-p fs-12 fw-semibold">Rp {{ dataDetail.total_pengiriman | numberFormat }}</span>
                     </div>
-                    <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex justify-content-between mb-3" *ngIf="dataDetail.total_voucher">
                         <span class="font-p fs-12">Total Diskon Barang</span>
-                        <span class="font-p fs-12 fw-semibold">-Rp 25.000</span>
-                    </div>
-                    <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                        <span class="font-p fs-12">Biaya Asuransi Pengiriman</span>
-                        <span class="font-p fs-12 fw-semibold">Rp 300</span>
+                        <span class="font-p fs-12 fw-semibold">-Rp {{ dataDetail.total_voucher | numberFormat }}</span>
                     </div>
                     <div class="d-flex justify-content-between">
                         <span class="font-p fw-semibold fs-14">Total Belanja</span>
-                        <span class="font-p fs-12 fw-semibold">Rp 1.299.000</span>
+                        <span class="font-p fs-12 fw-semibold">Rp {{ dataDetail.grand_total | numberFormat }}</span>
                     </div>
                 </div>
             </div>

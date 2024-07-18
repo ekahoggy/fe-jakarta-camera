@@ -20,6 +20,7 @@ export class OrdersComponent extends MetaDataService implements OnInit {
     dataUlasan: any = {}
     loading: boolean = false;
     dataDetail: any = {};
+    tampilResi: boolean = false;
 
 	constructor(
 		private globalService: GlobalService,
@@ -61,11 +62,9 @@ export class OrdersComponent extends MetaDataService implements OnInit {
     openModalDetail(modal:TemplateRef<any>, data) {
         this.modalService.open(modal, { size: 'md', backdrop: 'static'});
         this.dataDetail = data;
-        console.log(data)
     }
 
     openModalRating(modal:TemplateRef<any>, id, detail) {
-        console.log(detail)
         this.modalService.open(modal, { size: 'md', backdrop: 'static'});
         this.dataUlasan.ulasan_id = detail.ulasan_id ? detail.ulasan_id : 0;
         this.dataUlasan.m_produk_id = detail.product_id;
@@ -83,6 +82,7 @@ export class OrdersComponent extends MetaDataService implements OnInit {
         this.globalService.DataPost('/public/post-ulasan', final).subscribe((res: any) => {
             this.globalService.alertSuccess('Berhasil', 'Ulasan berhasil di kirim');
             this.empty();
+            this.getOrder();
             this.modalService.dismissAll();
             this.loading = false;
         }, (error:any) => {

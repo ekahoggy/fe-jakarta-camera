@@ -120,26 +120,22 @@
                 <div class="row">
                     <ng-container *ngIf="listProduct.length > 0">
                         <div class="col-6 col-lg-4 col-xl-3 mb-2 px-2" *ngFor="let item of listProduct; index as i">
-                            <a href="javascript:void(0)" (click)="clickProduk(item)">
+                            <a href="javascript:void(0)" class="text-dark" (click)="clickProduk(item)">
                                 <div class="wrap-item rounded-3 overflow-hidden">
                                     <div class="square-image wrap-image">
                                         <img [src]="item.foto" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
                                     </div>
                                     <div class="detail p-2">
-                                        <span class="category text-black-50" style="font-size: 11px;">{{ item.kategori }}</span>
-                                        <p class="product-name fs-14 mb-0 font-p"> {{item.nama}} </p>
-                                        <p class="price font-p fs-14 fw-semibold mb-1">Rp {{ item.harga | numberFormat }}</p>
-                                        <div class="star fs-12">
-                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 0, 'bx-star': item.rating < 1 }"></i>
-                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 1, 'bx-star': item.rating < 2 }"></i>
-                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 2, 'bx-star': item.rating < 3 }"></i>
-                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 3, 'bx-star': item.rating < 4 }"></i>
-                                            <i class='bx text-warning' [ngClass]="{'bxs-star': item.rating > 4, 'bx-star': item.rating < 5 }"></i>
+                                        <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
+                                        <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
+                                        <span class="text-decoration-line-through fs-12" style="color: rgb(175, 175, 175);" *ngIf="item.is_promo">Rp {{ item.harga | numberFormat }}</span>
+                                        <span class="fs-12" [ngClass]="{'visibility-hidden': !item.is_promo}">
+                                            <i class='bx bxs-bolt'></i>{{ item.promo.persen }}%
+                                        </span>
+                                        <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga_promo | numberFormat }} </p>
+                                        <div class="star fs-12 font-m">
+                                            <i class="bx bxs-star text-warning"></i> {{ item.rating }} &VerticalLine; {{ item.total_terjual }} Terjual
                                         </div>
-                                        <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm border border-light-subtle rounded-4 fw-semibold py-2 font-p text-light w-100" style="font-size: 12px" (click)="addCart(item.id)">
-                                            <span class="iconify me-1 mb-1" data-icon="solar:cart-linear"></span>
-                                            Keranjang
-                                        </a> -->
                                     </div>
                                 </div>
                             </a>
