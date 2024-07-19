@@ -222,8 +222,9 @@
                                     <span *ngIf="item.type === 'P'">{{ item.voucher_value }}%</span>
                                     <span *ngIf="item.type === 'N'">Rp. {{ item.voucher_value | numberFormat }}</span>
                                 </p>
-                                <p class="mb-1 fs-12">Berlaku hingga {{ item.tanggal_selesai }} <span
-                                        class="text-success font-p">S&K</span></p>
+                                <p class="mb-1 fs-12">Berlaku hingga {{ item.tanggal_selesai }} 
+                                    <span class="text-success font-p" role="button" (click)="openDetailVoucher(modalDetailVoucher, item)">S&K</span>
+                                </p>
                             </div>
                             <div class="col-2 d-flex justify-content-center align-items-center">
                                 <button class="btn btn-sm btn-primary rounded-5 px-2 font-p fs-12 text-uppercase"
@@ -263,6 +264,55 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #modalDetailVoucher let-modal>
+    <div class="modal-header">
+        <div class="font-m fs-5 fw-bolder font-m px-3">{{ detailVoucher.voucher }}</div>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <img [src]="detailVoucher.gambar" [alt]="detailVoucher.voucher" class="w-100 object-fit-cover">
+
+        <div class="row mt-3 font-p fs-14">
+            <div class="col-6 mb-1 font-m fw-semibold"> 
+                <span> <i class='bx bx-time-five text-primary me-1'></i> Berlaku dari</span>
+            </div>
+            <div class="col-6 text-end fw-semibold"> 
+                {{ detailVoucher.tanggal_mulai | date: 'MMMM dd, YYY' }} {{ detailVoucher.jam_mulai }}
+            </div>
+            <div class="col-6 mb-1 font-m fw-semibold"> 
+                <span> <i class='bx bx-time-five text-primary me-1'></i> Berlaku sampai</span>
+            </div>
+            <div class="col-6 text-end fw-semibold"> 
+                {{ detailVoucher.tanggal_selesai | date: 'MMMM dd, YYY' }} {{ detailVoucher.jam_selesai }}
+            </div>
+            <div class="col-6 mb-1 font-m fw-semibold"> 
+                <span> <i class='bx bxs-coupon text-primary me-1'></i> Diskon Voucher </span>
+            </div>
+            <div class="col-6 text-end fw-semibold"> 
+                <span *ngIf="detailVoucher.type == 'N'">Rp. {{ detailVoucher.voucher_value | numberFormat }}</span>
+                <span *ngIf="detailVoucher.type == 'P'">{{ detailVoucher.voucher_value }}%</span>
+            </div>
+            <div class="col-6 mb-1 font-m fw-semibold"> 
+                <span> <i class='bx bx-money-withdraw text-primary me-1'></i> Minimal pembelian</span>
+            </div>
+            <div class="col-6 text-end fw-semibold"> 
+                Rp.{{ detailVoucher.voucher_min_beli | numberFormat }} 
+            </div>
+            <div class="col-6 mb-1 font-m fw-semibold"> 
+                <span> <i class='bx bxs-discount text-primary me-1'></i> Maksimal potongan</span>
+            </div>
+            <div class="col-6 text-end fw-semibold"> 
+                Rp.{{ detailVoucher.voucher_max | numberFormat }} 
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-3 font-m fs-14">
+            <span class="fw-bold mb-2"> Syarat dan ketentuan :</span>
+            <div class="fw-semibold" [innerHTML]="detailVoucher.deskripsi"></div>
         </div>
     </div>
 </ng-template>

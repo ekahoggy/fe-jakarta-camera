@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/services/global.service';
 import { MetaDataService } from 'src/app/services/meta-data.service';
 import { Meta, Title } from '@angular/platform-browser';
@@ -30,16 +30,18 @@ export class CheckoutComponent extends MetaDataService implements OnInit {
     isAvailableVoucher: boolean = false;
     selectedVoucher: any = {};
     voucher: number = 0;
-
+    
     listKurir: any = [];
     isAvailableKurir: boolean = false;
     selectedKurir: any = {};
     pengiriman: number = 0;
+    detailVoucher: any = {};
 
     constructor(
         private globalService: GlobalService,
         private router: Router,
         private offcanvasService: NgbOffcanvas,
+        private modalService: NgbModal,
         titleService: Title,
         metaService: Meta
     ) { 
@@ -235,5 +237,11 @@ export class CheckoutComponent extends MetaDataService implements OnInit {
     setKoordinat(event) {
         this.model.latitude = event.lat;
         this.model.longitude = event.long;
+    }
+
+    openDetailVoucher(modal:TemplateRef<any>, data) {
+        this.modalService.open(modal, { size: 'md', backdrop: 'static'});
+        this.detailVoucher = data;
+        console.log(data)
     }
 }
