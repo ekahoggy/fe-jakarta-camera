@@ -206,7 +206,7 @@
         <div class="container-fluid">
             <div class="row mb-3">
                 <div class="col">
-                    <input type="text" class="form-control font-m fs-14" placeholder="Masukkan kode voucher...">
+                    <input type="text" class="form-control font-m fs-14" [(ngModel)]="pVoucher.redeem_code" placeholder="Masukkan kode voucher..." (input)="searchVoucher()">
                 </div>
             </div>
             <div class="list">

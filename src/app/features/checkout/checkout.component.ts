@@ -36,13 +36,15 @@ export class CheckoutComponent extends MetaDataService implements OnInit {
     selectedKurir: any = {};
     pengiriman: number = 0;
 
+    pVoucher: any = [];
+
     constructor(
         private globalService: GlobalService,
         private router: Router,
         private offcanvasService: NgbOffcanvas,
         titleService: Title,
         metaService: Meta
-    ) { 
+    ) {
         super(titleService, metaService);
     }
 
@@ -51,6 +53,8 @@ export class CheckoutComponent extends MetaDataService implements OnInit {
         this.session = this.globalService.getAuth()['user'];
         this.model.email = this.session.email;
         this.userId = this.session.id
+        this.pVoucher.jenis = 'produk'
+        this.pVoucher.user_id = this.userId
         this.getData();
         this.getSetting();
         this.getUserDetail();
@@ -132,13 +136,15 @@ export class CheckoutComponent extends MetaDataService implements OnInit {
     }
 
     getVoucher() {
-        let params = {
-            jenis: 'produk',
-            user_id: this.userId
-        }
-        this.globalService.DataGet('/public/voucher', params).subscribe((res: any) => {
-            this.listVoucher = res.data;
-        });
+      this.globalService.DataGet('/public/voucher', this.pVoucher).subscribe((res: any) => {
+          this.listVoucher = res.data;
+      });
+    }
+
+    searchVoucher(){
+      this.globalService.DataGet('/public/voucher', this.pVoucher).subscribe((res: any) => {
+        this.listVoucher = res.data;
+      });
     }
 
     pilihVoucher(val) {
