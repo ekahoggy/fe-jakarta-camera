@@ -53,16 +53,13 @@
                 </div>
             </div>
             <div class="header-menu-right d-flex align-items-center">
-                <div class="call d-none d-xl-flex align-items-center pe-3">
-                    <i class='bx bxl-whatsapp fs-2 me-2'></i><br>
-                    <span class="fw-bold call-text mb-0">HUBUNGI CS KAMI</span>
-                    <div>
-                        <!-- <a [href]="linkWa" target="_blank">
-                            <p class="mb-0 fs-6 fw-bold">{{ modelSocialMedia.no_hp }}</p>
-                        </a>
-                        -->
+                <a [href]="linkWa" target="_blank">
+                    <div class="call d-none d-xl-flex align-items-center pe-3">
+                        <i class='bx bxl-whatsapp fs-2 me-2'></i><br>
+                        <span class="fw-bold call-text mb-0">HUBUNGI CS KAMI</span>
+                        <!-- <p class="mb-0 fs-6 fw-bold">{{ modelSocialMedia.no_hp }}</p> -->
                     </div>
-                </div>
+                </a>
                 <div class="interact ps-3">
                     <a href="javascript:void(0)" [routerLink]="['/account/profile']" class="d-none d-lg-inline" *ngIf="auth">
                         <span class="iconify fs-3 mx-3" data-icon="uiw:user" role="button"></span>
