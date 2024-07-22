@@ -49,7 +49,7 @@ export class OrdersEducationComponent extends MetaDataService implements OnInit 
 
     getOrder() {
         let filter = this.filter
-        this.globalService.DataGet(`/public/orders`, filter).subscribe((res:any) => {
+        this.globalService.DataGet(`/public/orders-edukasi`, filter).subscribe((res:any) => {
             this.listOrder = res.data.list;
         })
     }
