@@ -3,7 +3,6 @@ import { GlobalService } from 'src/app/services/global.service';
 import { MetaDataService } from 'src/app/services/meta-data.service';
 import { Meta, Title } from '@angular/platform-browser';
 
-
 @Component({
   selector: 'app-pasang-cctv',
   templateUrl: './pasang-cctv.component.html',
@@ -34,12 +33,7 @@ export class PasangCctvComponent extends MetaDataService implements OnInit {
 	}
 
 	empty() {
-		this.model = {
-			name: '',
-			email: '',
-			phone_code: '+62',
-			phone_number: '',
-		}
+		this.model.phone_code = '+62';
 		this.is = {
 			success: false,
 		}

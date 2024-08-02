@@ -45,7 +45,7 @@
                 <form (ngSubmit)="kirim()">
                     <div class="mb-3">
                         <label for="nama" class="text-grey mb-2 fs-14">Nama <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control py-2" id="nama" [(ngModel)]="model.nama" nama="nama" aria-describedby="nama" required>
+                        <input type="text" class="form-control py-2" id="nama" [(ngModel)]="model.nama" name="nama" aria-describedby="nama" required>
                         <small class="text-danger font-p fs-12" *ngIf="error.nama">{{ error.nama }}</small>
                     </div>
                     <div class="mb-3">
@@ -58,8 +58,8 @@
                         <div class="input-group">
                             <span class="input-group-text rounded-0" id="basic-addon1"> +62 </span>
                             <input type="tel" class="form-control py-2" id="phone_number" [(ngModel)]="model.phone_number" name="p\hone_number" aria-describedby="last_name" required>
-                            <small class="text-danger font-p fs-12" *ngIf="error.phone_number">{{ error.phone_number }}</small>
                         </div>
+                        <small class="text-danger font-p fs-12" *ngIf="error.phone_number">{{ error.phone_number }}</small>
                     </div>
                     <div class="mb-3">
                         <label for="pesan" class="text-grey mb-2 fs-14">Pesan <span class="text-danger">*</span></label>
