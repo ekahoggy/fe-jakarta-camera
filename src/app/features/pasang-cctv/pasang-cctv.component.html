@@ -42,42 +42,101 @@
                 <h2 class="fs-3 fw-bold font-p">Perbaikan Kamera, Sempurnakan <br> Kenangan</h2>
                 <p class="text-grey font-p">Informasikan Kendala Anda dan Dapatkan Diskon Sebesar Rp 50.000 Untuk Biaya Servis Kamera*Dengan cara submit form dibawah ini :</p>
 
-                <form (ngSubmit)="register()">
+                <form (ngSubmit)="kirim()">
                     <div class="mb-3">
-                        <label for="name" class="text-grey mb-2 fs-14">Nama <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control py-2" id="name" [(ngModel)]="model.name" name="name" aria-describedby="name" required>
+                        <label for="nama" class="text-grey mb-2 fs-14">Nama <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control py-2" id="nama" [(ngModel)]="model.nama" nama="nama" aria-describedby="nama" required>
+                        <small class="text-danger font-p fs-12" *ngIf="error.nama">{{ error.nama }}</small>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="text-grey mb-2 fs-14">Email <span class="text-danger">*</span></label>
                         <input type="email" class="form-control py-2" id="email" [(ngModel)]="model.email" name="email" aria-describedby="email" required>
+                        <small class="text-danger font-p fs-12" *ngIf="error.email">{{ error.email }}</small>
                     </div>
                     <div class="mb-3">
                         <label for="phone_number" class="text-grey mb-2 fs-14">Nomor Telepon <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text rounded-0" id="basic-addon1"> +62 </span>
                             <input type="tel" class="form-control py-2" id="phone_number" [(ngModel)]="model.phone_number" name="p\hone_number" aria-describedby="last_name" required>
+                            <small class="text-danger font-p fs-12" *ngIf="error.phone_number">{{ error.phone_number }}</small>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="message" class="text-grey mb-2 fs-14">Pesan <span class="text-danger">*</span></label>
-                        <textarea type="message" class="form-control py-2" id="message" [(ngModel)]="model.message" name="message" rows="3" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="text-grey mb-2 fs-14">Alamat <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control py-2" id="address" [(ngModel)]="model.address" name="address" aria-describedby="address" required>
+                        <label for="pesan" class="text-grey mb-2 fs-14">Pesan <span class="text-danger">*</span></label>
+                        <textarea type="pesan" class="form-control py-2" id="pesan" [(ngModel)]="model.pesan" name="pesan" rows="3" required></textarea>
+                        <small class="text-danger font-p fs-12" *ngIf="error.pesan">{{ error.pesan }}</small>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-4">
-                            <label for="province" class="text-grey mb-2 fs-14">Provinsi <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control py-2" id="province" [(ngModel)]="model.province" name="province" aria-describedby="province" required>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="province_id" class="form-label font-p fs-14">Province</label>
+                                <select class="form-select" name="province_id" [(ngModel)]="model.province_id" id="province_id"  aria-describedby="provinceHelp" (change)="getCity(model.province_id); resetProvince();">
+                                    <ng-container *ngFor="let item of listProvince">
+                                        <option [value]="item.id"> {{ item.provinsi }} </option>
+                                    </ng-container>
+                                </select>
+                                <small class="text-danger font-p fs-12" *ngIf="error.province_id">{{ error.province_id }}</small>
+                                <div id="provinceHelp" class="form-text">Isi dengan nama provinsi tempat tinggal anda.</div>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <label for="city" class="text-grey mb-2 fs-14">Kota / Kabupaten <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control py-2" id="city" [(ngModel)]="model.city" name="city" aria-describedby="city" required>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="city_id" class="form-label font-p fs-14">City</label>
+                                <select class="form-select" name="city_id" [(ngModel)]="model.city_id" id="city_id"  aria-describedby="cityHelp" [disabled]="!model.province_id" (change)="getSubdistrict(model.city_id); resetCity();">
+                                    <ng-container *ngFor="let item of listCity">
+                                        <option [value]="item.id"> {{ item.kota }} </option>
+                                    </ng-container>
+                                </select>
+                                <small class="text-danger font-p fs-12" *ngIf="error.city_id">{{ error.city_id }}</small>
+                                <div id="cityHelp" class="form-text">Isi dengan nama kota tempat tinggal anda.</div>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <label for="postal_code" class="text-grey mb-2 fs-14">Kode POS <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control py-2" id="postal_code" [(ngModel)]="model.postal_code" name="postal_code" aria-describedby="postal_code" required>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="subdistrict_id" class="form-label font-p fs-14">Subdistrict</label>
+                                <select class="form-select" name="subdistrict_id" [(ngModel)]="model.subdistrict_id" id="subdistrict_id"  aria-describedby="subdistrictHelp" [disabled]="!model.city_id" (change)="getVillage(model.subdistrict_id); resetSubdistrict();">
+                                    <ng-container *ngFor="let item of listSubdistrict">
+                                        <option [value]="item.id"> {{ item.kecamatan }} </option>
+                                    </ng-container>
+                                </select>
+                                <small class="text-danger font-p fs-12" *ngIf="error.subdistrict_id">{{ error.subdistrict_id }}</small>
+                                <div id="subdistrictHelp" class="form-text">Isi dengan nama kecamatan tempat tinggal anda.</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="village_id" class="form-label font-p fs-14">Village</label>
+                                <select class="form-select" name="village_id" [(ngModel)]="model.village_id" id="village_id"  aria-describedby="villageHelp" [disabled]="!model.subdistrict_id">
+                                    <ng-container *ngFor="let item of listVillage">
+                                        <option [value]="item.id"> {{ item.desa }} </option>
+                                    </ng-container>
+                                </select>
+                                <small class="text-danger font-p fs-12" *ngIf="error.village_id">{{ error.village_id }}</small>
+                                <div id="villageHelp" class="form-text">Isi dengan nama desa tempat tinggal anda.</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="postal_code" class="form-label font-p fs-14">Postal Code</label>
+                                <input type="text" class="form-control fs-14" name="postal_code" [(ngModel)]="model.postal_code" id="postal_code" aria-describedby="postal_codeHelp">
+                                <small class="text-danger font-p fs-12" *ngIf="error.postal_code">{{ error.postal_code }}</small>
+                                <div id="postal_codeHelp" class="form-text">Isi dengan kode pos tempat tinggal anda.</div>
+                            </div>
+                        </div> 
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="address" class="form-label font-p fs-14">Address</label>
+                                <textarea type="text" class="form-control fs-14" name="address" [(ngModel)]="model.address" id="address" aria-describedby="addressHelp"></textarea>
+                                <small class="text-danger font-p fs-12" *ngIf="error.address">{{ error.address }}</small>
+                                <div id="addressHelp" class="form-text">Isi dengan alamat lengkap anda (lebih bagus jika menambahkan ciri-ciri rumah anda).</div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="pin_point" class="form-label font-p fs-14">Pin Poin</label>
+                                <app-map [isViewParent]="false" [lat]="model.latitude" [long]="model.longitude" (koordinat)="setKoordinat($event)" [search]="true" [style]="true" [geocoding]="true"></app-map>
+                                <small class="text-danger font-p fs-12" *ngIf="error.latitude">{{ error.latitude }}</small>
+                            </div>
                         </div>
                     </div>
                     
