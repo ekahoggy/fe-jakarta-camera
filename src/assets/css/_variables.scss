@@ -1,0 +1,53 @@
+// custom-bootstrap.scss
+
+// Warna
+$primary: #1C658C; // Warna utama baru
+$secondary: #D8D2CB; // Warna sekunder baru
+$success: #4caf50; // Warna sukses baru
+$danger: #f44336; // Warna bahaya baru
+$warning: #ff9800; // Warna peringatan baru
+$info: #398AB9; // Warna informasi baru
+$light: #EEEEEE; // Warna terang baru
+$dark: #212121; // Warna gelap baru
+
+// Font
+$font-family-base: 'Lato'; // Font dasar baru
+$font-size-base: 1rem; // Ukuran font dasar baru
+$font-weight-base: 400; // Bobot font dasar baru
+
+// Spasi
+$spacer: 1rem; // Ukuran spasi default baru
+
+// Grid
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+); // Lebar maksimum untuk container baru
+$grid-gutter-width: 1.5rem; // Lebar gutter grid baru
+
+// Border
+$border-radius: .25rem; // Radius border baru
+$border-width: 1px; // Lebar border baru
+$border-color: #dee2e6; // Warna border baru
+
+// Shadow
+$box-shadow: 0 0 .125rem rgba(0, 0, 0, .075); // Bayangan kotak default baru
+
+// Button
+$btn-font-weight: 400; // Bobot font tombol
+$btn-border-radius: .25rem; // Radius border tombol
+$btn-border-width: 1px; // Lebar border tombol
+$btn-primary-bg: $primary; // Warna latar belakang tombol primer baru
+$btn-primary-border: $primary; // Warna border tombol primer baru
+$btn-primary-color: #fff; // Warna teks tombol primer
+
+// Typography
+$heading-font-family: 'Lato'; // Font untuk heading
+$heading-font-weight: 700; // Bobot font untuk heading
+$heading-line-height: 1.2; // Tinggi baris untuk heading
+
+// Impor Bootstrap
+@import 'bootstrap/scss/bootstrap';
