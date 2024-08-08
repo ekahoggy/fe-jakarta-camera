@@ -1,8 +1,8 @@
-let url = 'https://dev.jakartacamera.com/'
-let apiURL = 'https://apidev.jakartacamera.com/api/v1';
-let api = 'https://apidev.jakartacamera.com';
-let originalImageURL = 'https://apidev.jakartacamera.com/img/media/originals/';
-let productImageURL = 'https://apidev.jakartacamera.com/img/media/product/';
+let url = 'https://new.jakartacamera.com/'
+let apiURL = 'https://api.jakartacamera.com/api/v1';
+let api = 'https://api.jakartacamera.com';
+let originalImageURL = 'https://api.jakartacamera.com/img/media/originals/';
+let productImageURL = 'https://api.jakartacamera.com/img/media/product/';
 let googleIdClient = '1076513397291-ic5p0c2ohngbn3fa0159d2tej9s6qkco.apps.googleusercontent.com';
 
 if (window.location.hostname == 'localhost') {
