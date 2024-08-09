@@ -37,19 +37,23 @@ export class ServisKameraComponent extends MetaDataService implements OnInit {
 		}
 		this.is = {
 			success: false,
+			loading: false
 		}
 		// this.model.file = "assets/img/elements/18.jpg";
         this.error = {};
 	}
 
 	kirim() {
+		this.is.loading = true
 		let param = Object.assign(this.model);
 		this.globalService.DataPost('/public/servis', param).subscribe((res: any) => {
 			if (res.status_code == 200) {
 				this.is.success = true;
+				this.is.loading = false;
 				this.empty();
 			}
         }, (error: any) => {
+			this.is.loading = false;
             this.error.name = error.error.errors.name;
             this.error.email = error.error.errors.email;
             this.error.phone_number = error.error.errors.phone_number;

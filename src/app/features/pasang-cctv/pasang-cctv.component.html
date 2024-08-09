@@ -8,7 +8,7 @@
 	</div>
 </section> -->
 
-<div class="banner py-lg-4">
+<div class="banner py-lg-4 d-none d-lg-block">
 	<div class="container-fluid">
         <div class="row">
             <div class="col-6">
@@ -37,7 +37,7 @@
 <section class="content-login py-5">
     <div class="container py-3">
         <div class="row justify-content-center">
-            <div class="col-md-7">
+            <div class="col-lg-7">
                 <h1 class="fs-4 fw-semibold font-p text-grey">Kamera anda bermasalah ?</h1>
                 <h2 class="fs-3 fw-bold font-p">Perbaikan Kamera, Sempurnakan <br> Kenangan</h2>
                 <p class="text-grey font-p">Informasikan Kendala Anda dan Dapatkan Diskon Sebesar Rp 50.000 Untuk Biaya Servis Kamera*Dengan cara submit form dibawah ini :</p>
@@ -69,7 +69,7 @@
                     <div class="row mb-3">
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="province_id" class="form-label font-p fs-14">Province</label>
+                                <label for="province_id" class="form-label font-p fs-14">Provinsi</label>
                                 <select class="form-select" name="province_id" [(ngModel)]="model.province_id" id="province_id"  aria-describedby="provinceHelp" (change)="getCity(model.province_id); resetProvince();">
                                     <ng-container *ngFor="let item of listProvince">
                                         <option [value]="item.id"> {{ item.provinsi }} </option>
@@ -81,7 +81,7 @@
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="city_id" class="form-label font-p fs-14">City</label>
+                                <label for="city_id" class="form-label font-p fs-14">Kota</label>
                                 <select class="form-select" name="city_id" [(ngModel)]="model.city_id" id="city_id"  aria-describedby="cityHelp" [disabled]="!model.province_id" (change)="getSubdistrict(model.city_id); resetCity();">
                                     <ng-container *ngFor="let item of listCity">
                                         <option [value]="item.id"> {{ item.kota }} </option>
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="subdistrict_id" class="form-label font-p fs-14">Subdistrict</label>
+                                <label for="subdistrict_id" class="form-label font-p fs-14">Kecamatan</label>
                                 <select class="form-select" name="subdistrict_id" [(ngModel)]="model.subdistrict_id" id="subdistrict_id"  aria-describedby="subdistrictHelp" [disabled]="!model.city_id" (change)="getVillage(model.subdistrict_id); resetSubdistrict();">
                                     <ng-container *ngFor="let item of listSubdistrict">
                                         <option [value]="item.id"> {{ item.kecamatan }} </option>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="village_id" class="form-label font-p fs-14">Village</label>
+                                <label for="village_id" class="form-label font-p fs-14">Desa</label>
                                 <select class="form-select" name="village_id" [(ngModel)]="model.village_id" id="village_id"  aria-describedby="villageHelp" [disabled]="!model.subdistrict_id">
                                     <ng-container *ngFor="let item of listVillage">
                                         <option [value]="item.id"> {{ item.desa }} </option>
@@ -117,7 +117,7 @@
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="postal_code" class="form-label font-p fs-14">Postal Code</label>
+                                <label for="postal_code" class="form-label font-p fs-14">Kode Pos</label>
                                 <input type="text" class="form-control fs-14" name="postal_code" [(ngModel)]="model.postal_code" id="postal_code" aria-describedby="postal_codeHelp">
                                 <small class="text-danger font-p fs-12" *ngIf="error.postal_code">{{ error.postal_code }}</small>
                                 <div id="postal_codeHelp" class="form-text">Isi dengan kode pos tempat tinggal anda.</div>
@@ -125,7 +125,7 @@
                         </div> 
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="address" class="form-label font-p fs-14">Address</label>
+                                <label for="address" class="form-label font-p fs-14">Alamat Lengkap</label>
                                 <textarea type="text" class="form-control fs-14" name="address" [(ngModel)]="model.address" id="address" aria-describedby="addressHelp"></textarea>
                                 <small class="text-danger font-p fs-12" *ngIf="error.address">{{ error.address }}</small>
                                 <div id="addressHelp" class="form-text">Isi dengan alamat lengkap anda (lebih bagus jika menambahkan ciri-ciri rumah anda).</div>
@@ -140,11 +140,14 @@
                         </div>
                     </div>
                     
-                    <button class="btn btn-info rounded-5 font-p py-2 w-100 mt-3">Kirim Sekarang</button>
+                    <button class="btn btn-info rounded-5 font-p py-2 w-100 mt-3" [disabled]="is.loading">
+                        <i class='bx bx-loader-alt bx-spin' *ngIf="is.loading"></i>
+                        <span *ngIf="!is.loading">Kirim Sekarang</span>
+                    </button>
                 </form>
             </div>
-            <div class="col-md-5 d-flex align-items-center ps-5">
-                <img src="assets/img/undraw/service-camera.png" style="width: 400px;" class="object-fit-cover" width="400" alt="empty">
+            <div class="col-lg-5 d-none d-lg-block ps-5">
+                <img src="assets/img/undraw/service-camera.png" class="object-fit-cover w-100" style="max-width: 480px;" width="400" alt="empty">
             </div>
         </div>
     </div>

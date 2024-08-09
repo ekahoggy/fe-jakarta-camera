@@ -36,6 +36,7 @@ export class PasangCctvComponent extends MetaDataService implements OnInit {
 		this.model.phone_code = '+62';
 		this.is = {
 			success: false,
+            laoding: false
 		}
 		this.model.icon = "assets/img/elements/18.jpg";
 	}
@@ -105,13 +106,16 @@ export class PasangCctvComponent extends MetaDataService implements OnInit {
     }
 
 	kirim() {
+        this.is.loading = true;
 		let param = Object.assign(this.model);
 		this.globalService.DataPost('/public/pasang-cctv', param).subscribe((res: any) => {
 			if (res.status_code == 200) {
 				this.is.success = true;
+                this.is.loading = false;
 				this.empty();
 			}
         }, (error: any) => {
+            this.is.loading = false;
             this.error.nama = error.error.errors.nama;
             this.error.email = error.error.errors.email;
             this.error.phone_number = error.error.errors.phone_number;
