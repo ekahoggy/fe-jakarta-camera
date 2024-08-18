@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 3200",
     "build-galih": "ng build",
     "build": "ng build --aot --vendor-chunk --common-chunk --delete-output-path --build-optimizer",
     "watch": "ng build --watch --configuration development",
