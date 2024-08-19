@@ -102,7 +102,10 @@
                           </div>
                     </div>
 
-                    <button class="btn btn-info rounded-5 font-p py-2 w-100 mt-3">Kirim Sekarang</button>
+                    <button class="btn btn-info rounded-5 font-p py-2 w-100 mt-3" [disabled]="is.loading">
+                        <i class='bx bx-loader-alt bx-spin' *ngIf="is.loading"></i>
+                        <span *ngIf="!is.loading">Kirim Sekarang</span>
+                    </button>
                 </form>
             </div>
             <div class="col-xl-5 d-none d-xl-block ps-5">
