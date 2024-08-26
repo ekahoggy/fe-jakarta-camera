@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperModule } from 'swiper/angular';
 import { FormsModule } from '@angular/forms';
 import { CountdownModule } from 'ngx-countdown';
+import { CoreModule } from '../core/core.module';
 
 import { FeaturesRoutingModule } from './features-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -21,7 +22,6 @@ import { CompleteOrderComponent } from './complete-order/complete-order.componen
 import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 import { ServisKameraComponent } from './servis-kamera/servis-kamera.component';
 import { PasangCctvComponent } from './pasang-cctv/pasang-cctv.component';
-import { CoreModule } from '../core/core.module';
 import { PromoComponent } from './promo/promo.component';
 import { JasaFotoComponent } from './jasa-foto/jasa-foto.component';
 import { PaymentComponent } from './payment/payment.component';
@@ -35,7 +35,6 @@ import { UnsubscripeComponent } from './unsubscripe/unsubscripe.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
     DetailProductComponent,
     KatalogComponent,
     CartComponent,

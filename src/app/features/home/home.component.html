@@ -1,24 +1,9 @@
-<ng-container *ngIf="loading.slider && loading.product && loading.category">
+<!-- <ng-container *ngIf="loading.slider && loading.product && loading.category">
     <app-spinner></app-spinner>
-</ng-container>
-
-<ng-container *ngIf="!loading.slider && !loading.product && !loading.category">
-    <section class="loading-slider" *ngIf="loading.slider">
-        <div class="bg-grey" style="height: 480px;"></div>
-    </section>
-    <section id="banner-carousel" *ngIf="!loading.slider">
-        <ngb-carousel [showNavigationIndicators]="false">
-            <ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
-                <div class="picsum-img-wrapper">
-                    <picture (click)="sliderClick(item.url)">
-                        <source [srcset]="item.picture" media="(min-width: 768px)">
-                        <source [srcset]="item.picture_mobile">
-                        <img [src]="item.picture_mobile" class="w-100 object-fit-cover" height="480" [alt]="item.title"/>
-                    </picture>
-                </div>
-            </ng-template>
-        </ngb-carousel>
-    </section>
+</ng-container> -->
+<!-- *ngIf="!loading.slider && !loading.product && !loading.category" -->
+<ng-container>
+    <app-slider></app-slider>
 
     <section class="category py-4">
         <div class="container">
@@ -289,32 +274,25 @@
             <div class="row py-5">
                 <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configBrand">
                     <ng-template swiperSlide>
-                        <img src="../../../assets/img/brand/sekonic-light-meter-logo-1.webp" width="150" alt=""
-                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <img src="../../../assets/img/brand/sekonic-light-meter-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                     </ng-template>
                     <ng-template swiperSlide>
-                        <img src="../../../assets/img/brand/tamron-lens-logo-1.webp" width="150" alt=""
-                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <img src="../../../assets/img/brand/tamron-lens-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                     </ng-template>
                     <ng-template swiperSlide>
-                        <img src="../../../assets/img/brand/vanguard-camera-logo-1.webp" width="150" alt=""
-                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <img src="../../../assets/img/brand/vanguard-camera-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                     </ng-template>
                     <ng-template swiperSlide>
-                        <img src="../../../assets/img/brand/laowa-lens-logo-1.webp" width="150" alt=""
-                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <img src="../../../assets/img/brand/laowa-lens-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                     </ng-template>
                     <ng-template swiperSlide>
-                        <img src="../../../assets/img/brand/bushnell-logo-1.webp" width="150" alt=""
-                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <img src="../../../assets/img/brand/bushnell-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                     </ng-template>
                     <ng-template swiperSlide>
-                        <img src="../../../assets/img/brand/e-image-tripod-logo-1.webp" width="150" alt=""
-                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <img src="../../../assets/img/brand/e-image-tripod-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                     </ng-template>
                     <ng-template swiperSlide>
-                        <img src="../../../assets/img/brand/samllrig-logo-1.webp" width="150" alt=""
-                            data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
+                        <img src="../../../assets/img/brand/samllrig-logo-1.webp" width="150" alt="" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000">
                     </ng-template>
                 </swiper>
             </div>

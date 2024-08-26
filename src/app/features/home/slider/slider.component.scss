@@ -1,0 +1,26 @@
+.placeholder {
+    background-color: #e0e0e0; /* Base color for placeholder */
+    border-radius: 4px;
+    margin-bottom: 16px;
+    width: 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -100%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}
+
+.placeholder::before {
+    content: "";
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}

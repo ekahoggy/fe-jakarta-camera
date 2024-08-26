@@ -1,0 +1,17 @@
+<div class="placeholder-glow" aria-hidden="true" *ngIf="loading">
+    <span class="placeholder" style="height: 350px;"></span>
+</div>
+
+<section id="banner-carousel" *ngIf="!loading">
+    <ngb-carousel [showNavigationIndicators]="false">
+        <ng-template *ngFor="let item of listSlider; index as i" ngbSlide>
+            <div class="picsum-img-wrapper">
+                <picture (click)="sliderClick(item.url)">
+                    <source [srcset]="item.picture" media="(min-width: 768px)">
+                    <source [srcset]="item.picture_mobile">
+                    <img [src]="item.picture_mobile" class="w-100 object-fit-cover" height="480" [alt]="item.title"/>
+                </picture>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</section>  

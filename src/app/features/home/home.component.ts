@@ -22,7 +22,6 @@ export class HomeComponent extends MetaDataService implements OnInit {
     configBrand: SwiperOptions = {};
     configFlash: SwiperOptions = {};
     configCategory: SwiperOptions = {};
-    listSlider: any = [];
     listProduct: any = [];
     listProductPromo: any = [];
     listProductFlashsale: any = [];
@@ -52,7 +51,6 @@ export class HomeComponent extends MetaDataService implements OnInit {
         this.init();
         AOS.init();
         this.getSettingPopUp();
-        this.getSlider();
         this.getCategories();
         this.getProduct();
         this.getProductPromo();
@@ -231,13 +229,7 @@ export class HomeComponent extends MetaDataService implements OnInit {
         }
     }
 
-    getSlider() {
-        this.loading.slider = true;
-        this.globalService.DataGet('/public/slider').subscribe((res: any) => {
-            this.listSlider = res.data.list;
-            this.loading.slider = false;
-        })
-    }
+
 
     getSettingPopUp() {
         this.globalService.DataGet('/public/setting', { kategori: 'W' }).subscribe((res: any) => {
@@ -260,12 +252,6 @@ export class HomeComponent extends MetaDataService implements OnInit {
     popupClick(url: string) {
         if (url !== null || url !== '') {
             window.open(url)
-        }
-    }
-
-    sliderClick(url: string) {
-        if (url !== null || url !== '') {
-            window.open(url, '_blank')
         }
     }
 
