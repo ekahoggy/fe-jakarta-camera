@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { SliderComponent } from './slider/slider.component';
 import { CategoryComponent } from './category/category.component';
 import { HomeComponent } from './home.component';
+import { ProductComponent } from './product/product.component';
 
 
 
@@ -20,7 +21,8 @@ import { HomeComponent } from './home.component';
 	declarations: [
 		SliderComponent,
 		CategoryComponent,
-		HomeComponent
+		HomeComponent,
+  ProductComponent
 	],
 	imports: [
 		CommonModule,

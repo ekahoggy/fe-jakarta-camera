@@ -1,0 +1,39 @@
+<section class="products mb-5">
+    <div class="container">
+        <div class="mb-4 d-flex align-items-center">
+            <span class="fw-bolder text-primary fs-6 me-2">SEMUA PRODUK</span>
+            <i class='bx bx-badge-check text-primary fs-5'></i>
+        </div>
+        <div class="row">
+            <ng-container *ngFor="let item of listProduct; index as i">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3 px-2">
+                    <div class="wrap-item h-100 rounded-3">
+                        <a href="javascript:void(0)" class="text-dark" (click)="clickProduk(item)">
+                            <div class="position-relative wrap-image rounded-top-3">
+                                <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
+                            </div>
+                            <div class="detail p-2 p-lg-3">
+                                <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
+                                <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
+                                <span class="text-decoration-line-through fs-12" style="color: rgb(175, 175, 175);" *ngIf="item.is_promo">Rp {{ item.harga | numberFormat }}</span>
+                                <span class="fs-12" [ngClass]="{'visibility-hidden': !item.is_promo}">
+                                    <i class='bx bxs-bolt'></i>{{ item.promo.persen }}%
+                                </span>
+                                <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga_promo | numberFormat }} </p>
+                                <div class="star fs-12 font-m">
+                                    <i class="bx bxs-star text-warning"></i> {{ item.rating }} &VerticalLine; {{ item.total_terjual }} Terjual
+                                </div>
+                          </div>
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="text-center pt-5">
+                <button *ngIf="!lastPage" class="btn btn-primary btn-sm" (click)="loadMore()" [disabled]="loading.product">
+                    <i class='bx bx-refresh me-1'></i>
+                    {{ loading.product ? 'Loading...' : 'Load More' }}
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

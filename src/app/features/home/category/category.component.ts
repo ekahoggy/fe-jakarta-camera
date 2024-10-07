@@ -1,10 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
+import { SwiperOptions } from 'swiper';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+	selector: 'app-category',
+	templateUrl: './category.component.html',
+	styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent {
+export class CategoryComponent implements OnInit {
+	configCategory: SwiperOptions = {};
+	loading: any = {};
+	listCategory: any = [];
 
+	constructor(
+		private globalService: GlobalService,
+	) {}
+
+	ngOnInit(): void {
+		this.configSwiperCategory();
+		this.getCategories();
+	}
+
+	getCategories() {
+		this.loading.category = true;
+		this.globalService.DataGet('/public/kategori').subscribe((res: any) => {
+			this.listCategory = res.data;
+			this.loading.category = false;
+		})
+	}
+
+	onSlideChange() {
+		console.log('slide change');
+	}
+
+	onSwiper(swiper: any) {
+		// console.log(swiper);
+	}
+
+	configSwiperCategory() {
+		this.configCategory = {
+			slidesPerView: 6,
+			spaceBetween: 20,
+			navigation: true,
+			pagination: false,
+			scrollbar: { draggable: true },
+			breakpoints: {
+				100: {
+				slidesPerView: 2,
+				spaceBetween: 15,
+				},
+				480: {
+				slidesPerView: 3,
+				spaceBetween: 15,
+				},
+				768: {
+				slidesPerView: 4,
+				spaceBetween: 15,
+				},
+				1024: {
+				slidesPerView: 5,
+				spaceBetween: 15,
+				},
+				1400: {
+				slidesPerView: 6,
+				spaceBetween: 15,
+				},
+			},
+		}
+	}
 }

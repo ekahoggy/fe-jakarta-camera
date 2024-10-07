@@ -1,0 +1,39 @@
+
+.category {
+    ::ng-deep .swiper-button-prev,
+    ::ng-deep .swiper-button-next {
+        top: 50%;
+    }
+
+    ::ng-deep .swiper-button-prev:after,
+    ::ng-deep .swiper-button-next:after {
+        font-size: 25px;
+        color: black;
+    }
+
+    ::ng-deep .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+        right: 0px;
+    }
+
+    ::ng-deep .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+        left: 0px;
+    }
+
+    .wrap-category {
+        background-color: #FAFAFA;
+        width: 100%;
+        max-width: 150px;
+        font-size: 12px;
+        color: black;
+        font-weight: bold;
+    }
+
+    .wrap-category:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: #E8F1F5;
+        color: #005691;
+        font-weight: bold;
+    }
+}

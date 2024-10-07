@@ -4,42 +4,7 @@
 <!-- *ngIf="!loading.slider && !loading.product && !loading.category" -->
 <ng-container>
     <app-slider></app-slider>
-
-    <section class="category py-4">
-        <div class="container">
-            <div class="row justify-content-center py-4">
-                <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configCategory">
-                    <ng-template *ngFor="let item of listCategory; index as i" swiperSlide>
-                        <div class="h-100 p-3">
-                            <a href="/katalog?category={{item.slug}}">
-                                <div class="p-2 py-3 mx-auto text-center rounded-4 wrap-category h-100 border border-2">
-                                    <img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
-                                    <p class="font-p mb-0 mt-3 text-uppercase fs-12"> {{ item.kategori }} </p>
-                                </div>
-                            </a>
-                        </div>
-                    </ng-template>
-                </swiper>
-            </div>
-        </div>
-    </section>
-
-    <!-- <section class="category py-5">
-		<div class="container">
-			<div class="row">
-				<ng-container *ngFor="let item of listCategory">
-					<div class="col-4 col-md-3 col-lg-2 mb-3">
-						<a href="javascript:void(0)" routerLink="/katalog/{{item.slug}}">
-							<div class="p-2 p-sm-4 mx-auto text-center rounded-2 wrap-category">
-								<img [src]="item.icon" class="object-fit-cover" width="50" height="50" alt="">
-								<p class="font-p mb-0 mt-3 text-uppercase"> {{ item.kategori }} </p>
-							</div>
-						</a>
-					</div>
-				</ng-container>
-			</div>
-		</div>
-	</section> -->
+    <app-category></app-category>
 
     <section class="our-advantages">
         <div class="container">
@@ -220,45 +185,7 @@
         </div>
     </section>
 
-    <section class="products mb-5">
-        <div class="container">
-            <div class="mb-4 d-flex align-items-center">
-                <span class="fw-bolder text-primary fs-6 me-2">SEMUA PRODUK</span>
-                <i class='bx bx-badge-check text-primary fs-5'></i>
-            </div>
-            <div class="row">
-                <ng-container *ngFor="let item of listProduct; index as i">
-                    <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3 px-2">
-                        <div class="wrap-item h-100 rounded-3">
-                            <a href="javascript:void(0)" class="text-dark" (click)="clickProduk(item)">
-                                <div class="position-relative wrap-image rounded-top-3">
-                                    <img [src]="item.foto" class="w-100 object-fit-cover rounded-top-3" alt="Random second slide" />
-                                </div>
-                                <div class="detail p-2 p-lg-3">
-                                    <h2 class="product-name mb-0 font-p fs-14">{{ item.nama }} </h2>
-                                    <p class="category text-uppercase font-p fs-12 mb-1"> {{ item.kategori }}</p>
-                                    <span class="text-decoration-line-through fs-12" style="color: rgb(175, 175, 175);" *ngIf="item.is_promo">Rp {{ item.harga | numberFormat }}</span>
-                                    <span class="fs-12" [ngClass]="{'visibility-hidden': !item.is_promo}">
-                                        <i class='bx bxs-bolt'></i>{{ item.promo.persen }}%
-                                    </span>
-                                    <p class="price fs-14 fw-semibold font-p mb-1">Rp {{ item.harga_promo | numberFormat }} </p>
-                                    <div class="star fs-12 font-m">
-                                        <i class="bx bxs-star text-warning"></i> {{ item.rating }} &VerticalLine; {{ item.total_terjual }} Terjual
-                                    </div>
-                              </div>
-                            </a>
-                        </div>
-                    </div>
-                </ng-container>
-                <div class="container text-center pt-5 w-50">
-                  <button class="btn btn-primary" (click)="loadMore()">
-                    <i class='bx bx-refresh'></i>
-                    Load More
-                  </button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <app-product></app-product>
 
     <section class="view-sale bg-body-tertiary py-lg-5">
         <div class="container py-5">
