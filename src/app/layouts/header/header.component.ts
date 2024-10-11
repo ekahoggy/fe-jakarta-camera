@@ -65,7 +65,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       this.sticky = this.navbar.offsetTop - 20;
     }
     this.getSocialMedia();
-    this.getCategories();
+    // this.getCategories();
 
     if (serviceAuth == null) {
       this.socialAuthService.authState.subscribe((user) => {
@@ -112,6 +112,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   openScroll(content: TemplateRef<any>) {
+    this.getCategories();
     this.offcanvasService.open(content, { scroll: true });
   }
 

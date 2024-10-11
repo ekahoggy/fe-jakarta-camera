@@ -12,7 +12,7 @@ export class ProductComponent implements OnInit {
 	currentPage = 1;
 	perPage = 12;
 	lastPage = false;
-	loading: any = []
+	loading: any = {}
 
 	constructor(
 		private globalService: GlobalService,

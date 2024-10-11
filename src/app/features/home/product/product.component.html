@@ -29,7 +29,7 @@
                 </div>
             </ng-container>
             <div class="text-center pt-5">
-                <button *ngIf="!lastPage" class="btn btn-primary btn-sm" (click)="loadMore()" [disabled]="loading.product">
+                <button *ngIf="!lastPage" class="btn btn-primary" (click)="loadMore()" [disabled]="loading.product">
                     <i class='bx bx-refresh me-1'></i>
                     {{ loading.product ? 'Loading...' : 'Load More' }}
                 </button>

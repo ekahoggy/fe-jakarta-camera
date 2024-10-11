@@ -126,7 +126,7 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="address" class="form-label font-p fs-14">Alamat Lengkap</label>
-                                <textarea type="text" class="form-control fs-14" name="address" [(ngModel)]="model.address" id="address" aria-describedby="addressHelp"></textarea>
+                                <textarea type="text" class="form-control" name="address" [(ngModel)]="model.address" id="address" aria-describedby="addressHelp" rows="3"></textarea>
                                 <small class="text-danger font-p fs-12" *ngIf="error.address">{{ error.address }}</small>
                                 <div id="addressHelp" class="form-text">Isi dengan alamat lengkap anda (lebih bagus jika menambahkan ciri-ciri rumah anda).</div>
                             </div>
@@ -146,7 +146,7 @@
                     </button>
                 </form>
             </div>
-            <div class="col-lg-5 d-none d-lg-block ps-5">
+            <div class="col-lg-5 d-none d-lg-flex align-items-end ps-5">
                 <img src="assets/img/undraw/service-camera.png" class="object-fit-cover w-100" style="max-width: 480px;" width="400" alt="empty">
             </div>
         </div>
