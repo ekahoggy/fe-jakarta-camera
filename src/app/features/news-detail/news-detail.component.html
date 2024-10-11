@@ -23,9 +23,11 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="list-news mb-4">
-                    <h1 class="font-m fw-bold fs-2 mb-5">{{ model.judul }}</h1>
-                    <img [src]="model.image" class="img-thumbnail object-fit-cover w-100 mb-3" height="200" height="">
-                    <div class="overflow-hidden" [innerHTML]="model.content"></div>
+                    <article>
+                        <h1 class="font-m fw-bold fs-2 mb-5">{{ model.judul }}</h1>
+                        <img [src]="model.image" class="img-thumbnail object-fit-cover w-100 mb-3" height="200" height="">
+                        <div class="overflow-hidden" [innerHTML]="model.content"></div>
+                    </article>
                 </div>
 
                 <div class="share my-5">

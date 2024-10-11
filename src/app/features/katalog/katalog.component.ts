@@ -35,6 +35,7 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 	perPage = 12;
 	lastPage = false;
 	loading: any = {}
+	filterNama: string = "";
 
 	constructor(
 		private route: ActivatedRoute,
@@ -53,6 +54,7 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 			this.getProduct(payload);
 
 			if (!!params) {
+				this.filterNama = params['nama']
 				this.selectKategori = params['category']
 				this.selectBrand = params['brand']
 			}
@@ -202,6 +204,7 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 
 	navigateKatalog() {
 		let params = { 
+			nama: this.filterNama,
 			category: this.filterCategory, 
 			brand: this.filterBrand,
 			page: this.currentPage,
@@ -214,7 +217,12 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 	loadMore() {
 		if (!this.lastPage) {
 			this.currentPage++;
-			this.getProduct();
+			let params = {
+				nama: this.filterNama,
+				category: this.filterCategory, 
+				brand: this.filterBrand,
+			}
+			this.getProduct(params);
 		}
 	}
 }
