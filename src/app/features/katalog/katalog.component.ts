@@ -32,7 +32,7 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 	selectBrand: any;
 
 	currentPage = 1;
-	perPage = 12;
+	perPage = 36;
 	lastPage = false;
 	loading: any = {}
 	filterNama: string = "";
@@ -80,7 +80,7 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 
 	getProductByBrand(event: string = '') {
 		this.loading.product = true;
-		let params = { 
+		let params = {
 			brand: event ? event : '',
 			page: this.currentPage,
 			per_page: this.perPage
@@ -203,9 +203,9 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 	}
 
 	navigateKatalog() {
-		let params = { 
+		let params = {
 			nama: this.filterNama,
-			category: this.filterCategory, 
+			category: this.filterCategory,
 			brand: this.filterBrand,
 			page: this.currentPage,
 			per_page: this.perPage
@@ -219,7 +219,7 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 			this.currentPage++;
 			let params = {
 				nama: this.filterNama,
-				category: this.filterCategory, 
+				category: this.filterCategory,
 				brand: this.filterBrand,
 			}
 			this.getProduct(params);

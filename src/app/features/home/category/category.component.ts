@@ -25,6 +25,12 @@ export class CategoryComponent implements OnInit {
 		this.loading.category = true;
 		this.globalService.DataGet('/public/kategori').subscribe((res: any) => {
 			this.listCategory = res.data;
+
+      // this.listCategory.forEach(kategori => {
+      //   if(kategori.icon === null || kategori.icon === 'null'){
+      //     kategori.icon = '/assets/img/empty-img.png'
+      //   }
+      // });
 			this.loading.category = false;
 		})
 	}

@@ -10,7 +10,7 @@ import { GlobalService } from 'src/app/services/global.service';
 export class ProductComponent implements OnInit {
 	listProduct: any = [];
 	currentPage = 1;
-	perPage = 12;
+	perPage = 18;
 	lastPage = false;
 	loading: any = {}
 
