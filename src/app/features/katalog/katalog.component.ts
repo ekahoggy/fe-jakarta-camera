@@ -34,8 +34,11 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 	currentPage = 1;
 	perPage = 36;
 	lastPage = false;
+	empty_produk: boolean = false
+	loadingInit: boolean = true
+	dumpArray = new Array(12)
 	loading: any = {}
-	filterNama: string = "";
+	filterNama: string = ""
 
 	constructor(
 		private route: ActivatedRoute,
@@ -75,6 +78,7 @@ export class KatalogComponent extends MetaDataService implements OnInit {
 			this.listProduct = [...this.listProduct, ...res.data.list.data];
 			this.lastPage = !res.data.list.next_page_url;
 			this.loading.product = false;
+			this.loadingInit = false;
 		})
 	}
 

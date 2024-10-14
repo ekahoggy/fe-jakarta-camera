@@ -4,7 +4,8 @@
             <span class="fw-bolder text-primary fs-6 me-2">SEMUA PRODUK</span>
             <i class='bx bx-badge-check text-primary fs-5'></i>
         </div>
-        <div class="row">
+
+        <div class="row" *ngIf="!loading.init">
             <ng-container *ngFor="let item of listProduct; index as i">
                 <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3 px-2">
                     <div class="wrap-item h-100 rounded-3">
@@ -33,6 +34,20 @@
                     <i class='bx bx-refresh me-1'></i>
                     {{ loading.product ? 'Loading...' : 'Load More' }}
                 </button>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="loading.init">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3 px-2" *ngFor="let item of dumpArray">
+                <div class="box-shadow rounded-3 overflow-hidden">
+                    <div class="w-100 skeleton" style="aspect-ratio: 4/3.6;"></div>
+                    <div class="p-3">
+                        <p class="w-100 skeleton rounded-3 mb-1" style="height: 10px;"></p>
+                        <p class="w-75 skeleton rounded-3 mb-2" style="height: 10px;"></p>
+                        <p class="w-50 skeleton rounded-3 mb-2" style="height: 15px;"></p>
+                        <p class="w-25 skeleton rounded-3 mb-0" style="height: 10px;"></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

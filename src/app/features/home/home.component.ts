@@ -28,12 +28,14 @@ export class HomeComponent extends MetaDataService implements OnInit {
 	statusPopup: boolean = true;
 	listNews: any = [];
 	listPopup: any = [];
-	loading = {
-		product: false,
-	};
-
 	aktifPopup: boolean = false;
 	filterProduct: string = 'featured';
+
+	dumpNews = new Array(6)
+	loading = {
+		init: true,
+		product: false,
+	};
 
 	constructor(
 		private globalService: GlobalService,
@@ -68,6 +70,7 @@ export class HomeComponent extends MetaDataService implements OnInit {
 
 	init() {
 		this.loading = {
+			init: true,
 			product: false,
 		};
 	}
@@ -263,6 +266,7 @@ export class HomeComponent extends MetaDataService implements OnInit {
 	getNews() {
 		this.globalService.DataGet('/public/news').subscribe((res: any) => {
 			this.listNews = res.data.list;
+			this.loading.init = false
 		})
 	}
 }
