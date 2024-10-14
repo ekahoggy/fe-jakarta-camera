@@ -9,8 +9,11 @@ import { SwiperOptions } from 'swiper';
 })
 export class CategoryComponent implements OnInit {
 	configCategory: SwiperOptions = {};
-	loading: any = {};
 	listCategory: any = [];
+	
+	loading: any = {};
+	loadingInit: boolean = true
+	dumpArray = new Array(6)
 
 	constructor(
 		private globalService: GlobalService,
@@ -26,6 +29,7 @@ export class CategoryComponent implements OnInit {
 		this.globalService.DataGet('/public/kategori').subscribe((res: any) => {
 			this.listCategory = res.data;
 			this.loading.category = false;
+			this.loadingInit = false
 		})
 	}
 
@@ -34,7 +38,7 @@ export class CategoryComponent implements OnInit {
 	}
 
 	onSwiper(swiper: any) {
-		// console.log(swiper);
+		this.loadingInit = false
 	}
 
 	configSwiperCategory() {

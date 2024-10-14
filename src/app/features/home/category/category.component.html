@@ -1,7 +1,7 @@
 <section class="category py-4">
     <div class="container">
         <div class="row justify-content-center py-4">
-            <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configCategory">
+            <swiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [config]="configCategory" *ngIf="!loadingInit">
                 <ng-template *ngFor="let item of listCategory; index as i" swiperSlide>
                     <div class="h-100 p-3">
                         <a href="/katalog?category={{item.slug}}">
@@ -13,6 +13,14 @@
                     </div>
                 </ng-template>
             </swiper>
+        </div>
+        <div class="row" *ngIf="loadingInit">
+            <div class="col-md-2 p-4" *ngFor="let item of dumpArray">
+                <div class="box-shadow rounded-4 w-100 d-flex align-items-center justify-content-center flex-column" style="aspect-ratio: 4/4;">
+                    <div class="skeleton mb-3" style="width: 50px; height: 50px;"></div> 
+                    <div class="skeleton w-50" style="height: 10px;"></div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

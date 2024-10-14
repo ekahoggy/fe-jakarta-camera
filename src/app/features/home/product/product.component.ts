@@ -12,7 +12,11 @@ export class ProductComponent implements OnInit {
 	currentPage = 1;
 	perPage = 12;
 	lastPage = false;
-	loading: any = {}
+	dumpArray = new Array(12)
+	loading: any = {
+		init: true,
+		product: false
+	}
 
 	constructor(
 		private globalService: GlobalService,
@@ -33,6 +37,7 @@ export class ProductComponent implements OnInit {
 			this.listProduct = [...this.listProduct, ...res.data.list.data];
 			this.lastPage = !res.data.list.next_page_url;
 			this.loading.product = false;
+			this.loading.init = false;
 		})
 	}
 

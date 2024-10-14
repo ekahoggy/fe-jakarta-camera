@@ -19,110 +19,197 @@
     <div class="container">
         <div class="row">
             <div class="col-4 col-xl-3 d-none d-lg-block mb-5">
-                <div class="d-flex align-items-center justify-content-center bg-grey py-2 border border-bottom-0 rounded-top-4 fw-semibold">
-                    <i class='bx bx-sort-up me-1 fs-5'></i>
-                    <span class="font-p">FILTER</span>
-                </div>
-                <div class="filer border font-p rounded-bottom-4" style="font-size: 14px;">
-                    <!-- Price -->
-                    <div class="price py-2 px-2">
-                        <div class="d-flex justify-content-between align-items-center" (click)="prices.toggle()" [attr.aria-expanded]="!isCollapsed.prices" aria-controls="collapsePrices">
-                            <span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN HARGA</span>
-                            <i class="bx fw-bold" [ngClass]="isCollapsed.prices ? 'bx-minus': 'bx-plus'"></i>
-                        </div>
-                        <div class="px-3 my-2" #prices="ngbCollapse" [(ngbCollapse)]="isCollapsed.prices">
-                            <div class="range-price">
-                                <div class="mb-3">
-                                    <label for="minimum" class="form-label fs-12">Minimal</label>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text rounded-start-4 fs-12" id="minimum">Rp</span>
-                                        <input type="number" class="form-control form-control-sm rounded-end-4 fs-12" id="minimum">
+                <div class="filter" *ngIf="!loadingInit">
+                    <div class="d-flex align-items-center justify-content-center bg-grey py-2 border border-bottom-0 rounded-top-4 fw-semibold">
+                        <i class='bx bx-sort-up me-1 fs-5'></i>
+                        <span class="font-p">FILTER</span>
+                    </div>
+                    <div class="filer border font-p rounded-bottom-4" style="font-size: 14px;">
+                        <!-- Price -->
+                        <div class="price py-2 px-2">
+                            <div class="d-flex justify-content-between align-items-center" (click)="prices.toggle()" [attr.aria-expanded]="!isCollapsed.prices" aria-controls="collapsePrices">
+                                <span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN HARGA</span>
+                                <i class="bx fw-bold" [ngClass]="isCollapsed.prices ? 'bx-minus': 'bx-plus'"></i>
+                            </div>
+                            <div class="px-3 my-2" #prices="ngbCollapse" [(ngbCollapse)]="isCollapsed.prices">
+                                <div class="range-price">
+                                    <div class="mb-3">
+                                        <label for="minimum" class="form-label fs-12">Minimal</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text rounded-start-4 fs-12" id="minimum">Rp</span>
+                                            <input type="number" class="form-control form-control-sm rounded-end-4 fs-12" id="minimum">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="maximum" class="form-label fs-12">Maksimal</label>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text rounded-start-4 fs-12" id="maximum">Rp</span>
-                                        <input type="number" class="form-control form-control-sm rounded-end-4 fs-12" id="maximum">
+                                    <div class="mb-3">
+                                        <label for="maximum" class="form-label fs-12">Maksimal</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text rounded-start-4 fs-12" id="maximum">Rp</span>
+                                            <input type="number" class="form-control form-control-sm rounded-end-4 fs-12" id="maximum">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- End Price -->
-
-
-                    <!-- Promo -->
-                    <div class="price py-2 px-2 border-top">
-                        <div class="d-flex justify-content-between align-items-center" (click)="availability.toggle()" [attr.aria-expanded]="!isCollapsed.availability" aria-controls="collapseavailability">
-                            <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between fs-14">Promo</span>
-                            <i class="bx fw-bold" [ngClass]="isCollapsed.availability ? 'bx-minus': 'bx-plus'"></i>
-                        </div>
-                        <div class="px-3 mt-2" #availability="ngbCollapse" [(ngbCollapse)]="isCollapsed.availability">
-                            <div class="form-check mb-1">
-                                <input class="form-check-input" type="checkbox" value="" id="promo" [checked]="filter.promo" (change)="filter.promo=true">
-                                <label class="form-check-label text-grey" for="promo">
-                                    Yes
-                                </label>
+    
+                        <!-- End Price -->
+    
+    
+                        <!-- Promo -->
+                        <div class="price py-2 px-2 border-top">
+                            <div class="d-flex justify-content-between align-items-center" (click)="availability.toggle()" [attr.aria-expanded]="!isCollapsed.availability" aria-controls="collapseavailability">
+                                <span class="btn fs-6 fw-bold rounded-0 d-flex justify-content-between fs-14">Promo</span>
+                                <i class="bx fw-bold" [ngClass]="isCollapsed.availability ? 'bx-minus': 'bx-plus'"></i>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="promo" [checked]="!filter.promo" (change)="filter.promo=false">
-                                <label class="form-check-label text-grey" for="promo">
-                                    No
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Promo -->
-
-
-                    <!-- Category -->
-                    <div class="category py-2 px-2 border-top">
-                        <div class="d-flex justify-content-between align-items-center" (click)="categories.toggle()" [attr.aria-expanded]="!isCollapsed.categories" aria-controls="collapseCategories">
-                            <span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN KATEGORI</span>
-                            <i class="bx fw-bold" [ngClass]="isCollapsed.categories ? 'bx-minus': 'bx-plus'"></i>
-                        </div>
-                        <div class="ps-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
-                            <ng-container *ngFor="let item of listCategory; index as i">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="checkbox" [value]="item.slug" id="category-{{i}}" [checked]="item.selected" (change)="addFilterKategori($event)">
-                                        <label class="form-check-label text-grey" for="category">
-                                            {{ item.kategori }}
-                                        </label>
-                                    </div>
-                                    <span role="button" (click)="childCategories.toggle()" [attr.aria-expanded]="!isCollapsedChild[item.slug]" aria-controls="collapseCategories" *ngIf="item.child.length > 0">
-                                        <i class="bx fw-bold" [ngClass]="isCollapsedChild[item.slug] ? 'bx-minus': 'bx-plus'"></i>
-                                    </span>
-                                </div>
-                                <div class="ps-3" #childCategories="ngbCollapse" [(ngbCollapse)]="isCollapsedChild[item.slug]">
-                                    <div class="form-check mb-2" *ngFor="let child of item.child; index as iChild">
-                                        <input class="form-check-input" type="checkbox" [value]="child.slug" id="category-{{iChild}}" [checked]="child.selected" (change)="addFilterKategori($event)">
-                                        <label class="form-check-label text-grey" for="category">
-                                            {{ child.kategori }}
-                                        </label>
-                                    </div>
-                                </div>
-                            </ng-container>
-                        </div>
-                    </div>
-
-                    <!-- Brand -->
-                    <div class="category py-2 px-2 border-top">
-                        <div class="d-flex justify-content-between align-items-center" (click)="brand.toggle()" [attr.aria-expanded]="!isCollapsed.brand" aria-controls="collapsebrand">
-                            <span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN MEREK</span>
-                            <i class="bx fw-bold" [ngClass]="isCollapsed.brand ? 'bx-minus': 'bx-plus'"></i>
-                        </div>
-                        <div class="ps-3 mt-2" #brand="ngbCollapse" [(ngbCollapse)]="isCollapsed.brand">
-                            <ng-container *ngFor="let item of listBrand; index as i">
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" [value]="item.slug" id="brand-{{i}}" [checked]="item.selected" (change)="addFilterBrand($event)">
-                                    <label class="form-check-label text-grey" for="brand">
-                                        {{ item.brand }}
+                            <div class="px-3 mt-2" #availability="ngbCollapse" [(ngbCollapse)]="isCollapsed.availability">
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" value="" id="promo" [checked]="filter.promo" (change)="filter.promo=true">
+                                    <label class="form-check-label text-grey" for="promo">
+                                        Yes
                                     </label>
                                 </div>
-                            </ng-container>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="promo" [checked]="!filter.promo" (change)="filter.promo=false">
+                                    <label class="form-check-label text-grey" for="promo">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Promo -->
+    
+    
+                        <!-- Category -->
+                        <div class="category py-2 px-2 border-top">
+                            <div class="d-flex justify-content-between align-items-center" (click)="categories.toggle()" [attr.aria-expanded]="!isCollapsed.categories" aria-controls="collapseCategories">
+                                <span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN KATEGORI</span>
+                                <i class="bx fw-bold" [ngClass]="isCollapsed.categories ? 'bx-minus': 'bx-plus'"></i>
+                            </div>
+                            <div class="ps-3 mt-2" #categories="ngbCollapse" [(ngbCollapse)]="isCollapsed.categories">
+                                <ng-container *ngFor="let item of listCategory; index as i">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" [value]="item.slug" id="category-{{i}}" [checked]="item.selected" (change)="addFilterKategori($event)">
+                                            <label class="form-check-label text-grey" for="category">
+                                                {{ item.kategori }}
+                                            </label>
+                                        </div>
+                                        <span role="button" (click)="childCategories.toggle()" [attr.aria-expanded]="!isCollapsedChild[item.slug]" aria-controls="collapseCategories" *ngIf="item.child.length > 0">
+                                            <i class="bx fw-bold" [ngClass]="isCollapsedChild[item.slug] ? 'bx-minus': 'bx-plus'"></i>
+                                        </span>
+                                    </div>
+                                    <div class="ps-3" #childCategories="ngbCollapse" [(ngbCollapse)]="isCollapsedChild[item.slug]">
+                                        <div class="form-check mb-2" *ngFor="let child of item.child; index as iChild">
+                                            <input class="form-check-input" type="checkbox" [value]="child.slug" id="category-{{iChild}}" [checked]="child.selected" (change)="addFilterKategori($event)">
+                                            <label class="form-check-label text-grey" for="category">
+                                                {{ child.kategori }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+    
+                        <!-- Brand -->
+                        <div class="category py-2 px-2 border-top">
+                            <div class="d-flex justify-content-between align-items-center" (click)="brand.toggle()" [attr.aria-expanded]="!isCollapsed.brand" aria-controls="collapsebrand">
+                                <span class="btn fw-bold rounded-0 d-flex justify-content-between fs-14">CARI BERDASARKAN MEREK</span>
+                                <i class="bx fw-bold" [ngClass]="isCollapsed.brand ? 'bx-minus': 'bx-plus'"></i>
+                            </div>
+                            <div class="ps-3 mt-2" #brand="ngbCollapse" [(ngbCollapse)]="isCollapsed.brand">
+                                <ng-container *ngFor="let item of listBrand; index as i">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" [value]="item.slug" id="brand-{{i}}" [checked]="item.selected" (change)="addFilterBrand($event)">
+                                        <label class="form-check-label text-grey" for="brand">
+                                            {{ item.brand }}
+                                        </label>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-skeleton box-shadow rounded-4 p-3" *ngIf="loadingInit">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="skeleton rounded-circle me-2" style="width: 35px; height: 35px;"></div>
+                        <div class="w-75">
+                            <p class="skeleton w-75 rounded-3 mb-1" style="height: 10px;"></p>
+                            <p class="skeleton w-25 rounded-3 mb-0" style="height: 10px;"></p>
+                        </div>
+                    </div>
+                    <div class="border-bottom mb-3">
+                        <p class="skeleton w-25 rounded-3 mb-3" style="height: 16px;"></p>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                    </div>
+                    <div class="border-bottom mb-3">
+                        <p class="skeleton w-25 rounded-3 mb-3" style="height: 16px;"></p>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                    </div>
+                    <div class="border-bottom mb-3">
+                        <p class="skeleton w-25 rounded-3 mb-3" style="height: 16px;"></p>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <p class="skeleton w-25 rounded-3 mb-3" style="height: 16px;"></p>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <p class="skeleton rounded-3 me-1" style="height: 10px; width: 10px;"></p>
+                            <p class="skeleton w-50 rounded-3" style="height: 10px;"></p>
                         </div>
                     </div>
                 </div>
@@ -130,13 +217,13 @@
 
             <div class="col-12 col-lg-8 col-xl-9">
                 <div class="mb-4">
-                    <input type="text" class="form-control border-0 rounded-5 wrap-item px-3 py-2" placeholder="Cari nama produk..." [(ngModel)]="filterNama" name="filterNama" (input)="getProduct()">
+                    <input type="text" class="form-control border-0 rounded-5 box-shadow px-3 py-2" placeholder="Cari nama produk..." [(ngModel)]="filterNama" name="filterNama" (input)="getProduct()">
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="!loadingInit">
                     <ng-container *ngIf="listProduct.length > 0">
                         <div class="col-6 col-lg-4 col-xl-3 mb-2 px-2" *ngFor="let item of listProduct; index as i">
                             <a href="javascript:void(0)" class="text-dark" (click)="clickProduk(item)">
-                                <div class="wrap-item rounded-3 overflow-hidden">
+                                <div class="box-shadow rounded-3 overflow-hidden">
                                     <div class="square-image wrap-image">
                                         <img [src]="item.foto" class="object-fit-cover" width="280" height="280" alt="Random second slide" />
                                     </div>
@@ -170,6 +257,22 @@
                     </div>
 
                 </div>
+
+                <div class="row" *ngIf="loadingInit">
+                    <div class="col-6 col-lg-4 col-xl-3 mb-2 px-2" *ngFor="let item of dumpArray">
+                        <div class="box-shadow rounded-3 overflow-hidden">
+                            <div class="w-100 skeleton" style="aspect-ratio: 4/3.6;"></div>
+                            <div class="p-3">
+                                <p class="w-100 skeleton rounded-3 mb-1" style="height: 10px;"></p>
+                                <p class="w-75 skeleton rounded-3 mb-2" style="height: 10px;"></p>
+                                <p class="w-50 skeleton rounded-3 mb-2" style="height: 15px;"></p>
+                                <p class="w-25 skeleton rounded-3 mb-0" style="height: 10px;"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
